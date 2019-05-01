@@ -27,9 +27,10 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "test": "jest --watchAll",
+    "test": "jest --watchAll --coverage",
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
+    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls",
     "lint": "eslint ./src",
     "lint-fix": "eslint ./src --fix"
   },
@@ -48,6 +49,7 @@
     "babel-loader": "^8.0.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "coveralls": "^3.0.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.2.0",
