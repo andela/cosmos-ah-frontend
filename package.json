@@ -30,7 +30,7 @@
     "test": "jest --watchAll --coverage",
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
-    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
+    "coverage": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
     "lint": "eslint ./src",
     "lint-fix": "eslint ./src --fix"
   },
