@@ -27,7 +27,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "test": "jest --watchAll --coverage",
+    "test": "jest --watchAll",
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "coverage": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
