@@ -1,30 +1,17 @@
 import React from 'react';
-import {
-  BrowserRouter as Router, Switch, Route, Link
-} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
-import Login from './Signin';
-import Article from './Article';
+import Signin from './Signin';
+import Dashboard from './Dashboad';
 
 const App = () => (
-  <Router>
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-      <li>
-        <Link to="/articles">Articles</Link>
-      </li>
-    </ul>
+  <div className='ui container'>
     <Switch>
       <Route path="/" exact component={Home}></Route>
-      <Route path="/login" component={Login}></Route>
-      <Route path="/articles" component={Article}></Route>
+      <Route path="/signin" component={Signin}></Route>
+      <Route path="/dashboard" component={Dashboard}></Route>
     </Switch>
-  </Router>
+    </div>
 );
 
 export default App;

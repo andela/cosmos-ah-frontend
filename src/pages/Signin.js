@@ -1,22 +1,61 @@
-import React, { Component, Fragment } from 'react';
+/* eslint-disable no-console */
+import React, { useState } from 'react';
+import { Button, Form, Message } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { signin } from '../state/auth/actions';
 
-class Login extends Component {
-  render() {
-    return (
-      <Fragment>
-        <h3>Log in</h3>
-        <p>Welcome back!</p>
-        <form>
-          <div>
-            <input type="text" placeholder="Email address" />
-          </div>
-          <div>
-            <input type="text" placeholder="Password" />
-          </div>
-        </form>
-      </Fragment>
-    );
-  }
-}
+const Signin = props => {
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
-export default Login;
+  const handleSubmit = async event => {
+    try {
+      event.preventDefault();
+      setLoading(true);
+      await props.signin(values);
+      props.history.push('/dashboard');
+    } catch (error) {
+      if (error.response.data.data.password) {
+        setErrors(() => ({ ...error.response.data.data }));
+        setLoading(false);
+      } else {
+        setErrors(() => ({ ...error.response.data }));
+        setLoading(false);
+      }
+    }
+  };
+
+  const handleChange = event => {
+    event.persist();
+    setValues(() => ({ ...values, [event.target.name]: event.target.value }));
+  };
+  return (
+    <Form onSubmit={handleSubmit} loading={loading}>
+    <h1>Welcome to the Sign In page</h1>
+    {errors.password && (
+          <Message negative>
+            <Message.Header>Something went wrong</Message.Header>
+            <p>{errors.password}</p>
+          </Message>
+    )}
+    {errors.data && (
+          <Message negative>
+            <Message.Header>Something went wrong</Message.Header>
+            <p>{errors.data}</p>
+          </Message>
+    )}
+      <Form.Field>
+        <label htmlFor='email'>Email</label>
+        <input type='email' id='email' name='email' placeholder='example@example.com' onChange={handleChange} value={values.email} required/>
+      </Form.Field>
+      <Form.Field>
+        <label htmlFor='password'>Password</label>
+        <input type='password' id='password' name='password' placeholder='your password...' onChange={handleChange} value={values.password} required/>
+      </Form.Field>
+      <Button primary>Login</Button>
+    </Form>
+  );
+};
+
+export default connect(null, { signin })(Signin);
