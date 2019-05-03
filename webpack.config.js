@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = function () {
@@ -41,13 +42,13 @@ module.exports = function () {
       new HtmlWebPackPlugin({
         template: path.resolve(__dirname, './public', 'index.html'),
         filename: 'index.html',
-      }),
+      })
     ],
     stats: {
       colors: true,
     },
     resolve: {
-      extensions: ['*', '.js', '.jsx']
+      extensions: ['*', '.js', '.jsx', '.scss', '.css']
     },
     devtool: 'source-map',
     devServer: {

@@ -1,0 +1,50 @@
+// SCSS Is only used to style a quick prototype of the app
+
+html {
+  body {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: inline-block;
+    padding: 1%;
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .app-nav__primary {
+    text-transform: uppercase;
+  }
+
+  .jumbotron {
+    background: #048fe0;
+    color: white;
+    padding: 10px 20px;
+  }
+
+  .jumbotron-nav__link {
+    color: white;
+  }
+
+  .showcase-flex {
+    display: flex;
+  }
+
+  .jumbotron-text-heading {
+    font-size: 2.5em;
+  }
+
+  .app-nav__primary {
+    display: flex;
+  }
+}
