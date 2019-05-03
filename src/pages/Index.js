@@ -1,19 +1,14 @@
-import React from 'react';
-import PrimaryNavBar from '../components/PrimaryNavBar.jsx';
-import NavBar from '../components/NavBar.jsx';
-import SecondaryNavBar from '../components/SecondaryNavBar.jsx';
-import AppJumbotron from '../components/ShowCase.jsx';
+import React, { Fragment } from 'react';
+import styled from 'styled-components';
+import Hero from '../components/Hero.jsx';
+import MainBodyContent from '../components/MainBody.jsx';
+
 
 const HomePage = () => (
-    <div className="jumbotron">
-      <header>
-        <NavBar>
-          <SecondaryNavBar />
-          <PrimaryNavBar />
-        </NavBar>
-      </header>
-      <AppJumbotron />
-    </div>
+  <Fragment>
+    <Hero />
+    <MainBodyContent />
+  </Fragment>
 );
 
 export default HomePage;

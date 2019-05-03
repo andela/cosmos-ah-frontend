@@ -1,5 +1,4 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = function () {
@@ -8,6 +7,7 @@ module.exports = function () {
     output: {
       path: path.join(__dirname, '/dist'),
       filename: 'bundle.js',
+      publicPath: '/'
     },
     module: {
       rules: [
@@ -17,6 +17,17 @@ module.exports = function () {
           use: {
             loader: 'babel-loader',
           },
+        },
+        {
+          test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+          use: {
+            loader: 'babel-loader',
+            loader: 'url-loader?limit=100000'
+          },
+        },
+        {
+          test: /\.(css|scss)$/,
+          use: ['style-loader', 'css-loader', 'sass-loader'],
         },
         {
           test: /\.(png|jp(e*)g|svg|gif)$/,
@@ -29,12 +40,13 @@ module.exports = function () {
               },
             },
           ],
-        },
-        {
-          enforce: 'pre',
-          test: /\.jsx?$/,
-          loader: 'eslint-loader',
-          exclude: /node_modules/
+        // },
+        // {
+        //   enforce: 'pre',
+        //   test: /\.jsx?$/,
+        //   loader: 'eslint-loader',
+        //   exclude: /node_modules/
+        // }
         }
       ],
     },
@@ -42,16 +54,17 @@ module.exports = function () {
       new HtmlWebPackPlugin({
         template: path.resolve(__dirname, './public', 'index.html'),
         filename: 'index.html',
-      })
+      }),
     ],
     stats: {
       colors: true,
     },
     resolve: {
-      extensions: ['*', '.js', '.jsx', '.scss', '.css']
+      extensions: ['*', '.js', '.jsx']
     },
     devtool: 'source-map',
     devServer: {
+      historyApiFallback: true,
       contentBase: path.resolve(__dirname, '../public'),
       compress: true,
       port: 9001,

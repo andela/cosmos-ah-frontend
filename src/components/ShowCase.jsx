@@ -1,24 +1,75 @@
 import React from 'react';
+import styled from 'styled-components';
+import { Grid, Icon } from 'semantic-ui-react';
+import moment from 'moment';
+import pic from './arya.jpeg';
 
-const Jumbotron = () => (
-  <div className="showcase-flex">
-    <div className="jumbotron-text-intro">
-      <h3 className="jumbotron-text-heading">Welcome to Author's Haven</h3>
-      <p>Creating a community of like minded authors
-        who foster inspiration and innovation by
-        leveraging the modern web.
-          </p>
-    </div>
-    <div className="article-trending">
-      <img src="" alt="A man smiling" />
-      <h3>Meet the people coding our world</h3>
-      <p>Creating a community of like minded authors who foster inspiration and innovation...</p>
-      <div className="article-trending__author">
-        <p>Emily J. Smith in <span>Politics</span></p>
-        <p>Mar 26<span>7 Min read</span></p>
-      </div>
-    </div>
-  </div>
+const ImageContainer = styled.div`
+  width: 180px;
+  height: 180px;
+  display: block !important;
+`;
+
+const ShowCaseArticle = styled.section``;
+const ShowCaseIntroTextHeading = styled.h3`
+  font-size: 2.5em;
+  margin-bottom: 0;
+`;
+const ShowCaseIntroTextTagLine = styled.p`
+  width: 50%;
+`;
+
+const ShowCaseArticleImage = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+`;
+
+const ShowCaseArticleAuthor = styled.div``;
+const ShowCaseAppTitle = styled.span`
+  display: block;
+`;
+
+const StyledCategory = styled.span`
+  color: orange;  
+`;
+
+const ShowCase = ({ article }) => (
+  <Grid as="section" columns="2">
+    <Grid.Row>
+      <Grid.Column>
+        <ShowCaseIntroTextHeading>
+          Welcome to&nbsp;
+        <ShowCaseAppTitle>Author's Haven</ShowCaseAppTitle>
+        </ShowCaseIntroTextHeading>
+        <ShowCaseIntroTextTagLine>
+          Creating a community of like-minded authors
+          who foster inspiration and innovation by
+          leveraging the modern web.
+      </ShowCaseIntroTextTagLine>
+      </Grid.Column>
+      <Grid.Column>
+        <ShowCaseArticle>
+          <ImageContainer>
+            <ShowCaseArticleImage src={pic} alt="" />
+          </ImageContainer>
+          <ShowCaseIntroTextTagLine>
+            <h3>{article.title}</h3>
+            <p>{article.body.slice(0, 150)}....</p>
+          </ShowCaseIntroTextTagLine>
+          <ShowCaseArticleAuthor>
+            <p>{article.author} in <StyledCategory>Politics</StyledCategory></p>
+            <p>{moment(article.createdAt).format('DDD Mo')}
+              <span>&nbsp;&middot;&nbsp;
+              {article.totalReadTime} {article.totalReadTime > 1 ? 'Mins' : 'Min'} read &nbsp;
+              <Icon name="star" size="small" color="lightgrey" />
+            </span>
+            </p>
+          </ShowCaseArticleAuthor>
+        </ShowCaseArticle>
+      </Grid.Column>
+    </Grid.Row>
+  </Grid>
 );
 
-export default Jumbotron;
+export default ShowCase;

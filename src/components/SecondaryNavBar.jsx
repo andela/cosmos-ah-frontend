@@ -1,25 +1,78 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import styled from 'styled-components';
+import {
+  Button, Checkbox, Form, Input, Grid
+} from 'semantic-ui-react';
 import Proptypes from 'prop-types';
 
-const SecondaryNavBar = () => (
-    <nav>
-      <ul>
-        <li>
-          <form>
-            <div>
-              <input
-                type="text"
-                placeholder="Find the stories you love"
-                />
-            </div>
-            <div>
-              <button>Sign in</button>
-              <button>Get started</button>
-            </div>
-          </form>
-        </li>
-      </ul>
-    </nav>
+const StyledInput = styled(Input)`
+  background-color: #276BA9;
+  width: 300px;
+`;
+
+const GenericButton = styled.button`
+  outline: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-transform: capitalize;
+  padding: 10px;
+  border-radius: 4px;
+`;
+
+const NavItemContainer = styled('div')`
+  display: inline-block;
+`;
+
+const SearchFieldContainer = styled(NavItemContainer)`
+  margin-right: 10px;
+`;
+
+const NavContainer = styled.div`
+  padding: 10px 0;
+`;
+
+const StyledButton = styled(Button)`
+  text-transform: capitalize !important;
+  border: 0 !important;
+  outline: 0 !important;
+  background-color: none !important;
+`;
+
+const SecondaryNav = ({ brandLogo }) => (
+  <NavContainer>
+    <Grid columns="2" container>
+      <Grid.Column>
+        <div>{brandLogo}</div>
+      </Grid.Column>
+
+      <Grid.Column>
+        <Grid columns="equal">
+          <Grid.Row>
+            <Grid.Column>
+              <SearchFieldContainer>
+                <Form>
+                  <Form.Field>
+                    <Input
+                      placeholder="Find the stories you love"
+                      icon="search"
+                      iconPosition="left"
+                    />
+                  </Form.Field>
+                </Form>
+              </SearchFieldContainer>
+            </Grid.Column>
+            <Grid.Column>
+              <NavItemContainer>
+                <StyledButton compact basic>Sign in</StyledButton>
+                <StyledButton primary compact color="#276BA9">Get started</StyledButton>
+              </NavItemContainer>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Grid.Column>
+    </Grid>
+  </NavContainer>
 );
 
-export default SecondaryNavBar;
+export default SecondaryNav;

@@ -1,38 +1,37 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { Grid, Image } from 'semantic-ui-react';
 
-const PrimaryNavBar = () => (
-    <nav className="app-nav__primary">
-      <div className="app-nav__brand-logo">
-        <h3>Logo</h3>
-      </div>
-      <ul>
-        <li>
-          <Link to="/" className="jumbotron-nav__link">Home</Link>
-        </li>
-        <li>
-          <Link to="/" className="jumbotron-nav__link">Culture</Link>
-        </li>
-        <li>
-          <Link to="/" className="jumbotron-nav__link">Tech</Link>
-        </li>
-        <li>
-          <Link to="/" className="jumbotron-nav__link">Fiction</Link>
-        </li>
-        <li>
-          <Link to="/" className="jumbotron-nav__link">Politics</Link>
-        </li>
-        <li>
-          <Link to="/" className="jumbotron-nav__link">Health</Link>
-        </li>
-        <li>
-          <Link to="/" className="jumbotron-nav__link">Self</Link>
-        </li>
-        <li>
-          <Link to="/" className="jumbotron-nav__link">Romance</Link>
-        </li>
-      </ul>
-    </nav>
+const NavList = styled.ul`
+  text-transform: uppercase;
+  font-size: 0.8em;
+`;
+
+const StyledLink = styled(Link)`
+  color: #fff;
+`;
+
+const PrimaryNav = ({ brandLogo, pages }) => (
+  <Fragment>
+    <Grid columns="two" container relaxed stackable>
+      <Grid.Column>
+        <h3>{brandLogo}</h3>
+      </Grid.Column>
+      <Grid.Column>
+        <nav>
+          <NavList>
+            {pages.map((page, i) => (
+              <li key={i}>
+                <StyledLink to="/">{page}</StyledLink>
+              </li>
+            ))}
+          </NavList>
+        </nav>
+      </Grid.Column>
+    </Grid>
+  </Fragment>
 );
 
-export default PrimaryNavBar;
+export default PrimaryNav;
