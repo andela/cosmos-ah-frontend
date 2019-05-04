@@ -4,6 +4,22 @@ import styled from 'styled-components';
 import Icon from '../components/Icon';
 
 
+const Center = styled.div`
+  text-align: center;
+`;
+
+const Container = styled.div`
+  width: 70%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  box-shadow: 1px 4px 8px 1px rgba(0, 0, 0, 0.2);
+  background: #FFFFFF;
+  margin: 0 auto;
+  * {
+    font-family: roboto;
+  }
+`;
+
 const MyButton = styled(Button)`
   &&& {
     background: ${props => (props.primary ? '#3A8FDD' : '#FFFFFF')};
@@ -16,32 +32,15 @@ const MyButton = styled(Button)`
     cursor: pointer;
     font-size: 16px;
   }
-
 `;
 
-const Container = styled.div`
-  font-family: roboto;
-  width: 70%;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  box-shadow: 1px 4px 8px 1px rgba(0, 0, 0, 0.2);
-  background: #FFFFFF;
-  margin: 0 auto;
-`;
-
-const H1 = styled.div`
+const Aside = styled(Center)`
   margin-bottom: auto;
-  text-align: center;
   color: #FFFFFF;
   padding: 35px;
 `;
 
-const Center = styled.div`
-  text-align: center;
-`;
-
-const ContainerCenter = styled.div`
-  text-align: center;
+const ContainerCenter = styled(Center)`
   color: #3A8FDD;
   font-size: 18px;
 `;
@@ -63,7 +62,7 @@ const FormInput = styled(Form)`
   }
   label {
     color: #3A8FDD !important;
-  }
+    }
   }
 `;
 const FormContainer = styled.div`
@@ -89,11 +88,11 @@ const Register = () => (
       <Header>
         <div><img src='https://res.cloudinary.com/drmrayjr0/image/upload/v1556992917/Screenshot_2019-04-18_at_1.45.17_PM_aurl4d.png' width={'100px'}/></div>
       </Header>
-      <H1>
+      <Aside>
         <h2>"Character is like a tree and reputation is like shadow.
         The shadow is what we think of it; the tree is the real thing."</h2>
         <h3>Abraham Lincoln</h3>
-      </H1>
+      </Aside>
     </Background>
     <div>
       <ContainerCenter>
