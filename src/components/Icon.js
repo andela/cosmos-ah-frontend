@@ -1,21 +1,28 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Button } from 'semantic-ui-react';
+import styled, { css } from 'styled-components';
+
+const IconStyle = styled.div`
+  margin: 25px 0;
+`;
 
 const Icon = () => (
-  <Grid textAlign='center'>
-    <Grid.Column>
-      <img width='50px' src='https://www.freeiconspng.com/uploads/logo-facebook-circle-png-pictures-9.png'/>
-    </Grid.Column>
-    <Grid.Column>
-      <img width='50px' src='https://www.freeiconspng.com/uploads/social-linkedin-button-blue-icon--social-bookmark-iconset--yootheme-5.png'/>
-    </Grid.Column>
-    <Grid.Column>
-      <img width='50px' src='https://www.freeiconspng.com/uploads/google-plus-da-qualche-giorno-ha-un-nuovo-logo-per-incontrare-il--14.png'/>
-    </Grid.Column>
-    <Grid.Column>
-      <img width='50px' src='https://www.freeiconspng.com/uploads/twitter-circle-icon-23.png'/>
-    </Grid.Column>
-  </Grid>
+  <IconStyle>
+    <Grid textAlign='center'>
+      <Grid.Column width={2}>
+        <Button basic color='blue' size='massive' circular icon='facebook' />
+      </Grid.Column>
+      <Grid.Column width={2}>
+        <Button basic color='blue' size='massive' circular icon='twitter' />
+      </Grid.Column>
+      <Grid.Column width={2}>
+        <Button basic color='red' size='massive' circular icon='google plus' />
+      </Grid.Column>
+      <Grid.Column width={2}>
+        <Button basic color='blue' size='massive' circular icon='linkedin' />
+      </Grid.Column>
+    </Grid>
+  </IconStyle>
 );
 
 export default Icon;

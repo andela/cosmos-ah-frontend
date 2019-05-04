@@ -1,112 +1,131 @@
 import React from 'react';
 import { Form, Button } from 'semantic-ui-react';
-import styled, { css } from 'styled-components';
-// import img from 'https://res.cloudinary.com/drmrayjr0/image/upload/v1556868879/bg2_sguhi2.png';
+import styled from 'styled-components';
 import Icon from '../components/Icon';
 
 
-const ButtonWrapper = styled.button`
-  border-radius: 3px;
-  border: none;
-  color: #3A8FDD;
-  margin: 0 1em;
-  padding: 0.25em 1em;
+const MyButton = styled(Button)`
+  &&& {
+    background: ${props => (props.primary ? '#3A8FDD' : '#FFFFFF')};
+    color: ${props => (props.primary ? '#FFFFFF' : 'grey')};
+    width: ${props => (props.primary ? '40%' : '')};
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+    padding: 8px 0px;
+    cursor: pointer;
+    font-size: 16px;
+  }
 
-  ${props => props.primary
-    && css`
-      background: #3A8FDD;
-      color: white;
-    `};
 `;
 
 const Container = styled.div`
-  margin: 0 auto;
+  font-family: roboto;
   width: 70%;
-  height: 70%;
   display: grid;
-  grid-template-columns: 35% 65%;
-  grid-gap: 30px;
-  border: 2px solid #3A8FDD;
-  content-align: center;
-  background-image: url('https://res.cloudinary.com/drmrayjr0/image/upload/v1556869811/bg2_ukfjbe.png');
+  grid-template-columns: 1fr 2fr;
+  box-shadow: 1px 4px 8px 1px rgba(0, 0, 0, 0.2);
+  background: #FFFFFF;
+  margin: 0 auto;
 `;
 
 const H1 = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  margin-bottom: auto;
   text-align: center;
+  color: #FFFFFF;
+  padding: 35px;
 `;
 
 const Center = styled.div`
-  margin: 0 auto;
-  content-align: center;
+  text-align: center;
 `;
 
 const ContainerCenter = styled.div`
-  margin: 0 auto;
   text-align: center;
-  width: 100%;
+  color: #3A8FDD;
+  font-size: 18px;
 `;
 
 const Background = styled.div`
-background-image: url('https://res.cloudinary.com/drmrayjr0/image/upload/v1556869811/bg1_fskesq.png');
+  background-image: url('https://res.cloudinary.com/drmrayjr0/image/upload/v1556869811/bg1_fskesq.png');
+  display: flex;
+  flex-direction: column;
 `;
 
-const Input = styled.input``;
-const Paragraph = styled.p``;
+const FormInput = styled(Form)`
+  &&& {
+    width: 35%;
+  }
+  input {
+    background-color: #e8e8e8 !important;
+    border-radius: 10px !important;
+    border: none !important;
+  }
+  label {
+    color: #3A8FDD !important;
+  }
+  }
+`;
+const FormContainer = styled.div`
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+`;
+
+const Header = styled.div`
+  margin-top: 50px;
+  margin-bottom: auto;
+  h1 {
+    font-size: 50px;
+  }
+  img {
+    margin-left: 35px;
+  }
+`;
 
 const Register = () => (
   <Container>
     <Background>
-      <div>
-        <div>LOGO</div>
-        <H1>
-          <div>
-            <h2>"Character is like a tree and reputation is like shadow.
-         The shadow is what we think of it; the tree is the real thing."</h2>
-            <h3>Abraham Lincoln</h3>
-          </div>
-        </H1>
-      </div>
+      <Header>
+        <div><img src='https://res.cloudinary.com/drmrayjr0/image/upload/v1556992917/Screenshot_2019-04-18_at_1.45.17_PM_aurl4d.png' width={'100px'}/></div>
+      </Header>
+      <H1>
+        <h2>"Character is like a tree and reputation is like shadow.
+        The shadow is what we think of it; the tree is the real thing."</h2>
+        <h3>Abraham Lincoln</h3>
+      </H1>
     </Background>
-    <Center>
-      <div>
-        <ContainerCenter>
+    <div>
+      <ContainerCenter>
+        <Header>
           <h1>Create Your Account</h1>
-          <Icon />
-          <p>or register using your email address</p>
-        </ContainerCenter>
-        <Form>
-          <Form.Input label='Full Name' type='text' placeholder='Full Name' width={16} />
-          <Form.Input label='Email Address' type='email' placeholder='Email Address' width={16} />
-          <Form.Input label='Password' type='password' placeholder='Password' width={16} />
-          <Form.Input label='Confirm Password' type='password' placeholder='Confirm Password' width={16} />
-          <Form.Checkbox label='Enable Email Notifications About Product And Services.' width={16} />
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-            <Button type='submit' content="Sign Up" primary />
-            <span style={{
-              margin: '0 20px',
-              fontWeight: 'bold'
-            }}>or</span>
-            <Button type='submit' content="Sign In" basic />
-          </div>
-        </Form>
-      </div>
-      <div style={{
-        textAlign: 'center',
-      }}>
-        <p>By signing up, you agree to Authors Haven</p>
-        <p>Terms and Conditions and Privacy Policy</p>
-        <p>&copy;2019 All Right Reserved.</p>
-      </div>
-    </Center>
+        </Header>
+        <Icon />
+        <p>or register using your email address</p>
+      </ContainerCenter>
+      <FormContainer>
+        <FormInput>
+          <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' type='text' placeholder='Full Name' type='text' />
+          <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' type='text' placeholder='Username' type='text' />
+          <Form.Input icon={{ name: 'mail', color: 'blue' }} iconPosition='left' type='text' placeholder='Email address' type='email' />
+          <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' type='text' placeholder='Password' type='password' />
+          <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' type='text' placeholder='Confirm Password' type='password' />
+          <Form.Checkbox label='Enable Email Notifications About Product And Services.' />
+          <Center>
+            <MyButton primary>Sign Up</MyButton> Or <MyButton>Sign In</MyButton>
+          </Center>
+        </FormInput>
+      </FormContainer>
+      <Center>
+        <div>
+          <p>By signing up, you agree to Authors Haven
+            <br />
+            Terms and Conditions and Privacy Policy
+          <br />
+            &copy;2019 All Right Reserved.</p>
+        </div>
+      </Center>
+    </div>
   </Container>
 );
 
