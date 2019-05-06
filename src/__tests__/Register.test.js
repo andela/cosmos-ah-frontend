@@ -28,5 +28,6 @@ test('renders the Header', () => {
 
 test('renders the Component', () => {
   const registrationPage = render(<Register />);
-  expect(registrationPage.firstChild).toMatchSnapshot();
+  expect(registrationPage.getAllByPlaceholderText('Full Name')).toMatchSnapshot();
+  expect(registrationPage.getByText('Sign Up').tagName).toMatchSnapshot();
 });

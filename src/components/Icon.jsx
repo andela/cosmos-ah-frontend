@@ -6,23 +6,29 @@ const IconStyle = styled.div`
   margin: 25px 0;
 `;
 
+const SocialButton = ({ children }) => (
+  <Grid.Column mobile={3} tablet={2} computer={1}>
+    {children}
+  </Grid.Column>
+);
+
 const Icon = () => (
   <IconStyle>
     <Grid textAlign='center'>
-      <Grid.Column mobile={3} tablet={2} computer={1}>
+      <SocialButton>
         <Button basic color='blue' size='massive' circular icon='facebook' />
-      </Grid.Column>
-      <Grid.Column mobile={3} tablet={2} computer={1}>
+      </SocialButton>
+      <SocialButton>
         <Button basic color='blue' size='massive' circular icon='twitter' />
-      </Grid.Column>
-      <Grid.Column mobile={3} tablet={2} computer={1}>
+      </SocialButton>
+      <SocialButton>
         <Button basic color='red' size='massive' circular icon='google plus' />
-      </Grid.Column>
-      <Grid.Column mobile={3} tablet={2} computer={1}>
+      </SocialButton>
+      <SocialButton>
         <Button basic color='blue' size='massive' circular icon='linkedin' />
-      </Grid.Column>
+      </SocialButton>
     </Grid>
-  </IconStyle>
+  </IconStyle >
 );
 
 export default Icon;
