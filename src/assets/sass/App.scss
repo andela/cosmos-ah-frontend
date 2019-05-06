@@ -1,0 +1,45 @@
+@import '../../../node_modules/semantic-ui-css/semantic.min.css';
+@import '../css/fonts.css';
+
+.btn {
+  font-size: 16px;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: 'Circular-Book';
+  padding: 5px 15px;
+}
+
+.btn-info {
+  border: 1px solid #3a8fdd;
+  color: #3a8fdd;
+  &:hover {
+    background: #3a8fdd;
+    color: #eee;
+  }
+}
+
+.ui.secondary.pointing.menu .item {
+  padding: 0.78571429em 0.92857143em;
+}
+
+.react-tabs > ul {
+  padding-left: 0px;
+  display: flex;
+  // justify-content: space-between;
+}
+
+.react-tabs__tab--selected {
+  background-color: transparent !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border-color: #1b1c1d !important;
+  font-weight: 700 !important;
+  color: rgba(0, 0, 0, 0.95) !important;
+}
+
+@media screen and (max-width: 768px) {
+  .title-article {
+		width: 75%;
+  }
+}

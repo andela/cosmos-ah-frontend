@@ -5,24 +5,17 @@ import {
 import Home from './Home';
 import Login from './Signin';
 import Article from './Article';
+import Profile from './Profile';
+
+import '../assets/sass/App.scss';
 
 const App = () => (
   <Router>
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-      <li>
-        <Link to="/articles">Articles</Link>
-      </li>
-    </ul>
     <Switch>
       <Route path="/" exact component={Home}></Route>
       <Route path="/login" component={Login}></Route>
       <Route path="/articles" component={Article}></Route>
+      <Route path="/profile" component={Profile}></Route>
     </Switch>
   </Router>
 );
