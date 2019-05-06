@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, BrowserRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
 import { Grid } from 'semantic-ui-react';
 
@@ -22,11 +22,13 @@ const PrimaryNav = ({ brandLogo, pages }) => (
       <Grid.Column>
         <nav>
           <NavList>
-            {pages.map((page, i) => (
-              <li key={i}>
-                <StyledLink to="/">{page}</StyledLink>
-              </li>
-            ))}
+            <Router>
+              {pages.map((page, i) => (
+                <li key={i}>
+                  <StyledLink to="/">{page}</StyledLink>
+                </li>
+              ))}
+            </Router>
           </NavList>
         </nav>
       </Grid.Column>
