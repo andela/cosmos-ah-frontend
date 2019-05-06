@@ -1,12 +1,17 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Grid } from 'semantic-ui-react';
+import styled from 'styled-components';
 
-export default function ButtonComponent({ type, text }) {
-  return (
-    <div>
-      <Button type = { type }>
-     { text }
-      </Button>
-    </div>
-  );
-}
+const Space = styled.div`
+  margin: 30px;
+`;
+
+const AuthButton = () => (
+    <Space>
+        <Grid centered>
+            <Button color='blue' size='large'>Continue</Button>
+        </Grid>
+  </Space>
+);
+
+export default AuthButton;
