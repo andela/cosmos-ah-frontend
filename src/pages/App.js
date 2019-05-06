@@ -1,16 +1,16 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Switch, Route
+} from 'react-router-dom';
 import Home from './Index';
-import Signin from './Login';
-import Dashboard from './Dashboad';
 
 const App = () => (
   <div className='ui container'>
+  <Router>
     <Switch>
       <Route path="/" exact component={Home}></Route>
-      <Route path="/signin" component={Signin}></Route>
-      <Route path="/dashboard" component={Dashboard}></Route>
     </Switch>
+    </Router>
     </div>
 );
 

@@ -9,6 +9,6 @@ export const signSuccess = signin => ({
 
 export const signin = formData => async dispatch => {
   const login = await Signin(formData);
-  dispatch(signSuccess(login));
+  dispatch(signSuccess(login.data.data.token));
   localStorage.authorsHavenJWTToken = login.data.data.token;
 };
