@@ -7,6 +7,12 @@ import {
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './state/store';
+import { signSuccess } from './state/auth/actions';
+
+if (localStorage.authorsHavenJWTToken) {
+  const user = { token: localStorage.authorsHavenJWTToken}
+  store.dispatch(signSuccess(user));
+}
 
 ReactDOM.render(
   <Router>

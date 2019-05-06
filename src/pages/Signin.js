@@ -1,11 +1,13 @@
-/* eslint-disable no-console */
 import React, { useState } from 'react';
 import { Button, Form, Message } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { signin } from '../state/auth/actions';
 
 const Signin = props => {
-  const [values, setValues] = useState({});
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
@@ -13,7 +15,7 @@ const Signin = props => {
     try {
       event.preventDefault();
       setLoading(true);
-      await props.signin(values);
+      await props.signin({ email, password });
       props.history.push('/dashboard');
     } catch (error) {
       if (error.response.data.data.password) {
@@ -28,8 +30,10 @@ const Signin = props => {
 
   const handleChange = event => {
     event.persist();
-    setValues(() => ({ ...values, [event.target.name]: event.target.value }));
+    setFormData(() => ({ ...formData, [event.target.name]: event.target.value }));
   };
+
+  const { email, password } = formData;
   return (
     <Form onSubmit={handleSubmit} loading={loading}>
     <h1>Welcome to the Sign In page</h1>
@@ -47,11 +51,11 @@ const Signin = props => {
     )}
       <Form.Field>
         <label htmlFor='email'>Email</label>
-        <input type='email' id='email' name='email' placeholder='example@example.com' onChange={handleChange} value={values.email} required/>
+        <input type='email' id='email' name='email' placeholder='example@example.com' onChange={handleChange} value={email} required/>
       </Form.Field>
       <Form.Field>
         <label htmlFor='password'>Password</label>
-        <input type='password' id='password' name='password' placeholder='your password...' onChange={handleChange} value={values.password} required/>
+        <input type='password' id='password' name='password' placeholder='your password...' onChange={handleChange} value={password} required/>
       </Form.Field>
       <Button primary>Login</Button>
     </Form>
