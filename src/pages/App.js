@@ -1,16 +1,17 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Home from './Home';
+import {
+  BrowserRouter as Router, Switch, Route, Link
+} from 'react-router-dom';
+import Index from './Index';
 import Login from './Login';
 
-
 const App = () => (
-  <div className='ui container'>
+  <Router>
     <Switch>
-      <Route path="/" exact component={Home}></Route>
+      <Route path="/" exact component={Index}></Route>
       <Route path="/login" component={Login}></Route>
     </Switch>
-    </div>
+  </Router>
 );
 
 export default App;
