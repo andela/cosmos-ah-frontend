@@ -4,25 +4,11 @@ import {
 } from 'react-router-dom';
 import Index from './Index';
 import Login from './Signin';
-import Register from './Register';
+import Register from './Register.jsx';
 import Article from './Article';
 
 const App = () => (
   <Router>
-    <ul>
-      <li>
-        <Link to="/">Index</Link>
-      </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-      <li>
-        <Link to="/signup">Register</Link>
-      </li>
-      <li>
-        <Link to="/articles">Articles</Link>
-      </li>
-    </ul>
     <Switch>
       <Route path="/" exact component={Index}></Route>
       <Route path="/login" component={Login}></Route>
