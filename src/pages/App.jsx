@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router, Switch, Route, Link
+  BrowserRouter as Router, Switch, Route
 } from 'react-router-dom';
 import Index from './Index';
 import Login from './Login';
@@ -11,6 +11,7 @@ import '../assets/css/App.css';
 import ForgotPassword from './ForgotPassword';
 
 const App = () => (
+  <div className='ui container'>
   <Router>
     <Switch>
       <Route path="/" exact component={Index}></Route>
@@ -20,7 +21,8 @@ const App = () => (
       <Route path="/profile" exact component={Profile}></Route>
       <Route path="/forgot-password" component={ForgotPassword}></Route>
     </Switch>
-  </Router>
+    </Router>
+    </div>
 );
 
 export default App;
