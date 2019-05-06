@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  Button, Checkbox, Form, Input, Grid
+  Button, Form, Input, Grid
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
@@ -55,7 +55,7 @@ const SecondaryNav = ({ brandLogo }) => (
             <Grid.Column>
               <NavItemContainer>
                 <StyledButton compact basic>Sign in</StyledButton>
-                <StyledButton primary compact color="#276BA9">Get started</StyledButton>
+                <StyledButton primary compact>Get started</StyledButton>
               </NavItemContainer>
             </Grid.Column>
           </Grid.Row>
