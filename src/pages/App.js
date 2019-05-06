@@ -5,6 +5,7 @@ import {
 import Home from './Home';
 import Login from './Signin';
 import Article from './Article';
+import SignUpForm from '../components/Signup';
 
 const App = () => (
   <Router>
@@ -21,7 +22,7 @@ const App = () => (
     </ul>
     <Switch>
       <Route path="/" exact component={Home}></Route>
-      <Route path="/login" component={Login}></Route>
+      <Route path="/login" component={SignUpForm}></Route>
       <Route path="/articles" component={Article}></Route>
     </Switch>
   </Router>

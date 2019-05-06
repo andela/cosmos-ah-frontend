@@ -8,23 +8,22 @@ import {
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { article } from './article';
+import { auth } from './auth';
 
 const rootReducer = combineReducers({
-  [article.stateKey]: article.reducer
-
+  [article.stateKey]: article.reducer,
+  [auth.stateKey]: auth.authReducer,
 });
 
-
 const middleware = [logger, thunk];
-
 
 const store = createStore(
   rootReducer,
   {},
   compose(
     applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  ),
 );
 
 export default store;
