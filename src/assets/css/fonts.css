@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "Circular-Light";
+    src: url("../fonts/Circular-Light.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Circular-Book";
+    src: url("../fonts/Circular-Book.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Circular-Bold";
+    src: url("../fonts/Circular-Bold.woff") format("woff");
+}
+
+* {
+    font-family: 'Circular-Book';
+}
+
+h1, h2, h3 {
+	font-family: 'Circular-Bold';
+}
+h4, h5, h6 {
+	font-family: 'Circular-Book';
+}
+p, blockquote, pre, a {
+	font-family: 'Circular-Light';
+}
