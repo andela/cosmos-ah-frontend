@@ -1,22 +1,28 @@
 import React from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
-import Icon from '../components/Icon';
+import Icon from '../components/Icon.jsx';
 
 
 const Center = styled.div`
   text-align: center;
 `;
 
+const TermsStyle = styled(Center)`
+  color: #9B9B9B;
+`;
+
 const Container = styled.div`
-  width: 70%;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  box-shadow: 1px 4px 8px 1px rgba(0, 0, 0, 0.2);
   background: #FFFFFF;
-  margin: 0 auto;
+  height: 100vh;
   * {
-    font-family: roboto;
+    @import url('https://fonts.googleapis.com/css?family=Roboto');
+    font-family: 'Roboto', sans-serif;
+  }
+  @media screen and (max-width: 768px) {
+    display: block;
   }
 `;
 
@@ -43,25 +49,42 @@ const Aside = styled(Center)`
 const ContainerCenter = styled(Center)`
   color: #3A8FDD;
   font-size: 18px;
+  margin-top: 100px;
+  @media screen and (max-width: 768px) {
+    margin-top: 50px;
+  }
 `;
 
 const Background = styled.div`
   background-image: url('https://res.cloudinary.com/drmrayjr0/image/upload/v1556869811/bg1_fskesq.png');
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const FormInput = styled(Form)`
   &&& {
-    width: 35%;
+    width: 30%;
   }
   input {
-    background-color: #e8e8e8 !important;
+    background-color: #E8E8E8 !important;
     border-radius: 10px !important;
     border: none !important;
   }
   label {
     color: #3A8FDD !important;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    &&& {
+      width: 90%;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 907px) {
+    &&& {
+      width: 50%;
     }
   }
 `;
@@ -75,10 +98,15 @@ const Header = styled.div`
   margin-top: 50px;
   margin-bottom: auto;
   h1 {
-    font-size: 50px;
+    font-size: 40px;
   }
   img {
     margin-left: 35px;
+  }
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 30px;
+    }
   }
 `;
 
@@ -86,7 +114,9 @@ const Register = () => (
   <Container>
     <Background>
       <Header>
-        <div><img src='https://res.cloudinary.com/drmrayjr0/image/upload/v1556992917/Screenshot_2019-04-18_at_1.45.17_PM_aurl4d.png' width={'100px'}/></div>
+        <div>
+        <a href='/'><img src='https://res.cloudinary.com/drmrayjr0/image/upload/v1556992917/Screenshot_2019-04-18_at_1.45.17_PM_aurl4d.png' width={150} /></a>
+        </div>
       </Header>
       <Aside>
         <h2>"Character is like a tree and reputation is like shadow.
@@ -103,19 +133,19 @@ const Register = () => (
         <p>or register using your email address</p>
       </ContainerCenter>
       <FormContainer>
-        <FormInput>
-          <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' type='text' placeholder='Full Name' type='text' />
-          <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' type='text' placeholder='Username' type='text' />
-          <Form.Input icon={{ name: 'mail', color: 'blue' }} iconPosition='left' type='text' placeholder='Email address' type='email' />
-          <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' type='text' placeholder='Password' type='password' />
-          <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' type='text' placeholder='Confirm Password' type='password' />
-          <Form.Checkbox label='Enable Email Notifications About Product And Services.' />
-          <Center>
-            <MyButton primary>Sign Up</MyButton> Or <MyButton>Sign In</MyButton>
-          </Center>
+        <FormInput data-testid='registerForm'>
+            <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' type='text' placeholder='Full Name' type='text' />
+            <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' type='text' placeholder='Username' type='text' />
+            <Form.Input icon={{ name: 'mail', color: 'blue' }} iconPosition='left' type='text' placeholder='Email Address' type='email' />
+            <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' type='text' placeholder='Password' type='password' />
+            <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' type='text' placeholder='Confirm Password' type='password' />
+            <Form.Checkbox label='Enable Email Notifications About Product And Services.' />
+            <Center>
+              <MyButton primary>Sign Up</MyButton> Or <MyButton>Sign In</MyButton>
+            </Center>
         </FormInput>
       </FormContainer>
-      <Center>
+      <TermsStyle>
         <div>
           <p>By signing up, you agree to Authors Haven
             <br />
@@ -123,7 +153,7 @@ const Register = () => (
           <br />
             &copy;2019 All Right Reserved.</p>
         </div>
-      </Center>
+      </TermsStyle>
     </div>
   </Container>
 );
