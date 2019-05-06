@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Home from './Home';
-import Signin from './Signin';
+import Home from './Index';
+import Signin from './Login';
 import Dashboard from './Dashboad';
 
 const App = () => (

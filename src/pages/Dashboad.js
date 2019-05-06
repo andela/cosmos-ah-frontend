@@ -5,6 +5,4 @@ const DashBoard = props => (<div>
     <p>Where Awesome Functionality Exist</p>
   </div>);
 
-// const mapStateToProps = state => ({ isAuthenticated: !!state.login.signin.data.data.token });
-
 export default DashBoard;
