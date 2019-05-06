@@ -10,6 +10,7 @@ const Center = styled.div`
 
 const TermsStyle = styled(Center)`
   color: #9B9B9B;
+  padding-bottom: 20px;
 `;
 
 const Container = styled.div`
@@ -115,7 +116,7 @@ const Register = () => (
     <Background>
       <Header>
         <div>
-        <a href='/'><img src='https://res.cloudinary.com/drmrayjr0/image/upload/v1556992917/Screenshot_2019-04-18_at_1.45.17_PM_aurl4d.png' width={150} /></a>
+          <a href='/'><img src='https://res.cloudinary.com/drmrayjr0/image/upload/v1556992917/Screenshot_2019-04-18_at_1.45.17_PM_aurl4d.png' width={150} /></a>
         </div>
       </Header>
       <Aside>
@@ -134,11 +135,11 @@ const Register = () => (
       </ContainerCenter>
       <FormContainer>
         <FormInput data-testid='registerForm'>
-            <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' type='text' placeholder='Full Name' type='text' />
-            <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' type='text' placeholder='Username' type='text' />
-            <Form.Input icon={{ name: 'mail', color: 'blue' }} iconPosition='left' type='text' placeholder='Email Address' type='email' />
-            <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' type='text' placeholder='Password' type='password' />
-            <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' type='text' placeholder='Confirm Password' type='password' />
+            <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' placeholder='Full Name' />
+            <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' placeholder='Username' />
+            <Form.Input icon={{ name: 'mail', color: 'blue' }} iconPosition='left' placeholder='Email Address' type='email' />
+            <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password' />
+            <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Confirm Password' type='password' />
             <Form.Checkbox label='Enable Email Notifications About Product And Services.' />
             <Center>
               <MyButton primary>Sign Up</MyButton> Or <MyButton>Sign In</MyButton>
