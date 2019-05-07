@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Grid, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 import SocialButton from '../components/SocialMediaButton';
-import AuthButton from '../components/Button';
+import { AuthButton } from '../components/Button';
 
 const Body = styled.div`
   margin: 0px 50px;
