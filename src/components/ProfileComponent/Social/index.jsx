@@ -19,8 +19,8 @@ const Social = ({ socialLinks }) => (
   <Fragment>
     <Wrapper>
       <Social.Wrapper>
-        <Followers paragraphStyle={{ margin: '0 10px', fontFamily: 'Circular-Book', color: '#3A8FDD' }} followers="90"/>
-        <Following paragraphStyle={{ margin: '0 10px', fontFamily: 'Circular-Book', color: '#3A8FDD' }} following="190"/>
+        <Followers paragraphStyle={{ marginRight: '10px', fontFamily: 'Circular-Book', color: '#3A8FDD' }} followers="90"/>
+        <Following paragraphStyle={{ marginRight: '10px', fontFamily: 'Circular-Book', color: '#3A8FDD' }} following="190"/>
       </Social.Wrapper>
       <AnchorTag href={socialLinks.facebook}><Icon source={Facebook} /></AnchorTag>
       <AnchorTag href={socialLinks.twitter}><Icon source={Twitter} /></AnchorTag>
