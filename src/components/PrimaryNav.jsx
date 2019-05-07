@@ -25,7 +25,7 @@ const PrimaryNav = ({ brandLogo, pages }) => (
             <Router>
               {pages.map((page, i) => (
                 <li key={i}>
-                  <StyledLink to="/">{page}</StyledLink>
+                  <StyledLink to={page.url}>{page.title}</StyledLink>
                 </li>
               ))}
             </Router>
@@ -38,7 +38,7 @@ const PrimaryNav = ({ brandLogo, pages }) => (
 
 PrimaryNav.propTypes = {
   brandLogo: PropTypes.node.isRequired,
-  pages: PropTypes.arrayOf(PropTypes.string)
+  pages: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default PrimaryNav;

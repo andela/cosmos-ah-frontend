@@ -4,7 +4,11 @@ import PrimaryNav from '../components/PrimaryNav.jsx';
 
 afterEach(cleanup);
 
-const pages = ['Home', 'Articles'];
+const pages = [
+  { title: 'Home', url: '/' },
+  { title: 'Articles', url: '/articles' }
+];
+
 const props = { brandLogo: 'AppLogo', pages };
 
 test('Renders <PrimaryNav /> component', () => {
@@ -12,7 +16,8 @@ test('Renders <PrimaryNav /> component', () => {
   expect(primaryNav).toBeTruthy();
 });
 
-test('Adds a logo to the nav bar', () => {
+test('Adds nav links to the nav bar', () => {
   const { getByText } = render(<PrimaryNav {...props } />);
   expect(getByText('Home').tagName).toBe('A');
+  expect(getByText('Articles').tagName).toBe('A');
 });
