@@ -6,7 +6,7 @@ const Space = styled.div`
   margin: 35px;
 `;
 
-const AuthButton = () => (
+export const AuthButton = () => (
     <Space>
         <Grid centered>
             <Button color='blue' size='big'>Continue</Button>
@@ -14,4 +14,9 @@ const AuthButton = () => (
   </Space>
 );
 
-export default AuthButton;
+
+export const ButtonComponent = ({ type, text }) => (
+  <div>
+    <Button type={type} >{text}</Button>
+  </div>
+);
