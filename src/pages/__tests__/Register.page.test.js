@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { render, cleanup } from 'react-testing-library';
 import Register from '../Register';
 
+
 afterEach(cleanup);
 
 test('<Register /> component', () => {
