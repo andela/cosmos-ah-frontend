@@ -8,10 +8,11 @@ import {
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { article } from './article';
+import { auth } from './auth';
 
 const rootReducer = combineReducers({
-  [article.stateKey]: article.reducer
-
+  [article.stateKey]: article.reducer,
+  [auth.stateKey]: auth.reducer
 });
 
 
