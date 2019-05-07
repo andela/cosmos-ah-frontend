@@ -4,7 +4,7 @@ import { Paragraph } from '../../../shared/Text/Text';
 const Followers = ({ followers, paragraphStyle }) => (
   <Fragment>
     <Paragraph paragraphStyle={paragraphStyle}>{followers || 0} followers</Paragraph>
-	</Fragment>
+  </Fragment>
 );
 
 export default Followers;
