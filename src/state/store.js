@@ -15,6 +15,8 @@ const rootReducer = combineReducers({
   [article.stateKey]: article.reducer,
   [profile.stateKey]: profile.reducer,
   [auth.stateKey]: auth.authReducer,
+  [article.stateKey]: article.reducer,
+  [auth.stateKey]: auth.reducer
 });
 
 const middleware = [logger, thunk];

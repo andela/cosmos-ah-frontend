@@ -4,3 +4,4 @@ export const REGISTER_FAILURE = 'USER_REGISTER_FAILURE';
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
 export const SIGN_IN_ERROR = 'SIGN_IN_ERROR';
 export const LOADING = 'LOADING';
+export const SOCIAL_AUTH = 'SOCIAL_AUTH';
