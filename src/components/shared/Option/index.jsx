@@ -2,11 +2,13 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import OptionIcon from '../../../assets/images/svgs/option.svg';
 
-// eslint-disable-next-line no-undef
-const toggleOptionsVisibility = () => $(document).ready(() => {
+const toggleOptionsVisibility = () => {
   // eslint-disable-next-line no-undef
-  $('.ui.dropdown').dropdown();
-});
+  $(document).ready(() => {
+    // eslint-disable-next-line no-undef
+    $('.ui.dropdown').dropdown();
+  });
+};
 
 const Option = ({ displayStyle, handleOnClick }) => {
   toggleOptionsVisibility();

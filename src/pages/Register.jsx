@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
-import Icon from '../components/Icon.jsx';
+import Icon from '../components/Icon';
 
 
 const Center = styled.div`
