@@ -1,22 +1,11 @@
 import React from 'react';
-import { Button, Grid } from 'semantic-ui-react';
+import { Button, Grid, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
 
-const Space = styled.div`
-  margin: 35px;
-`;
-
-export const AuthButton = () => (
-    <Space>
-        <Grid centered>
-            <Button color='blue' size='big'>Continue</Button>
-        </Grid>
-  </Space>
-);
-
-
-export const ButtonComponent = ({ type, text }) => (
+export const ButtonComponent = ({
+  type, color, size, children
+}) => (
   <div>
-    <Button type={type} >{text}</Button>
+    <Button type={type} color={color} size={size} fluid>{children}</Button>
   </div>
 );

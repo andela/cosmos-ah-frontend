@@ -6,24 +6,40 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="sc-htpNat dhjseM"
+        class="sc-bwzfXH jtCEHj"
       >
         <div
-          class="ui center aligned grid"
+          class="sc-htpNat iSSvoI"
+        >
+          <a
+            href="/"
+          >
+            <img
+              src="https://res.cloudinary.com/drmrayjr0/image/upload/v1557246832/Screenshot_2019-05-07_at_5.33.23_PM_p7frml.png"
+              width="150"
+            />
+          </a>
+        </div>
+        <div
+          class="sc-bZQynM bYmjcT"
         >
           <div
-            class="sc-bxivhb ijbbOQ"
+            class="sc-bxivhb dAJZi"
           >
             <div
               class="column"
             >
-              <h1
-                class="ui blue center aligned header"
-              >
-                Login
-              </h1>
               <div
-                class="sc-bdVaJa csrxWC"
+                class="sc-bZQynM bYmjcT"
+              >
+                <h1
+                  class="ui blue huge header"
+                >
+                  Login
+                </h1>
+              </div>
+              <div
+                class="sc-bdVaJa cLnXBB"
               >
                 <div
                   class="ui centered grid"
@@ -60,10 +76,14 @@ Object {
                       class="linkedin icon"
                     />
                   </button>
-                  <h4>
-                    or login using your email address
-                  </h4>
                 </div>
+              </div>
+              <div
+                class="ui blue header"
+              >
+                <h4>
+                  or login using your email address
+                </h4>
               </div>
               <form
                 class="ui form"
@@ -72,15 +92,15 @@ Object {
                   class="field"
                 >
                   <div
-                    class="ui big fluid left icon input"
+                    class="ui big left icon input"
                   >
                     <input
-                      placeholder="E-mail address"
+                      placeholder="Email Address"
                       type="text"
                     />
                     <i
                       aria-hidden="true"
-                      class="envelope outline icon"
+                      class="blue envelope outline icon"
                     />
                   </div>
                 </div>
@@ -88,7 +108,7 @@ Object {
                   class="field"
                 >
                   <div
-                    class="ui big fluid left icon input"
+                    class="ui big left icon input"
                   >
                     <input
                       placeholder="Password"
@@ -96,34 +116,25 @@ Object {
                     />
                     <i
                       aria-hidden="true"
-                      class="lock icon"
+                      class="blue lock icon"
                     />
                   </div>
                 </div>
-                <h4
-                  class="ui header"
+                <p
+                  class="sc-EHOje dhYIww"
                 >
-                  <p>
-                    Forgot password? 
-                    <a
-                      href="#"
-                    >
-                      Reset here
-                    </a>
-                  </p>
-                </h4>
-                <div
-                  class="sc-bwzfXH dcyngk"
-                >
-                  <div
-                    class="ui centered grid"
+                  <a
+                    href="#"
                   >
-                    <button
-                      class="ui blue big button"
-                    >
-                      Continue
-                    </button>
-                  </div>
+                    Forgot password?
+                  </a>
+                </p>
+                <div>
+                  <button
+                    class="ui blue big fluid button"
+                  >
+                    Continue
+                  </button>
                 </div>
               </form>
               <div
@@ -132,16 +143,22 @@ Object {
                 <div
                   class="ui centered grid"
                 >
-                  <h3
-                    class="ui center aligned header"
+                  <div
+                    class="sc-bZQynM bYmjcT"
                   >
-                    Don't have an account yet? 
-                    <a
-                      href="#"
+                    <div
+                      class="ui header"
                     >
-                      Create One
-                    </a>
-                  </h3>
+                      <h3>
+                        Don't have an account yet? 
+                        <a
+                          href="#"
+                        >
+                          Create One
+                        </a>
+                      </h3>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -152,24 +169,40 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-htpNat dhjseM"
+      class="sc-bwzfXH jtCEHj"
     >
       <div
-        class="ui center aligned grid"
+        class="sc-htpNat iSSvoI"
+      >
+        <a
+          href="/"
+        >
+          <img
+            src="https://res.cloudinary.com/drmrayjr0/image/upload/v1557246832/Screenshot_2019-05-07_at_5.33.23_PM_p7frml.png"
+            width="150"
+          />
+        </a>
+      </div>
+      <div
+        class="sc-bZQynM bYmjcT"
       >
         <div
-          class="sc-bxivhb ijbbOQ"
+          class="sc-bxivhb dAJZi"
         >
           <div
             class="column"
           >
-            <h1
-              class="ui blue center aligned header"
-            >
-              Login
-            </h1>
             <div
-              class="sc-bdVaJa csrxWC"
+              class="sc-bZQynM bYmjcT"
+            >
+              <h1
+                class="ui blue huge header"
+              >
+                Login
+              </h1>
+            </div>
+            <div
+              class="sc-bdVaJa cLnXBB"
             >
               <div
                 class="ui centered grid"
@@ -206,10 +239,14 @@ Object {
                     class="linkedin icon"
                   />
                 </button>
-                <h4>
-                  or login using your email address
-                </h4>
               </div>
+            </div>
+            <div
+              class="ui blue header"
+            >
+              <h4>
+                or login using your email address
+              </h4>
             </div>
             <form
               class="ui form"
@@ -218,15 +255,15 @@ Object {
                 class="field"
               >
                 <div
-                  class="ui big fluid left icon input"
+                  class="ui big left icon input"
                 >
                   <input
-                    placeholder="E-mail address"
+                    placeholder="Email Address"
                     type="text"
                   />
                   <i
                     aria-hidden="true"
-                    class="envelope outline icon"
+                    class="blue envelope outline icon"
                   />
                 </div>
               </div>
@@ -234,7 +271,7 @@ Object {
                 class="field"
               >
                 <div
-                  class="ui big fluid left icon input"
+                  class="ui big left icon input"
                 >
                   <input
                     placeholder="Password"
@@ -242,34 +279,25 @@ Object {
                   />
                   <i
                     aria-hidden="true"
-                    class="lock icon"
+                    class="blue lock icon"
                   />
                 </div>
               </div>
-              <h4
-                class="ui header"
+              <p
+                class="sc-EHOje dhYIww"
               >
-                <p>
-                  Forgot password? 
-                  <a
-                    href="#"
-                  >
-                    Reset here
-                  </a>
-                </p>
-              </h4>
-              <div
-                class="sc-bwzfXH dcyngk"
-              >
-                <div
-                  class="ui centered grid"
+                <a
+                  href="#"
                 >
-                  <button
-                    class="ui blue big button"
-                  >
-                    Continue
-                  </button>
-                </div>
+                  Forgot password?
+                </a>
+              </p>
+              <div>
+                <button
+                  class="ui blue big fluid button"
+                >
+                  Continue
+                </button>
               </div>
             </form>
             <div
@@ -278,16 +306,22 @@ Object {
               <div
                 class="ui centered grid"
               >
-                <h3
-                  class="ui center aligned header"
+                <div
+                  class="sc-bZQynM bYmjcT"
                 >
-                  Don't have an account yet? 
-                  <a
-                    href="#"
+                  <div
+                    class="ui header"
                   >
-                    Create One
-                  </a>
-                </h3>
+                    <h3>
+                      Don't have an account yet? 
+                      <a
+                        href="#"
+                      >
+                        Create One
+                      </a>
+                    </h3>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

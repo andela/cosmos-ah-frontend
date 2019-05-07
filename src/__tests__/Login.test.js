@@ -12,13 +12,13 @@ test('Renders <Login />', () => {
 
 test('Renders <Login /> form', () => {
   const { getByPlaceholderText } = render(<Login />);
-  expect(getByPlaceholderText('E-mail address')).toBeTruthy();
+  expect(getByPlaceholderText('Email Address')).toBeTruthy();
   expect(getByPlaceholderText('Password')).toBeTruthy();
 });
 
 
-test('render <Login /> Header', () => {
+test('render <Login />  Login Header', () => {
   const LoginHeader = render(<Login />);
-  const Header = LoginHeader.getByText('Login');
-  expect(Header.textContent).toBe('Login');
+  const HeaderText = LoginHeader.getByText('Login');
+  expect(HeaderText.textContent).toBe('Login');
 });

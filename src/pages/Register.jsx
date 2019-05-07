@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
-import Icon from '../components/Icon';
+import SocialMediaButton from '../components/SocialMediaButton';
 
 
 const Center = styled.div`
@@ -19,8 +19,7 @@ const Container = styled.div`
   background: #FFFFFF;
   height: 100vh;
   * {
-    @import url('https://fonts.googleapis.com/css?family=Roboto');
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Nunito', sans-serif;
   }
   @media screen and (max-width: 768px) {
     display: block;
@@ -130,7 +129,7 @@ const Register = () => (
         <Header>
           <h1>Create Your Account</h1>
         </Header>
-        <Icon />
+        <SocialMediaButton />
         <p>or register using your email address</p>
       </ContainerCenter>
       <FormContainer>
