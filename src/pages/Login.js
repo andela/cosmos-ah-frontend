@@ -31,7 +31,6 @@ const Login = () => (
           <Form>
               <Form.Input size='big' fluid icon='envelope outline' iconPosition='left' placeholder='E-mail address' />
               <Form.Input size='big' fluid icon='lock' iconPosition='left' placeholder='Password' type='password'/>
-              {/* <p>Forgot password? <a href='#'>Reset here</a></p> */}
               <Header as='h4'><p>Forgot password? <a href='#'>Reset here</a></p></Header>
               <AuthButton />
           </Form>

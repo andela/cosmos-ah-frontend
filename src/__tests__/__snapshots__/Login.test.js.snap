@@ -1,0 +1,350 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders <Login /> 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="sc-htpNat dhjseM"
+      >
+        <div
+          class="ui center aligned grid"
+        >
+          <div
+            class="sc-bxivhb ijbbOQ"
+          >
+            <div
+              class="column"
+            >
+              <h1
+                class="ui blue center aligned header"
+              >
+                Login
+              </h1>
+              <div
+                class="sc-bdVaJa csrxWC"
+              >
+                <div
+                  class="ui centered grid"
+                >
+                  <button
+                    class="ui blue massive basic circular icon button"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="facebook icon"
+                    />
+                  </button>
+                  <button
+                    class="ui red massive basic circular icon button"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="google plus icon"
+                    />
+                  </button>
+                  <button
+                    class="ui blue massive basic circular icon button"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="twitter icon"
+                    />
+                  </button>
+                  <button
+                    class="ui blue massive basic circular icon button"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="linkedin icon"
+                    />
+                  </button>
+                  <h4>
+                    or login using your email address
+                  </h4>
+                </div>
+              </div>
+              <form
+                class="ui form"
+              >
+                <div
+                  class="field"
+                >
+                  <div
+                    class="ui big fluid left icon input"
+                  >
+                    <input
+                      placeholder="E-mail address"
+                      type="text"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="envelope outline icon"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="field"
+                >
+                  <div
+                    class="ui big fluid left icon input"
+                  >
+                    <input
+                      placeholder="Password"
+                      type="password"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="lock icon"
+                    />
+                  </div>
+                </div>
+                <h4
+                  class="ui header"
+                >
+                  <p>
+                    Forgot password? 
+                    <a
+                      href="#"
+                    >
+                      Reset here
+                    </a>
+                  </p>
+                </h4>
+                <div
+                  class="sc-bwzfXH dcyngk"
+                >
+                  <div
+                    class="ui centered grid"
+                  >
+                    <button
+                      class="ui blue big button"
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <div
+                class="sc-ifAKCX bdgWuN"
+              >
+                <div
+                  class="ui centered grid"
+                >
+                  <h3
+                    class="ui center aligned header"
+                  >
+                    Don't have an account yet? 
+                    <a
+                      href="#"
+                    >
+                      Create One
+                    </a>
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="sc-htpNat dhjseM"
+    >
+      <div
+        class="ui center aligned grid"
+      >
+        <div
+          class="sc-bxivhb ijbbOQ"
+        >
+          <div
+            class="column"
+          >
+            <h1
+              class="ui blue center aligned header"
+            >
+              Login
+            </h1>
+            <div
+              class="sc-bdVaJa csrxWC"
+            >
+              <div
+                class="ui centered grid"
+              >
+                <button
+                  class="ui blue massive basic circular icon button"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="facebook icon"
+                  />
+                </button>
+                <button
+                  class="ui red massive basic circular icon button"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="google plus icon"
+                  />
+                </button>
+                <button
+                  class="ui blue massive basic circular icon button"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="twitter icon"
+                  />
+                </button>
+                <button
+                  class="ui blue massive basic circular icon button"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="linkedin icon"
+                  />
+                </button>
+                <h4>
+                  or login using your email address
+                </h4>
+              </div>
+            </div>
+            <form
+              class="ui form"
+            >
+              <div
+                class="field"
+              >
+                <div
+                  class="ui big fluid left icon input"
+                >
+                  <input
+                    placeholder="E-mail address"
+                    type="text"
+                  />
+                  <i
+                    aria-hidden="true"
+                    class="envelope outline icon"
+                  />
+                </div>
+              </div>
+              <div
+                class="field"
+              >
+                <div
+                  class="ui big fluid left icon input"
+                >
+                  <input
+                    placeholder="Password"
+                    type="password"
+                  />
+                  <i
+                    aria-hidden="true"
+                    class="lock icon"
+                  />
+                </div>
+              </div>
+              <h4
+                class="ui header"
+              >
+                <p>
+                  Forgot password? 
+                  <a
+                    href="#"
+                  >
+                    Reset here
+                  </a>
+                </p>
+              </h4>
+              <div
+                class="sc-bwzfXH dcyngk"
+              >
+                <div
+                  class="ui centered grid"
+                >
+                  <button
+                    class="ui blue big button"
+                  >
+                    Continue
+                  </button>
+                </div>
+              </div>
+            </form>
+            <div
+              class="sc-ifAKCX bdgWuN"
+            >
+              <div
+                class="ui centered grid"
+              >
+                <h3
+                  class="ui center aligned header"
+                >
+                  Don't have an account yet? 
+                  <a
+                    href="#"
+                  >
+                    Create One
+                  </a>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
