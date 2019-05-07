@@ -1,5 +1,6 @@
-import { userConstants } from '../actionTypes';
+import { userConstants, alertConstants } from '../actionTypes';
 import { userService } from '../../../lib/user';
+import { alertActions } from './alert';
 
 export const request = user => ({
   type: userConstants.REGISTER_REQUEST,
@@ -23,9 +24,11 @@ export const register = newUser => dispatch => {
     .then(registeredUser => {
       if (registeredUser.status === 201) {
         dispatch(success());
+        dispatch(alertActions.success('Registration Successful'));
       }
     })
     .catch(error => {
       dispatch(failure());
+      dispatch(alertActions.error(error.toString()));
     });
 };
