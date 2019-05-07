@@ -7,9 +7,9 @@ export const signInSuccess = signin => ({
   payload: signin
 });
 
-export const signInError = signin => ({
+export const signInError = signinError => ({
   type: SIGN_IN_ERROR,
-  payload: signin
+  payload: signinError
 });
 
 export const signin = formData => async dispatch => {
