@@ -9,10 +9,12 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { article } from './article';
 import { profile } from './profile';
+import { auth } from './auth';
 
 const rootReducer = combineReducers({
   [article.stateKey]: article.reducer,
   [profile.stateKey]: profile.reducer,
+  [auth.stateKey]: auth.authReducer,
 });
 
 const middleware = [logger, thunk];
@@ -22,8 +24,8 @@ const store = createStore(
   {},
   compose(
     applyMiddleware(...middleware),
-    reduxDevTools
-  )
+    reduxDevTools,
+  ),
 );
 
 export default store;

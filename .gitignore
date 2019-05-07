@@ -74,9 +74,4 @@ typings/
 
 # Build folder
 dist
-
 .DS_Store
-
-__snapshots__/
-
-*.snap
