@@ -1,4 +1,4 @@
-import axios from './article';
+import axios from './axios';
 
 const register = async user => {
   try {
