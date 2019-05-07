@@ -15,7 +15,7 @@ const ShowCaseIntroTextHeading = styled.h3`
   font-size: 2.5em;
   margin-bottom: 0;
 `;
-const ShowCaseIntroTextTagLine = styled.p`
+const ShowCaseIntroTextTagLine = styled.div`
   width: 50%;
 `;
 
@@ -46,7 +46,7 @@ const ShowCase = ({ article }) => (
           Creating a community of like-minded authors
           who foster inspiration and innovation by
           leveraging the modern web.
-      </ShowCaseIntroTextTagLine>
+        </ShowCaseIntroTextTagLine>
       </Grid.Column>
       <Grid.Column>
         <ShowCaseArticle>
@@ -54,15 +54,15 @@ const ShowCase = ({ article }) => (
             <ShowCaseArticleImage src={article.imageUrl} alt="" />
           </ImageContainer>
           <ShowCaseIntroTextTagLine>
-            <h3>{article.title}</h3>
-            <p>{article.body.slice(0, 150)}....</p>
+            <h3 data-testid="my-article">{article.title}</h3>
+            <p>{article.body.substring(0, 150)}....</p>
           </ShowCaseIntroTextTagLine>
           <ShowCaseArticleAuthor>
             <p>{article.author.fullName} in <StyledCategory>Politics</StyledCategory></p>
             <p>{moment(article.createdAt).format('DDD Mo')}
               <span>&nbsp;&middot;&nbsp;
               {article.totalReadTime} {article.totalReadTime > 1 ? 'Mins' : 'Min'} read &nbsp;
-              <Icon name="star" size="small" color="lightgrey" />
+              <Icon name="star" size="small" />
             </span>
             </p>
           </ShowCaseArticleAuthor>
@@ -80,6 +80,7 @@ ShowCase.propTypes = {
     imageUrl: PropTypes.string.isRequired,
     author: PropTypes.object.isRequired,
     totalReadTime: PropTypes.number.isRequired,
+    body: PropTypes.string.isRequired
   })
 };
 
