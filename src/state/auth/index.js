@@ -1,8 +1,8 @@
 import { initialState } from './state';
 import reducer from './reducers';
 
-export const login = {
+export const signin = {
   initialState,
   reducer,
-  stateKey: 'login'
+  stateKey: 'signin'
 };
