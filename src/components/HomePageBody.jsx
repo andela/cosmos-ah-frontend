@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {
@@ -54,6 +54,21 @@ const ArticleReadTimeSpan = styled.span`
   color: #3A8FDD;
 `;
 
+const CustomGrid = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+`;
+
+const CustomGridColumnHeading = styled.div`
+  grid-column-start: 1 
+`;
+
+const GridColumn1 = styled.div`
+  grid-column-start: 1;
+  grid-column-end: 2;
+`;
+
 const HomePageBody = props => {
   useEffect(() => {
     props.getArticleAction();
@@ -61,30 +76,31 @@ const HomePageBody = props => {
   return (
     <MainBodyContent>
       <Container>
-        <Grid columns="2">
+        <Grid columns="2" doubling stackable>
           <Grid.Row>
             <Grid.Column>
-              <StyledHeadingWithBorder>Featured for members</StyledHeadingWithBorder>
-              <Grid>
+              <StyledHeadingWithBorder>
+              Featured for members
+              </StyledHeadingWithBorder>              <CustomGrid>
                 {props.articles.map(article => (
-                  <Grid.Row key={article.id}>
-                    <Grid.Column width={8}>
+                  <Fragment key={article.id}>
+                    <div>
                       <h3>{article.title}</h3>
                       <p>{article.description}</p>
-                      <div>{article.author}</div>
 
-                      <div>
-                        <span>{moment(article.createdAt).format('MMM Do')}</span>&nbsp;
+                      {article.author}
+                      <span>{moment(article.createdAt).format('MMM Do')}</span>&nbsp;
                         <ArticleReadTimeSpan>{article.totalReadTime} {article.totalReadTime > 1 ? 'Mins' : 'Min'} read</ArticleReadTimeSpan>&nbsp;
-                        <Icon name="star" size="small" color="grey"/>
-                      </div>
-                    </Grid.Column>
-                    <Grid.Column width={8}>
-                      <Image src={props.articleImg} alt="" width={100} height={100} />
-                    </Grid.Column>
-                  </Grid.Row>
+                        <Icon name="star" size="small" color="grey" />
+                    </div>
+                    <div>
+                    </div>
+                    <div>
+                      <Image src={props.articleImg} alt="" width={100} height={100} rounded />
+                    </div>
+                  </Fragment>
                 ))}
-              </Grid>
+              </CustomGrid>
               <StyledHeadingWithBorder>Technology</StyledHeadingWithBorder>
               <Grid columns="equal">
                 {articles.map(article => (
@@ -95,7 +111,7 @@ const HomePageBody = props => {
                       <div>{article.author}</div>
                     </Grid.Column>
                     <Grid.Column width={8}>
-                      <Image src={props.articleImg} alt="" width={100} height={100} />
+                      <Image src={props.articleImg} alt="" width={100} height={100} rounded />
                     </Grid.Column>
                   </Grid.Row>
                 ))}
@@ -110,7 +126,7 @@ const HomePageBody = props => {
                       <div>{article.author}</div>
                     </Grid.Column>
                     <Grid.Column width={8}>
-                      <Image src={article.image} alt="" width={100} height={100} />
+                      <Image src={article.image} alt="" width={100} height={100} rounded />
                     </Grid.Column>
                   </Grid.Row>
                 ))}
@@ -211,7 +227,7 @@ const HomePageBody = props => {
           </Grid.Row>
         </Grid>
       </Container>
-    </MainBodyContent>
+    </MainBodyContent >
   );
 };
 
