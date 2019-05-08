@@ -18,9 +18,7 @@ const Container = styled.div`
   grid-template-columns: 1fr 2fr;
   background: #FFFFFF;
   height: 100vh;
-  * {
-    font-family: 'Nunito', sans-serif;
-  }
+  
   @media screen and (max-width: 768px) {
     display: block;
   }

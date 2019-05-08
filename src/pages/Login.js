@@ -5,9 +5,6 @@ import SocialButton from '../components/SocialMediaButton';
 import { ButtonComponent } from '../components/Button';
 
 const Body = styled.div`
-* {
-  font-family: 'Nunito', sans-serif;
-}
   display: flex;
   height: 100vh;
   flex-direction: column;
