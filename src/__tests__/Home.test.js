@@ -4,9 +4,6 @@ import configureMockStore from 'redux-mock-store';
 import Home from '../pages/Index';
 import { renderWithRedux } from '../lib/testUtil';
 
-const mockStore = configureMockStore();
-const store = mockStore({});
-
 afterEach(cleanup);
 
 
