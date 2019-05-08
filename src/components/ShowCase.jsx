@@ -5,8 +5,8 @@ import { Grid, Icon } from 'semantic-ui-react';
 import moment from 'moment';
 
 const ImageContainer = styled.div`
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 150px;
   display: block !important;
 `;
 
@@ -16,6 +16,7 @@ const ShowCaseIntroTextHeading = styled.h3`
 `;
 const ShowCaseIntroTextTagLine = styled.div`
   width: 50%;
+  margin-top: 10px;
 `;
 
 const ShowCaseArticleImage = styled.img`
@@ -32,42 +33,49 @@ const StyledCategory = styled.span`
   color: orange;  
 `;
 
+const ShowCaseContainer = styled.section`
+  padding: 20px 0;
+`;
+
 const ShowCase = ({ article }) => (
-  <Grid as="section" columns="2">
-    <Grid.Row>
-      <Grid.Column>
-        <ShowCaseIntroTextHeading>
-          Welcome to&nbsp;
-        <ShowCaseAppTitle>Author's Haven</ShowCaseAppTitle>
-        </ShowCaseIntroTextHeading>
-        <ShowCaseIntroTextTagLine>
-          Creating a community of like-minded authors
-          who foster inspiration and innovation by
-          leveraging the modern web.
-        </ShowCaseIntroTextTagLine>
-      </Grid.Column>
-      <Grid.Column>
-        <section>
-          <ImageContainer>
-            <ShowCaseArticleImage src={article.imageUrl} alt="" />
-          </ImageContainer>
+  <ShowCaseContainer>
+    <Grid as="section" columns="2" stackable>
+      <Grid.Row>
+        <Grid.Column verticalAlign="middle">
+          <ShowCaseIntroTextHeading>
+            Welcome to&nbsp;
+          <ShowCaseAppTitle>Author's Haven</ShowCaseAppTitle>
+          </ShowCaseIntroTextHeading>
           <ShowCaseIntroTextTagLine>
-            <h3 data-testid="my-article">{article.title}</h3>
-            <p>{article.body.substring(0, 150)}....</p>
-          </ShowCaseIntroTextTagLine>
-          <div>
-            <p>{article.author.fullName} in <StyledCategory>Politics</StyledCategory></p>
-            <p>{moment(article.createdAt).format('DDD Mo')}
-              <span>&nbsp;&middot;&nbsp;
+            Creating a community of like-minded authors
+            who foster inspiration and innovation by
+            leveraging the modern web.
+        </ShowCaseIntroTextTagLine>
+        </Grid.Column>
+        <Grid.Column>
+          <section>
+            <h3>Trending stories</h3>
+            <ImageContainer>
+              <ShowCaseArticleImage src={article.imageUrl} alt="" />
+            </ImageContainer>
+            <ShowCaseIntroTextTagLine>
+              <h3 data-testid="my-article">{article.title}</h3>
+              <p>{article.body.substring(0, 150)}....</p>
+            </ShowCaseIntroTextTagLine>
+            <div>
+              <p>Sherlock Holmes in <StyledCategory>{article.tags[0]}</StyledCategory></p>
+              <p>{moment(article.createdAt).format('DDD Mo')}
+                <span>&nbsp;&middot;&nbsp;
               {article.totalReadTime} {article.totalReadTime > 1 ? 'Mins' : 'Min'} read &nbsp;
               <Icon name="star" size="small" />
-            </span>
-            </p>
-          </div>
-        </section>
-      </Grid.Column>
-    </Grid.Row>
-  </Grid>
+                </span>
+              </p>
+            </div>
+          </section>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
+  </ShowCaseContainer>
 );
 
 ShowCase.propTypes = {
