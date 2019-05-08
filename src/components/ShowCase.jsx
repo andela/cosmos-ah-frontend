@@ -10,7 +10,6 @@ const ImageContainer = styled.div`
   display: block !important;
 `;
 
-const ShowCaseArticle = styled.section``;
 const ShowCaseIntroTextHeading = styled.h3`
   font-size: 2.5em;
   margin-bottom: 0;
@@ -25,7 +24,6 @@ const ShowCaseArticleImage = styled.img`
   border-radius: 6px;
 `;
 
-const ShowCaseArticleAuthor = styled.div``;
 const ShowCaseAppTitle = styled.span`
   display: block;
 `;
@@ -49,7 +47,7 @@ const ShowCase = ({ article }) => (
         </ShowCaseIntroTextTagLine>
       </Grid.Column>
       <Grid.Column>
-        <ShowCaseArticle>
+        <section>
           <ImageContainer>
             <ShowCaseArticleImage src={article.imageUrl} alt="" />
           </ImageContainer>
@@ -57,7 +55,7 @@ const ShowCase = ({ article }) => (
             <h3 data-testid="my-article">{article.title}</h3>
             <p>{article.body.substring(0, 150)}....</p>
           </ShowCaseIntroTextTagLine>
-          <ShowCaseArticleAuthor>
+          <div>
             <p>{article.author.fullName} in <StyledCategory>Politics</StyledCategory></p>
             <p>{moment(article.createdAt).format('DDD Mo')}
               <span>&nbsp;&middot;&nbsp;
@@ -65,8 +63,8 @@ const ShowCase = ({ article }) => (
               <Icon name="star" size="small" />
             </span>
             </p>
-          </ShowCaseArticleAuthor>
-        </ShowCaseArticle>
+          </div>
+        </section>
       </Grid.Column>
     </Grid.Row>
   </Grid>

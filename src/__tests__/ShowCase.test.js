@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup } from 'react-testing-library';
-import ShowCase from '../components/ShowCase.jsx';
+import ShowCase from '../components/ShowCase';
 
 afterEach(cleanup);
 
