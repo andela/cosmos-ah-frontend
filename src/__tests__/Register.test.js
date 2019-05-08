@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup } from 'react-testing-library';
-import Register from '../pages/Register.jsx';
+import Register from '../pages/Register';
 
 afterEach(cleanup);
 
