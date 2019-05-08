@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Button = ({
@@ -32,4 +33,4 @@ Button.Container = styled.button`
   }
 `;
 
-export default Button;
+export default withRouter(Button);

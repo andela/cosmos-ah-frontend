@@ -1,13 +1,12 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
-module.exports = function () {
+module.exports = function() {
   return {
     entry: './src/index.js',
     output: {
       path: path.join(__dirname, '/dist'),
       filename: 'bundle.js',
-      publicPath: '/'
     },
     module: {
       rules: [
@@ -19,34 +18,52 @@ module.exports = function () {
           },
         },
         {
-          test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-          use: {
-            loader: 'babel-loader',
-            loader: 'url-loader?limit=100000'
-          },
-        },
-        {
-          test: /\.(css|scss)$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
-        },
-        {
-          test: /\.(png|jp(e*)g|svg|gif)$/,
-          exclude: /(node_modules)/,
+          test: /\.(png|jp(e*)g|gif|svg)$/,
           use: [
             {
               loader: 'file-loader',
               options: {
-                name: 'images/[hash]-[name].[ext]',
+                name: '[name]-[hash].[ext]',
               },
             },
           ],
         },
         {
+          test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name]-[hash].[ext]',
+                outputPath: 'fonts/',
+              },
+            },
+            'svg-inline-loader',
+          ],
+        },
+        {
+          test: /\.svg$/,
+          exclude: /(src)/,
+          use: [
+            {
+              loader: 'svg-inline-loader',
+              options: {
+                name: '[name]-[hash].[ext]',
+                outputPath: 'svg/',
+              },
+            },
+          ],
+        },
+        {
+          test: /\.(scss|css)$/,
+          use: ['style-loader', 'css-loader', 'sass-loader'],
+        },
+        {
           enforce: 'pre',
           test: /\.jsx?$/,
           loader: 'eslint-loader',
-          exclude: /node_modules/
-        }
+          exclude: /node_modules/,
+        },
       ],
     },
     plugins: [
@@ -59,12 +76,12 @@ module.exports = function () {
       colors: true,
     },
     resolve: {
-      extensions: ['*', '.js', '.jsx']
+      extensions: ['*', '.js', '.jsx'],
     },
     devtool: 'source-map',
     devServer: {
       historyApiFallback: true,
-      contentBase: path.resolve(__dirname, '../public'),
+      contentBase: path.resolve(__dirname, './src'),
       compress: true,
       port: 9001,
       watchContentBase: true,
