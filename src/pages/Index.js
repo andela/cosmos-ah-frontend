@@ -5,11 +5,12 @@ import { socialAuth } from '../state/auth/actions';
 
 const Home = props => {
   useEffect(() => {
-    const urlParams = new URLSearchParams(props.location.search);
+    const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('token')) {
       props.socialAuth(urlParams.get('token'));
     }
   });
+
   return (
     <div>
       <h3>Welcome to Authors Haven</h3>
