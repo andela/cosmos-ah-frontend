@@ -60,15 +60,6 @@ const CustomGrid = styled.div`
   grid-template-rows: 1fr 1fr 1fr 1fr;
 `;
 
-const CustomGridColumnHeading = styled.div`
-  grid-column-start: 1 
-`;
-
-const GridColumn1 = styled.div`
-  grid-column-start: 1;
-  grid-column-end: 2;
-`;
-
 const HomePageBody = props => {
   useEffect(() => {
     props.getArticleAction();
@@ -80,8 +71,9 @@ const HomePageBody = props => {
           <Grid.Row>
             <Grid.Column>
               <StyledHeadingWithBorder>
-              Featured for members
-              </StyledHeadingWithBorder>              <CustomGrid>
+                Featured for members
+              </StyledHeadingWithBorder>
+              <CustomGrid>
                 {props.articles.map(article => (
                   <Fragment key={article.id}>
                     <div>
@@ -227,11 +219,14 @@ const HomePageBody = props => {
           </Grid.Row>
         </Grid>
       </Container>
-    </MainBodyContent >
+    </MainBodyContent>
   );
 };
 
-HomePageBody.propTypes = {};
+HomePageBody.propTypes = {
+  articles: PropTypes.array.isRequired,
+  getArticleAction: PropTypes.node
+};
 
 const mapStateToProps = state => ({
   articles: state.article.articles
