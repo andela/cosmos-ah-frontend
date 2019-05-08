@@ -6,12 +6,12 @@ export default (state = initialState, action) => {
     case SIGN_IN_SUCCESS:
       return {
         ...state,
-        signin: action.payload
+        login: action.payload
       };
     case SIGN_IN_ERROR:
       return {
         ...state,
-        signin: action.payload
+        login: action.payload
       };
     default:
       return state;

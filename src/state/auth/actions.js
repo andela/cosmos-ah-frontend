@@ -1,6 +1,6 @@
-/* eslint-disable no-undef */
 import { Signin } from '../../lib/signin';
 import { SIGN_IN_SUCCESS, SIGN_IN_ERROR } from './actionTypes';
+import { successDispatch, errorDispatch } from '../../lib/auth';
 
 export const signInSuccess = signin => ({
   type: SIGN_IN_SUCCESS,
@@ -12,12 +12,11 @@ export const signInError = signinError => ({
   payload: signinError
 });
 
-export const signin = formData => async dispatch => {
+export const signin = async formData => {
   try {
     const login = await Signin(formData);
-    dispatch(signInSuccess(login.data.data.token));
-    localStorage.authorsHavenJWTToken = login.data.data.token;
+    successDispatch(login.data.data.token);
   } catch (error) {
-    dispatch(signInError(login.error));
+    errorDispatch(error.response);
   }
 };
