@@ -1,5 +1,10 @@
 import configureStore from 'redux-mock-store';
-import { signInSuccess, signInError, successDispatch } from '../state/auth/actions';
+import {
+  signInSuccess,
+  signInError,
+  successDispatch,
+  errorDispatch
+} from '../lib/auth';
 
 const middlewares = [];
 const mockStore = configureStore(middlewares);
@@ -46,3 +51,17 @@ it('should dispatch signin error action', () => {
   };
   expect(actions).toEqual([expectedPayload]);
 });
+
+test('Test the Dispatch success function', () => {
+  const mock = jest.fn().mockImplementation(successDispatch());
+  mock.mockReturnValue("decoded");
+  expect(mock('token')).toBe("decoded");
+  expect(mock).toHaveBeenCalledWith('token');
+});
+
+test('Test the Dispatch error function', () => {
+    const mock = jest.fn().mockImplementation(errorDispatch());
+    mock.mockReturnValue("errorObject");
+    expect(mock('errorPayload')).toBe("errorObject");
+    expect(mock).toHaveBeenCalledWith('errorPayload');
+  });
