@@ -63,6 +63,12 @@ module.exports = function() {
           loader: 'eslint-loader',
           exclude: /node_modules/,
         },
+        {
+          enforce: 'pre',
+          test: /\.jsx?$/,
+          loader: 'eslint-loader',
+          exclude: /node_modules/
+        }
       ],
     },
     plugins: [
