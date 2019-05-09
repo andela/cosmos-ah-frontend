@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState, useEffect, Fragment } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -6,7 +8,8 @@ import {
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { getArticleAction } from '../state/article/actions';
+import { getArticleAction, getArticles } from '../state/article/actions';
+import ArticleUtil from '../utils/articles';
 
 const StyledHeading = styled.h3`
   padding-bottom: 10px; 
@@ -14,23 +17,8 @@ const StyledHeading = styled.h3`
 
 const StyledHeadingWithBorder = styled(StyledHeading)`
   border-bottom: 2px solid #777;
+  text-transform: capitalize;
 `;
-
-const articles = [
-  {
-    id: 1,
-    description: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
-    title: 'my-article',
-    author: 'Arya',
-  },
-
-  {
-    id: 2,
-    description: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
-    title: 'my-article',
-    author: 'Arya',
-  }
-];
 
 const MainBodyContent = styled('section')`
   margin-top: 3em;
@@ -60,13 +48,29 @@ const CustomGrid = styled.div`
   grid-template-rows: 1fr 1fr 1fr 1fr;
 `;
 
+const CategoryCustomGrid = styled(CustomGrid)`
+  grid-template-rows: 1fr;
+`;
+
+const StyledContainer = styled(Container)`
+  font-family: sans-serif;
+`;
+
 const HomePageBody = props => {
   useEffect(() => {
     props.getArticleAction();
   }, []);
+
+  const articleCategories = ArticleUtil.articleCategories;
+  const articleCategoryToArticle = ArticleUtil.getAccumulator(articleCategories);
+  articleCategories.forEach((category) => {
+    articleCategoryToArticle[category] = ArticleUtil.filterArticleByCategory(props.articles, category);
+  })
+  const articleCategoryWithContent = ArticleUtil.filterByContent(articleCategories, articleCategoryToArticle);
+
   return (
     <MainBodyContent>
-      <Container>
+      <StyledContainer>
         <Grid columns="2" doubling stackable>
           <Grid.Row>
             <Grid.Column>
@@ -74,59 +78,82 @@ const HomePageBody = props => {
                 Featured for members
               </StyledHeadingWithBorder>
               <CustomGrid>
-                {props.articles.map(article => (
+                {props.articles.slice(0, 4).map(article => (
                   <Fragment key={article.id}>
-                    <div>
+                    <div style={{ marginBottom: 20 }}>
                       <h3>{article.title}</h3>
                       <p>{article.description}</p>
 
                       {article.author}
-                      <span>{moment(article.createdAt).format('MMM Do')}</span>&nbsp;
-                        <ArticleReadTimeSpan>{article.totalReadTime} {article.totalReadTime > 1 ? 'Mins' : 'Min'} read</ArticleReadTimeSpan>&nbsp;
+                      <span>{ArticleUtil.parseArticleCreationDate(article.createdAt)}&nbsp;&middot;</span>&nbsp;
+                        <ArticleReadTimeSpan>{article.totalReadTime} {article.totalReadTime > 1 ? 'mins' : 'min'} read</ArticleReadTimeSpan>&nbsp;
                         <Icon name="star" size="small" color="grey" />
                     </div>
                     <div>
                     </div>
                     <div>
-                      <Image src={props.articleImg} alt="" width={100} height={100} rounded />
+                      <Image src={article.imageUrl} alt="" width={100} height={100} rounded />
                     </div>
                   </Fragment>
                 ))}
               </CustomGrid>
-              <StyledHeadingWithBorder>Technology</StyledHeadingWithBorder>
-              <Grid columns="equal">
-                {articles.map(article => (
-                  <Grid.Row key={article.id.toString()}>
-                    <Grid.Column>
-                      <div>{article.title}</div>
-                      <div>{article.description}</div>
-                      <div>{article.author}</div>
-                    </Grid.Column>
-                    <Grid.Column width={8}>
-                      <Image src={props.articleImg} alt="" width={100} height={100} rounded />
-                    </Grid.Column>
-                  </Grid.Row>
-                ))}
-              </Grid>
-              <StyledHeadingWithBorder>Health</StyledHeadingWithBorder>
-              <Grid columns="equal">
-                {articles.map(article => (
-                  <Grid.Row key={article.id.toString()}>
-                    <Grid.Column>
-                      <div>{article.title}</div>
-                      <div>{article.description}</div>
-                      <div>{article.author}</div>
-                    </Grid.Column>
-                    <Grid.Column width={8}>
-                      <Image src={article.image} alt="" width={100} height={100} rounded />
-                    </Grid.Column>
-                  </Grid.Row>
-                ))}
-              </Grid>
+              {
+                articleCategoryWithContent
+                  .map((category, i) => {
+                    return (
+                      <Fragment key={i}>
+                        <StyledHeadingWithBorder>{category}</StyledHeadingWithBorder>
+                        <CategoryCustomGrid>
+                          {
+                            articleCategoryToArticle[category.toLowerCase()].map((article) => {
+                              return (
+                                <Fragment key={article.id}>
+                                  <div>
+                                    <h3>{article.title}</h3>
+                                    <p>{article.description}</p>
+                                    {/* <div>{article.author}</div> */}
+                                    <span>{ArticleUtil.parseArticleCreationDate(article.createdAt)}&nbsp;&middot;&nbsp;</span>&nbsp;
+                                    <ArticleReadTimeSpan>{article.totalReadTime} {article.totalReadTime > 1 ? 'mins' : 'min'} read</ArticleReadTimeSpan>&nbsp;
+                                    <Icon name="star" size="small" color="grey" />
+                                  </div>
+                                  <div></div>
+                                  <div>
+                                    <Image src={props.articleImg} alt="" width={100} height={100} rounded />
+                                  </div>
+                                </Fragment>
+                              )
+                            })
+                          }
+                        </CategoryCustomGrid>
+                      </Fragment>
+                    )
+                  })
+              }
             </Grid.Column>
             <Grid.Column>
               <aside>
                 <StyledHeadingWithBorder>Popular on Author's Haven</StyledHeadingWithBorder>
+                {
+                  ArticleUtil.getTopTrendingArticles(props.articles)
+                    .map((article, i) => {
+                      return (
+                        <Grid columns="2">
+                          <Grid.Row>
+                            <StyledColumn width={4} verticalAlign="middle">
+                              <NumberStyling>0{i+1}</NumberStyling>
+                            </StyledColumn>
+
+                            <Grid.Column>
+                              <h3>{article.title}</h3>
+                              <p style={pStyle}>Jane Doe</p>
+                              <span>{ArticleUtil.parseArticleCreationDate(article.createdAt)} &middot; {article.totalReadTime} min read</span>
+                            </Grid.Column>
+                          </Grid.Row>
+                        </Grid>
+                      )
+                    })
+                }
+                <StyledHeadingWithBorder>Preferences</StyledHeadingWithBorder>
                 <Grid columns="2">
                   <Grid.Row>
                     <StyledColumn width={4} verticalAlign="middle">
@@ -155,6 +182,18 @@ const HomePageBody = props => {
                   <Grid.Row>
                     <StyledColumn width={4} verticalAlign="middle">
                       <NumberStyling>03</NumberStyling>
+                    </StyledColumn>
+
+                    <Grid.Column>
+                      <h3>Did you know Pandas Can Do so much?</h3>
+                      <p style={pStyle}>Jane Doe in Romance</p>
+                      <p>Mar 26 7 Min Read</p>
+                    </Grid.Column>
+                  </Grid.Row>
+
+                  <Grid.Row>
+                    <StyledColumn width={4} verticalAlign="middle">
+                      <NumberStyling>04</NumberStyling>
                     </StyledColumn>
 
                     <Grid.Column>
@@ -218,14 +257,13 @@ const HomePageBody = props => {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </Container>
+      </StyledContainer>
     </MainBodyContent>
   );
 };
 
 HomePageBody.propTypes = {
-  articles: PropTypes.array.isRequired,
-  getArticleAction: PropTypes.node
+  articles: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
