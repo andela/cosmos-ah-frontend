@@ -38,7 +38,6 @@ module.exports = function() {
                 outputPath: 'fonts/',
               },
             },
-            'svg-inline-loader',
           ],
         },
         {

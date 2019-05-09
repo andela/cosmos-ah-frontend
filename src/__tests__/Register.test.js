@@ -8,7 +8,7 @@ test('<Register /> component', () => {
   const registrationPage = render(<Register />);
   expect(registrationPage).toBeTruthy();
   expect(registrationPage.getByText('Sign Up').tagName).toBe('BUTTON');
-  expect(registrationPage.getByText('Sign In').tagName).toBe('BUTTON');
+  expect(registrationPage.getByText('Sign In').tagName).toBe('A');
 });
 
 test('renders the Form', () => {

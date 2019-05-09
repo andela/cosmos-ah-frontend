@@ -6,19 +6,21 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="sc-bwzfXH jtCEHj"
+        class="sc-bwzfXH iYberu"
       >
         <div
           class="sc-htpNat iSSvoI"
         >
-          <a
-            href="/"
-          >
-            <img
-              src="https://res.cloudinary.com/drmrayjr0/image/upload/v1557246832/Screenshot_2019-05-07_at_5.33.23_PM_p7frml.png"
-              width="150"
-            />
-          </a>
+          <div>
+            <a
+              href="/"
+            >
+              <img
+                src="test-file-stub"
+                width="200"
+              />
+            </a>
+          </div>
         </div>
         <div
           class="sc-bZQynM bYmjcT"
@@ -39,41 +41,37 @@ Object {
                 </h1>
               </div>
               <div
-                class="sc-bdVaJa cLnXBB"
+                class="sc-bdVaJa dSNtGu"
               >
                 <div
                   class="ui centered grid"
                 >
                   <button
-                    class="ui blue massive basic circular icon button"
+                    class="ui blue massive basic circular button"
                   >
-                    <i
-                      aria-hidden="true"
-                      class="facebook icon"
+                    <img
+                      src="test-file-stub"
                     />
                   </button>
                   <button
-                    class="ui red massive basic circular icon button"
+                    class="ui red massive basic circular button"
                   >
-                    <i
-                      aria-hidden="true"
-                      class="google plus icon"
+                    <img
+                      src="test-file-stub"
                     />
                   </button>
                   <button
-                    class="ui blue massive basic circular icon button"
+                    class="ui blue massive basic circular button"
                   >
-                    <i
-                      aria-hidden="true"
-                      class="twitter icon"
+                    <img
+                      src="test-file-stub"
                     />
                   </button>
                   <button
-                    class="ui blue massive basic circular icon button"
+                    class="ui blue massive basic circular button"
                   >
-                    <i
-                      aria-hidden="true"
-                      class="linkedin icon"
+                    <img
+                      src="test-file-stub"
                     />
                   </button>
                 </div>
@@ -124,7 +122,7 @@ Object {
                   class="sc-EHOje dhYIww"
                 >
                   <a
-                    href="#"
+                    href="/forgot-password"
                   >
                     Forgot password?
                   </a>
@@ -152,7 +150,7 @@ Object {
                       <h3>
                         Don't have an account yet? 
                         <a
-                          href="#"
+                          href="/signup"
                         >
                           Create One
                         </a>
@@ -169,19 +167,21 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-bwzfXH jtCEHj"
+      class="sc-bwzfXH iYberu"
     >
       <div
         class="sc-htpNat iSSvoI"
       >
-        <a
-          href="/"
-        >
-          <img
-            src="https://res.cloudinary.com/drmrayjr0/image/upload/v1557246832/Screenshot_2019-05-07_at_5.33.23_PM_p7frml.png"
-            width="150"
-          />
-        </a>
+        <div>
+          <a
+            href="/"
+          >
+            <img
+              src="test-file-stub"
+              width="200"
+            />
+          </a>
+        </div>
       </div>
       <div
         class="sc-bZQynM bYmjcT"
@@ -202,41 +202,37 @@ Object {
               </h1>
             </div>
             <div
-              class="sc-bdVaJa cLnXBB"
+              class="sc-bdVaJa dSNtGu"
             >
               <div
                 class="ui centered grid"
               >
                 <button
-                  class="ui blue massive basic circular icon button"
+                  class="ui blue massive basic circular button"
                 >
-                  <i
-                    aria-hidden="true"
-                    class="facebook icon"
+                  <img
+                    src="test-file-stub"
                   />
                 </button>
                 <button
-                  class="ui red massive basic circular icon button"
+                  class="ui red massive basic circular button"
                 >
-                  <i
-                    aria-hidden="true"
-                    class="google plus icon"
+                  <img
+                    src="test-file-stub"
                   />
                 </button>
                 <button
-                  class="ui blue massive basic circular icon button"
+                  class="ui blue massive basic circular button"
                 >
-                  <i
-                    aria-hidden="true"
-                    class="twitter icon"
+                  <img
+                    src="test-file-stub"
                   />
                 </button>
                 <button
-                  class="ui blue massive basic circular icon button"
+                  class="ui blue massive basic circular button"
                 >
-                  <i
-                    aria-hidden="true"
-                    class="linkedin icon"
+                  <img
+                    src="test-file-stub"
                   />
                 </button>
               </div>
@@ -287,7 +283,7 @@ Object {
                 class="sc-EHOje dhYIww"
               >
                 <a
-                  href="#"
+                  href="/forgot-password"
                 >
                   Forgot password?
                 </a>
@@ -315,7 +311,7 @@ Object {
                     <h3>
                       Don't have an account yet? 
                       <a
-                        href="#"
+                        href="/signup"
                       >
                         Create One
                       </a>
