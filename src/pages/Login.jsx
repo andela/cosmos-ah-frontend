@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Grid, Header } from 'semantic-ui-react';
+import {
+  Form, Grid, Header, Message
+} from 'semantic-ui-react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import SocialButton from '../components/SocialMediaButton';
@@ -76,12 +78,9 @@ const Login = props => {
     password: ''
   });
 
-  const [loading, setLoading] = useState(false);
-
   const handleSubmit = async event => {
     event.persist();
     event.preventDefault();
-    setLoading(true);
     props.loginAction({ email, password });
   };
 
@@ -90,9 +89,9 @@ const Login = props => {
     setFormData(() => ({ ...formData, [event.target.name]: event.target.value }));
   };
 
-  useEffect(() => {
-    setLoading(false);
-  });
+  if (loginState.id) {
+    props.history.push('/dashboard');
+  }
 
   const { email, password } = formData;
 
@@ -111,7 +110,7 @@ const Login = props => {
           <Header color='blue'>
             <h4>or login using your email address</h4>
           </Header>
-          <Form onSubmit={handleSubmit} loading={loading}>
+          <Form onSubmit={handleSubmit} loading={loginState.loadingState}>
             <Form.Input size='big' icon={{ name: 'envelope outline', color: 'blue' }} iconPosition='left' placeholder='Email Address' name='email' onChange={handleChange} value={email}/>
             <Form.Input size='big' icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password' name='password' onChange={handleChange} value={password}/>
             {(validatorErrors !== undefined) && (
@@ -119,7 +118,7 @@ const Login = props => {
               <p>{validatorErrors}</p>
             </Message>
             )}
-            <StyledLink><a href='#'>Forgot password?</a></StyledLink>
+            <StyledLink><Link to='/forgot-password'>Forgot password?</Link></StyledLink>
             <ButtonComponent color='blue' size='big'>
               Continue
             </ButtonComponent>
