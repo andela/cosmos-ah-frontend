@@ -7,12 +7,13 @@ const Wrapper = styled.div`
   margin: 5rem 0;
 `;
 
-const Layout = () => (
+const Layout = ({ profileData }) => (
   <Wrapper className="ui container">
-    <section className="ui two centered column grid stackable">
+    <section className="ui three centered column grid stackable">
       <div className="row">
-        <MainLayout />
-        <SideLayout />
+        <MainLayout profileData={profileData} />
+        <div className="one wide column"></div>
+        <SideLayout imageSrc={profileData.imageUrl} />
       </div>
     </section>
   </Wrapper>

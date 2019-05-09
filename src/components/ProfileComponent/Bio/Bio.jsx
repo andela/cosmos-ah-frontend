@@ -7,7 +7,7 @@ const Wrapper = styled.div`
 `;
 const Bio = ({ text, style }) => (
   <Wrapper className="ui text">
-    <Paragraph style={style}>{text}</Paragraph>
+    <Paragraph paragraphStyle={style}>{text}</Paragraph>
   </Wrapper>
 );
 
