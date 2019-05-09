@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form } from 'semantic-ui-react';
 import styled from 'styled-components';
@@ -61,6 +61,8 @@ const AlignRight = styled.p`
 `;
 
 const ForgotPassword = () => (
+
+
   <ContainerStyle>
     <Center>
       <AltLogo logo={appLogo} />
