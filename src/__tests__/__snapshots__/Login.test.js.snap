@@ -1,0 +1,392 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders <Login /> 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="sc-bwzfXH jtCEHj"
+      >
+        <div
+          class="sc-htpNat iSSvoI"
+        >
+          <a
+            href="/"
+          >
+            <img
+              src="https://res.cloudinary.com/drmrayjr0/image/upload/v1557246832/Screenshot_2019-05-07_at_5.33.23_PM_p7frml.png"
+              width="150"
+            />
+          </a>
+        </div>
+        <div
+          class="sc-bZQynM bYmjcT"
+        >
+          <div
+            class="sc-bxivhb dAJZi"
+          >
+            <div
+              class="column"
+            >
+              <div
+                class="sc-bZQynM bYmjcT"
+              >
+                <h1
+                  class="ui blue huge header"
+                >
+                  Login
+                </h1>
+              </div>
+              <div
+                class="sc-bdVaJa cLnXBB"
+              >
+                <div
+                  class="ui centered grid"
+                >
+                  <button
+                    class="ui blue massive basic circular icon button"
+                    data-testid="facebook"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="facebook icon"
+                    />
+                  </button>
+                  <button
+                    class="ui red massive basic circular icon button"
+                    data-testid="google"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="google plus icon"
+                    />
+                  </button>
+                  <button
+                    class="ui blue massive basic circular icon button"
+                    data-testid="twitter"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="twitter icon"
+                    />
+                  </button>
+                  <button
+                    class="ui blue massive basic circular icon button"
+                    data-testid="linkedin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="linkedin icon"
+                    />
+                  </button>
+                </div>
+              </div>
+              <div
+                class="ui blue header"
+              >
+                <h4>
+                  or login using your email address
+                </h4>
+              </div>
+              <form
+                class="ui form"
+              >
+                <div
+                  class="field"
+                >
+                  <div
+                    class="ui big left icon input"
+                  >
+                    <input
+                      placeholder="Email Address"
+                      type="text"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="blue envelope outline icon"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="field"
+                >
+                  <div
+                    class="ui big left icon input"
+                  >
+                    <input
+                      placeholder="Password"
+                      type="password"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="blue lock icon"
+                    />
+                  </div>
+                </div>
+                <p
+                  class="sc-EHOje dhYIww"
+                >
+                  <a
+                    href="#"
+                  >
+                    Forgot password?
+                  </a>
+                </p>
+                <div>
+                  <button
+                    class="ui blue big fluid button"
+                  >
+                    Continue
+                  </button>
+                </div>
+              </form>
+              <div
+                class="sc-ifAKCX bdgWuN"
+              >
+                <div
+                  class="ui centered grid"
+                >
+                  <div
+                    class="sc-bZQynM bYmjcT"
+                  >
+                    <div
+                      class="ui header"
+                    >
+                      <h3>
+                        Don't have an account yet? 
+                        <a
+                          href="#"
+                        >
+                          Create One
+                        </a>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="sc-bwzfXH jtCEHj"
+    >
+      <div
+        class="sc-htpNat iSSvoI"
+      >
+        <a
+          href="/"
+        >
+          <img
+            src="https://res.cloudinary.com/drmrayjr0/image/upload/v1557246832/Screenshot_2019-05-07_at_5.33.23_PM_p7frml.png"
+            width="150"
+          />
+        </a>
+      </div>
+      <div
+        class="sc-bZQynM bYmjcT"
+      >
+        <div
+          class="sc-bxivhb dAJZi"
+        >
+          <div
+            class="column"
+          >
+            <div
+              class="sc-bZQynM bYmjcT"
+            >
+              <h1
+                class="ui blue huge header"
+              >
+                Login
+              </h1>
+            </div>
+            <div
+              class="sc-bdVaJa cLnXBB"
+            >
+              <div
+                class="ui centered grid"
+              >
+                <button
+                  class="ui blue massive basic circular icon button"
+                  data-testid="facebook"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="facebook icon"
+                  />
+                </button>
+                <button
+                  class="ui red massive basic circular icon button"
+                  data-testid="google"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="google plus icon"
+                  />
+                </button>
+                <button
+                  class="ui blue massive basic circular icon button"
+                  data-testid="twitter"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="twitter icon"
+                  />
+                </button>
+                <button
+                  class="ui blue massive basic circular icon button"
+                  data-testid="linkedin"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="linkedin icon"
+                  />
+                </button>
+              </div>
+            </div>
+            <div
+              class="ui blue header"
+            >
+              <h4>
+                or login using your email address
+              </h4>
+            </div>
+            <form
+              class="ui form"
+            >
+              <div
+                class="field"
+              >
+                <div
+                  class="ui big left icon input"
+                >
+                  <input
+                    placeholder="Email Address"
+                    type="text"
+                  />
+                  <i
+                    aria-hidden="true"
+                    class="blue envelope outline icon"
+                  />
+                </div>
+              </div>
+              <div
+                class="field"
+              >
+                <div
+                  class="ui big left icon input"
+                >
+                  <input
+                    placeholder="Password"
+                    type="password"
+                  />
+                  <i
+                    aria-hidden="true"
+                    class="blue lock icon"
+                  />
+                </div>
+              </div>
+              <p
+                class="sc-EHOje dhYIww"
+              >
+                <a
+                  href="#"
+                >
+                  Forgot password?
+                </a>
+              </p>
+              <div>
+                <button
+                  class="ui blue big fluid button"
+                >
+                  Continue
+                </button>
+              </div>
+            </form>
+            <div
+              class="sc-ifAKCX bdgWuN"
+            >
+              <div
+                class="ui centered grid"
+              >
+                <div
+                  class="sc-bZQynM bYmjcT"
+                >
+                  <div
+                    class="ui header"
+                  >
+                    <h3>
+                      Don't have an account yet? 
+                      <a
+                        href="#"
+                      >
+                        Create One
+                      </a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
