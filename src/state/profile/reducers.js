@@ -6,7 +6,7 @@ export default (state = initialState, action) => {
     case GET_PROFILE_SUCCESS:
       return {
         ...state,
-        data: action.payload,
+        loadedData: action.payload,
         isLoading: true,
       };
     case GET_PROFILE_FAILURE:
