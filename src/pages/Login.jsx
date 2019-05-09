@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Grid, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 import SocialButton from '../components/SocialMediaButton';
@@ -81,7 +82,7 @@ const Login = () => (
             <Grid centered>
             <Center>
               <Header>
-                <h3>Don't have an account yet? <a href='/signup'>Create One</a></h3>
+                <h3>Don't have an account yet? <Link to='/signup'>Create One</Link></h3>
             </Header>
             </Center>
             </Grid>

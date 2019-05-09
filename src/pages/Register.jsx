@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 import SocialMediaButton from '../components/SocialMediaButton';
@@ -113,7 +114,7 @@ const Register = () => (
     <Background>
       <Header>
         <div>
-          <a href='/'><img src='../assets/images/inverted-logo.png' width='150px' /></a>
+          <Link to='/'><img src='../assets/images/inverted-logo.png' width='150px' /></Link >
         </div>
       </Header>
       <Aside>
@@ -139,7 +140,7 @@ const Register = () => (
           <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Confirm Password' type='password' />
           <Form.Checkbox label='Enable Email Notifications About Product And Services.' />
           <Center>
-            <MyButton primary>Sign Up</MyButton> Or <MyButton href='/login'>Sign In</MyButton>
+            <MyButton primary>Sign Up</MyButton> Or <Link to='/login'><MyButton>Sign In</MyButton></Link>
           </Center>
         </FormInput>
       </FormContainer>

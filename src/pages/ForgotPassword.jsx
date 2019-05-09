@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Form } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { ButtonComponent } from '../components/Button';
@@ -71,7 +72,7 @@ const ForgotPassword = () => (
       <Form.Input size='big' icon={{ name: 'envelope', color: 'blue' }} iconPosition='left' fluid placeholder='YOUR EMAIL ADDRESS' />
       <ButtonComponent type='submit' size='big' color='blue'>RESET PASSWORD</ButtonComponent>
     </FormStyle>
-    <AlignRight><a href='/login'>Back to Login</a></AlignRight>
+    <AlignRight><Link to='/login'>Back to Login</Link></AlignRight>
   </ContainerStyle>
 );
 
