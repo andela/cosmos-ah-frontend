@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Grid, Icon } from 'semantic-ui-react';
-import styled from 'styled-components';
+import { Button } from 'semantic-ui-react';
 
 export const ButtonComponent = ({
   type, color, size, children

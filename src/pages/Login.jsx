@@ -1,13 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Grid, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 import SocialButton from '../components/SocialMediaButton';
 import { ButtonComponent } from '../components/Button';
+import AltLogo from '../components/AppLogo';
 
 const Body = styled.div`
-* {
-  font-family: 'Nunito', sans-serif;
-}
   display: flex;
   height: 100vh;
   flex-direction: column;
@@ -59,7 +58,7 @@ const Center = styled.div`
 const Login = () => (
   <Body>
     <Logo>
-      <a href='/'><img src='https://res.cloudinary.com/drmrayjr0/image/upload/v1557246832/Screenshot_2019-05-07_at_5.33.23_PM_p7frml.png' width={150} /></a>
+      <AltLogo />
     </Logo>
     <Center>
       <Wrap>
@@ -74,7 +73,7 @@ const Login = () => (
           <Form>
               <Form.Input size='big' icon={{ name: 'envelope outline', color: 'blue' }} iconPosition='left' placeholder='Email Address' />
               <Form.Input size='big' icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password'/>
-              <StyledLink><a href='#'>Forgot password?</a></StyledLink>
+              <StyledLink><a href='/forgot-password'>Forgot password?</a></StyledLink>
               <ButtonComponent color='blue' size='big'>
                 Continue
               </ButtonComponent>
@@ -83,7 +82,7 @@ const Login = () => (
             <Grid centered>
             <Center>
               <Header>
-                <h3>Don't have an account yet? <a href='#'>Create One</a></h3>
+                <h3>Don't have an account yet? <Link to='/signup'>Create One</Link></h3>
             </Header>
             </Center>
             </Grid>

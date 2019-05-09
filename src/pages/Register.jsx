@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 import SocialMediaButton from '../components/SocialMediaButton';
@@ -18,9 +19,7 @@ const Container = styled.div`
   grid-template-columns: 1fr 2fr;
   background: #FFFFFF;
   height: 100vh;
-  * {
-    font-family: 'Nunito', sans-serif;
-  }
+  
   @media screen and (max-width: 768px) {
     display: block;
   }
@@ -115,7 +114,7 @@ const Register = () => (
     <Background>
       <Header>
         <div>
-          <a href='/'><img src='https://res.cloudinary.com/drmrayjr0/image/upload/v1556992917/Screenshot_2019-04-18_at_1.45.17_PM_aurl4d.png' width={150} /></a>
+          <Link to='/'><img src='../assets/images/inverted-logo.png' width='150px' /></Link >
         </div>
       </Header>
       <Aside>
@@ -134,15 +133,15 @@ const Register = () => (
       </ContainerCenter>
       <FormContainer>
         <FormInput data-testid='registerForm'>
-            <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' placeholder='Full Name' />
-            <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' placeholder='Username' />
-            <Form.Input icon={{ name: 'mail', color: 'blue' }} iconPosition='left' placeholder='Email Address' type='email' />
-            <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password' />
-            <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Confirm Password' type='password' />
-            <Form.Checkbox label='Enable Email Notifications About Product And Services.' />
-            <Center>
-              <MyButton primary>Sign Up</MyButton> Or <MyButton>Sign In</MyButton>
-            </Center>
+          <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' placeholder='Full Name' />
+          <Form.Input icon={{ name: 'user', color: 'blue' }} iconPosition='left' placeholder='Username' />
+          <Form.Input icon={{ name: 'mail', color: 'blue' }} iconPosition='left' placeholder='Email Address' type='email' />
+          <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password' />
+          <Form.Input icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Confirm Password' type='password' />
+          <Form.Checkbox label='Enable Email Notifications About Product And Services.' />
+          <Center>
+            <MyButton primary>Sign Up</MyButton> Or <Link to='/login'><MyButton>Sign In</MyButton></Link>
+          </Center>
         </FormInput>
       </FormContainer>
       <TermsStyle>
