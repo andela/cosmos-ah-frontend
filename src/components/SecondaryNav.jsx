@@ -24,9 +24,16 @@ const NavContainer = styled.div`
 
 const StyledButton = styled(Button)`
   text-transform: capitalize !important;
-  border: 0 !important;
   outline: 0 !important;
   background-color: none !important;
+  :hover {
+    background-color: none !important;
+  }
+`;
+
+const SearchContainer = styled.div`
+  display: flex;
+  width: 100%;
 `;
 
 const SecondaryNav = ({ brandLogo }) => (
