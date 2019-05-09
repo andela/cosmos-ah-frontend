@@ -5,7 +5,6 @@ export const getUserProfileSuccess = profile => ({
   type: GET_PROFILE_SUCCESS,
   payload: profile
 });
-
 export const getUserProfileFailure = () => ({
   type: GET_PROFILE_FAILURE,
 });
