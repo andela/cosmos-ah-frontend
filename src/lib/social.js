@@ -5,3 +5,7 @@ export const redirectSocialAuth = type => {
 };
 
 export const decodeToken = token => jwtDecode(token);
+
+export const setLocalStorage = (item, itemName) => localStorage.setItem(item, itemName);
+
+export const getLocalStorage = (item, itemName) => localStorage.getItem(item, itemName);

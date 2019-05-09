@@ -23,8 +23,8 @@ const SocialButton = () => (
   <Space>
     <Grid centered>
       <Button basic circular color='blue' size='massive'><img src={facebook} onClick={() => socialAuth('facebook')} /></Button>
-      <Button basic circular color='red' size='massive'><img src={google} onClick={() => socialAuth('twitter')}/></Button>
-      <Button basic circular color='blue' size='massive'><img src={twitter} onClick={() => socialAuth('google')}/></Button>
+      <Button basic circular color='red' size='massive'><img src={google} onClick={() => socialAuth('google')}/></Button>
+      <Button basic circular color='blue' size='massive'><img src={twitter} onClick={() => socialAuth('twitter')}/></Button>
       <Button basic circular color='blue' size='massive'><img src={linkedin} onClick={() => socialAuth('linkedin')}/></Button>
     </Grid>
   </Space>
