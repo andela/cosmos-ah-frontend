@@ -17,6 +17,9 @@ const NavListItem = styled.li`
   list-style-type: none;
   display: inline-block;
   padding: 5px;
+  :hover {
+    color: red;
+  }
 `;
 
 const StyledLink = styled(Link)`
