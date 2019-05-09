@@ -3,6 +3,7 @@ import { Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import ShowCase from './ShowCase';
+import NavContainer from './NavContainer';
 import { getArticleAction } from '../state/article/actions';
 import ArticleUtil from '../utils/articles';
 
@@ -20,6 +21,7 @@ const Hero = props => {
     <HeroContainer>
       <Container as="section">
         {/* Nav bar space */}
+        <NavContainer />
         {trendingArticle
           ? <ShowCase article={trendingArticle} />
           : null
