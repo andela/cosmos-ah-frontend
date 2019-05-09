@@ -1,11 +1,23 @@
-import { successDispatch, errorDispatch } from '../../lib/auth';
 import axios from '../../lib/axios';
+import { decodeToken } from '../../lib/auth';
+import { SIGN_IN_SUCCESS, SIGN_IN_ERROR } from './actionTypes';
 
-export const signin = async formData => {
+export const signInSuccess = signin => ({
+  type: SIGN_IN_SUCCESS,
+  payload: signin
+});
+
+export const signInError = signinError => ({
+  type: SIGN_IN_ERROR,
+  payload: signinError
+});
+
+export const loginAction = formData => async dispatch => {
   try {
     const login = await axios.post('/login', formData);
-    successDispatch(login.data.data.token);
+    const decoded = decodeToken(login.data.data.token);
+    dispatch(signInSuccess(decoded));
   } catch (error) {
-    errorDispatch(error.response);
+    dispatch(signInError(error.response.data));
   }
 };
