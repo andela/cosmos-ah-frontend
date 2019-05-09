@@ -11,12 +11,12 @@ export const signInError = signinError => ({
   payload: signinError
 });
 
-export const successDispatch = token => async dispatch => {
+export const successDispatch = token => dispatch => {
   const decoded = jwtDecode(token);
   dispatch(signInSuccess(decoded));
   localStorage.setItem('authorsHavenJWT', token);
 };
 
-export const errorDispatch = errorObject => async dispatch => {
+export const errorDispatch = errorObject => dispatch => {
   dispatch(signInError(errorObject));
 };
