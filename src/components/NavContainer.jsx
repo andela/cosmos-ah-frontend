@@ -18,7 +18,7 @@ const pages = [
 const NavContainer = () => (
   <nav>
     <SecondaryNav />
-    <PrimaryNav brandLogo={<AppLogo logo={logo} width={200} />} pages={pages} />
+    <PrimaryNav brandLogo={<AppLogo logo={logo} />} pages={pages} />
   </nav>
 );
 

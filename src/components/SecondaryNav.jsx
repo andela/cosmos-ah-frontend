@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  Button, Form, Input, Grid
-} from 'semantic-ui-react';
+import { Form, Input, Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-const StyledInput = styled(Input)`
+const StyledInput = styled.input`
   background-color: #276BA9;
-  width: 300px;
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  color: #FFFFFF;
+  width: 80%;
 `;
 
 const NavItemContainer = styled('div')`
@@ -19,56 +22,87 @@ const SearchFieldContainer = styled(NavItemContainer)`
 `;
 
 const NavContainer = styled.div`
-  padding-top: 10px;
+  padding: 20px;
 `;
 
-const StyledButton = styled(Button)`
-  text-transform: capitalize !important;
-  outline: 0 !important;
-  background-color: none !important;
+const SearchBarFormFieldContainer = styled.div`
+  position: absolute;
+  width: 100%;
+`;
+
+const SearchBarActionSection = styled.section`
+  flex: 1 0 70%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const SearchBarLogo = styled.div`
+  flex: 1 0 30%;
+`;
+
+const SearchBarHeader = styled.div`
+  display: flex;
+`;
+
+const SearchBarActionForm = styled.form`
+  flex: 1 0 70%;
+  position: relative;
+`;
+
+const Button = styled.button`
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  text-transform: capitalize;
+  padding: 10px;
+  cursor: pointer;
+  color: #FFFFFF;
+`;
+
+const LoginButton = styled(Button)`
+  background: none;
   :hover {
-    background-color: none !important;
+    color: #E4E4E4;
   }
 `;
 
-const SearchContainer = styled.div`
-  display: flex;
-  width: 100%;
+const SignUpButton = styled(Button)`
+  background: #276BA9;
+  :hover {
+    color: #E4E4E4;
+  }
+`;
+
+const SearchIconImage = styled.img`
+   position: absolute;
+   top: 10px;
+   left: 10px;
+   width: 15px;
+   height: 15px,
 `;
 
 const SecondaryNav = ({ brandLogo }) => (
   <NavContainer>
-    <Grid columns="2" container>
-      <Grid.Column>
-        <div>{brandLogo}</div>
-      </Grid.Column>
+    <SearchBarHeader>
+    <SearchBarLogo>
+      <div>Hello world</div>
+    </SearchBarLogo>
 
-      <Grid.Column>
-        <Grid columns="equal">
-          <Grid.Row>
-            <Grid.Column>
-              <SearchFieldContainer>
-                <Form>
-                  <Form.Field>
-                    <Input
-                      placeholder="Find the stories you love"
-                      icon="search"
-                      iconPosition="left"
-                    />
-                  </Form.Field>
-                </Form>
-              </SearchFieldContainer>
-            </Grid.Column>
-            <Grid.Column>
-              <NavItemContainer>
-                <StyledButton compact basic>Sign in</StyledButton>
-                <StyledButton primary compact>Get started</StyledButton>
-              </NavItemContainer>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Grid.Column>
-    </Grid>
+    <SearchBarActionSection>
+      <SearchBarActionForm>
+        <SearchBarFormFieldContainer>
+          <SearchIconImage src="../assets/images/svgs/search-1.svg" alt="A white magnifying glass" />
+          <StyledInput
+            placeholder="Find the stories you love"
+          />
+        </SearchBarFormFieldContainer>
+      </SearchBarActionForm>
+      <div>
+        <LoginButton>login</LoginButton>
+        <SignUpButton>Get started</SignUpButton>
+      </div>
+    </SearchBarActionSection>
+  </SearchBarHeader>
   </NavContainer>
 );
 

@@ -63,7 +63,7 @@ const AlignRight = styled.p`
 const ForgotPassword = () => (
   <ContainerStyle>
     <Center>
-      <AppLogo logo={logo} width={200} />
+      <AppLogo logo={logo} />
     </Center>
     <HeaderStyle>
       <h1>Forgot Password</h1>
