@@ -99,7 +99,7 @@ const Login = props => {
   return (
   <Body>
     <Logo>
-      <AppLogo logo={logo} width={200} />
+      <AppLogo logo={logo} />
     </Logo>
     <Center>
       <Wrap>

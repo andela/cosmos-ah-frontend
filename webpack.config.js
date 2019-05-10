@@ -45,7 +45,7 @@ module.exports = function() {
           exclude: /(src)/,
           use: [
             {
-              loader: 'svg-inline-loader',
+              loader: '',
               options: {
                 name: '[name]-[hash].[ext]',
                 outputPath: 'svg/',

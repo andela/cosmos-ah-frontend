@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid, Icon } from 'semantic-ui-react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import ArticleUtil from '../utils/articles';
 
 const ImageContainer = styled.div`
   width: 200px;
@@ -41,6 +42,7 @@ const StyledLink = styled(Link)`
 
 const ShowCaseContainer = styled.section`
   padding: 20px 0;
+  margin-top: -60px;
 `;
 
 const ShowCase = ({ article }) => (
@@ -74,9 +76,9 @@ const ShowCase = ({ article }) => (
                   <StyledLink to={`/${article.tags[0]}`}>{article.tags[0]}</StyledLink>
                 </span>
               </p>
-              <p>{moment(article.createdAt).format('DDD Mo')}
+              <p>{ArticleUtil.parseArticleCreationDate(article.createdAt)}
                 <span>&nbsp;&middot;&nbsp;
-              {article.totalReadTime} {article.totalReadTime > 1 ? 'Mins' : 'Min'} read &nbsp;
+              {article.totalReadTime} {article.totalReadTime > 1 ? 'mins' : 'min'} read &nbsp;
               <Icon name="star" size="small" />
                 </span>
               </p>

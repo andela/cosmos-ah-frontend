@@ -117,7 +117,7 @@ const Register = () => (
       <Header>
         <div>
           <Link to='/'>
-            <AppLogo logo={logo} width={150} />
+            <AppLogo logo={logo} />
           </Link>
         </div>
       </Header>
