@@ -15,7 +15,7 @@ const handleSocialAuth = props => {
   const { loginState } = props;
 
   if (loginState.login.id) {
-    props.history.push('/');
+    props.history.push('/profile');
   } else if (loginState.login.message === 'Invalid token specified') {
     props.history.push('/login');
   }
