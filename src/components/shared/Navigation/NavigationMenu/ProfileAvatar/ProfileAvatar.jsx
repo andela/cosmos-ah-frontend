@@ -12,7 +12,7 @@ const Avatar = styled.img`
 const ProfileAvatar = props => (
   <Fragment>
 		<div className="item">
-			<Avatar src={props.user || DefaultAvatar} />
+			<Avatar src={props.imageSrc || DefaultAvatar} />
 		</div>
 	</Fragment>
 );

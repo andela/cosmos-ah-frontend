@@ -4,22 +4,21 @@ import { PrimaryTitle as Title } from '../../shared/Text/Text';
 import Bio from '../Bio/Bio';
 import Social from '../Social';
 import EditProfileButton from '../EditProfile/Button';
+import Activity from '../Activity';
 
-const dummyText = 'Lorem It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.';
-
-const Layout = ({ buttonTitle, title }) => (
-  <div className="ten wide column">
+const Layout = ({ profileData }) => (
+  <div className="nine wide column">
     <div className="ui secondary menu stackable">
       <div className="item">
-        <Title>{title}</Title>
+        <Title>{profileData.fullName}</Title>
       </div>
       <div className="right item">
         <EditProfileButton />
       </div>
     </div>
-    <Bio text={dummyText} />
+    <Bio style={{ lineHeight: '25px' }} text={profileData.bio} />
     <Social socialLinks={{ facebook: null, twitter: null, linkedin: null }} />
-    {/* Should contain activity board for the Users profile <Activity>{dummyText}</Activity> */}
+    {/* <Activity>{dummyText}</Activity> */}
   </div>
 );
 

@@ -1,8 +1,16 @@
 import axios from 'axios';
 
-export default axios.create({
+const authToken = localStorage.getItem('ah-token');
+
+const Axios = axios.create({
   baseURL: 'https://author-haven-stage.herokuapp.com/api/v1',
   headers: {
     'Content-Type': 'application/json'
   }
 });
+
+if (authToken) {
+  Axios.defaults.headers.common.Authorization = authToken;
+}
+
+export default Axios;
