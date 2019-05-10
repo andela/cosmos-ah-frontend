@@ -8,7 +8,6 @@ import { getProfileSelector } from '../../state/profile/selectors';
 
 const ProfileComponent = props => {
   const { profile: { isLoading, loadedData } } = props;
-  console.log(props);
   useEffect(() => {
     async function fetchData() {
       return props.getProfile();

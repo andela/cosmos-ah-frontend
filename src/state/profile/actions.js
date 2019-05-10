@@ -12,7 +12,7 @@ export const getUserProfileFailure = () => ({
 
 export const getProfile = () => async dispatch => {
   try {
-    const { data: { data: { user } } } = await axios.get('/profile/view/979eaa2e-5b8f-4103-8192-4639afae2ba9');
+    const { data: { data: { user } } } = await axios.get('/profile');
     dispatch(getUserProfileSuccess(user));
   } catch (error) {
     dispatch(getUserProfileFailure());
