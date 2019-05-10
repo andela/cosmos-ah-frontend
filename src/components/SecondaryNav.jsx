@@ -144,10 +144,10 @@ const SecondaryNav = ({ brandLogo }) => (
             />
           </SearchBarFormFieldContainer>
         </SearchBarActionForm>
-        <ActionButtonsContainer>
+        <div>
           <LoginButton>login</LoginButton>
           <SignUpButton>Get started</SignUpButton>
-        </ActionButtonsContainer>
+        </div>
       </SearchBarActionSection>
     </SearchBarHeader>
   </NavContainer>
