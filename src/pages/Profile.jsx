@@ -10,4 +10,4 @@ const Profile = () => (
   </Fragment>
 );
 
-export default Profile;
+export default connect(props => props, { getProfile: getUserProfile })(Profile);

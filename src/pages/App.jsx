@@ -5,7 +5,6 @@ import {
 import Index from './Index';
 import Login from './Login';
 import Register from './Register';
-import Article from './Article';
 import Profile from './Profile';
 import '../assets/css/App.css';
 import ForgotPassword from './ForgotPassword';
@@ -16,7 +15,6 @@ const App = () => (
       <Route path="/" exact component={Index}></Route>
       <Route path="/login" component={Login}></Route>
       <Route path="/signup" component={Register}></Route>
-      <Route path="/articles" component={Article}></Route>
       <Route path="/profile" exact component={Profile}></Route>
       <Route path="/forgot-password" component={ForgotPassword}></Route>
     </Switch>
