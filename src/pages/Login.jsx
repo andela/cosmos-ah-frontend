@@ -91,7 +91,7 @@ const Login = props => {
   };
 
   if (loginState.id) {
-    props.history.push('/');
+    props.history.push('/profile');
   }
 
   const { email, password } = formData;
