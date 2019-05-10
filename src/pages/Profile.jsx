@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
-
+import React, { Fragment, useEffect } from 'react';
+import { connect } from 'react-redux';
 import Navigation from '../components/shared/Navigation/Navigation';
 import ProfileComponent from '../components/ProfileComponent/index';
 
-const Profile = props => (
+const Profile = () => (
   <Fragment>
     <Navigation />
     <ProfileComponent />
