@@ -3,7 +3,7 @@ export const mockStoreData = {
     articles: []
   },
   profile: {
-    data: {
+    loadedData: {
       bio: "Hold on now, aren't there already specs for this kind of thing? - Well... no. While there are a few handy specifications for dealing with JSON data, most notably Douglas Crockford's JSONRequest proposal, there's nothing to address the problems of general application-level messaging. More on this later.",
       email: "chike@gmail.com",
       fullName: "Chike Ozulumba",

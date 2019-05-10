@@ -3,10 +3,10 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { render, cleanup } from 'react-testing-library';
 import configureMockStore from 'redux-mock-store';
-import Profile from '../pages/Profile';
+import Profile from '../components/ProfileComponent';
 
-import defaultProfileAction, { getUserProfileSuccess, getUserProfileFailure, } from '../state/profile/actions';
-import { GET_PROFILE_SUCCESS, GET_PROFILE_FAILURE } from '../state/profile/actionTypes';
+import { getUserProfileSuccess, } from '../state/profile/actions';
+import { GET_PROFILE_SUCCESS } from '../state/profile/actionTypes';
 import { mockStoreData } from '../__mocks__/store';
 
 const mockStore = configureMockStore();
