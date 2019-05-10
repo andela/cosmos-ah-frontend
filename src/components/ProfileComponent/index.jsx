@@ -1,10 +1,27 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { connect } from 'react-redux';
 import Layout from './Layout';
+import Preloader from '../shared/Loaders/ContentLoader';
 
-const ProfileComponent = props => (
-  <Fragment>
-    <Layout />
-  </Fragment>
-);
+import { getProfile } from '../../state/profile/actions';
+import { getProfileSelector } from '../../state/profile/selectors';
 
-export default ProfileComponent;
+const ProfileComponent = props => {
+  const { profile: { isLoading, loadedData } } = props;
+  useEffect(() => {
+    async function fetchData() {
+      return props.getProfile();
+    }
+    fetchData();
+  }, []);
+  if (!isLoading) { return (<Preloader />); }
+  return (
+    <Fragment>
+      <Layout profileData={loadedData}/>
+    </Fragment>
+  );
+};
+
+const mapStateToProps = state => ({ profile: getProfileSelector(state) });
+
+export default connect(mapStateToProps, { getProfile, })(ProfileComponent);

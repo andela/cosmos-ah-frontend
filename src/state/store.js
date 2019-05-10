@@ -8,15 +8,14 @@ import {
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { article } from './article';
+import { profile } from './profile';
 
 const rootReducer = combineReducers({
-  [article.stateKey]: article.reducer
-
+  [article.stateKey]: article.reducer,
+  [profile.stateKey]: profile.reducer,
 });
 
-
 const middleware = [logger, thunk];
-
 
 const store = createStore(
   rootReducer,
