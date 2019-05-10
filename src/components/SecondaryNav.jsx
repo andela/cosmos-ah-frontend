@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Form, Input, Grid } from 'semantic-ui-react';
+import {
+  Form, Input, Grid, Dropdown
+} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 const StyledInput = styled.input`
@@ -37,7 +39,7 @@ const SearchBarActionSection = styled.section`
 `;
 
 const SearchBarLogo = styled.div`
-  flex: 1 0 30%;
+  flex: 1 0 20%;
 `;
 
 const SearchBarHeader = styled.div`
@@ -45,7 +47,7 @@ const SearchBarHeader = styled.div`
 `;
 
 const SearchBarActionForm = styled.form`
-  flex: 1 0 70%;
+  flex: 1 0 60%;
   position: relative;
 `;
 
@@ -81,28 +83,73 @@ const SearchIconImage = styled.img`
    height: 15px,
 `;
 
+const DropdownContainer = styled.div`
+  flex: 1 0 7%;
+  padding: 1.5px 0;
+`;
+
+const ActionButtonsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const dropDownItems = [
+  {
+    key: 'Trending',
+    text: 'Trending',
+    value: 'Trending'
+  },
+
+  {
+    key: 'Tech',
+    text: 'Tech',
+    value: 'Tech'
+  },
+
+  {
+    key: 'Culture',
+    text: 'Culture',
+    value: 'Culture'
+  },
+
+  {
+    key: 'People',
+    text: 'People',
+    value: 'People'
+  }
+];
+
 const SecondaryNav = ({ brandLogo }) => (
   <NavContainer>
     <SearchBarHeader>
-    <SearchBarLogo>
-      <div>Hello world</div>
-    </SearchBarLogo>
+      <SearchBarLogo>
+      </SearchBarLogo>
 
-    <SearchBarActionSection>
-      <SearchBarActionForm>
-        <SearchBarFormFieldContainer>
-          <SearchIconImage src="../assets/images/svgs/search-1.svg" alt="A white magnifying glass" />
-          <StyledInput
-            placeholder="Find the stories you love"
+      <SearchBarActionSection>
+        <DropdownContainer>
+          <Dropdown
+            placeholder='SEARCH'
+            options={dropDownItems}
+            button
+            compact
+            lazyLoad
           />
-        </SearchBarFormFieldContainer>
-      </SearchBarActionForm>
-      <div>
-        <LoginButton>login</LoginButton>
-        <SignUpButton>Get started</SignUpButton>
-      </div>
-    </SearchBarActionSection>
-  </SearchBarHeader>
+        </DropdownContainer>
+        <SearchBarActionForm>
+          <SearchBarFormFieldContainer>
+            <SearchIconImage src="../assets/images/svgs/search-1.svg" alt="A white magnifying glass" />
+            <StyledInput
+              placeholder="Find the stories you love"
+            />
+          </SearchBarFormFieldContainer>
+        </SearchBarActionForm>
+        <ActionButtonsContainer>
+          <LoginButton>login</LoginButton>
+          <SignUpButton>Get started</SignUpButton>
+        </ActionButtonsContainer>
+      </SearchBarActionSection>
+    </SearchBarHeader>
   </NavContainer>
 );
 
