@@ -16,13 +16,13 @@ const rootReducer = combineReducers({
 });
 
 const middleware = [logger, thunk];
-
+const reduxDevTools = process.env.NODE_ENV === 'production' ? p => p : window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = createStore(
   rootReducer,
   {},
   compose(
     applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    reduxDevTools
   )
 );
 
