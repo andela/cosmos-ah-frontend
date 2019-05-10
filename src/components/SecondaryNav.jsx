@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {
   Form, Input, Grid, Dropdown
 } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const StyledInput = styled.input`
@@ -95,6 +96,13 @@ const ActionButtonsContainer = styled.div`
   align-items: center;
 `;
 
+const StyledLink = styled(Link)`
+  color: #FFF;
+  :hover {
+    color: #E4E4E4;
+  }
+`;
+
 const dropDownItems = [
   {
     key: 'Trending',
@@ -146,8 +154,12 @@ const SecondaryNav = ({ brandLogo }) => (
           </SearchBarFormFieldContainer>
         </SearchBarActionForm>
         <div>
-          <LoginButton>login</LoginButton>
-          <SignUpButton>Get started</SignUpButton>
+          <LoginButton>
+            <StyledLink to="/login">login</StyledLink>
+          </LoginButton>
+          <SignUpButton>
+            <StyledLink to="/signup">Get started</StyledLink>
+          </SignUpButton>
         </div>
       </SearchBarActionSection>
     </SearchBarHeader>
