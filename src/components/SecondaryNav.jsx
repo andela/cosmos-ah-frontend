@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import {
   Form, Input, Grid, Dropdown
 } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const StyledInput = styled.input`
