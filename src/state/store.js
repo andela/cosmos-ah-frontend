@@ -8,17 +8,15 @@ import {
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { article } from './article';
-import { auth } from './auth';
+import { Auth } from './auth';
+
 
 const rootReducer = combineReducers({
   [article.stateKey]: article.reducer,
-  [auth.stateKey]: auth.reducer
+  [Auth.stateKey]: Auth.reducer
 });
 
-
 const middleware = [logger, thunk];
-
-
 const store = createStore(
   rootReducer,
   {},

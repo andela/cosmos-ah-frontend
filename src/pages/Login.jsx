@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Grid, Header } from 'semantic-ui-react';
+import {
+  Form, Grid, Header, Message
+} from 'semantic-ui-react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import SocialButton from '../components/SocialMediaButton';
 import { ButtonComponent } from '../components/Button';
 import AltLogo from '../components/AppLogo';
+import { loginAction } from '../state/auth/actions';
 
 const Body = styled.div`
   display: flex;
@@ -55,7 +59,43 @@ const Center = styled.div`
   margin: 0 auto;
   text-align: center;
 `;
-const Login = () => (
+
+
+const transformObjectValToString = obj => {
+  let data = [];
+  if (obj) {
+    data = [...Object.values(obj)];
+    return data;
+  }
+  return data[0];
+};
+
+const Login = props => {
+  const { loginState } = props;
+  const validatorErrors = transformObjectValToString(loginState.data);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const handleSubmit = event => {
+    event.persist();
+    event.preventDefault();
+    props.loginAction({ email, password });
+  };
+
+  const handleChange = event => {
+    event.persist();
+    setFormData(() => ({ ...formData, [event.target.name]: event.target.value }));
+  };
+
+  if (loginState.id) {
+    props.history.push('/');
+  }
+
+  const { email, password } = formData;
+
+  return (
   <Body>
     <Logo>
       <AltLogo />
@@ -70,13 +110,18 @@ const Login = () => (
           <Header color='blue'>
             <h4>or login using your email address</h4>
           </Header>
-          <Form>
-              <Form.Input size='big' icon={{ name: 'envelope outline', color: 'blue' }} iconPosition='left' placeholder='Email Address' />
-              <Form.Input size='big' icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password'/>
-              <StyledLink><a href='/forgot-password'>Forgot password?</a></StyledLink>
-              <ButtonComponent color='blue' size='big'>
-                Continue
-              </ButtonComponent>
+          <Form onSubmit={handleSubmit} loading={loginState.loadingState}>
+            <Form.Input size='big' icon={{ name: 'envelope outline', color: 'blue' }} iconPosition='left' placeholder='Email Address' name='email' onChange={handleChange} value={email}/>
+            <Form.Input size='big' icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password' name='password' onChange={handleChange} value={password}/>
+            {(validatorErrors !== undefined) && (
+            <Message negative>
+              <p>{validatorErrors}</p>
+            </Message>
+            )}
+            <StyledLink><Link to='/forgot-password'>Forgot password?</Link></StyledLink>
+            <ButtonComponent color='blue' size='big'>
+              Continue
+            </ButtonComponent>
           </Form>
           <Space>
             <Grid centered>
@@ -91,6 +136,11 @@ const Login = () => (
       </Wrap>
     </Center>
   </Body>
-);
+  );
+};
 
-export default Login;
+function mapStateToProps(state) {
+  return { loginState: state.Auth.login };
+}
+
+export default connect(mapStateToProps, { loginAction })(Login);

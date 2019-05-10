@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {
   Button, Form, Input, Grid
@@ -61,8 +62,8 @@ const SecondaryNav = ({ brandLogo }) => (
             </Grid.Column>
             <Grid.Column>
               <NavItemContainer>
-                <StyledButton compact basic>Sign in</StyledButton>
-                <StyledButton primary compact>Get started</StyledButton>
+                <Link to='/login'><StyledButton compact basic>Sign In</StyledButton></Link>
+                <Link to='/signup'><StyledButton primary compact>Get started</StyledButton></Link>
               </NavItemContainer>
             </Grid.Column>
           </Grid.Row>
