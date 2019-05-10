@@ -118,7 +118,7 @@ const HomePageBody = props => {
                                   </div>
                                   <div></div>
                                   <div>
-                                    <Image src={props.articleImg} alt="" width={100} height={100} rounded />
+                                    <Image src={article.imageUrl} alt="" width={100} height={100} rounded />
                                   </div>
                                 </Fragment>
                               )
