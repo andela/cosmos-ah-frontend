@@ -10,13 +10,22 @@ const handleSocialAuth = props => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     props.socialAuth(urlParams.get('token'));
-  });
+  }, []);
 
+  const { loginState } = props;
+
+  if (loginState.login.id) {
+    props.history.push('/profile');
+  } else if (loginState.login.message === 'Invalid token specified') {
+    props.history.push('/login');
+  }
   return (
-    <div>
-       <Redirect to='/dashboard' />
-    </div>
+    <div></div>
   );
 };
 
-export default connect(null, { socialAuth })(handleSocialAuth);
+const mapStateToProps = state => ({
+  loginState: state.Auth
+});
+
+export default connect(mapStateToProps, { socialAuth })(handleSocialAuth);
