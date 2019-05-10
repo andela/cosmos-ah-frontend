@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Grid, Icon } from 'semantic-ui-react';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 const ImageContainer = styled.div`
   width: 200px;
@@ -11,12 +12,13 @@ const ImageContainer = styled.div`
 `;
 
 const ShowCaseIntroTextHeading = styled.h3`
-  font-size: 2.5em;
+  font-size: 3em;
   margin-bottom: 0;
 `;
-const ShowCaseIntroTextTagLine = styled.div`
+const ShowCaseIntroTextTagLine = styled.p`
   width: 50%;
   margin-top: 10px;
+  font-size: 1.05em;
 `;
 
 const ShowCaseArticleImage = styled.img`
@@ -29,8 +31,12 @@ const ShowCaseAppTitle = styled.span`
   display: block;
 `;
 
-const StyledCategory = styled.span`
-  color: orange;  
+const StyledLink = styled(Link)`
+  color: #f4bc42;
+  text-transform: capitalize;
+  :hover {
+    color: #f4af41;
+  }
 `;
 
 const ShowCaseContainer = styled.section`
@@ -63,7 +69,11 @@ const ShowCase = ({ article }) => (
               <p>{article.body.substring(0, 150)}....</p>
             </ShowCaseIntroTextTagLine>
             <div>
-              <p>Sherlock Holmes in <StyledCategory>{article.tags[0]}</StyledCategory></p>
+              <p>Sherlock Holmes in &nbsp;
+              <span>
+                  <StyledLink to={`/${article.tags[0]}`}>{article.tags[0]}</StyledLink>
+                </span>
+              </p>
               <p>{moment(article.createdAt).format('DDD Mo')}
                 <span>&nbsp;&middot;&nbsp;
               {article.totalReadTime} {article.totalReadTime > 1 ? 'Mins' : 'Min'} read &nbsp;

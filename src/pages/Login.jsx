@@ -7,8 +7,9 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import SocialButton from '../components/SocialMediaButton';
 import { ButtonComponent } from '../components/Button';
-import AltLogo from '../components/AppLogo';
 import { loginAction } from '../state/auth/actions';
+import AppLogo from '../components/AppLogo';
+import logo from '../assets/images/logo.png';
 
 const Body = styled.div`
   display: flex;
@@ -98,7 +99,7 @@ const Login = props => {
   return (
   <Body>
     <Logo>
-      <AltLogo />
+      <AppLogo logo={logo} width={200} />
     </Logo>
     <Center>
       <Wrap>

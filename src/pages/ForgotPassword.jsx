@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { Form } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { ButtonComponent } from '../components/Button';
-import AltLogo from '../components/AppLogo';
+import AppLogo from '../components/AppLogo';
+import logo from '../assets/images/logo.png';
 
 
 const Center = styled.div`
@@ -62,7 +63,7 @@ const AlignRight = styled.p`
 const ForgotPassword = () => (
   <ContainerStyle>
     <Center>
-      <AltLogo />
+      <AppLogo logo={logo} width={200} />
     </Center>
     <HeaderStyle>
       <h1>Forgot Password</h1>

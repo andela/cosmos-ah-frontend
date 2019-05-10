@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Form, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 import SocialMediaButton from '../components/SocialMediaButton';
+import AppLogo from '../components/AppLogo';
+import logo from '../assets/images/inverted-logo.png';
 
 
 const Center = styled.div`
@@ -114,7 +116,9 @@ const Register = () => (
     <Background>
       <Header>
         <div>
-          <Link to='/'><img src='../assets/images/inverted-logo.png' width='150px' /></Link >
+          <Link to='/'>
+            <AppLogo logo={logo} width={150} />
+          </Link>
         </div>
       </Header>
       <Aside>

@@ -16,7 +16,7 @@ const NavList = styled.ul`
 const NavListItem = styled.li`
   list-style-type: none;
   display: inline-block;
-  padding: 5px 15px;
+  padding: 0px 15px;
   font-size: 1.25em;
   :hover {
     color: red !important;
@@ -32,21 +32,24 @@ const StyledLink = styled(Link)`
 
 const Banner = styled.header`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -50px;
 `;
 
 const LogoContainer = styled.div`
-  flex: 1 0 20%;
+  flex: 1 0 30%;
   font-size: 2em;
 `;
 
 const NavBox = styled.div`
-  flex: 1 0 80%;
+  flex: 1 0 70%;
 `;
 
 const PrimaryNav = ({ brandLogo, pages }) => (
   <Banner>
     <LogoContainer>
-      <h3>{brandLogo}</h3>
+      {brandLogo}
     </LogoContainer>
     <NavBox>
       <NavList>
