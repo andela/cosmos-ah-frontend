@@ -5,6 +5,7 @@ import {
   Form, Input, Grid, Dropdown
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import searchIcon from '../assets/images/svgs/search-1.svg';
 
 const StyledInput = styled.input`
   background-color: #276BA9;
@@ -146,7 +147,7 @@ const SecondaryNav = ({ brandLogo }) => (
         </DropdownContainer>
         <SearchBarActionForm>
           <SearchBarFormFieldContainer>
-            <SearchIconImage src="../assets/images/svgs/search-1.svg" alt="A white magnifying glass" />
+            <SearchIconImage src={searchIcon} alt="" />
             <StyledInput
               placeholder="Find the stories you love"
             />
