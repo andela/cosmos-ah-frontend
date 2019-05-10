@@ -112,8 +112,8 @@ const Login = props => {
             <h4>or login using your email address</h4>
           </Header>
           <Form onSubmit={handleSubmit} loading={loginState.loadingState}>
-            <Form.Input size='big' icon={{ name: 'envelope outline', color: 'blue' }} iconPosition='left' placeholder='Email Address' name='email' onChange={handleChange} value={email}/>
-            <Form.Input size='big' icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password' name='password' onChange={handleChange} value={password}/>
+            <Form.Input size='big' icon={{ name: 'envelope outline', color: 'blue' }} iconPosition='left' placeholder='Email Address' name='email' onChange={handleChange} value={email} required={true}/>
+            <Form.Input size='big' icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password' name='password' onChange={handleChange} value={password} required={true}/>
             {(validatorErrors !== undefined) && (
             <Message negative>
               <p>{validatorErrors}</p>

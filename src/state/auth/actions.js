@@ -40,12 +40,11 @@ export const getSocialAuth = decodedToken => (
 );
 
 export const socialAuth = token => dispatch => {
-  setLocalStorage(token, 'loggedinUser');
-  const decodedToken = decodeToken(token);
-
   try {
+    localStorage.setItem('ah-token', token);
+    const decodedToken = decodeToken(token);
     dispatch(getSocialAuth(decodedToken));
   } catch (error) {
-    throw error;
+    dispatch(signInError(error));
   }
 };
