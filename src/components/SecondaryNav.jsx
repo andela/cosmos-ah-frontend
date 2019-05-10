@@ -19,7 +19,7 @@ const SearchFieldContainer = styled(NavItemContainer)`
 `;
 
 const NavContainer = styled.div`
-  padding: 10px 0;
+  padding-top: 10px;
 `;
 
 const StyledButton = styled(Button)`

@@ -4,7 +4,8 @@ import { Form, Grid, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 import SocialButton from '../components/SocialMediaButton';
 import { ButtonComponent } from '../components/Button';
-import AltLogo from '../components/AppLogo';
+import AppLogo from '../components/AppLogo';
+import logo from '../assets/images/logo.png';
 
 const Body = styled.div`
   display: flex;
@@ -58,7 +59,7 @@ const Center = styled.div`
 const Login = () => (
   <Body>
     <Logo>
-      <AltLogo />
+      <AppLogo logo={logo} width={200} />
     </Logo>
     <Center>
       <Wrap>

@@ -11,12 +11,13 @@ const ImageContainer = styled.div`
 `;
 
 const ShowCaseIntroTextHeading = styled.h3`
-  font-size: 2.5em;
+  font-size: 3em;
   margin-bottom: 0;
 `;
-const ShowCaseIntroTextTagLine = styled.div`
+const ShowCaseIntroTextTagLine = styled.p`
   width: 50%;
   margin-top: 10px;
+  font-size: 1.05em;
 `;
 
 const ShowCaseArticleImage = styled.img`

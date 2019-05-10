@@ -1,6 +1,8 @@
 import React from 'react';
 import PrimaryNav from './PrimaryNav';
 import SecondaryNav from './SecondaryNav';
+import AppLogo from './AppLogo';
+import logo from '../assets/images/inverted-logo.png';
 
 const pages = [
   { title: 'Home', url: '/' },
@@ -16,7 +18,7 @@ const pages = [
 const NavContainer = () => (
   <nav>
     <SecondaryNav />
-    <PrimaryNav brandLogo="Logo" pages={pages} />
+    <PrimaryNav brandLogo={<AppLogo logo={logo} width={200} />} pages={pages} />
   </nav>
 );
 
