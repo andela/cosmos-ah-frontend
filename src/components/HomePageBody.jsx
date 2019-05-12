@@ -61,11 +61,11 @@ const HomePageBody = props => {
     props.getArticleAction();
   }, []);
 
-  const articleCategories = ArticleUtil.articleCategories;
+  const { articleCategories } = ArticleUtil;
   const articleCategoryToArticle = ArticleUtil.getAccumulator(articleCategories);
-  articleCategories.forEach((category) => {
+  articleCategories.forEach(category => {
     articleCategoryToArticle[category] = ArticleUtil.filterArticleByCategory(props.articles, category);
-  })
+  });
   const articleCategoryWithContent = ArticleUtil.filterByContent(articleCategories, articleCategoryToArticle);
 
   return (
@@ -99,14 +99,12 @@ const HomePageBody = props => {
               </CustomGrid>
               {
                 articleCategoryWithContent
-                  .map((category, i) => {
-                    return (
+                  .map((category, i) => (
                       <Fragment key={i}>
                         <StyledHeadingWithBorder>{category}</StyledHeadingWithBorder>
                         <CategoryCustomGrid>
                           {
-                            articleCategoryToArticle[category.toLowerCase()].map((article) => {
-                              return (
+                            articleCategoryToArticle[category.toLowerCase()].map(article => (
                                 <Fragment key={article.id}>
                                   <div>
                                     <h3>{article.title}</h3>
@@ -121,13 +119,11 @@ const HomePageBody = props => {
                                     <Image src={props.articleImg} alt="" width={100} height={100} rounded />
                                   </div>
                                 </Fragment>
-                              )
-                            })
+                            ))
                           }
                         </CategoryCustomGrid>
                       </Fragment>
-                    )
-                  })
+                  ))
               }
             </Grid.Column>
             <Grid.Column>
@@ -135,12 +131,11 @@ const HomePageBody = props => {
                 <StyledHeadingWithBorder>Popular on Author's Haven</StyledHeadingWithBorder>
                 {
                   ArticleUtil.getTopTrendingArticles(props.articles)
-                    .map((article, i) => {
-                      return (
+                    .map((article, i) => (
                         <Grid columns="2">
                           <Grid.Row>
                             <StyledColumn width={4} verticalAlign="middle">
-                              <NumberStyling>0{i+1}</NumberStyling>
+                              <NumberStyling>0{i + 1}</NumberStyling>
                             </StyledColumn>
 
                             <Grid.Column>
@@ -150,8 +145,7 @@ const HomePageBody = props => {
                             </Grid.Column>
                           </Grid.Row>
                         </Grid>
-                      )
-                    })
+                    ))
                 }
                 <StyledHeadingWithBorder>Preferences</StyledHeadingWithBorder>
                 <Grid columns="2">
