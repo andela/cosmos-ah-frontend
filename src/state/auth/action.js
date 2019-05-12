@@ -5,6 +5,7 @@ import {
 } from './actionTypes';
 import axios from '../../lib/axios';
 import { decodeToken, setLocalStorage } from '../../lib/auth';
+import { error } from '../alert/actions';
 
 export const request = () => ({
   type: REGISTER_REQUEST,
@@ -15,9 +16,9 @@ export const success = user => ({
   user,
 });
 
-export const failure = error => ({
+export const failure = errorMessage => ({
   type: REGISTER_FAILURE,
-  error,
+  error: errorMessage,
 });
 
 export const register = newUser => async dispatch => {
@@ -28,8 +29,13 @@ export const register = newUser => async dispatch => {
     const decodedToken = decodeToken(token);
     dispatch(success(decodedToken));
     setLocalStorage('token', token);
-  } catch (error) {
-    dispatch(failure(error));
+  } catch (err) {
+    dispatch(failure(err));
+    let { message } = err.response.data;
+    if (typeof message === 'object') {
+      message = Object.values(message);
+    }
+    dispatch(error(message));
   }
 };
 
