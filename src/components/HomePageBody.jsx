@@ -4,12 +4,12 @@ import React, { useState, useEffect, Fragment } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {
-  Grid, Segment, Header, Container, Image, Icon
+  Grid, Container, Image, Icon
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import moment from 'moment';
 import { getArticleAction, getArticles } from '../state/article/actions';
 import ArticleUtil from '../utils/articles';
+import ArticlePrimaryCard from './shared/Article/ArticlePrimaryCard';
 
 const StyledHeading = styled.h3`
   padding-bottom: 10px; 
@@ -79,22 +79,7 @@ const HomePageBody = props => {
               </StyledHeadingWithBorder>
               <CustomGrid>
                 {props.articles.slice(0, 4).map(article => (
-                  <Fragment key={article.id}>
-                    <div style={{ marginBottom: 20 }}>
-                      <h3>{article.title}</h3>
-                      <p>{article.description}</p>
-
-                      {article.author}
-                      <span>{ArticleUtil.parseArticleCreationDate(article.createdAt)}&nbsp;&middot;</span>&nbsp;
-                        <ArticleReadTimeSpan>{article.totalReadTime} {article.totalReadTime > 1 ? 'mins' : 'min'} read</ArticleReadTimeSpan>&nbsp;
-                        <Icon name="star" size="small" color="grey" />
-                    </div>
-                    <div>
-                    </div>
-                    <div>
-                      <Image src={article.imageUrl} alt="" width={100} height={100} rounded />
-                    </div>
-                  </Fragment>
+                  <ArticlePrimaryCard key={article.id} article={article} />
                 ))}
               </CustomGrid>
               {
@@ -102,23 +87,10 @@ const HomePageBody = props => {
                   .map((category, i) => (
                       <Fragment key={i}>
                         <StyledHeadingWithBorder>{category}</StyledHeadingWithBorder>
-                        <CategoryCustomGrid>
+                        <CategoryCustomGrid key={i}>
                           {
                             articleCategoryToArticle[category.toLowerCase()].map(article => (
-                                <Fragment key={article.id}>
-                                  <div>
-                                    <h3>{article.title}</h3>
-                                    <p>{article.description}</p>
-                                    {/* <div>{article.author}</div> */}
-                                    <span>{ArticleUtil.parseArticleCreationDate(article.createdAt)}&nbsp;&middot;&nbsp;</span>&nbsp;
-                                    <ArticleReadTimeSpan>{article.totalReadTime} {article.totalReadTime > 1 ? 'mins' : 'min'} read</ArticleReadTimeSpan>&nbsp;
-                                    <Icon name="star" size="small" color="grey" />
-                                  </div>
-                                  <div></div>
-                                  <div>
-                                    <Image src={props.articleImg} alt="" width={100} height={100} rounded />
-                                  </div>
-                                </Fragment>
+                                <ArticlePrimaryCard key={article.id} article={article} />
                             ))
                           }
                         </CategoryCustomGrid>

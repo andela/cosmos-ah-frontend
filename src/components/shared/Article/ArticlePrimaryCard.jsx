@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Image } from 'semantic-ui-react';
+import { Image, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ArticleUtil from '../../../utils/articles';
@@ -8,6 +8,10 @@ const { parseArticleCreationDate } = ArticleUtil;
 
 const CardContentContainer = styled.div`
   margin-bottom: 20px;
+`;
+
+const ArticleReadTime = styled.span`
+  color: #3A8FDD;
 `;
 
 const ArticlePrimaryCard = ({ article }) => (
@@ -20,10 +24,10 @@ const ArticlePrimaryCard = ({ article }) => (
             {parseArticleCreationDate(article.createdAt)}
             &nbsp;&middot;
           </span>&nbsp;
-          <ArticleReadTimeSpan>
+          <ArticleReadTime>
             {article.totalReadTime} {article.totalReadTime > 1 ? 'mins' : 'min'} read
-          </ArticleReadTimeSpan>&nbsp;
-          <Icon name="star" size="small" color="grey" />
+          </ArticleReadTime>&nbsp;
+          <Icon name="star" size="small" color="grey" data-testId={`card-icon-${article.id}`}/>
         </CardContentContainer>
         <div>
           {/* Space left intentionally */}
