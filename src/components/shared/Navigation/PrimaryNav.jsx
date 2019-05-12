@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link, BrowserRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
-import { Grid } from 'semantic-ui-react';
 
 const NavList = styled.ul`
   text-transform: uppercase;
