@@ -7,9 +7,10 @@ import {
   Grid, Container, Image, Icon
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { getArticleAction, getArticles } from '../state/article/actions';
+import { getArticleAction } from '../state/article/actions';
 import ArticleUtil from '../utils/articles';
 import ArticlePrimaryCard from './shared/Article/ArticlePrimaryCard';
+import ArticleSecondaryCard from './shared/Article/ArticleSecondaryCard';
 
 const StyledHeading = styled.h3`
   padding-bottom: 10px; 
@@ -58,7 +59,7 @@ const StyledContainer = styled(Container)`
 
 const HomePageBody = props => {
   useEffect(() => {
-    props.getArticleAction();
+    props.getArticles();
   }, []);
 
   const { articleCategories } = ArticleUtil;
@@ -101,121 +102,26 @@ const HomePageBody = props => {
             <Grid.Column>
               <aside>
                 <StyledHeadingWithBorder>Popular on Author's Haven</StyledHeadingWithBorder>
-                {
+                  <Grid columns="2">
+                  {
                   ArticleUtil.getTopTrendingArticles(props.articles)
-                    .map((article, i) => (
-                        <Grid columns="2">
-                          <Grid.Row>
-                            <StyledColumn width={4} verticalAlign="middle">
-                              <NumberStyling>0{i + 1}</NumberStyling>
-                            </StyledColumn>
-
-                            <Grid.Column>
-                              <h3>{article.title}</h3>
-                              <p style={pStyle}>Jane Doe</p>
-                              <span>{ArticleUtil.parseArticleCreationDate(article.createdAt)} &middot; {article.totalReadTime} min read</span>
-                            </Grid.Column>
-                          </Grid.Row>
-                        </Grid>
-                    ))
+                    .map((article, i) => {
+                      return (
+                        <ArticleSecondaryCard article={article} count={i} />
+                      )
+                    })
                 }
+                  </Grid>
                 <StyledHeadingWithBorder>Preferences</StyledHeadingWithBorder>
                 <Grid columns="2">
                   <Grid.Row>
                     <StyledColumn width={4} verticalAlign="middle">
                       <NumberStyling>01</NumberStyling>
                     </StyledColumn>
-
                     <Grid.Column>
                       <h3>Did you know Pandas Can Do so much?</h3>
                       <p style={pStyle}>Jane Doe in Romance</p>
                       <span>Mar 26 &middot; 7 Min Read</span>
-                    </Grid.Column>
-                  </Grid.Row>
-
-                  <Grid.Row>
-                    <StyledColumn width={4} verticalAlign="middle">
-                      <NumberStyling>02</NumberStyling>
-                    </StyledColumn>
-
-                    <Grid.Column>
-                      <h3>Did you know Pandas Can Do so much?</h3>
-                      <p style={pStyle}>Jane Doe in Romance</p>
-                      <span>Mar 26 7 Min Read</span>
-                    </Grid.Column>
-                  </Grid.Row>
-
-                  <Grid.Row>
-                    <StyledColumn width={4} verticalAlign="middle">
-                      <NumberStyling>03</NumberStyling>
-                    </StyledColumn>
-
-                    <Grid.Column>
-                      <h3>Did you know Pandas Can Do so much?</h3>
-                      <p style={pStyle}>Jane Doe in Romance</p>
-                      <p>Mar 26 7 Min Read</p>
-                    </Grid.Column>
-                  </Grid.Row>
-
-                  <Grid.Row>
-                    <StyledColumn width={4} verticalAlign="middle">
-                      <NumberStyling>04</NumberStyling>
-                    </StyledColumn>
-
-                    <Grid.Column>
-                      <h3>Did you know Pandas Can Do so much?</h3>
-                      <p style={pStyle}>Jane Doe in Romance</p>
-                      <p>Mar 26 7 Min Read</p>
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
-                <StyledHeadingWithBorder>Preferences</StyledHeadingWithBorder>
-                <Grid columns="2">
-                  <Grid.Row>
-                    <StyledColumn width={4} verticalAlign="middle">
-                      <NumberStyling>01</NumberStyling>
-                    </StyledColumn>
-
-                    <Grid.Column>
-                      <h3>Did you know Pandas Can Do so much?</h3>
-                      <p style={pStyle}>Jane Doe in Romance</p>
-                      <span>Mar 26 &middot; 7 Min Read</span>
-                    </Grid.Column>
-                  </Grid.Row>
-
-                  <Grid.Row>
-                    <StyledColumn width={4} verticalAlign="middle">
-                      <NumberStyling>02</NumberStyling>
-                    </StyledColumn>
-
-                    <Grid.Column>
-                      <h3>Did you know Pandas Can Do so much?</h3>
-                      <p style={pStyle}>Jane Doe in Romance</p>
-                      <span>Mar 26 7 Min Read</span>
-                    </Grid.Column>
-                  </Grid.Row>
-
-                  <Grid.Row>
-                    <StyledColumn width={4} verticalAlign="middle">
-                      <NumberStyling>03</NumberStyling>
-                    </StyledColumn>
-
-                    <Grid.Column>
-                      <h3>Did you know Pandas Can Do so much?</h3>
-                      <p style={pStyle}>Jane Doe in Romance</p>
-                      <p>Mar 26 7 Min Read</p>
-                    </Grid.Column>
-                  </Grid.Row>
-
-                  <Grid.Row>
-                    <StyledColumn width={4} verticalAlign="middle">
-                      <NumberStyling>04</NumberStyling>
-                    </StyledColumn>
-
-                    <Grid.Column>
-                      <h3>Did you know Pandas Can Do so much?</h3>
-                      <p style={pStyle}>Jane Doe in Romance</p>
-                      <p>Mar 26 7 Min Read</p>
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
@@ -236,4 +142,4 @@ const mapStateToProps = state => ({
   articles: state.article.articles
 });
 
-export default connect(mapStateToProps, { getArticleAction })(HomePageBody);
+export default connect(mapStateToProps, { getArticles: getArticleAction })(HomePageBody);

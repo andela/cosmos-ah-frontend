@@ -22,9 +22,3 @@ test('it displays the article title', async () => {
   expect(getByTestId('my-article').tagName).toBe('H3');
   expect(getByText('my article').tagName).toBe('H3');
 });
-
-test('it displays the article author\'s name', async () => {
-  const { getByText, getByTestId } = render(<ShowCase article={article} />);
-  expect(getByTestId('my-article').tagName).toBe('H3');
-  expect(getByText(/Albert Einstein/).tagName).toBe('P');
-});
