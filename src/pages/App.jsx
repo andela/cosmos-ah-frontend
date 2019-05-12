@@ -10,6 +10,7 @@ import { ConnectedHandleSocialAuth } from '../components/HandleSocialAuth';
 import '../assets/css/App.css';
 import ForgotPassword from './ForgotPassword';
 import { connectedFeed } from './Feeds';
+import CreateArticle from './CreateArticle';
 
 const App = () => (
   <Router>
@@ -21,6 +22,7 @@ const App = () => (
       <Route path="/forgot-password" component={ForgotPassword}></Route>
       <Route path='/handlesocialauth' component={ConnectedHandleSocialAuth} />
       <Route path="/feeds" component={connectedFeed} />
+      <Route path="/article/create" exact component={CreateArticle}></Route>
     </Switch>
   </Router>
 );

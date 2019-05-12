@@ -80,7 +80,7 @@ module.exports = function() {
     devtool: 'source-map',
     devServer: {
       historyApiFallback: true,
-      contentBase: path.resolve(__dirname, './src'),
+      contentBase: path.resolve(__dirname, './public'),
       compress: true,
       port: 9001,
       watchContentBase: true,
