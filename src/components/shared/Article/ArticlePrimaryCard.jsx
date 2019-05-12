@@ -24,7 +24,7 @@ const ArticlePrimaryCard = ({ article }) => (
             {parseArticleCreationDate(article.createdAt)}
             &nbsp;&middot;
           </span>&nbsp;
-          <ArticleReadTime>
+          <ArticleReadTime data-testId={`article-read-time-${article.id}`}>
             {article.totalReadTime} {article.totalReadTime > 1 ? 'mins' : 'min'} read
           </ArticleReadTime>&nbsp;
           <Icon name="star" size="small" color="grey" data-testId={`card-icon-${article.id}`}/>

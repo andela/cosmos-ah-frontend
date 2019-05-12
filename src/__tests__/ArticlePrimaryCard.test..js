@@ -29,5 +29,5 @@ test('card has an icon', () => {
 
 test('card displays reading time', () => {
   const { getByTestId } = render(<ArticlePrimaryCard article={article} />);
-  expect(getByTestId(`article-read-time-${article.id}`).tagName).toBe('I');
+  expect(getByTestId(`article-read-time-${article.id}`).tagName).toBe('span');
 });
