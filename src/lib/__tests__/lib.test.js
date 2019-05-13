@@ -1,8 +1,8 @@
-import { getUserProfile } from '../lib/profile';
-import { mockStoreData, JWT_TOKEN } from '../__mocks__/store';
+import { getUserProfile } from '../profile';
+import { mockStoreData, JWT_TOKEN } from '../../__mocks__/store';
 
 beforeEach(() => {
-  localStorage.setItem('ah-token', null)
+  localStorage.setItem('ah-token', null);
 });
 
 describe('Get User Profile succeeds', () => {
@@ -11,8 +11,7 @@ describe('Get User Profile succeeds', () => {
   });
 
   it('Should successully return users profile', async () => {
-    const userProfile = await getUserProfile();
-
+    await getUserProfile();
   });
 });
 
@@ -22,6 +21,6 @@ describe('Get User Profile fails', () => {
   });
 
   it('Should fail in returning users profile', async () => {
-    const userProfile = await getUserProfile();
+    await getUserProfile();
   });
 });
