@@ -27,7 +27,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "test": "jest | coveralls",
+    "test": "jest",
     "test:dev": "jest --watchAll",
     "coverage": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
     "build": "webpack --mode production",
@@ -53,6 +53,8 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "coveralls": "^3.0.3",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.2.0",
@@ -84,8 +86,8 @@
     "css-loader": "^2.1.1",
     "express": "^4.16.4",
     "jquery": "^3.4.1",
-    "moment": "^2.24.0",
     "jwt-decode": "^2.2.0",
+    "moment": "^2.24.0",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -100,6 +102,7 @@
     "sass-loader": "^7.1.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.86.0",
+    "sinon": "^7.3.2",
     "stringz": "^1.0.0",
     "styled-components": "^4.2.0",
     "svg-inline-loader": "^0.8.0",
@@ -109,9 +112,7 @@
     "collectCoverage": true,
     "coverageDirectory": "coverage",
     "coverageReporters": [
-      "lcov",
-      "text",
-      "text-lcov"
+      "text"
     ],
     "verbose": true,
     "testURL": "http://localhost:9001/",
