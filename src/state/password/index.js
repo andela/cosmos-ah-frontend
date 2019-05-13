@@ -1,5 +1,5 @@
 import { initialState } from './state';
-import reducer from './reducers';
+import reducer from './reducer';
 
 export const forgotPassword = {
   initialState,

@@ -12,7 +12,7 @@ import { profile } from './profile';
 import { auth } from './auth';
 import { alert } from './alert';
 import { createArticle } from './create-article';
-import { forgotPassword } from './ForgotPassword';
+import { forgotPassword } from './password';
 
 const middleware = [logger, thunk];
 const rootReducer = combineReducers({

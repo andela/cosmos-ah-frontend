@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Form } from 'semantic-ui-react';
+import { Form, Message } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { ButtonComponent } from '../components/Button';
 import AltLogo from '../components/AppLogo';
-import { forgotPasswordAction } from '../state/ForgotPassword/actions';
+import { forgotPasswordAction } from '../state/password/actions';
 
 
 const Center = styled.div`
@@ -62,20 +62,23 @@ const AlignRight = styled.p`
 `;
 
 const ForgotPassword = props => {
+  const { forgotPasswordState } = props;
   const [formInput, setFormInput] = useState({
-    password: ''
+    email: ''
   });
 
 
-  const { password } = formInput;
+  const { email } = formInput;
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    props.forgotPasswordAction({ password });
+  const handleSubmit = event => {
+    event.preventDefault();
+    props.forgotPasswordAction(email);
+    setFormInput({ email: '' });
   };
 
-  const handleChange = e => {
-    const { name, value } = e.target;
+  const handleChange = event => {
+    event.persist();
+    const { name, value } = event.target;
     setFormInput(() => ({ ...formInput, [name]: value }));
   };
 
@@ -89,26 +92,42 @@ const ForgotPassword = props => {
         <h1>Forgot Password</h1>
       </HeaderStyle>
       <h4>Enter Your Email Address And We Will Email You With Instructions</h4>
-      <FormStyle onSubmit={handleSubmit} data-testid='forgotPassword'>
+      {props.forgotPasswordState.message && (
+        <Message success>
+          {
+            props.forgotPasswordState.message.data
+            && <p>{props.forgotPasswordState.message.data}</p>
+          }
+        </Message>
+      )}
+      <FormStyle onSubmit={handleSubmit} loading={forgotPasswordState.loadingState} data-testid='forgotPassword'>
         <Form.Input
           fluid
           size='big'
           icon={{ name: 'envelope', color: 'blue' }}
           iconPosition='left'
           placeholder='YOUR EMAIL ADDRESS'
-          type='password'
-          name='password'
+          type='email'
+          name='email'
           onChange={handleChange}
-          value={password}
+          value={email}
           required={true} />
         <ButtonComponent type='submit' size='big' color='blue'>RESET PASSWORD</ButtonComponent>
+        {props.forgotPasswordState.error === 'Account associated with this email cannot be found' && (
+          <Message negative>
+            {
+              props.forgotPasswordState.error
+              && <p>{props.forgotPasswordState.error}</p>
+            }
+          </Message>
+        )}
       </FormStyle>
       <AlignRight><Link to='/login'>Back to Login</Link></AlignRight>
     </ContainerStyle>
   );
 };
 function mapStateToProps(state) {
-  return { forgotPasswordState: state.ForgotPassword };
+  return { forgotPasswordState: state.forgotPassword.forgotPassword };
 }
 
 

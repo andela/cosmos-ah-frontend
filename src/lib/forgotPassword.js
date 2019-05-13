@@ -1,10 +1,6 @@
 import axios from './axios';
 
-export const userForgotPassword = async formInput => {
-  try {
-    const forgotPassword = await axios.post('/forgot-password', formInput);
-    return forgotPassword;
-  } catch (error) {
-    return error;
-  }
+export const userForgotPassword = async email => {
+  const forgotPassword = await axios.post('/forgot-password', { email });
+  return forgotPassword;
 };
