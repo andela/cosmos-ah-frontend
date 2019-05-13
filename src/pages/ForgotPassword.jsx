@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { ButtonComponent } from '../components/Button';
 import AltLogo from '../components/AppLogo';
-import appLogo from '../assets/images/logo.png';
+import { forgotPasswordAction } from '../state/ForgotPassword/actions';
 
 
 const Center = styled.div`
@@ -60,23 +61,55 @@ const AlignRight = styled.p`
   }
 `;
 
-const ForgotPassword = () => (
+const ForgotPassword = props => {
+  const [formInput, setFormInput] = useState({
+    password: ''
+  });
 
 
-  <ContainerStyle>
-    <Center>
-      <AltLogo logo={appLogo} />
-    </Center>
-    <HeaderStyle>
-      <h1>Forgot Password</h1>
-    </HeaderStyle>
-    <h4>Enter Your Email Address And We Will Email You With Instructions</h4>
-    <FormStyle data-testid='forgotPassword'>
-      <Form.Input size='big' icon={{ name: 'envelope', color: 'blue' }} iconPosition='left' fluid placeholder='YOUR EMAIL ADDRESS' />
-      <ButtonComponent type='submit' size='big' color='blue'>RESET PASSWORD</ButtonComponent>
-    </FormStyle>
-    <AlignRight><Link to='/login'>Back to Login</Link></AlignRight>
-  </ContainerStyle>
-);
+  const { password } = formInput;
 
-export default ForgotPassword;
+  const handleSubmit = e => {
+    e.preventDefault();
+    props.forgotPasswordAction({ password });
+  };
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setFormInput(() => ({ ...formInput, [name]: value }));
+  };
+
+
+  return (
+    <ContainerStyle>
+      <Center>
+        <AltLogo />
+      </Center>
+      <HeaderStyle>
+        <h1>Forgot Password</h1>
+      </HeaderStyle>
+      <h4>Enter Your Email Address And We Will Email You With Instructions</h4>
+      <FormStyle onSubmit={handleSubmit} data-testid='forgotPassword'>
+        <Form.Input
+          fluid
+          size='big'
+          icon={{ name: 'envelope', color: 'blue' }}
+          iconPosition='left'
+          placeholder='YOUR EMAIL ADDRESS'
+          type='password'
+          name='password'
+          onChange={handleChange}
+          value={password}
+          required={true} />
+        <ButtonComponent type='submit' size='big' color='blue'>RESET PASSWORD</ButtonComponent>
+      </FormStyle>
+      <AlignRight><Link to='/login'>Back to Login</Link></AlignRight>
+    </ContainerStyle>
+  );
+};
+function mapStateToProps(state) {
+  return { forgotPasswordState: state.ForgotPassword };
+}
+
+
+export default connect(mapStateToProps, { forgotPasswordAction })(ForgotPassword);
