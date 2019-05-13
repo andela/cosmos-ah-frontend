@@ -73,9 +73,9 @@ export const socialAuth = (token, redirect) => dispatch => {
     setLocalStorage(token, 'loggedinUser');
     const decodedToken = decodeToken(token);
     dispatch(getSocialAuth(decodedToken));
-    redirect.push('/');
+    // redirect.push('/');
   } catch (error) {
     dispatch(signInError(error));
-    redirect.push('/login');
+    // redirect.push('/login');
   }
 };
