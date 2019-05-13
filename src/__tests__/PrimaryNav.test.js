@@ -5,7 +5,7 @@ import navigationMock from '../__mocks__/navigation';
 
 afterEach(cleanup);
 
-const props = { brandLogo: 'AppLogo', pages: navigationMock.pages };
+const props = { brandLogo: 'AppLogo', links: navigationMock.links };
 
 test('Renders <PrimaryNav /> component', () => {
   const primaryNav = render(<PrimaryNav {...props}/>);

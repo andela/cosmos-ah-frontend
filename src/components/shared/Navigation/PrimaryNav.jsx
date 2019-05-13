@@ -46,7 +46,7 @@ const NavBox = styled.div`
   flex: 1 0 70%;
 `;
 
-const PrimaryNav = ({ brandLogo, pages }) => (
+const PrimaryNav = ({ brandLogo, links }) => (
   <Banner>
     <LogoContainer>
       {brandLogo}
@@ -54,7 +54,7 @@ const PrimaryNav = ({ brandLogo, pages }) => (
     <NavBox>
       <NavList>
         <Router>
-          {pages.map((page, i) => (
+          {links.map((page, i) => (
             <NavListItem key={i}>
               <StyledLink to={page.url}>{page.title}</StyledLink>
             </NavListItem>
@@ -67,7 +67,7 @@ const PrimaryNav = ({ brandLogo, pages }) => (
 
 PrimaryNav.propTypes = {
   brandLogo: PropTypes.node.isRequired,
-  pages: PropTypes.arrayOf(PropTypes.object)
+  links: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default PrimaryNav;

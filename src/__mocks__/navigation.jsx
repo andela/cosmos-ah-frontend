@@ -1,5 +1,5 @@
 export default {
-  pages: [
+  links: [
     { title: 'Home', url: '/' },
     { title: 'Articles', url: '/articles' }
   ]
