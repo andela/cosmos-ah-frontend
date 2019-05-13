@@ -141,4 +141,4 @@ function mapStateToProps(state) {
   return { loginState: state.auth.signin };
 }
 
-export default connect(mapStateToProps, { loginAction })(Login);
+export const conectedLogin = connect(mapStateToProps, { loginAction })(Login);
