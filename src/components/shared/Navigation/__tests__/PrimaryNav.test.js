@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup } from 'react-testing-library';
-import PrimaryNav from '../components/shared/Navigation/PrimaryNav';
+import PrimaryNav from '../PrimaryNav';
 import navigationMock from '../__mocks__/navigation';
 
 afterEach(cleanup);

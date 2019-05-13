@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup } from 'react-testing-library';
-import SecondaryNav from '../components/shared/Navigation/SecondaryNav';
+import SecondaryNav from '../SecondaryNav';
 import { MemoryRouter as Router } from 'react-router-dom';
 
 afterEach(cleanup);
