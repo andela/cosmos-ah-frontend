@@ -1,6 +1,7 @@
 import jwtDecode from 'jwt-decode';
 import {
-  REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, SIGN_IN_SUCCESS, SIGN_IN_ERROR, LOADING
+  REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE,
+  SIGN_IN_SUCCESS, SIGN_IN_ERROR, LOADING, SOCIAL_AUTH,
 } from './actionTypes';
 import axios from '../../lib/axios';
 import { decodeToken, setLocalStorage } from '../../lib/auth';
@@ -37,6 +38,13 @@ export const signInSuccess = signin => ({
   payload: signin
 });
 
+export const getSocialAuth = decodedToken => (
+  {
+    type: SOCIAL_AUTH,
+    payload: decodedToken
+  }
+);
+
 export const signInError = signinError => ({
   type: SIGN_IN_ERROR,
   payload: signinError
@@ -57,5 +65,17 @@ export const loginAction = (formData, redirect) => async dispatch => {
     redirect.push('/feeds');
   } catch (error) {
     dispatch(signInError(error.response.data));
+  }
+};
+
+export const socialAuth = (token, redirect) => dispatch => {
+  try {
+    setLocalStorage(token, 'loggedinUser');
+    const decodedToken = decodeToken(token);
+    dispatch(getSocialAuth(decodedToken));
+    redirect.push('/');
+  } catch (error) {
+    dispatch(signInError(error));
+    redirect.push('/login');
   }
 };
