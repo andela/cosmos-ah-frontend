@@ -12,7 +12,8 @@ describe('Auth Reducer', () => {
 
   const error = { error: 'something happened' };
   it('Should return the Initial State', () => {
-    expect(reducer(undefined, { registering: false })).toEqual({ registering: false });
+    expect(reducer(undefined, { registering: false, signin: {}, }))
+      .toEqual({ registering: false, signin: {}, });
   });
   it('Should make request', () => {
     expect(reducer({}, request())).toEqual({
