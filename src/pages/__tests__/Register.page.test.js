@@ -1,32 +1,41 @@
 import React from 'react';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { render, cleanup } from 'react-testing-library';
-import Register from '../Register';
-import authReducer from '../../state/auth/reducer';
+import { Register } from '../Register';
 
 afterEach(cleanup);
-const store = createStore(authReducer);
+
 test('<Register /> component', () => {
+  const props = {
+    auth: {
+      registering: true,
+    },
+    alert: {
+      error: false,
+    },
+  };
   const { getByText } = render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <Register />
-      </BrowserRouter>
-    </Provider>,
+    <BrowserRouter>
+      <Register {...props} />
+    </BrowserRouter>,
   );
   expect(getByText('Sign Up').tagName).toBe('BUTTON');
   expect(getByText('Sign In').tagName).toBe('BUTTON');
 });
 
 test('renders the Form', () => {
+  const props = {
+    auth: {
+      registering: true,
+    },
+    alert: {
+      error: false,
+    },
+  };
   const { getByPlaceholderText } = render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <Register />
-      </BrowserRouter>
-    </Provider>,
+    <BrowserRouter>
+      <Register {...props} />
+    </BrowserRouter>,
   );
   expect(getByPlaceholderText('Full Name')).toBeTruthy();
   expect(getByPlaceholderText('Username')).toBeTruthy();
@@ -36,24 +45,36 @@ test('renders the Form', () => {
 });
 
 test('renders the Header', () => {
+  const props = {
+    auth: {
+      registering: true,
+    },
+    alert: {
+      error: false,
+    },
+  };
   const registrationPage = render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <Register />
-      </BrowserRouter>
-    </Provider>,
+    <BrowserRouter>
+      <Register {...props} />
+    </BrowserRouter>,
   );
   const Header = registrationPage.getByText('Create Your Account');
   expect(Header.textContent).toBe('Create Your Account');
 });
 
 test('renders the Component', () => {
+  const props = {
+    auth: {
+      registering: true,
+    },
+    alert: {
+      error: false,
+    },
+  };
   const registrationPage = render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <Register />
-      </BrowserRouter>
-    </Provider>,
+    <BrowserRouter>
+      <Register {...props} />
+    </BrowserRouter>,
   );
   expect(registrationPage.getAllByPlaceholderText('Full Name')).toMatchSnapshot();
   expect(registrationPage.getByText('Sign Up').tagName).toMatchSnapshot();

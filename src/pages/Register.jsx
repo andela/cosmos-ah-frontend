@@ -110,7 +110,7 @@ const Header = styled.div`
   }
 `;
 
-const Register = props => {
+export const Register = props => {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -118,25 +118,11 @@ const Register = props => {
     password: '',
     confirmPassword: '',
     submitted: false,
-    registerError: false,
   });
-  useEffect(() => {
-    if (props.auth.registered === true) {
-      props.history.push('/');
-    }
-    if (props.auth.registered === false && props.auth.registering === false) {
-      return setFormData({
-        ...formData,
-        registerError: true,
-      });
-    }
-  }, []);
   const handelSubmit = e => {
     e.preventDefault();
     setFormData({ ...formData, submitted: true });
-    const {
-      confirmPassword, submitted, registerError, ...user
-    } = formData;
+    const { confirmPassword, submitted, ...user } = formData;
     const { dispatch } = props;
     dispatch(register(user));
   };
@@ -152,7 +138,6 @@ const Register = props => {
     password,
     confirmPassword,
     submitted,
-    registerError,
   } = formData;
   return (
     <Container>
@@ -186,7 +171,7 @@ const Register = props => {
             onSubmit={handelSubmit}
             loading={props.auth.registering}
           >
-            <Message negative={props.alert.error} hidden={!registerError}>
+            <Message negative={props.alert.error} hidden={!props.alert.error}>
               <p>{props.alert.message}</p>
             </Message>
             <Form.Input

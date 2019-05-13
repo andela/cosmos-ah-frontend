@@ -29,6 +29,7 @@ export const register = newUser => async dispatch => {
     const decodedToken = decodeToken(token);
     dispatch(success(decodedToken));
     setLocalStorage('token', token);
+    window.location.href = '/';
   } catch (err) {
     dispatch(failure(err));
     let { message } = err.response.data;
