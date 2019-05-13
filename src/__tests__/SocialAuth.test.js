@@ -38,6 +38,6 @@ describe('social reducer test', () => {
   });
   it('test default swich case', () => {
     const state = socialReducer(initialState, 'SOCIAL');
-    expect(state.auth.isObject);
+    expect(state.auth);
   });
 });

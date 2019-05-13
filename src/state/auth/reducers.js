@@ -1,4 +1,4 @@
-import { SOCIAL_AUTH } from './actionTypes';
+import { SOCIAL_AUTH, SIGN_IN_ERROR } from './actionTypes';
 import { initialState } from './state';
 
 export default (state = initialState, action) => {
@@ -6,7 +6,12 @@ export default (state = initialState, action) => {
     case SOCIAL_AUTH:
       return {
         ...state,
-        auth: action.payload
+        login: action.payload
+      };
+    case SIGN_IN_ERROR:
+      return {
+        ...state,
+        login: action.payload
       };
     default:
       return state;

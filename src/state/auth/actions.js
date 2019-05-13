@@ -1,4 +1,4 @@
-import { SOCIAL_AUTH } from './actionTypes';
+import { SOCIAL_AUTH, SIGN_IN_ERROR } from './actionTypes';
 import { decodeToken, setLocalStorage } from '../../lib/social';
 
 export const getSocialAuth = decodedToken => (
@@ -8,6 +8,11 @@ export const getSocialAuth = decodedToken => (
   }
 );
 
+export const signInError = signinError => ({
+  type: SIGN_IN_ERROR,
+  payload: signinError
+});
+
 export const socialAuth = token => dispatch => {
   setLocalStorage(token, 'loggedinUser');
   const decodedToken = decodeToken(token);
@@ -15,6 +20,6 @@ export const socialAuth = token => dispatch => {
   try {
     dispatch(getSocialAuth(decodedToken));
   } catch (error) {
-    throw error;
+    dispatch(signInError(error));
   }
 };
