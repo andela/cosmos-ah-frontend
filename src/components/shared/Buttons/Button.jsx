@@ -6,29 +6,28 @@ const Button = ({
   classList,
   onHover,
   buttonStyle,
-  onClick,
-  children
+  onClicked,
+  children,
+  isDisabled,
 }) => (
    <Button.Container
 	hover={onHover}
-	buttonStyle={buttonStyle}
-	onClick={onClick}
-	classname={classList}>
+	buttonStyle={buttonStyle || null}
+	onClick={onClicked}
+  disabled={isDisabled}
+	className={classList}>
 	{children}</Button.Container>
 );
 
 Button.Container = styled.button`
   font-size: 16px;
-  background: ${props => props.buttonStyle.background};
+  ${props => props.buttonStyle};
   box-sizing: border-box;
   border-radius: 5px;
   font-family: 'Circular-Book';
   padding: 5px 15px;
-  border: ${props => props.buttonStyle.border};
-  color: ${props => props.buttonStyle.color};
   &:hover {
-    background: ${props => props.hover.background};
-		color: ${props => props.hover.color};
+    ${props => props.hover};
 		cursor: pointer;
   }
 `;

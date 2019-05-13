@@ -1,6 +1,10 @@
 /* eslint-disable */
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+
+import { setArticleTitle } from '../../../../../state/create-article/actions';
+import { createArticleSelector } from '../../../../../state/create-article/selectors';
 
 const autoResize = () => {
   $(document)
@@ -19,12 +23,16 @@ const autoResize = () => {
     });
 };
 
-const Title = () => {
+const Title = ({ setTitle, }) => {
+  const getArticleTitle = (evt) => {
+    evt.persist();
+    setTitle(evt.target.value)
+  };
   autoResize();
   return (
     <Fragment>
       <Title.Wrapper>
-        <Title.Input className='autoExpand' rows='1' data-min-rows='0' placeholder="Title" />
+        <Title.Input onChange={getArticleTitle} className='autoExpand' rows='1' data-min-rows='0' placeholder="Title" />
       </Title.Wrapper>
     </Fragment>
   );
@@ -60,4 +68,7 @@ Title.Input = styled.textarea`
   }
 `;
 
-export default Title;
+const mapStateToProps = state => ({ createArticle: createArticleSelector(state) });
+
+export default connect(mapStateToProps, { setTitle: setArticleTitle, })(Title);
+

@@ -11,15 +11,16 @@ import { article } from './article';
 import { profile } from './profile';
 import { auth } from './auth';
 import { alert } from './alert';
+import { createArticle } from './create-article';
 
 const rootReducer = combineReducers({
   [article.stateKey]: article.reducer,
   [profile.stateKey]: profile.reducer,
   [auth.stateKey]: auth.authReducer,
-  [alert.stateKey]: alert.alertReducer
+  [alert.stateKey]: alert.alertReducer,
+  [createArticle.stateKey]: createArticle.reducer,
 });
 
-const middleware = [logger, thunk];
 const reduxDevTools = process.env.NODE_ENV === 'production' ? p => p : window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = createStore(
   rootReducer,

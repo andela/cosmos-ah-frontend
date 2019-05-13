@@ -1,14 +1,20 @@
 /* eslint-disable no-undef */
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import MediumEditor from 'medium-editor';
+
+import { setArticleBody, setArticleImages } from '../../../../../state/create-article/actions';
+import { createArticleSelector } from '../../../../../state/create-article/selectors';
 
 import 'medium-editor/dist/css/medium-editor.css';
 import 'medium-editor/dist/css/themes/default.css';
 
 const USER_TOKEN = localStorage.getItem('ah-token');
 
-const initializeEditor = () => {
+let articleImages = [];
+
+const editorHandler = (setBodyInState, setImagesInState) => {
   const editor = new MediumEditor('.editor', {
     placeholder: {
       text: 'Tell your story'
@@ -28,31 +34,36 @@ const initializeEditor = () => {
       updateOnEmptySelection: false
     },
   });
-  $(() => {
-    $('.editor').mediumInsert({
-      editor,
-      addons: {
-        images: {
-          deleteMethod: 'DELETE',
-          fileUploadOptions: {
-            url: `https://author-haven-stage.herokuapp.com/api/v1/image/articles/upload/${USER_TOKEN}`,
-          },
-          fileDeleteOptions: {
-            url: 'https://author-haven-stage.herokuapp.com/api/v1/image/articles/destroy/'
-          }
-        }
-      }
-    });
+
+  $('.editor').mediumInsert({
+    editor,
+    addons: {
+      images: {
+        deleteMethod: 'DELETE',
+        fileUploadOptions: {
+          url: `https://author-haven-stage.herokuapp.com/api/v1/image/articles/upload/${USER_TOKEN}`,
+        },
+        fileDeleteOptions: {
+          url: 'https://author-haven-stage.herokuapp.com/api/v1/image/articles/destroy/'
+        },
+        uploadCompleted: (el, { result: { files } }) => {
+          articleImages = [...articleImages, files[0].url];
+          setImagesInState(articleImages);
+        },
+      },
+    }
   });
 
   editor.subscribe('editableInput', (eventObj, editable) => {
-    editor.serialize();
+    const [{ value }] = Object.values(editor.serialize());
+    setBodyInState(value);
   });
+  return editor;
 };
 
-const Body = () => {
+const Body = ({ setBody, setImages }) => {
   useEffect(() => {
-    initializeEditor();
+    editorHandler(setBody, setImages);
   }, []);
   return (
     <Fragment>
@@ -94,4 +105,11 @@ Body.Input = styled.textarea`
   }
 `;
 
-export default Body;
+
+const mapStateToProps = state => ({ createArticle: createArticleSelector(state) });
+
+export default connect(mapStateToProps,
+  {
+    setBody: setArticleBody,
+    setImages: setArticleImages,
+  })(Body);
