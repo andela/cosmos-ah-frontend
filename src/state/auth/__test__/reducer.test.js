@@ -1,6 +1,8 @@
 import reducer from '../reducer';
 import * as types from '../actionTypes';
-import { success, request, failure } from '../action';
+import {
+  success, request, failure, getSocialAuth, signInError
+} from '../action';
 
 describe('Auth Reducer', () => {
   const user = {
@@ -12,8 +14,11 @@ describe('Auth Reducer', () => {
 
   const error = { error: 'something happened' };
   it('Should return the Initial State', () => {
-    expect(reducer(undefined, { registering: false, signin: {}, }))
-      .toEqual({ registering: false, signin: {}, });
+    expect(reducer(undefined, {
+      registering: false, login: {}, signin: {}, auth: {}
+    })).toEqual({
+      registering: false, login: {}, signin: {}, auth: {}
+    });
   });
   it('Should make request', () => {
     expect(reducer({}, request())).toEqual({
@@ -32,6 +37,17 @@ describe('Auth Reducer', () => {
       registering: false,
       registered: false,
       error,
+    });
+  });
+  it('social authentication success', () => {
+    expect(reducer({}, getSocialAuth(user))).toEqual({
+      login: user
+    });
+  });
+  it('social authentication failure', () => {
+    expect(reducer({}, signInError({}))).toEqual({
+      login: {},
+      signin: {}
     });
   });
 });

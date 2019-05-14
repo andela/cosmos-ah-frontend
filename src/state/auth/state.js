@@ -1,4 +1,6 @@
 export const initialState = {
   registering: false,
-  signin: {}
+  signin: {},
+  auth: {},
+  login: {}
 };

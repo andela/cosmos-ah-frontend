@@ -1,10 +1,11 @@
 import React from 'react';
-import { render, cleanup } from 'react-testing-library';
+import { cleanup } from 'react-testing-library';
 import App from '../pages/App';
+import { renderWithRedux } from '../lib/testUtil';
 
 afterEach(cleanup);
 
 test('<App /> component', () => {
-  const app = render(<App />);
+  const app = renderWithRedux(<App />);
   expect(app).toBeTruthy();
 });

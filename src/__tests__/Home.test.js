@@ -1,10 +1,13 @@
 import React from 'react';
-import { render, cleanup } from 'react-testing-library';
+import { cleanup } from 'react-testing-library';
+import configureMockStore from 'redux-mock-store';
 import Home from '../pages/Index';
+import { renderWithRedux } from '../lib/testUtil';
 
 afterEach(cleanup);
 
+
 test('<Home /> component', () => {
-  const homePage = render(<Home />);
+  const homePage = renderWithRedux(<Home />);
   expect(homePage).toBeTruthy();
 });
