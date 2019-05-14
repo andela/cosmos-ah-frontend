@@ -12,6 +12,7 @@ import { ButtonComponent } from '../components/Button';
 import AltLogo from '../components/AppLogo';
 import { loginAction } from '../state/auth/action';
 import InlineError from '../components/InlineError';
+import logo from '../assets/images/logo.png';
 
 const Body = styled.div`
   display: flex;
@@ -112,7 +113,7 @@ export const Login = props => {
   return (
   <Body>
     <Logo>
-      <AltLogo />
+      <AltLogo logo={logo} />
     </Logo>
     <Center>
       <Wrap>

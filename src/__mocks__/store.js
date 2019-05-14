@@ -10,6 +10,15 @@ export const mockStoreData = {
       body: 'Testing',
     }
   },
+  article: {
+    id: '10ba038e-48da-487b-96e8-8d3b99b6d18a',
+    title: 'my article',
+    imageUrl: [''],
+    author: { fullName: 'Albert Einstein' },
+    totalReadTime: 3,
+    tags: [],
+    body: 'lorem ipsum'
+  },
   profile: {
     loadedData: {
       bio: "Hold on now, aren't there already specs for this kind of thing? - Well... no. While there are a few handy specifications for dealing with JSON data, most notably Douglas Crockford's JSONRequest proposal, there's nothing to address the problems of general application-level messaging. More on this later.",

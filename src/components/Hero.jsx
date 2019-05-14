@@ -22,14 +22,17 @@ export const Hero = props => {
     <HeroContainer>
       <Container as="section">
         <NavContainer />
-        <ShowCase article={trendingArticle} />
+        {trendingArticle
+          ? <ShowCase article={trendingArticle} />
+          : null
+        }
       </Container>
     </HeroContainer>
   );
 };
 
 const mapStateToProps = state => ({
-  articles: state.article.articles
+  articles: state.articles.allArticles
 });
 
 Hero.propTypes = {
@@ -37,4 +40,4 @@ Hero.propTypes = {
   getArticles: PropTypes.func
 };
 
-export default connect(mapStateToProps, { getArticles: getArticleAction })(Hero);
+export const ConnectedHero = connect(mapStateToProps, { getArticles: getArticleAction })(Hero);

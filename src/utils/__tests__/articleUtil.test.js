@@ -43,4 +43,9 @@ describe('Article Util test', () => {
     const articles = articleUtil.getTopTrendingArticles(articleMock.articles, 50);
     expect(articles.length).toEqual(2);
   });
+
+  it('returns a subset of an article\'s body', () => {
+    const articleBody = articleUtil.extractSubsetOfArticleBody(articleMock.article.body, 50);
+    expect(articleBody.length).toBeGreaterThan(0);
+  });
 });

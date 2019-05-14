@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { Fragment } from 'react';
+import HomePageMainBody from '../components/HomePageMainBody';
+import { ConnectedHero } from '../components/Hero';
+import '../assets/css/fonts.css';
 
-const Home = props => (
-    <div>
-      <h3>Welcome to Authors Haven</h3>
-      <p>A place for creative minds</p>
-    </div>
+const HomePage = () => (
+    <Fragment>
+      <ConnectedHero />
+      <HomePageMainBody />
+    </Fragment>
 );
 
-
-export default Home;
+export default HomePage;

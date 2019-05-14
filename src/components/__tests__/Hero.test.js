@@ -6,10 +6,19 @@ import articleMock from '../../__mocks__/article';
 
 afterEach(cleanup);
 
-test('it renders', () => {
+test('renders <Hero /> Component', () => {
   const hero = render(
     <Router>
-      <Hero articles={articleMock.articles} getArticles = {() => {}} />
+      <Hero articles={articleMock.articles} getArticles = {jest.fn()} />
+    </Router>
+  );
+  expect(hero).toBeTruthy();
+});
+
+test('it renders <Hero /> Component without a trending article', () => {
+  const hero = render(
+    <Router>
+      <Hero articles={[]} getArticles = {jest.fn()} />
     </Router>
   );
   expect(hero).toBeTruthy();

@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
     case GET_ARTICLE_SUCCESS:
       return {
         ...state,
-        articles: action.payload
+        allArticles: action.payload
       };
     default:
       return state;
