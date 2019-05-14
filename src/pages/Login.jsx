@@ -101,7 +101,7 @@ export const Login = props => {
       setError(() => ({ ...validateFormData }));
     } else {
       setError(() => ([]));
-      props.loginAction({ email, password });
+      props.loginAction({ email, password }, props.history);
     }
   };
 
@@ -109,10 +109,6 @@ export const Login = props => {
     event.persist();
     setFormData(() => ({ ...formData, [event.target.name]: event.target.value }));
   };
-
-  if (loginState.id) {
-    props.history.push('/feeds');
-  }
   return (
   <Body>
     <Logo>

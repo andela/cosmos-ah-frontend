@@ -47,13 +47,14 @@ export const loading = loadingState => ({
   payload: { loadingState }
 });
 
-export const loginAction = formData => async dispatch => {
+export const loginAction = (formData, redirect) => async dispatch => {
   try {
     dispatch(loading(true));
     const login = await axios.post('/login', formData);
     const decoded = decodeToken(login.data.data.token);
     setLocalStorage(login.data.data.token);
     dispatch(signInSuccess(decoded));
+    redirect.push('/feeds');
   } catch (error) {
     dispatch(signInError(error.response.data));
   }
