@@ -9,6 +9,7 @@ import Profile from './Profile';
 import { HandleSocialAuth } from '../components/HandleSocialAuth';
 import '../assets/css/App.css';
 import ForgotPassword from './ForgotPassword';
+import Feeds from './Feeds';
 
 const App = () => (
   <Router>
@@ -18,7 +19,11 @@ const App = () => (
       <Route path="/signup" component={Register}></Route>
       <Route path="/profile" exact component={Profile}></Route>
       <Route path="/forgot-password" component={ForgotPassword}></Route>
+<<<<<<< HEAD
       <Route path='/handlesocialauth' component={HandleSocialAuth} />
+=======
+      <Route path="/feeds" component={Feeds} />
+>>>>>>> 165887561-feature: implement article card for feedpage
     </Switch>
   </Router>
 );
