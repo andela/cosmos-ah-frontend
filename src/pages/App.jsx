@@ -18,7 +18,6 @@ const App = () => (
       <Route path="/signup" component={Register}></Route>
       <Route path="/profile" exact component={Profile}></Route>
       <Route path="/forgot-password" component={ForgotPassword}></Route>
-      {/* <Route path="/dashboard" exact component={Index}></Route> */}
       <Route path='/handlesocialauth' component={HandleSocialAuth} />
     </Switch>
   </Router>
