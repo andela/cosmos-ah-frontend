@@ -21,7 +21,7 @@ const Background = styled.div`
   flex-direction: row;
 `;
 
-const Feeds = props => {
+export const Feeds = props => {
   useEffect(() => {
     props.getArticles();
   }, []);
@@ -44,4 +44,4 @@ const mapStateToProps = state => ({
   articles: state.article.articles,
 });
 
-export default connect(mapStateToProps, { getArticles: getArticleAction })(Feeds);
+export const connectedFeed = connect(mapStateToProps, { getArticles: getArticleAction })(Feeds);

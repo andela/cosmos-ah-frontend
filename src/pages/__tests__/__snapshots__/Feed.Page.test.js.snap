@@ -1,144 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Feed /> component is rendered 1`] = `
+exports[`Should render a component <Feed /> component is rendered 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
-        class="sc-bwzfXH bLcxPw"
+        class="sc-bwzfXH frDHaS"
       >
         <div
-          class="sc-bdVaJa khUSez"
+          class="sc-htpNat coTLg"
         >
-          <div>
-            <a
-              href="/"
-            >
-              <img
-                src="test-file-stub"
-                width="200"
-              />
-            </a>
-          </div>
+          <div />
         </div>
-        <div
-          class="sc-htpNat dWAVr"
-        >
-          <h1>
-            Forgot Password
-          </h1>
-        </div>
-        <h4>
-          Enter Your Email Address And We Will Email You With Instructions
-        </h4>
-        <form
-          class="ui form sc-bxivhb drDWPZ"
-          data-testid="forgotPassword"
-        >
-          <div
-            class="field"
-          >
-            <div
-              class="ui big fluid left icon input"
-            >
-              <input
-                placeholder="YOUR EMAIL ADDRESS"
-                type="text"
-              />
-              <i
-                aria-hidden="true"
-                class="blue envelope icon"
-              />
-            </div>
-          </div>
-          <div>
-            <button
-              class="ui blue big fluid button"
-              type="submit"
-            >
-              RESET PASSWORD
-            </button>
-          </div>
-        </form>
-        <p
-          class="sc-ifAKCX IRRQR"
-        >
-          <a
-            href="/login"
-          >
-            Back to Login
-          </a>
-        </p>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="sc-bwzfXH bLcxPw"
+      class="sc-bwzfXH frDHaS"
     >
       <div
-        class="sc-bdVaJa khUSez"
+        class="sc-htpNat coTLg"
       >
-        <div>
-          <a
-            href="/"
-          >
-            <img
-              src="test-file-stub"
-              width="200"
-            />
-          </a>
-        </div>
+        <div />
       </div>
-      <div
-        class="sc-htpNat dWAVr"
-      >
-        <h1>
-          Forgot Password
-        </h1>
-      </div>
-      <h4>
-        Enter Your Email Address And We Will Email You With Instructions
-      </h4>
-      <form
-        class="ui form sc-bxivhb drDWPZ"
-        data-testid="forgotPassword"
-      >
-        <div
-          class="field"
-        >
-          <div
-            class="ui big fluid left icon input"
-          >
-            <input
-              placeholder="YOUR EMAIL ADDRESS"
-              type="text"
-            />
-            <i
-              aria-hidden="true"
-              class="blue envelope icon"
-            />
-          </div>
-        </div>
-        <div>
-          <button
-            class="ui blue big fluid button"
-            type="submit"
-          >
-            RESET PASSWORD
-          </button>
-        </div>
-      </form>
-      <p
-        class="sc-ifAKCX IRRQR"
-      >
-        <a
-          href="/login"
-        >
-          Back to Login
-        </a>
-      </p>
     </div>
   </div>,
   "debug": [Function],
