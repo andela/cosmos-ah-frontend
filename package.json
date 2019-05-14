@@ -115,7 +115,9 @@
     "collectCoverage": true,
     "coverageDirectory": "coverage",
     "coverageReporters": [
-      "text"
+      "text",
+      "text-lcov",
+      "lcov"
     ],
     "verbose": true,
     "testURL": "http://localhost:9001/",
