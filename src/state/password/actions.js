@@ -1,13 +1,13 @@
 import { userForgotPassword } from '../../lib/forgotPassword';
 import { FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_FAILURE, LOADING } from './actionTypes';
 
-export const forgotPasswordSuccess = userPassword => ({
+export const forgotPasswordSuccess = userEmail => ({
   type: FORGOT_PASSWORD_SUCCESS,
-  payload: userPassword
+  payload: userEmail
 });
-export const forgotPasswordFailure = userPasswordError => ({
+export const forgotPasswordFailure = userEmailError => ({
   type: FORGOT_PASSWORD_FAILURE,
-  payload: userPasswordError
+  payload: userEmailError
 });
 
 export const loading = loadingState => ({
