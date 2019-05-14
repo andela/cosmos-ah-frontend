@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
+/* eslint-disable import/no-extraneous-dependencies */
 import { render } from 'react-testing-library';
 
 const mockStore = configureMockStore();

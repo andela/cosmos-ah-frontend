@@ -1,5 +1,5 @@
 import articleUtil from '../articles';
-import articleMock from '../../components/shared/Article/__mocks__/article';
+import articleMock from '../../__mocks__/article';
 
 describe('Article Util test', () => {
   it('returns article tags', () => {
