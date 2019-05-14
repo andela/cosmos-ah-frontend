@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import {
   Form, Grid, Header, Message
 } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import Validator from 'validator';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import SocialButton from '../components/SocialMediaButton';
 import { ButtonComponent } from '../components/Button';
 import AltLogo from '../components/AppLogo';
 import { loginAction } from '../state/auth/action';
+import InlineError from '../components/InlineError';
 
 const Body = styled.div`
   display: flex;
@@ -62,7 +65,8 @@ const Center = styled.div`
 
 export const Login = props => {
   const { loginState } = props;
-  const transformObjectValToString = obj => {
+
+  const transformObjectValToArray = obj => {
     let data = [];
     if (obj) {
       data = [...Object.values(obj)];
@@ -70,18 +74,35 @@ export const Login = props => {
     }
     return data[0];
   };
-  const validatorErrors = transformObjectValToString(loginState.data);
+
+  const validatorErrors = transformObjectValToArray(loginState.data);
+
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+
+  const [error, setError] = useState([]);
+
+  const validate = data => {
+    const errors = {};
+    if (!Validator.isEmail(data.email)) errors.email = 'Invalid email';
+    if (!Validator.isLength(data.password, { min: 6, max: 100 })) errors.password = 'password can not be less than 6 charcters';
+    return errors;
+  };
 
   const { email, password } = formData;
 
   const handleSubmit = async event => {
     event.persist();
     event.preventDefault();
-    props.loginAction({ email, password });
+    const validateFormData = await validate(formData);
+    if (Object.keys(validateFormData).length > 0) {
+      setError(() => ({ ...validateFormData }));
+    } else {
+      setError(() => ([]));
+      props.loginAction({ email, password });
+    }
   };
 
   const handleChange = event => {
@@ -90,9 +111,8 @@ export const Login = props => {
   };
 
   if (loginState.id) {
-    props.history.push('/dashboard');
+    props.history.push('/feeds');
   }
-
   return (
   <Body>
     <Logo>
@@ -109,8 +129,10 @@ export const Login = props => {
             <h4>or login using your email address</h4>
           </Header>
           <Form onSubmit={handleSubmit} loading={loginState.loadingState}>
-            <Form.Input size='big' icon={{ name: 'envelope outline', color: 'blue' }} iconPosition='left' placeholder='Email Address' name='email' onChange={handleChange} value={email} required={true}/>
-            <Form.Input size='big' icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password' name='password' onChange={handleChange} value={password} required={true}/>
+            {error.email && <InlineError text={error.email} />}
+            <Form.Input size='big' error={!!error.email} icon={{ name: 'envelope outline', color: 'blue' }} iconPosition='left' placeholder='Email Address' name='email' onChange={handleChange} value={email} required={true}/>
+            {error.password && <InlineError text={error.password} />}
+            <Form.Input size='big' error={!!error.password} icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password' name='password' onChange={handleChange} value={password} required={true}/>
             {(validatorErrors !== undefined) && (
             <Message negative>
               <p>{validatorErrors}</p>
@@ -137,8 +159,10 @@ export const Login = props => {
   );
 };
 
-function mapStateToProps(state) {
-  return { loginState: state.auth.signin };
-}
+const mapStateToProps = state => ({ loginState: state.auth.signin });
+
+Login.propTypes = {
+  loginState: PropTypes.object.isRequired
+};
 
 export const conectedLogin = connect(mapStateToProps, { loginAction })(Login);
