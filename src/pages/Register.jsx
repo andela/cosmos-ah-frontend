@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import Joi from 'joi-browser';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Form, Button, Message } from 'semantic-ui-react';
+import {
+  Form, Button, Message, ItemDescription
+} from 'semantic-ui-react';
 import styled from 'styled-components';
 import SocialMediaButton from '../components/SocialMediaButton';
 import { register } from '../state/auth/action';
@@ -112,33 +115,86 @@ const Header = styled.div`
 
 export const Register = props => {
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    username: '',
-    password: '',
-    confirmPassword: '',
-    submitted: false,
+    userData: {
+      fullName: '',
+      email: '',
+      username: '',
+      password: '',
+      confirmPassword: '',
+    },
+    errors: {},
   });
+
+  const schema = {
+    fullName: Joi.string()
+      .required()
+      .min(3)
+      .label('Full Name'),
+    email: Joi.string()
+      .email({ minDomainSegments: 2 })
+      .label('Email'),
+    username: Joi.string()
+      .regex(/^[a-z]+$/)
+      .min(3)
+      .max(30)
+      .required()
+      .label('Username'),
+    password: Joi.string()
+      .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})/)
+      .required()
+      .label('Password should be At least a lowercase character, uppercase character, numeric character, special character and eight characters long.'),
+    confirmPassword: Joi.any()
+      .valid(Joi.ref('password'))
+      .required()
+      .options({ language: { any: { allowOnly: 'must match password' } } }),
+  };
+
+  const validate = () => {
+    const { error } = Joi.validate(formData.userData, schema, { abortEarly: false });
+    if (!error) return null;
+    const errors = {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const item of error.details) {
+      errors[item.path[0]] = item.message;
+      return errors;
+    }
+  };
+
+  const validateProperty = ({ name, value }) => {
+    const obj = { [name]: value };
+    const schemaProperty = { [name]: schema[name] };
+    const { error } = Joi.validate(obj, schemaProperty);
+    return error ? error.details[0].message : null;
+  };
+
+  useEffect(() => {
+    if (props.auth.registered === true) {
+      props.history.push('/');
+    }
+  });
+
   const handelSubmit = e => {
     e.preventDefault();
-    setFormData({ ...formData, submitted: true });
-    const { confirmPassword, submitted, ...user } = formData;
+    const errors = validate();
+    setFormData({ ...formData, errors: errors || {} });
+    const { confirmPassword, ...user } = formData.userData;
     const { dispatch } = props;
-    dispatch(register(user));
+    if (user.fullName && user.email && user.username && user.password) {
+      dispatch(register(user));
+    }
   };
 
-  const handleChange = e => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = ({ currentTarget: input }) => {
+    const errors = { ...formData.errors };
+    const errorMessage = validateProperty(input);
+    if (errorMessage) errors[input.name] = errorMessage;
+    else delete errors[input.name];
+    const userData = { ...formData.userData };
+    userData[input.name] = input.value;
+    setFormData({ userData, errors });
   };
 
-  const {
-    fullName,
-    email,
-    username,
-    password,
-    confirmPassword,
-    submitted,
-  } = formData;
+  const { userData, errors } = formData;
   return (
     <Container>
       <Background>
@@ -171,52 +227,54 @@ export const Register = props => {
             onSubmit={handelSubmit}
             loading={props.auth.registering}
           >
-            <Message negative={props.alert.error} hidden={!props.alert.error}>
-              <p>{props.alert.message}</p>
-            </Message>
             <Form.Input
               icon={{ name: 'user', color: 'blue' }}
               iconPosition="left"
               placeholder="Full Name"
-              value={fullName}
+              value={userData.fulName}
               name="fullName"
               onChange={handleChange}
             />
+            {errors.fulName && <div>{errors.fulName}</div>}
             <Form.Input
               icon={{ name: 'user', color: 'blue' }}
               iconPosition="left"
               placeholder="Username"
-              value={username}
+              value={userData.username}
               name="username"
               onChange={handleChange}
             />
+            {errors.username && <div>{errors.username}</div>}
             <Form.Input
               icon={{ name: 'mail', color: 'blue' }}
               iconPosition="left"
               placeholder="Email Address"
               type="email"
-              value={email}
+              value={userData.email}
               name="email"
               onChange={handleChange}
             />
+            {errors.email && <div>{errors.email}</div>}
             <Form.Input
               icon={{ name: 'lock', color: 'blue' }}
               iconPosition="left"
               placeholder="Password"
               type="password"
-              value={password}
+              value={userData.password}
               name="password"
               onChange={handleChange}
             />
+            {errors.password && <div>{errors.password}</div>}
             <Form.Input
               icon={{ name: 'lock', color: 'blue' }}
               iconPosition="left"
               placeholder="Confirm Password"
               type="password"
-              value={confirmPassword}
+              value={userData.confirmPassword}
               name="confirmPassword"
               onChange={handleChange}
             />
+            {errors.confirmPassword && <div>{errors.confirmPassword}</div>}
             <Form.Checkbox label="Enable Email Notifications About Product And Services." />
             <Center>
               <MyButton primary>Sign Up</MyButton> Or{' '}
@@ -245,4 +303,5 @@ const mapStateToProps = state => ({
   auth: state.auth,
   alert: state.alert,
 });
-export default connect(mapStateToProps)(Register);
+
+export const ConnectedRegister = connect(mapStateToProps)(Register);

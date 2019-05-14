@@ -1,8 +1,10 @@
+
 import jwtDecode from 'jwt-decode';
 import {
   REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE,
   SIGN_IN_SUCCESS, SIGN_IN_ERROR, LOADING, SOCIAL_AUTH,
 } from './actionTypes';
+
 import axios from '../../lib/axios';
 import { decodeToken, setLocalStorage } from '../../lib/auth';
 import { error } from '../alert/actions';
@@ -29,7 +31,7 @@ export const register = newUser => async dispatch => {
     const decodedToken = decodeToken(token);
     dispatch(success(decodedToken));
     setLocalStorage('token', token);
-    window.location.href = '/';
+    // window.location.href = '/';
   } catch (err) {
     dispatch(failure(err));
     let { message } = err.response.data;
@@ -70,8 +72,8 @@ export const loginAction = (formData, redirect) => async dispatch => {
     setLocalStorage('ah-token', login.data.data.token);
     dispatch(signInSuccess(decoded));
     redirect.push('/feeds');
-  } catch (error) {
-    dispatch(signInError(error.response.data));
+  } catch (err) {
+    dispatch(signInError(err.response.data));
   }
 };
 
@@ -81,8 +83,8 @@ export const socialAuth = (token, redirect) => dispatch => {
     const decodedToken = decodeToken(token);
     dispatch(getSocialAuth(decodedToken));
     redirect.push('/feeds');
-  } catch (error) {
-    dispatch(signInError(error));
+  } catch (err) {
+    dispatch(signInError(err));
     redirect.push('/login');
   }
 };
