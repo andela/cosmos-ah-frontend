@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { socialAuth } from '../state/auth/action';
 
 
-export const handleSocialAuth = props => {
+export const HandleSocialAuth = props => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     props.socialAuth(urlParams.get('token'), props.history);
@@ -14,4 +14,4 @@ export const handleSocialAuth = props => {
   );
 };
 
-export default connect(null, { socialAuth })(handleSocialAuth);
+export default connect(null, { socialAuth })(HandleSocialAuth);
