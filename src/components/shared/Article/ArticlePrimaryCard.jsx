@@ -14,28 +14,32 @@ const ArticleReadTime = styled.span`
   color: #3A8FDD;
 `;
 
-const ArticlePrimaryCard = ({ article }) => (
-      <Fragment key={article.id}>
-        <CardContentContainer>
-          <h3>{article.title}</h3>
-          <p>{article.description}</p>
-          <span>{article.author}</span>
-          <span>
-            {parseArticleCreationDate(article.createdAt)}
-            {' '}&middot;
+const ArticlePrimaryCard = ({
+  article: {
+    id, title, description, author, createdAt, imageUrl, totalReadTime
+  }
+}) => (
+    <Fragment key={id}>
+      <CardContentContainer>
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <span>{author}</span>
+        <span>
+          {parseArticleCreationDate(createdAt)}
+          {' '}&middot;
           </span>{' '}
-          <ArticleReadTime data-testId={`article-read-time-${article.id}`}>
-            {article.totalReadTime} {article.totalReadTime > 1 ? 'mins' : 'min'} read
+        <ArticleReadTime data-testId={`article-read-time-${id}`}>
+          {totalReadTime} {totalReadTime > 1 ? 'mins' : 'min'} read
           </ArticleReadTime>{' '}
-          <Icon name="star" size="small" color="grey" data-testId={`card-icon-${article.id}`}/>
-        </CardContentContainer>
-        <div>
-          {/* Space left intentionally */}
-        </div>
-        <div>
-          <Image src={article.imageUrl} alt="" width={100} height={100} rounded />
-        </div>
-      </Fragment>
+        <Icon name="star" size="small" color="grey" data-testId={`card-icon-${id}`} />
+      </CardContentContainer>
+      <div>
+        {/* Space left intentionally */}
+      </div>
+      <div>
+        <Image src={imageUrl} alt="" width={100} height={100} rounded />
+      </div>
+    </Fragment>
 );
 
 ArticlePrimaryCard.propTypes = {

@@ -20,16 +20,16 @@ const ArticleAuthor = styled.p`
   margin: 0;
 `;
 
-const ArticleSecondaryCard = ({ article, count }) => (
+const ArticleSecondaryCard = ({ article: { title, totalReadTime, createdAt }, count }) => (
     <Grid.Row>
       <StyledColumn width={4} verticalAlign="middle">
         <StyledNumber>0{count + 1}</StyledNumber>
       </StyledColumn>
 
       <Grid.Column>
-        <h3>{article.title}</h3>
+        <h3>{title}</h3>
         <ArticleAuthor>Jane Doe</ArticleAuthor>
-        <span>{parseArticleCreationDate(article.createdAt)} &middot; {article.totalReadTime} {article.totalReadTime > 1 ? 'mins' : 'min'} read</span>
+        <span>{parseArticleCreationDate(createdAt)} &middot; {totalReadTime} {totalReadTime > 1 ? 'mins' : 'min'} read</span>
       </Grid.Column>
     </Grid.Row>
 );
