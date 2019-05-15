@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup } from 'react-testing-library';
 import ArticlePrimaryCard from '../ArticlePrimaryCard';
-import articleMock from '../__mocks__/article';
+import articleMock from '../../../../__mocks__/article';
 
 afterEach(cleanup);
 
