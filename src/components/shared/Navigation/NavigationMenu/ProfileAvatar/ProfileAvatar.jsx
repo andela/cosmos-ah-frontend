@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
+import Dropdown from '../../../Option/index';
 
 import DefaultAvatar from '../../../../../assets/images/avatars/default.jpg';
 
@@ -10,9 +11,10 @@ const Avatar = styled.img`
 `;
 
 const ProfileAvatar = props => (
-  <Fragment>
+	<Fragment>
 		<div className="item">
 			<Avatar src={props.imageSrc || DefaultAvatar} />
+			<Dropdown />
 		</div>
 	</Fragment>
 );

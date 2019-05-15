@@ -27,7 +27,7 @@ export const register = newUser => async dispatch => {
     const { token } = registeredUser.data.data;
     const decodedToken = decodeToken(token);
     dispatch(success(decodedToken));
-    setLocalStorage('token', token);
+    setLocalStorage('ah-token', token);
   } catch (error) {
     dispatch(failure(error));
   }
@@ -60,9 +60,9 @@ export const loginAction = (formData, redirect) => async dispatch => {
     dispatch(loading(true));
     const login = await axios.post('/login', formData);
     const decoded = decodeToken(login.data.data.token);
-    setLocalStorage(login.data.data.token);
+    setLocalStorage('ah-token', login.data.data.token);
     dispatch(signInSuccess(decoded));
-    redirect.push('/feeds');
+    redirect.push('/profile');
   } catch (error) {
     dispatch(signInError(error.response.data));
   }
@@ -70,7 +70,7 @@ export const loginAction = (formData, redirect) => async dispatch => {
 
 export const socialAuth = (token, redirect) => dispatch => {
   try {
-    setLocalStorage(token, 'loggedinUser');
+    setLocalStorage('ah-token', token);
     const decodedToken = decodeToken(token);
     dispatch(getSocialAuth(decodedToken));
     redirect.push('/feeds');

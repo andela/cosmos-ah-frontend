@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import OptionIcon from '../../../assets/images/svgs/option.svg';
+import { Link } from 'react-router-dom';
 
 const toggleOptionsVisibility = () => {
   // eslint-disable-next-line no-undef
@@ -14,14 +14,15 @@ const Option = ({ displayStyle, handleOnClick }) => {
   toggleOptionsVisibility();
   return (
     <Fragment>
-      <div className="ui dropdown">
-        <Option.Icon styles={displayStyle} src={OptionIcon} />
+        <div className="ui dropdown btn-dropdown-color" >
+          <i className="dropdown icon"></i>
         <Option.Menu className="left secondary menu">
-          <Option.Text className="item">New</Option.Text>
-          <Option.Text className="item">Test</Option.Text>
-          <Option.Text className="item">Game</Option.Text>
+          <Option.Text className="item"><Link to='/feeds'>Feeds</Link></Option.Text>
+          <Option.Text className="item"><Link to='/dashboard'>Dashboard</Link></Option.Text>
+          <Option.Text className="item"><Link to='/profile'>Profile</Link></Option.Text>
+          <Option.Text className="item"><Link to=''>Logout</Link></Option.Text>
         </Option.Menu>
-      </div>
+        </div>
     </Fragment>
   );
 };
