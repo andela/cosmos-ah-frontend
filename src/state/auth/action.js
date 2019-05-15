@@ -60,7 +60,7 @@ export const loginAction = (formData, redirect) => async dispatch => {
     dispatch(loading(true));
     const login = await axios.post('/login', formData);
     const decoded = decodeToken(login.data.data.token);
-    setLocalStorage(login.data.data.token);
+    setLocalStorage('ah-token', login.data.data.token);
     dispatch(signInSuccess(decoded));
     redirect.push('/feeds');
   } catch (error) {
