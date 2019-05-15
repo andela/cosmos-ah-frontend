@@ -20,6 +20,7 @@ const App = () => (
       <Route path="/profile" exact component={Profile}></Route>
       <Route path="/forgot-password" component={ForgotPassword}></Route>
       <Route path='/handlesocialauth' component={ConnectedHandleSocialAuth} />
+      <Route path="/feeds" component={connectedFeed} />
     </Switch>
   </Router>
 );
