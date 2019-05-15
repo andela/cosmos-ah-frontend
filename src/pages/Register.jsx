@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Joi from 'joi-browser';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {
-  Form, Button, Message, ItemDescription
-} from 'semantic-ui-react';
+import { Form, Button, Message } from 'semantic-ui-react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import SocialMediaButton from '../components/SocialMediaButton';
 import { register } from '../state/auth/action';
+import InlineError from '../components/InlineError';
+import { validateSignupInput, validateProperty } from '../utils/userValidator';
 
 const Center = styled.div`
   text-align: center;
@@ -123,78 +123,42 @@ export const Register = props => {
       confirmPassword: '',
     },
     errors: {},
+    isValid: false,
   });
-
-  const schema = {
-    fullName: Joi.string()
-      .required()
-      .min(3)
-      .label('Full Name'),
-    email: Joi.string()
-      .email({ minDomainSegments: 2 })
-      .label('Email'),
-    username: Joi.string()
-      .regex(/^[a-z]+$/)
-      .min(3)
-      .max(30)
-      .required()
-      .label('Username'),
-    password: Joi.string()
-      .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})/)
-      .required()
-      .label('Password should be At least a lowercase character, uppercase character, numeric character, special character and eight characters long.'),
-    confirmPassword: Joi.any()
-      .valid(Joi.ref('password'))
-      .required()
-      .options({ language: { any: { allowOnly: 'must match password' } } }),
-  };
-
-  const validate = () => {
-    const { error } = Joi.validate(formData.userData, schema, { abortEarly: false });
-    if (!error) return null;
-    const errors = {};
-    // eslint-disable-next-line no-restricted-syntax
-    for (const item of error.details) {
-      errors[item.path[0]] = item.message;
-      return errors;
-    }
-  };
-
-  const validateProperty = ({ name, value }) => {
-    const obj = { [name]: value };
-    const schemaProperty = { [name]: schema[name] };
-    const { error } = Joi.validate(obj, schemaProperty);
-    return error ? error.details[0].message : null;
-  };
-
   useEffect(() => {
     if (props.auth.registered === true) {
       props.history.push('/');
     }
   });
 
-  const handelSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    const errors = validate();
-    setFormData({ ...formData, errors: errors || {} });
-    const { confirmPassword, ...user } = formData.userData;
-    const { dispatch } = props;
-    if (user.fullName && user.email && user.username && user.password) {
-      dispatch(register(user));
+    const { errors, isValid } = await validateSignupInput(formData.userData);
+    setFormData({ ...formData, errors, isValid });
+    if (Object.keys(errors).length === 0) {
+      const { confirmPassword, ...user } = formData.userData;
+      props.register(user);
     }
   };
 
   const handleChange = ({ currentTarget: input }) => {
     const errors = { ...formData.errors };
     const errorMessage = validateProperty(input);
-    if (errorMessage) errors[input.name] = errorMessage;
-    else delete errors[input.name];
+    if (errorMessage) {
+      errors[input.name] = errorMessage;
+    } else {
+      delete errors[input.name];
+    }
     const userData = { ...formData.userData };
     userData[input.name] = input.value;
-    setFormData({ userData, errors });
+    setFormData({ ...formData, userData, errors });
   };
 
-  const { userData, errors } = formData;
+  const {
+    fullName, email, username, password, confirmPassword
+  } = formData.userData;
+  const { errors } = formData;
+  const { message } = props.alert;
   return (
     <Container>
       <Background>
@@ -224,57 +188,63 @@ export const Register = props => {
         <FormContainer>
           <FormInput
             data-testid="registerForm"
-            onSubmit={handelSubmit}
+            onSubmit={handleSubmit}
             loading={props.auth.registering}
           >
+            {props.alert.error && <Message negative>{message}</Message>}
+            {errors.fullName && <InlineError text={errors.fullName} />}
             <Form.Input
               icon={{ name: 'user', color: 'blue' }}
               iconPosition="left"
               placeholder="Full Name"
-              value={userData.fulName}
+              value={fullName}
               name="fullName"
               onChange={handleChange}
+              error={!!errors.fullName}
             />
-            {errors.fulName && <div>{errors.fulName}</div>}
+            {errors.username && <InlineError text={errors.username} />}
             <Form.Input
               icon={{ name: 'user', color: 'blue' }}
               iconPosition="left"
               placeholder="Username"
-              value={userData.username}
+              value={username}
               name="username"
               onChange={handleChange}
+              error={!!errors.username}
             />
-            {errors.username && <div>{errors.username}</div>}
+            {errors.email && <InlineError text={errors.email} />}
             <Form.Input
               icon={{ name: 'mail', color: 'blue' }}
               iconPosition="left"
               placeholder="Email Address"
               type="email"
-              value={userData.email}
+              value={email}
               name="email"
               onChange={handleChange}
+              error={!!errors.email}
             />
-            {errors.email && <div>{errors.email}</div>}
+            {errors.password && <InlineError text={errors.password} />}
             <Form.Input
               icon={{ name: 'lock', color: 'blue' }}
               iconPosition="left"
               placeholder="Password"
               type="password"
-              value={userData.password}
+              value={password}
               name="password"
               onChange={handleChange}
+              error={!!errors.password}
             />
-            {errors.password && <div>{errors.password}</div>}
+            {errors.confirmPassword && <InlineError text={errors.confirmPassword} />}
             <Form.Input
               icon={{ name: 'lock', color: 'blue' }}
               iconPosition="left"
               placeholder="Confirm Password"
               type="password"
-              value={userData.confirmPassword}
+              value={confirmPassword}
               name="confirmPassword"
               onChange={handleChange}
+              error={!!errors.confirmPassword}
             />
-            {errors.confirmPassword && <div>{errors.confirmPassword}</div>}
             <Form.Checkbox label="Enable Email Notifications About Product And Services." />
             <Center>
               <MyButton primary>Sign Up</MyButton> Or{' '}
@@ -299,9 +269,18 @@ export const Register = props => {
     </Container>
   );
 };
+
+Register.prototype = {
+  auth: PropTypes.object,
+  alert: PropTypes.object,
+  register: PropTypes.func,
+};
 const mapStateToProps = state => ({
   auth: state.auth,
   alert: state.alert,
 });
 
-export const ConnectedRegister = connect(mapStateToProps)(Register);
+export const ConnectedRegister = connect(
+  mapStateToProps,
+  { register },
+)(Register);
