@@ -5,14 +5,14 @@ import styled from 'styled-components';
 const Button = ({
   classList,
   onHover,
-  buttonStyle,
+  isStyled,
   onClicked,
   children,
   isDisabled,
 }) => (
    <Button.Container
 	hover={onHover}
-	buttonStyle={buttonStyle || null}
+	stylesList={isStyled || null}
 	onClick={onClicked}
   disabled={isDisabled}
 	className={classList}>
@@ -21,11 +21,11 @@ const Button = ({
 
 Button.Container = styled.button`
   font-size: 16px;
-  ${props => props.buttonStyle};
   box-sizing: border-box;
   border-radius: 5px;
   font-family: 'Circular-Book';
   padding: 5px 15px;
+  ${props => props.stylesList};
   &:hover {
     ${props => props.hover};
 		cursor: pointer;

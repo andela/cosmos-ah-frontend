@@ -11,6 +11,7 @@ import '../assets/css/App.css';
 import ForgotPassword from './ForgotPassword';
 import { connectedFeed } from './Feeds';
 import CreateArticle from './CreateArticle';
+import ViewArticle from './ViewArticle';
 
 const App = () => (
   <Router>
@@ -23,6 +24,7 @@ const App = () => (
       <Route path='/handlesocialauth' component={ConnectedHandleSocialAuth} />
       <Route path="/feeds" component={connectedFeed} />
       <Route path="/article/create" exact component={CreateArticle}></Route>
+      <Route path="/article/:id" exact component={ViewArticle}></Route>
     </Switch>
   </Router>
 );

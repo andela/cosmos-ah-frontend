@@ -7,7 +7,7 @@ import { setArticlePublish } from '../../../../../state/create-article/actions';
 import { createArticleSelector } from '../../../../../state/create-article/selectors';
 
 const CheckBox = ({
-  onClickedHandler, text, checkboxName, setPublish,
+  onClickedHandler, text, checkboxName, setPublish, isDisabled,
 }) => {
   const onCheckBoxChange = evt => {
     evt.persist();
@@ -17,7 +17,7 @@ const CheckBox = ({
   return (
     <Fragment>
       <CheckBox.Wrapper className="ui slider checkbox">
-        <input onChange={onCheckBoxChange} type="checkbox" name={checkboxName || 'checkbox'} />
+        <input disabled={isDisabled} onChange={onCheckBoxChange} type="checkbox" name={checkboxName || 'checkbox'} />
         <label>{text}</label>
       </CheckBox.Wrapper>
     </Fragment>

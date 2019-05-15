@@ -5,10 +5,10 @@ import styled from 'styled-components';
 import Taggle from 'taggle';
 
 import { colors } from '../../../../../lib/colors';
-import { setArticleTags } from '../../../../../state/create-article/actions';
+import { setArticleTags, setArticleError } from '../../../../../state/create-article/actions';
 import { createArticleSelector } from '../../../../../state/create-article/selectors';
 
-const initializeTagsEditor = setTagsInState => {
+const initializeTagsEditor = (setTagsInState, setErrors) => {
   const taggle = new Taggle('tags', {
     duplicateTagClass: 'bounce',
     additionalTagClasses: '',
@@ -23,7 +23,21 @@ const initializeTagsEditor = setTagsInState => {
       element.classList.add(colors[classIndex]);
     },
     onBeforeTagAdd: (event, tag) => {
-      if (/\s/.test(tag)) { return false; }
+      if (/\s/.test(tag)) {
+        setErrors({
+          status: true, showError: true, type: 'tag', message: [`The '${tag}' tag format is invalid!`]
+        });
+        return false;
+      }
+      if (tag.length <= 2) {
+        setErrors({
+          status: true, showError: true, type: 'tag', message: [`The '${tag}' tag is too short!`]
+        });
+        return false;
+      }
+      setErrors({
+        showError: false, status: false, message: [], type: null
+      });
       return tag;
     },
     onTagAdd: (event, tag) => setTagsInState(taggle.getTagValues()),
@@ -32,9 +46,9 @@ const initializeTagsEditor = setTagsInState => {
   return taggle;
 };
 
-const Tags = ({ setTags }) => {
+const Tags = ({ setTags, setErrors }) => {
   useEffect(() => {
-    initializeTagsEditor(setTags);
+    initializeTagsEditor(setTags, setErrors);
   }, []);
   return (
     <Fragment>
@@ -56,4 +70,5 @@ const mapStateToProps = state => ({ createArticle: createArticleSelector(state) 
 export default connect(mapStateToProps,
   {
     setTags: setArticleTags,
+    setErrors: setArticleError,
   })(Tags);

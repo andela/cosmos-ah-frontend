@@ -4,5 +4,5 @@ import reducer from './reducers';
 export const article = {
   initialState,
   reducer,
-  stateKey: 'article'
+  stateKey: 'articles'
 };

@@ -13,6 +13,7 @@ import { auth } from './auth';
 import { alert } from './alert';
 import { createArticle } from './create-article';
 
+const middleware = [logger, thunk];
 const rootReducer = combineReducers({
   [article.stateKey]: article.reducer,
   [profile.stateKey]: profile.reducer,

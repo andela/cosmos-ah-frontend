@@ -33,7 +33,7 @@ export const setPublish = check => ({
 });
 
 export const setError = error => ({
-  type: SET_ARTICLE_PUBLISH,
+  type: SET_ARTICLE_ERROR,
   payload: error
 });
 

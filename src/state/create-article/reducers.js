@@ -3,7 +3,8 @@ import {
   SET_ARTICLE_BODY,
   SET_ARTICLE_TAGS,
   SET_ARTICLE_IMAGES,
-  SET_ARTICLE_PUBLISH
+  SET_ARTICLE_PUBLISH,
+  SET_ARTICLE_ERROR,
 } from './actionTypes';
 
 import { initialState } from './state';
@@ -34,6 +35,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         article: { ...state.article, published: action.payload },
+      };
+    case SET_ARTICLE_ERROR:
+      return {
+        ...state,
+        error: { ...state.error, ...action.payload },
       };
     default:
       return state;

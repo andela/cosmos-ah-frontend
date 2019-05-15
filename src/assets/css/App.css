@@ -109,6 +109,14 @@ textarea {
   margin-top: 3px !important;
 }
 
+.medium-editor-placeholder:after {
+    font-style: normal !important;
+}
+
+.medium-editor-element p {
+  font-size: 16px !important;
+}
+
 /* For Tags Input */
 .textarea {
     width: 100%;
@@ -261,4 +269,18 @@ input.taggle_input {
 .ui.slider.checkbox input:checked~label
 {
   color: #539ce2 !important;
+}
+
+.button-save {
+  background: black !important;
+  color: whitesmoke !important;
+  font-size: 16px !important;
+  transition: all 0.5s linear !important;
+}
+
+.button-publish {
+  background: #539ce2 !important;
+  color: whitesmoke !important;
+  font-size: 16px !important;
+  transition: all 0.5s linear !important;
 }
