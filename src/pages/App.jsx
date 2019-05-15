@@ -6,7 +6,7 @@ import Index from './Index';
 import { conectedLogin } from './Login';
 import Register from './Register';
 import Profile from './Profile';
-import ConnectedHandleSocialAuth from '../components/HandleSocialAuth';
+import { ConnectedHandleSocialAuth } from '../components/HandleSocialAuth';
 import '../assets/css/App.css';
 import ForgotPassword from './ForgotPassword';
 import { connectedFeed } from './Feeds';

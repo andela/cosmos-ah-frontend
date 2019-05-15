@@ -14,4 +14,4 @@ export const HandleSocialAuth = props => {
   );
 };
 
-export default connect(null, { socialAuth })(HandleSocialAuth);
+export const ConnectedHandleSocialAuth = connect(null, { socialAuth })(HandleSocialAuth);
