@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Grid } from 'semantic-ui-react';
 
 const CardContentContainer = styled.div`
-  width: 35%;
+  width: 75%;
   margin-top: 20px;
 `;
 
