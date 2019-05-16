@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Header } from 'semantic-ui-react';
 import ArticleCard from '../components/ArticleCard';
 import { getArticleAction } from '../state/article/actions';
 import SecondaryNav from '../components/shared/Navigation/SecondaryNav';
+import MainArticleCard from '../components/MainArticleCard';
 
 
 const Body = styled.div`
@@ -19,29 +19,15 @@ const Background = styled.div`
   height: 100vh;
   background-size: 100% 100%;
   justify-content: space-between;
-  // display: flex;
   flex-direction: row;
-`;
-
-const MainArticleCard = styled.div`
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background-color: #ffffff;
-  padding: 20px;
-  margin: 15px;
-  border-radius: 8px;
-  transition: 0.3s;
-  width: 600px;
-  height: 400px;
 `;
 
 const Wrapper = styled.div`
-  display: flex
-  flex-direction: row;
+  display: flex;
 `;
 
-const CardFooter = styled.div`
-  color: grey;
-  text-align: right;
+const Container = styled.div`
+  align-items: stretch;
 `;
 
 export const Feeds = props => {
@@ -52,27 +38,22 @@ export const Feeds = props => {
     <Body>
       <Background>
         <Fragment>
-          <SecondaryNav/>
+          <SecondaryNav />
           <Wrapper>
+            <Container>
             <div>
               {props.articles.slice(0, 2).map(article => (
               <ArticleCard article={article} key={article.id} />
               ))}
             </div>
-            <MainArticleCard>
-                <Header>
-                  <h2>The Killer of  the 21st Century</h2>
-                </Header>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                  dolor sit amet, consectetuer adipiscing elit. dolor sit amet,
-                  consectetuer adipiscing elit</p>
-                {/* <Link to={`/articles/${article.id}`}>Read More</Link> */}
-                <CardFooter>
-                  <Header disabled header>
-                    <h4>Popular on Authors Haven</h4>
-                  </Header>
-                </CardFooter>
-            </MainArticleCard>
+            </Container>
+            <Container>
+              <div>
+                {props.articles.slice(0, 1).map(article => (
+                <MainArticleCard article={article} key={article.id} />
+                ))}
+              </div>
+            </Container>
           </Wrapper>
         </Fragment>
       </Background>
