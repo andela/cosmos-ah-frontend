@@ -6,7 +6,7 @@ import Index from './Index';
 import { ConnectedRegister } from './Register';
 import { connectedLogin } from './Login';
 import Profile from './Profile';
-import { HandleSocialAuth } from '../components/HandleSocialAuth';
+import { ConnectedHandleSocialAuth } from '../components/HandleSocialAuth';
 import '../assets/css/App.css';
 import ForgotPassword from './ForgotPassword';
 import { connectedFeed } from './Feeds';
@@ -19,7 +19,7 @@ const App = () => (
       <Route path="/signup" component={ConnectedRegister}></Route>
       <Route path="/profile" exact component={Profile}></Route>
       <Route path="/forgot-password" component={ForgotPassword}></Route>
-      <Route path='/handlesocialauth' component={HandleSocialAuth} />
+      <Route path='/handlesocialauth' component={ConnectedHandleSocialAuth} />
       <Route path="/feeds" component={connectedFeed} />
     </Switch>
   </Router>
