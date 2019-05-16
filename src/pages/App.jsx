@@ -11,7 +11,7 @@ import '../assets/css/App.css';
 import ForgotPassword from './ForgotPassword';
 import { connectedFeed } from './Feeds';
 import CreateArticle from './CreateArticle';
-import { PrivateRoute } from './PrivateRoute';
+import { PrivateRoute } from '../lib/AuthenticateRoute';
 
 const App = () => (
   <Router>
