@@ -161,4 +161,4 @@ Login.propTypes = {
   loginState: PropTypes.object.isRequired
 };
 
-export const conectedLogin = connect(mapStateToProps, { loginAction })(Login);
+export const connectedLogin = connect(mapStateToProps, { loginAction })(Login);
