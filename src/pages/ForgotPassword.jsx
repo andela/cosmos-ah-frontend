@@ -39,7 +39,7 @@ const ForgotPassword = props => {
         <AltLogo />
       </Center>
       <HeaderStyle>
-        <h1>Forgot Password</h1>
+        <h1>Reset Password</h1>
       </HeaderStyle>
       <h4>Enter Your Email Address And We Will Email You With Instructions</h4>
       <FormStyle onSubmit={handleSubmit} loading={forgotPasswordState.loadingState}>

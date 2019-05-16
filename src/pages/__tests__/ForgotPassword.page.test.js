@@ -8,7 +8,7 @@ import ForgotPassword from '../ForgotPassword';
 let mockStore = reduxStore();
 
 let store = mockStore({
-  forgotPassword: {
+  userPassword: {
     forgotPassword: {
       message: '',
       error: '',
@@ -32,9 +32,9 @@ test('renders the Form', () => {
 
 test('renders the Header tag', () => {
   const forgotPasswordPage = render(<Provider store={store}><BrowserRouter><ForgotPassword /></BrowserRouter></Provider>);
-  const H1Tag = forgotPasswordPage.getByText('Forgot Password');
+  const H1Tag = forgotPasswordPage.getByText('Reset Password');
   const H4Tag = forgotPasswordPage.getByText('Enter Your Email Address And We Will Email You With Instructions');
-  expect(H1Tag.textContent).toBe('Forgot Password');
+  expect(H1Tag.textContent).toBe('Reset Password');
   expect(H4Tag.textContent).toBe('Enter Your Email Address And We Will Email You With Instructions');
   
 });

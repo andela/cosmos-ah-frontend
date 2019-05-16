@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 const FormWrapper = styled(Form)`
   margin: 0 auto;
+  padding-top: 20px;
   &&& {
     input {
       background-color: #E8E8E8 !important;
@@ -36,6 +37,6 @@ export const InputField = ({
       value={value}
       iconPosition={iconPosition}
       icon={icon}
-      action={{ icon: actionIcon, onClick }}
+      action={actionIcon && { icon: actionIcon, onClick }}
     />
 );
