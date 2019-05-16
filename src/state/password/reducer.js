@@ -1,5 +1,11 @@
 import { initialState } from './state';
-import { FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_FAILURE, LOADING } from './actionTypes';
+import {
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_FAILURE,
+  LOADING,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAILURE
+} from './actionTypes';
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -22,6 +28,22 @@ export default (state = initialState, action) => {
         ...state,
         forgotPassword: {
           ...state.forgotPassword,
+          error: action.payload
+        },
+      };
+    case RESET_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        resetPassword: {
+          ...state.resetPassword,
+          error: action.payload
+        },
+      };
+    case RESET_PASSWORD_FAILURE:
+      return {
+        ...state,
+        resetPassword: {
+          ...state.resetPassword,
           error: action.payload
         },
       };

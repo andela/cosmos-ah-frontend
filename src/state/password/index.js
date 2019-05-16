@@ -1,8 +1,8 @@
 import { initialState } from './state';
 import reducer from './reducer';
 
-export const forgotPassword = {
+export const userPassword = {
   initialState,
   reducer,
-  stateKey: 'forgotPassword'
+  stateKey: 'userPassword'
 };

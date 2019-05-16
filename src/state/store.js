@@ -12,7 +12,7 @@ import { profile } from './profile';
 import { auth } from './auth';
 import { alert } from './alert';
 import { createArticle } from './create-article';
-import { forgotPassword } from './password';
+import { userPassword } from './password';
 
 const middleware = [logger, thunk];
 const rootReducer = combineReducers({
@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
   [alert.stateKey]: alert.alertReducer,
   [createArticle.stateKey]: createArticle.reducer,
   [alert.stateKey]: alert.alertReducer,
-  [forgotPassword.stateKey]: forgotPassword.reducer,
+  [userPassword.stateKey]: userPassword.reducer,
 });
 
 const reduxDevTools = process.env.NODE_ENV === 'production' ? p => p : window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();

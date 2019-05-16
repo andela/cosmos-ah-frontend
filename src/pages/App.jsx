@@ -12,6 +12,7 @@ import ForgotPassword from './ForgotPassword';
 import { connectedFeed } from './Feeds';
 import CreateArticle from './CreateArticle';
 import ViewArticle from './ViewArticle';
+import ResetPassword from './ResetPassword';
 
 const App = () => (
   <Router>
@@ -25,6 +26,7 @@ const App = () => (
       <Route path="/feeds" component={connectedFeed} />
       <Route path="/article/create" exact component={CreateArticle}></Route>
       <Route path="/article/:id" exact component={ViewArticle}></Route>
+      <Route path="/password-reset" exact component={ResetPassword} />
     </Switch>
   </Router>
 );
