@@ -121,6 +121,7 @@ export const Register = props => {
       username: '',
       password: '',
       confirmPassword: '',
+      notification: false,
     },
     errors: {},
     isValid: false,
@@ -130,7 +131,6 @@ export const Register = props => {
       props.history.push('/');
     }
   });
-
   const handleSubmit = async e => {
     e.preventDefault();
     const { errors, isValid } = await validateSignupInput(formData.userData);
@@ -140,8 +140,7 @@ export const Register = props => {
       props.register(user);
     }
   };
-
-  const handleChange = ({ currentTarget: input }) => {
+  const handleChange = ({ currentTarget: input }, e) => {
     const errors = { ...formData.errors };
     const errorMessage = validateProperty(input);
     if (errorMessage) {
@@ -150,8 +149,16 @@ export const Register = props => {
       delete errors[input.name];
     }
     const userData = { ...formData.userData };
-    userData[input.name] = input.value;
-    setFormData({ ...formData, userData, errors });
+    if (e.type === 'checkbox') {
+      userData.notification = e.checked;
+    } else {
+      userData[input.name] = input.value;
+    }
+    setFormData({
+      ...formData,
+      userData,
+      errors,
+    });
   };
 
   const {
@@ -245,7 +252,11 @@ export const Register = props => {
               onChange={handleChange}
               error={!!errors.confirmPassword}
             />
-            <Form.Checkbox label="Enable Email Notifications About Product And Services." />
+            <Form.Checkbox
+              label="Enable Email Notifications About Product And Services."
+              onChange={handleChange}
+              name="notification"
+            />
             <Center>
               <MyButton primary>Sign Up</MyButton> Or{' '}
               <Link to="/login">
