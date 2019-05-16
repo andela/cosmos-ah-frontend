@@ -6,5 +6,6 @@
 .prettierrc
 webpack.config.js
 src/index.js
+src/assets/js/**
 **/__mocks__/**
 **/__tests__/**
