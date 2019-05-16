@@ -10,11 +10,13 @@ import logger from 'redux-logger';
 import { article } from './article';
 import { profile } from './profile';
 import { auth } from './auth';
+import { alert } from './alert';
 
 const rootReducer = combineReducers({
   [article.stateKey]: article.reducer,
   [profile.stateKey]: profile.reducer,
   [auth.stateKey]: auth.authReducer,
+  [alert.stateKey]: alert.alertReducer
 });
 
 const middleware = [logger, thunk];

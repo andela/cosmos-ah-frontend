@@ -7,7 +7,6 @@ import { render } from 'react-testing-library';
 const mockStore = configureMockStore();
 const store = mockStore({});
 
-
 export const renderWithRedux = ui => ({
   ...render(<Provider store={store}>{ui}</Provider>),
   store,
