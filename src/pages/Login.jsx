@@ -31,17 +31,17 @@ const Logo = styled.div`
 `;
 
 const Wrap = styled.div`
-width: 500px;
-&&& {
-  input {
-    background-color: #E8E8E8 !important;
-    border-radius: 10px !important;
-    border: none !important;
-  }
-  label {
-    color: #3A8FDD !important;
+  width: 500px;
+  &&& {
+    input {
+      background-color: #e8e8e8 !important;
+      border-radius: 10px !important;
+      border: none !important;
     }
-}
+    label {
+      color: #3a8fdd !important;
+    }
+  }
   @media (max-width: 500px) {
     max-width: 400px;
   }
@@ -79,7 +79,7 @@ export const Login = props => {
 
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    password: '',
   });
 
   const [error, setError] = useState([]);
@@ -100,7 +100,7 @@ export const Login = props => {
     if (Object.keys(validateFormData).length > 0) {
       setError(() => ({ ...validateFormData }));
     } else {
-      setError(() => ([]));
+      setError(() => []);
       props.loginAction({ email, password }, props.history);
     }
   };
@@ -110,55 +110,85 @@ export const Login = props => {
     setFormData(() => ({ ...formData, [event.target.name]: event.target.value }));
   };
   return (
-  <Body>
-    <Logo>
-      <AltLogo />
-    </Logo>
-    <Center>
-      <Wrap>
-        <Grid.Column>
-          <Center>
-            <Header as='h1' color='blue' size='huge'>Login</Header>
-          </Center>
-          <SocialButton />
-          <Header color='blue'>
-            <h4>or login using your email address</h4>
-          </Header>
-          <Form onSubmit={handleSubmit} loading={loginState.loadingState}>
-            {error.email && <InlineError text={error.email} />}
-            <Form.Input size='big' error={!!error.email} icon={{ name: 'envelope outline', color: 'blue' }} iconPosition='left' placeholder='Email Address' name='email' onChange={handleChange} value={email} required={true}/>
-            {error.password && <InlineError text={error.password} />}
-            <Form.Input size='big' error={!!error.password} icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password' name='password' onChange={handleChange} value={password} required={true}/>
-            {(validatorErrors !== undefined) && (
-            <Message negative>
-              <p>{validatorErrors}</p>
-            </Message>
-            )}
-            <StyledLink><Link to='/forgot-password'>Forgot password?</Link></StyledLink>
-            <ButtonComponent color='blue' size='big'>
-              Continue
-            </ButtonComponent>
-          </Form>
-          <Space>
-            <Grid centered>
+    <Body>
+      <Logo>
+        <AltLogo />
+      </Logo>
+      <Center>
+        <Wrap>
+          <Grid.Column>
             <Center>
-              <Header>
-                <h3>Don't have an account yet? <Link to='/signup'>Create One</Link></h3>
-            </Header>
+              <Header as="h1" color="blue" size="huge">
+                Sign In
+              </Header>
             </Center>
-            </Grid>
-          </Space>
-        </Grid.Column>
-      </Wrap>
-    </Center>
-  </Body>
+            <SocialButton />
+            <Header color="blue">
+              <h4>or sign in using your email address</h4>
+            </Header>
+            <Form onSubmit={handleSubmit} loading={loginState.loadingState}>
+              {error.email && <InlineError text={error.email} />}
+              <Form.Input
+                size="big"
+                error={!!error.email}
+                icon={{ name: 'envelope outline', color: 'blue' }}
+                iconPosition="left"
+                placeholder="Email Address"
+                name="email"
+                onChange={handleChange}
+                value={email}
+                required={true}
+              />
+              {error.password && <InlineError text={error.password} />}
+              <Form.Input
+                size="big"
+                error={!!error.password}
+                icon={{ name: 'lock', color: 'blue' }}
+                iconPosition="left"
+                placeholder="Password"
+                type="password"
+                name="password"
+                onChange={handleChange}
+                value={password}
+                required={true}
+              />
+              {validatorErrors !== undefined && (
+                <Message negative>
+                  <p>{validatorErrors}</p>
+                </Message>
+              )}
+              <StyledLink>
+                <Link to="/forgot-password">Forgot password?</Link>
+              </StyledLink>
+              <ButtonComponent color="blue" size="small" width='35%'>
+                Continue
+              </ButtonComponent>
+            </Form>
+            <Space>
+              <Grid centered>
+                <Center>
+                  <Header>
+                    <h3>
+                      Don't have an account yet? <Link to="/signup">Create One</Link>
+                    </h3>
+                  </Header>
+                </Center>
+              </Grid>
+            </Space>
+          </Grid.Column>
+        </Wrap>
+      </Center>
+    </Body>
   );
 };
 
 const mapStateToProps = state => ({ loginState: state.auth.signin });
 
 Login.propTypes = {
-  loginState: PropTypes.object.isRequired
+  loginState: PropTypes.object.isRequired,
 };
 
-export const connectedLogin = connect(mapStateToProps, { loginAction })(Login);
+export const connectedLogin = connect(
+  mapStateToProps,
+  { loginAction },
+)(Login);
