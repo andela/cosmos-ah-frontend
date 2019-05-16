@@ -7,7 +7,7 @@ const data = {
   confirmPassword: 'Secret@1234',
   email: 'test@andela.com',
 };
-test.only('should Validate Signup Data', () => {
+test.('should Validate Signup Data', () => {
   expect(validateSignupInput(data)).toEqual({ errors: {}, isValid: true });
 });
 

@@ -128,7 +128,7 @@ export const Register = props => {
   });
   useEffect(() => {
     if (props.auth.registered === true) {
-      props.history.push('/');
+      props.history.push('/feeds');
     }
   });
   const handleSubmit = async e => {
