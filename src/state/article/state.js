@@ -1,3 +1,4 @@
 export const initialState = {
-  articles: []
+  allArticles: [],
+  isArticleRequest: false,
 };

@@ -1,6 +1,14 @@
 export const mockStoreData = {
-  article: {
-    articles: []
+  articles: {
+    allArticles: [],
+    isArticleRequest: false
+  },
+  createArticle: {
+    error: {},
+    article: {
+      title: 'Testing',
+      body: 'Testing',
+    }
   },
   profile: {
     loadedData: {

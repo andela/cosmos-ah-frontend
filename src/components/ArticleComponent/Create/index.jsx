@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 import Layout from './Layout';
 
 const CreateArticle = () => (
@@ -7,4 +8,4 @@ const CreateArticle = () => (
   </Fragment>
 );
 
-export default CreateArticle;
+export default withRouter(CreateArticle);

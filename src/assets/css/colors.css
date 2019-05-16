@@ -1,0 +1,495 @@
+  .aliceblue {
+    background: #f0f8ff !important;
+  }
+  .antiquewhite {
+    background: #faebd7 !important;
+  }
+  .aqua {
+    background: #00ffff !important;
+    color: darkgrey !important;
+  }
+  .aquamarine {
+    background: #7fffd4 !important;
+  }
+  .azure {
+    background: #f0ffff !important;
+  }
+  .beige {
+    background: #f5f5dc !important;
+  }
+  .bisque {
+    background: #ffe4c4 !important;
+  }
+  .black {
+    background: #000000 !important;
+  }
+  .blanchedalmond {
+    background: #ffebcd !important;
+  }
+  .blue {
+    background: #0000ff !important;
+    color: whitesmoke !important;
+  }
+  .blueviolet {
+    background: #8a2be2 !important;
+    color: whitesmoke !important;
+  }
+  .brown {
+    background: #a52a2a !important;
+  }
+  .burlywood {
+    background: #deb887 !important;
+  }
+  .cadetblue {
+    background: #5f9ea0 !important;
+    color: whitesmoke !important;
+  }
+  .chartreuse {
+    background: #7fff00 !important;
+  }
+  .chocolate {
+    background: #d2691e !important;
+  }
+  .coral {
+    background: #ff7f50 !important;
+  }
+  .cornflowerblue {
+    background: #6495ed !important;
+    color: whitesmoke !important;
+  }
+  .cornsilk {
+    background: #fff8dc !important;
+  }
+  .crimson {
+    background: #dc143c !important;
+  }
+  .cyan {
+    background: #00ffff !important;
+    color: whitesmoke !important;
+  }
+  .darkblue {
+    background: #00008b !important;
+  }
+  .darkcyan {
+    background: #008b8b !important;
+    color: whitesmoke !important;
+  }
+  .darkgoldenrod {
+    background: #b8860b !important;
+  }
+  .darkgray {
+    background: #a9a9a9 !important;
+  }
+  .darkgreen {
+    background: #006400 !important;
+    color: whitesmoke !important;
+  }
+  .darkgrey {
+    background: #a9a9a9 !important;
+  }
+  .darkkhaki {
+    background: #bdb76b !important;
+  }
+  .darkmagenta {
+    background: #8b008b !important;
+    color: whitesmoke !important;
+  }
+  .darkolivegreen {
+    background: #556b2f !important;
+    color: whitesmoke !important;
+  }
+  .darkorange {
+    background: #ff8c00 !important;
+  }
+  .darkorchid {
+    background: #9932cc !important;
+  }
+  .darkred {
+    background: #8b0000 !important;
+    color: whitesmoke !important;
+  }
+  .darksalmon {
+    background: #e9967a !important;
+  }
+  .darkseagreen {
+    background: #8fbc8f !important;
+  }
+  .darkslateblue {
+    background: #483d8b !important;
+    color: whitesmoke !important;
+  }
+  .darkslategray {
+    background: #2f4f4f !important;
+    color: whitesmoke !important;
+  }
+  .darkslategrey {
+    background: #2f4f4f !important;
+    color: whitesmoke !important;
+  }
+  .darkturquoise {
+    background: #00ced1 !important;
+    color: whitesmoke !important;
+  }
+  .darkviolet {
+    background: #9400d3 !important;
+    color: whitesmoke !important;
+  }
+  .deeppink {
+    background: #ff1493 !important;
+  }
+  .deepskyblue {
+    background: #00bfff !important;
+    color: whitesmoke !important;
+  }
+  .dimgray {
+    background: #696969 !important;
+    color: whitesmoke !important;
+  }
+  .dimgrey {
+    background: #696969 !important;
+  }
+  .dodgerblue {
+    background: #1e90ff !important;
+    color: whitesmoke !important;
+  }
+  .firebrick {
+    background: #b22222 !important;
+    color: whitesmoke !important;
+  }
+  .floralwhite {
+    background: #fffaf0 !important;
+  }
+  .forestgreen {
+    background: #228b22 !important;
+    color: whitesmoke !important;
+  }
+  .fuchsia {
+    background: #ff00ff !important;
+  }
+  .gainsboro {
+    background: #dcdcdc !important;
+  }
+  .ghostwhite {
+    background: #f8f8ff !important;
+  }
+  .goldenrod {
+    background: #daa520 !important;
+  }
+  .gold {
+    background: #ffd700 !important;
+  }
+  .gray {
+    background: #808080 !important;
+  }
+  .green {
+    background: #008000 !important;
+    color: whitesmoke !important;
+  }
+  .greenyellow {
+    background: #adff2f !important;
+  }
+  .grey {
+    background: #808080 !important;
+  }
+  .honeydew {
+    background: #f0fff0 !important;
+  }
+  .hotpink {
+    background: #ff69b4 !important;
+  }
+  .indianred {
+    background: #cd5c5c !important;
+    color: whitesmoke !important;
+  }
+  .indigo {
+    background: #4b0082 !important;
+    color: whitesmoke !important;
+  }
+  .ivory {
+    background: #fffff0 !important;
+  }
+  .khaki {
+    background: #f0e68c !important;
+  }
+  .lavenderblush {
+    background: #fff0f5 !important;
+  }
+  .lavender {
+    background: #e6e6fa !important;
+  }
+  .lawngreen {
+    background: #7cfc00 !important;
+  }
+  .lemonchiffon {
+    background: #fffacd !important;
+  }
+  .lightblue {
+    background: #add8e6 !important;
+  }
+  .lightcoral {
+    background: #f08080 !important;
+  }
+  .lightcyan {
+    background: #e0ffff !important;
+  }
+  .lightgoldenrodyellow {
+    background: #fafad2 !important;
+  }
+  .lightgray {
+    background: #d3d3d3 !important;
+  }
+  .lightgreen {
+    background: #90ee90 !important;
+  }
+  .lightgrey {
+    background: #d3d3d3 !important;
+  }
+  .lightpink {
+    background: #ffb6c1 !important;
+  }
+  .lightsalmon {
+    background: #ffa07a !important;
+  }
+  .lightseagreen {
+    background: #20b2aa !important;
+    color: whitesmoke !important;
+  }
+  .lightskyblue {
+    background: #87cefa !important;
+  }
+  .lightslategray {
+    background: #778899 !important;
+    color: whitesmoke !important;
+  }
+  .lightslategrey {
+    background: #778899 !important;
+    color: whitesmoke !important;
+  }
+  .lightsteelblue {
+    background: #b0c4de !important;
+  }
+  .lightyellow {
+    background: #ffffe0 !important;
+  }
+  .lime {
+    background: #00ff00 !important;
+    color: whitesmoke !important;
+  }
+  .limegreen {
+    background: #32cd32 !important;
+    color: whitesmoke !important;
+  }
+  .linen {
+    background: #faf0e6 !important;
+  }
+  .magenta {
+    background: #ff00ff !important;
+  }
+  .maroon {
+    background: #800000 !important;
+    color: whitesmoke !important;
+  }
+  .mediumaquamarine {
+    background: #66cdaa !important;
+    color: whitesmoke !important;
+  }
+  .mediumblue {
+    background: #0000cd !important;
+    color: whitesmoke !important;
+  }
+  .mediumorchid {
+    background: #ba55d3 !important;
+  }
+  .mediumpurple {
+    background: #9370db !important;
+  }
+  .mediumseagreen {
+    background: #3cb371 !important;
+    color: whitesmoke !important;
+  }
+  .mediumslateblue {
+    background: #7b68ee !important;
+    color: whitesmoke !important;
+  }
+  .mediumspringgreen {
+    background: #00fa9a !important;
+    color: whitesmoke !important;
+  }
+  .mediumturquoise {
+    background: #48d1cc !important;
+    color: whitesmoke !important;
+  }
+  .mediumvioletred {
+    background: #c71585 !important;
+  }
+  .midnightblue {
+    background: #191970 !important;
+    color: whitesmoke !important;
+  }
+  .mintcream {
+    background: #f5fffa !important;
+  }
+  .mistyrose {
+    background: #ffe4e1 !important;
+  }
+  .moccasin {
+    background: #ffe4b5 !important;
+  }
+  .navajowhite {
+    background: #ffdead !important;
+  }
+  .navy {
+    background: #000080 !important;
+    color: whitesmoke !important;
+  }
+  .oldlace {
+    background: #fdf5e6 !important;
+  }
+  .olive {
+    background: #808000 !important;
+  }
+  .olivedrab {
+    background: #6b8e23 !important;
+    color: whitesmoke !important;
+  }
+  .orange {
+    background: #ffa500 !important;
+  }
+  .orangered {
+    background: #ff4500 !important;
+  }
+  .orchid {
+    background: #da70d6 !important;
+  }
+  .palegoldenrod {
+    background: #eee8aa !important;
+  }
+  .palegreen {
+    background: #98fb98 !important;
+  }
+  .paleturquoise {
+    background: #afeeee !important;
+  }
+  .palevioletred {
+    background: #db7093 !important;
+  }
+  .papayawhip {
+    background: #ffefd5 !important;
+  }
+  .peachpuff {
+    background: #ffdab9 !important;
+  }
+  .peru {
+    background: #cd853f !important;
+  }
+  .pink {
+    background: #ffc0cb !important;
+  }
+  .plum {
+    background: #dda0dd !important;
+  }
+  .powderblue {
+    background: #b0e0e6 !important;
+  }
+  .purple {
+    background: #800080 !important;
+    color: whitesmoke !important;
+  }
+  .rebeccapurple {
+    background: #663399 !important;
+    color: whitesmoke !important;
+  }
+  .red {
+    background: #ff0000 !important;
+  }
+  .rosybrown {
+    background: #bc8f8f !important;
+  }
+  .royalblue {
+    background: #4169e1 !important;
+    color: whitesmoke !important;
+  }
+  .saddlebrown {
+    background: #8b4513 !important;
+    color: whitesmoke !important;
+  }
+  .salmon {
+    background: #fa8072 !important;
+  }
+  .sandybrown {
+    background: #f4a460 !important;
+  }
+  .seagreen {
+    background: #2e8b57 !important;
+    color: whitesmoke !important;
+  }
+  .seashell {
+    background: #fff5ee !important;
+  }
+  .sienna {
+    background: #a0522d !important;
+  }
+  .silver {
+    background: #c0c0c0 !important;
+  }
+  .skyblue {
+    background: #87ceeb !important;
+  }
+  .slateblue {
+    background: #6a5acd !important;
+    color: whitesmoke !important;
+  }
+  .slategray {
+    background: #708090 !important;
+    color: whitesmoke !important;
+  }
+  .slategrey {
+    background: #708090 !important;
+    color: whitesmoke !important;
+  }
+  .snow {
+    background: #fffafa !important;
+  }
+  .springgreen {
+    background: #00ff7f !important;
+    color: whitesmoke !important;
+  }
+  .steelblue {
+    background: #4682b4 !important;
+    color: whitesmoke !important;
+  }
+  .tan {
+    background: #d2b48c !important;
+  }
+  .teal {
+    background: #008080 !important;
+    color: whitesmoke !important;
+  }
+  .thistle {
+    background: #d8bfd8 !important;
+  }
+  .tomato {
+    background: #ff6347 !important;
+  }
+  .turquoise {
+    background: #40e0d0 !important;
+    color: whitesmoke !important;
+  }
+  .violet {
+    background: #ee82ee !important;
+  }
+  .wheat {
+    background: #f5deb3 !important;
+  }
+  .white {
+    background: #ffffff !important;
+  }
+  .whitesmoke {
+    background: #f5f5f5 !important;
+  }
+  .yellow {
+    background: #ffff00 !important;
+  }
+  .yellowgreen {
+    background: #9acd32 !important;
+  }

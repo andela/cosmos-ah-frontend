@@ -1,8 +1,8 @@
 import { initialState } from './state';
 import reducer from './reducers';
 
-export const article = {
+export const createArticle = {
   initialState,
   reducer,
-  stateKey: 'articles'
+  stateKey: 'createArticle'
 };

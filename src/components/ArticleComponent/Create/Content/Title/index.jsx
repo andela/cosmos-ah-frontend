@@ -1,6 +1,11 @@
 /* eslint-disable */
 import React, { Fragment } from 'react';
+import { trim } from 'validator';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+
+import { setArticleTitle, setArticleError } from '../../../../../state/create-article/actions';
+import { createArticleSelector } from '../../../../../state/create-article/selectors';
 
 const autoResize = () => {
   $(document)
@@ -11,7 +16,7 @@ const autoResize = () => {
         this.value = savedValue;
     })
     .on('input.autoExpand', 'textarea.autoExpand', function () {
-        let minRows = this.getAttribute('data-min-rows')|0;
+        let minRows = this.getAttribute('data-min-rows') | 0;
         let rows;
         this.rows = minRows;
         rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
@@ -19,12 +24,19 @@ const autoResize = () => {
     });
 };
 
-const Title = () => {
+const Title = ({ setTitle, setErrors, articleTitle, }) => {
   autoResize();
+  const getArticleTitle = (evt) => {
+    evt.persist();
+    const value = evt.target.value;
+    if (value.length < 3) { return setErrors({ status: true, showError: true, type: 'title', message: ['Title is too short!']}); }
+    setErrors({ showError: false, status: false, message: [], type: null });
+    return setTitle(trim(value));
+  };
   return (
     <Fragment>
       <Title.Wrapper>
-        <Title.Input className='autoExpand' rows='1' data-min-rows='0' placeholder="Title" />
+        <Title.Input onBlur={() => setErrors({ showError: false }) } onChange={getArticleTitle} className='autoExpand' rows='1' data-min-rows='0' placeholder="Title" value={articleTitle} />
       </Title.Wrapper>
     </Fragment>
   );
@@ -37,7 +49,7 @@ Title.Wrapper = styled.div`
 `;
 
 Title.Input = styled.textarea`
-  padding: 2rem .5rem;
+  padding: 0 .5rem;
   margin: 1rem;
   width: 100%;
   min-height: 2rem;
@@ -60,4 +72,7 @@ Title.Input = styled.textarea`
   }
 `;
 
-export default Title;
+const mapStateToProps = state => ({ createArticle: createArticleSelector(state) });
+
+export default connect(mapStateToProps, { setTitle: setArticleTitle, setErrors: setArticleError })(Title);
+
