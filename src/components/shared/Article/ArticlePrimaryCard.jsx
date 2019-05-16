@@ -3,6 +3,7 @@ import { Image, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ArticleUtil from '../../../utils/articles';
+import bookMarkIcon from '../../../assets/images/svgs/bookmark.svg';
 
 const { parseArticleCreationDate } = ArticleUtil;
 
@@ -14,12 +15,18 @@ const ArticleReadTime = styled.span`
   color: #3A8FDD;
 `;
 
+const Article = styled.article`
+  display: grid;
+  grid-template-columns: 2fr repeat(2, 1fr);
+  grid-template-rows: 1fr;
+`;
+
 const ArticlePrimaryCard = ({
   article: {
     id, title, description, author, createdAt, imageUrl, totalReadTime
-  }
+  }, articleBookmarkIcon
 }) => (
-    <Fragment key={id}>
+    <Article>
       <CardContentContainer>
         <h3>{title}</h3>
         <p>{description}</p>
@@ -28,22 +35,23 @@ const ArticlePrimaryCard = ({
           {parseArticleCreationDate(createdAt)}
           {' '}&middot;
           </span>{' '}
-        <ArticleReadTime data-testId={`article-read-time-${id}`}>
+        <ArticleReadTime data-testid={`article-read-time-${id}`}>
           {totalReadTime} {totalReadTime > 1 ? 'mins' : 'min'} read
           </ArticleReadTime>{' '}
-        <Icon name="star" size="small" color="grey" data-testId={`card-icon-${id}`} />
+        <Icon name="star" size="small" color="grey" data-testid={`card-icon-${id}`} />
       </CardContentContainer>
       <div>
-        {/* Space left intentionally */}
+        {articleBookmarkIcon}
       </div>
       <div>
         <Image src={imageUrl} alt="" width={100} height={100} rounded />
       </div>
-    </Fragment>
+    </Article>
 );
 
 ArticlePrimaryCard.propTypes = {
-  article: PropTypes.object.isRequired
+  article: PropTypes.object.isRequired,
+  articleBookmarkIcon: PropTypes.element
 };
 
 export default ArticlePrimaryCard;
