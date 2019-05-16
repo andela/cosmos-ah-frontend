@@ -8,6 +8,7 @@ import SocialMediaButton from '../components/SocialMediaButton';
 import { register } from '../state/auth/action';
 import InlineError from '../components/InlineError';
 import { validateSignupInput, validateProperty } from '../utils/userValidator';
+import logo from '../assets/images/inverted-logo.png';
 
 const Center = styled.div`
   text-align: center;
@@ -172,7 +173,7 @@ export const Register = props => {
         <Header>
           <div>
             <Link to="/">
-              <img src="../assets/images/inverted-logo.png" width="150px" />
+              <img src={logo} width="150px" />
             </Link>
           </div>
         </Header>

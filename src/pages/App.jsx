@@ -11,18 +11,19 @@ import '../assets/css/App.css';
 import ForgotPassword from './ForgotPassword';
 import { connectedFeed } from './Feeds';
 import CreateArticle from './CreateArticle';
+import { PrivateRoute } from './PrivateRoute';
 
 const App = () => (
   <Router>
     <Switch>
-      <Route path="/" exact component={Index}></Route>
-      <Route path="/login" exact component={connectedLogin}></Route>
-      <Route path="/signup" component={ConnectedRegister}></Route>
-      <Route path="/profile" exact component={Profile}></Route>
-      <Route path="/forgot-password" component={ForgotPassword}></Route>
-      <Route path='/handlesocialauth' component={ConnectedHandleSocialAuth} />
-      <Route path="/feeds" component={connectedFeed} />
-      <Route path="/article/create" exact component={CreateArticle}></Route>
+      <Route path="/" exact component={Index} />
+      <Route path="/login" exact component={connectedLogin} />
+      <Route path="/signup" component={ConnectedRegister} />
+      <PrivateRoute path="/profile" exact component={Profile} />
+      <Route path="/forgot-password" component={ForgotPassword} />
+      <Route path="/handlesocialauth" component={ConnectedHandleSocialAuth} />
+      <PrivateRoute path="/feeds" component={connectedFeed} />
+      <PrivateRoute path="/article/create" exact component={CreateArticle} />
     </Switch>
   </Router>
 );
