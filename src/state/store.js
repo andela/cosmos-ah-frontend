@@ -21,7 +21,6 @@ const rootReducer = combineReducers({
   [auth.stateKey]: auth.authReducer,
   [alert.stateKey]: alert.alertReducer,
   [createArticle.stateKey]: createArticle.reducer,
-  [alert.stateKey]: alert.alertReducer,
   [userPassword.stateKey]: userPassword.reducer,
 });
 
