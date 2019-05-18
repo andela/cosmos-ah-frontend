@@ -64,7 +64,7 @@ const editorHandler = (setBodyInState, setImagesInState) => {
 const Body = ({ setBody, setImages }) => {
   useEffect(() => {
     editorHandler(setBody, setImages);
-  }, []);
+  }, [setBody, setImages]);
   return (
     <Fragment>
       <Body.Wrapper>

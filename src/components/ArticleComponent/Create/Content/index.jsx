@@ -44,7 +44,12 @@ const Content = ({
     setErrors({
       showError: false, status: false, message: [], type: null
     });
-    return createArticleDispatch(article, history);
+    try {
+      const { data } = await createArticleDispatch(article);
+      return history.push(`/article/${data.id}`);
+    } catch (err) {
+      throw Error(err);
+    }
   };
   const {
     message, type, showError,

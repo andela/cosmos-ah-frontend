@@ -1,11 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
-const CreateArticlePage = () => (
-  <Fragment>
-    <div>
-      View Article
-    </div>
-  </Fragment>
-);
+import ViewArticle from '../components/ArticleComponent/View';
 
-export default CreateArticlePage;
+const ViewArticlePage = () => (<ViewArticle/>);
+
+export default ViewArticlePage;
