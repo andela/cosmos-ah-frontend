@@ -26,7 +26,7 @@ const App = () => (
       <Route path="/feeds" component={connectedFeed} />
       <Route path="/article/create" exact component={CreateArticle}></Route>
       <Route path="/article/:id" exact component={ViewArticle}></Route>
-      <Route path="/password-reset" exact component={ResetPassword} />
+      <Route path="/password-reset/:resetToken" exact component={ResetPassword}></Route>
     </Switch>
   </Router>
 );

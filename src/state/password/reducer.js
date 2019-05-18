@@ -21,7 +21,8 @@ export default (state = initialState, action) => {
     case LOADING:
       return {
         ...state,
-        forgotPassword: action.payload
+        forgotPassword: action.payload,
+        resetPassword: action.payload
       };
     case FORGOT_PASSWORD_FAILURE:
       return {
@@ -36,7 +37,8 @@ export default (state = initialState, action) => {
         ...state,
         resetPassword: {
           ...state.resetPassword,
-          error: action.payload
+          message: action.payload,
+          error: null
         },
       };
     case RESET_PASSWORD_FAILURE:

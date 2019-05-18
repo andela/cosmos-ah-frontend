@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Validator from 'validator';
 import { connect } from 'react-redux';
 import { ButtonComponent } from '../components/Button';
 import AltLogo from '../components/AppLogo';
@@ -16,23 +17,38 @@ const ForgotPassword = props => {
     email: ''
   });
 
+  const [error, setError] = useState([]);
+
+  const validate = data => {
+    const errors = {};
+    if (!Validator.isEmail(data.email)) errors.email = 'The email format is invalid';
+    return errors;
+  };
+
 
   const { email } = formInput;
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    props.forgotPasswordAction(email);
-    setFormInput({ email: '' });
+    const validateFormField = await validate(formInput);
+    if (Object.keys(validateFormField).length > 0) {
+      setError(() => ({ ...validateFormField }));
+    } else {
+      setError(() => ([]));
+      props.forgotPasswordAction(email, props.history);
+      setFormInput({ email: '' });
+    }
   };
 
   const handleChange = event => {
     event.persist();
     const { name, value } = event.target;
     setFormInput(() => ({ ...formInput, [name]: value }));
+    setError(() => (''));
+    props.forgotPasswordState.error = '';
   };
 
-
-  const messageClass = [props.forgotPasswordState.error ? 'text-error' : 'text-success'];
+  const messageClass = [props.forgotPasswordState.error || error.email ? 'text-error' : 'text-success'];
   return (
     <ContainerStyle>
       <Center>
@@ -45,6 +61,7 @@ const ForgotPassword = props => {
       <FormStyle onSubmit={handleSubmit} loading={forgotPasswordState.loadingState}>
         <InputField
           fluid
+          error={!!error.email}
           size='big'
           icon={{ name: 'envelope', color: 'blue' }}
           iconPosition='left'
@@ -54,16 +71,11 @@ const ForgotPassword = props => {
           onChange={handleChange}
           value={email}
           required={true} />
-        {(props.forgotPasswordState.message || props.forgotPasswordState.error) && (
+        {(props.forgotPasswordState.message || props.forgotPasswordState.error || error.email) && (
           <div className={messageClass.join(' ')}>
-            {
-              props.forgotPasswordState.message
-              && <p>{props.forgotPasswordState.message.data}</p>
-            }
-            {
-              props.forgotPasswordState.error
-              && <p>{props.forgotPasswordState.error}</p>
-            }
+            {props.forgotPasswordState.message && <p>{props.forgotPasswordState.message.data}</p>}
+            {error.email && <p>{error.email}</p>}
+            {props.forgotPasswordState.error && <p>{props.forgotPasswordState.error}</p>}
           </div>
         )}
         <ButtonComponent type='submit' size='big' color='blue'>RESET PASSWORD</ButtonComponent>

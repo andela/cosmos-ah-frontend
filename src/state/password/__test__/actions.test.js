@@ -14,9 +14,12 @@ const mockStore = configureMockStore([thunk]);
 const store = mockStore({});
 const userEmail = { email: 'test@andela.com' };
 const forgetPasswordResponse = { status: 'success', data: 'Password reset instruction was successfully sent to test@andela.com' };
-const form = { password: 'Password@1', password_confirmation: 'Password@1' };
 const resetPasswordResponse = { status: 'success', data: 'Password was successfully updated!' };
-
+const form = {
+  password: 'Password@1',
+  password_confirmation: 'Password@1'
+};
+const resetToken = '12345-gthyun-45678-hftyg';
 
 describe('Forgot Password Action', () => {
   it('Send message for successful request', async () => {
@@ -36,18 +39,18 @@ describe('Forgot Password Action', () => {
 });
 
 describe('Reset Password Action', () => {
-  it('Send message for successful request', async () => {
+  it('Send message for successful password reset action', async () => {
     axios.put = jest.fn().mockReturnValue(Promise.resolve(resetPasswordResponse));
 
-    await store.dispatch(resetPasswordAction(form.password, form.password_confirmation));
-    expect(store.getActions()).toEqual(resetPasswordSuccess(resetPasswordResponse.data));
+    await store.dispatch(resetPasswordAction(form, resetToken));
+    expect(store.getActions()[6]).toEqual(resetPasswordSuccess(resetPasswordResponse.data));
   });
 
-  it('Return error for unsuccessful opearation', async () => {
-    const error = { status: 'fail', message: 'Invalid verification token, kindly re-authenticate!' };
+  it('Return error for unsuccessful operation', async () => {
+    const error = { message: 'Invalid verification token, kindly re-authenticate!', status: 'fail' };
     axios.put = jest.fn().mockReturnValue(Promise.reject(error));
 
     await store.dispatch(resetPasswordFailure(error));
-    expect(store.getActions()).toEqual(resetPasswordFailure(error).type);
+    expect(store.getActions()[9].type).toEqual(resetPasswordFailure(error).type);
   });
 });

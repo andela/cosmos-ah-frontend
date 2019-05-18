@@ -46,35 +46,18 @@ export const forgotPasswordAction = email => async dispatch => {
 export const resetPasswordAction = (form, resetToken, redirect) => async dispatch => {
   try {
     dispatch(loading(true));
-    const forgotPassword = await axios.put(`/password-reset/${resetToken}`, { ...form });
+    const resetPassword = await axios.put(`/password-reset/${resetToken}`, { ...form, resetToken });
     dispatch(loading(false));
-    dispatch(resetPasswordSuccess(forgotPassword.data));
+    dispatch(resetPasswordSuccess(resetPassword.data));
     swal({
       title: 'Password Changed',
-      text: forgotPassword.data.data,
+      text: resetPassword.data.data,
       icon: 'success',
       button: 'Ok'
     });
     redirect.push('/login');
   } catch (error) {
     dispatch(loading(false));
-    if (error.response.data.error && error.response.data.error.password) {
-      dispatch(resetPasswordFailure(error.response.data.error.password));
-      return swal({
-        title: 'Validation Error',
-        text: error.response.data.error.password.join('\n'),
-        icon: 'error',
-        button: 'Close'
-      });
-    }
-
-    dispatch(resetPasswordFailure(error.response.data.message));
-    swal({
-      title: 'Error',
-      text: error.response.data.message,
-      icon: 'error',
-      button: 'Try Again'
-    });
-    return redirect.push('/login');
+    dispatch(resetPasswordFailure(error.response));
   }
 };

@@ -18,29 +18,37 @@ let store = mockStore({
   }
 });
 
+const props = {
+  match: {
+    params: {
+      resetToken: 'token-string'
+    }
+  }
+};
+
 test('<ResetPassword /> component', () => {
-  const resetPasswordPage = render(<Provider store={store}><BrowserRouter><ResetPassword /></BrowserRouter></Provider>
+  const resetPasswordPage = render(<Provider store={store}><BrowserRouter><ResetPassword {...props} /></BrowserRouter></Provider>
   );
   expect(resetPasswordPage).toBeTruthy();
   expect(resetPasswordPage.getByText('CONTINUE').tagName).toBe('BUTTON');
 });
 
 test('renders the Form', () => {
-  const { getByPlaceholderText } = render(<Provider store={store}><BrowserRouter><ResetPassword /></BrowserRouter></Provider>
+  const { getByPlaceholderText } = render(<Provider store={store}><BrowserRouter><ResetPassword {...props} /></BrowserRouter></Provider>
   );
   expect(getByPlaceholderText('Enter Your New Password')).toBeTruthy();
   expect(getByPlaceholderText('Confirm Your Password')).toBeTruthy();
 });
 
 test('renders the Header', () => {
-  const resetPasswordPage = render(<Provider store={store}><BrowserRouter><ResetPassword /></BrowserRouter></Provider>
+  const resetPasswordPage = render(<Provider store={store}><BrowserRouter><ResetPassword {...props} /></BrowserRouter></Provider>
   );
   const Header = resetPasswordPage.getByText('Reset Password');
   expect(Header.textContent).toBe('Reset Password');
 });
 
 test('renders the Component', () => {
-  const resetPasswordPage = render(<Provider store={store}><BrowserRouter><ResetPassword /></BrowserRouter></Provider>
+  const resetPasswordPage = render(<Provider store={store}><BrowserRouter><ResetPassword {...props} /></BrowserRouter></Provider>
   );
   expect(resetPasswordPage.getAllByPlaceholderText('Enter Your New Password')).toMatchSnapshot();
   expect(resetPasswordPage.getByText('CONTINUE').tagName).toMatchSnapshot();
