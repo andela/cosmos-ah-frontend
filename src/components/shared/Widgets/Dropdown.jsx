@@ -2,12 +2,13 @@ import React, { Fragment } from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-const DropdownSelect = ({ dropDownItems, placeholder }) => (
+const DropdownSelect = ({ dropDownItems }) => (
     <Fragment>
       <Dropdown
-        placeholder={placeholder}
+        placeholder='SEARCH'
         options={dropDownItems}
         button
+        selection
         compact
         lazyLoad
       />

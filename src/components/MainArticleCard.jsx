@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Header } from 'semantic-ui-react';
+import truncatise from 'truncatise';
 
 const MainArticleCardStyle = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -19,6 +20,13 @@ const CardFooter = styled.div`
   text-align: right;
 `;
 
+const options = {
+  TruncateLength: 150,
+  TruncateBy: 'words',
+  Strict: false,
+  StripHTML: true,
+  Sufix: 'Read More'
+};
 
 const MainArticleCard = ({ article }) => (
     <MainArticleCardStyle>
@@ -28,7 +36,7 @@ const MainArticleCard = ({ article }) => (
             </h1>
         </Header>
         <p>
-            {article.body}
+        {truncatise(article.body, options)}
         </p>
         <Link to={`/articles/${article.id}`}>Read More</Link>
         <CardFooter>

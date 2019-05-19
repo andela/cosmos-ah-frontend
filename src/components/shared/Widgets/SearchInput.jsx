@@ -13,22 +13,25 @@ const StyledInput = styled(Input)`
   border-radius: 4px;
   color: ${props => props.textInputColor};
   width: ${props => props.width || '100%'};
-  border: ${props => `${props.borderThickness}px solid ${props.borderColor}`}
+  border: ${props => `${props.border}px solid #808080`}
 `;
 
 const SearchInput = ({
-  handleInputChange, placeholder, borderThickness, borderColor, width,
-  color, backgroundColor
+  handleInputChange,
+  placeholder,
+  border, 
+  width,
+  backgroundColor,
+  textInputColor,
 }) => (
     <Fragment>
       <StyledInput
         onChange={handleInputChange}
         placeholder={placeholder}
+        border={border}
         width={width}
-        borderThickness={borderThickness}
-        borderColor={borderColor}
-        color={color}
         backgroundColor={backgroundColor}
+        textInputColor={textInputColor}
       />
     </Fragment>
 );
