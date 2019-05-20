@@ -93,6 +93,7 @@ textarea {
   }
 }
 
+e
 /* Editor format */
 .medium-editor-placeholder:after {
   font-style: inherit;
@@ -282,4 +283,29 @@ input.taggle_input {
   color: whitesmoke !important;
   font-size: 16px !important;
   transition: all 0.5s linear !important;
+}
+
+.text-error {
+  border: 1px solid red;
+  color: red;
+  margin: 0.5rem auto;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background: #db282812;
+}
+
+
+.text-success {
+  border: 1px solid green;
+  color: green;
+  margin: 0.5rem auto;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background: #00800014;
+}
+
+.text-error>p, .text-success>p {
+  font-family: Circular-Book;
 }
