@@ -6,24 +6,230 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="sc-bwzfXH frDHaS"
+        class="sc-iwsKbI cOBXpt"
       >
         <div
-          class="sc-htpNat coTLg"
+          class="sc-gqjmRU bRgVBE"
         >
-          <div />
+          <div>
+            <a
+              class="item"
+              href="/"
+            >
+              <img
+                class="sc-bxivhb fYuNzV"
+                src="test-file-stub"
+              />
+            </a>
+          </div>
+          <div
+            class="sc-kAzzGY dlLOPc"
+          >
+            <div
+              class="sc-cSHVUG dsRAme"
+            >
+              <div
+                aria-expanded="false"
+                class="ui button compact selection dropdown"
+                role="listbox"
+                tabindex="0"
+              >
+                <div
+                  aria-live="polite"
+                  class="default text"
+                  role="alert"
+                >
+                  SEARCH
+                </div>
+                <i
+                  aria-hidden="true"
+                  class="dropdown icon"
+                />
+                <div
+                  class="menu transition"
+                />
+              </div>
+              <div
+                class="sc-VigVT dvnCjH"
+              >
+                <img
+                  class="sc-jTzLTM lbPJRr"
+                  src="test-file-stub"
+                />
+                <input
+                  class="sc-bwzfXH sc-htpNat jIqhbn"
+                  placeholder="Find the stories you love"
+                  width="400px"
+                />
+              </div>
+            </div>
+            <div
+              class="sc-chPdSV dniBXr"
+            >
+              <div
+                class="right menu"
+              >
+                <div
+                  class="sc-gzVnrw jLEMcl"
+                >
+                  <div
+                    class="item sc-EHOje LOWJG"
+                  >
+                    <img
+                      class="sc-ifAKCX dFPJHA"
+                      src="test-file-stub"
+                    />
+                    <div
+                      class="sc-kgoBCf kqjQpZ"
+                    >
+                      0
+                    </div>
+                  </div>
+                  <div
+                    class="item"
+                  >
+                    <img
+                      class="sc-bZQynM gXiVFT"
+                      src="test-file-stub"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-gZMcBi kXwBat"
+        >
+          <div
+            class="sc-fjdhpX fdxDzp"
+          >
+            <div
+              class="sc-jzJRlG jZtfAi"
+            >
+              <div />
+            </div>
+            <div
+              class="sc-jzJRlG jZtfAi"
+            >
+              <div />
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="sc-bwzfXH frDHaS"
+      class="sc-iwsKbI cOBXpt"
     >
       <div
-        class="sc-htpNat coTLg"
+        class="sc-gqjmRU bRgVBE"
       >
-        <div />
+        <div>
+          <a
+            class="item"
+            href="/"
+          >
+            <img
+              class="sc-bxivhb fYuNzV"
+              src="test-file-stub"
+            />
+          </a>
+        </div>
+        <div
+          class="sc-kAzzGY dlLOPc"
+        >
+          <div
+            class="sc-cSHVUG dsRAme"
+          >
+            <div
+              aria-expanded="false"
+              class="ui button compact selection dropdown"
+              role="listbox"
+              tabindex="0"
+            >
+              <div
+                aria-live="polite"
+                class="default text"
+                role="alert"
+              >
+                SEARCH
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+              />
+            </div>
+            <div
+              class="sc-VigVT dvnCjH"
+            >
+              <img
+                class="sc-jTzLTM lbPJRr"
+                src="test-file-stub"
+              />
+              <input
+                class="sc-bwzfXH sc-htpNat jIqhbn"
+                placeholder="Find the stories you love"
+                width="400px"
+              />
+            </div>
+          </div>
+          <div
+            class="sc-chPdSV dniBXr"
+          >
+            <div
+              class="right menu"
+            >
+              <div
+                class="sc-gzVnrw jLEMcl"
+              >
+                <div
+                  class="item sc-EHOje LOWJG"
+                >
+                  <img
+                    class="sc-ifAKCX dFPJHA"
+                    src="test-file-stub"
+                  />
+                  <div
+                    class="sc-kgoBCf kqjQpZ"
+                  >
+                    0
+                  </div>
+                </div>
+                <div
+                  class="item"
+                >
+                  <img
+                    class="sc-bZQynM gXiVFT"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-gZMcBi kXwBat"
+      >
+        <div
+          class="sc-fjdhpX fdxDzp"
+        >
+          <div
+            class="sc-jzJRlG jZtfAi"
+          >
+            <div />
+          </div>
+          <div
+            class="sc-jzJRlG jZtfAi"
+          >
+            <div />
+          </div>
+        </div>
       </div>
     </div>
   </div>,

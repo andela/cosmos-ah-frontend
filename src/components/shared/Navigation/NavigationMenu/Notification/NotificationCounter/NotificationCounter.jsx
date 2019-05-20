@@ -3,9 +3,12 @@ import styled, { css } from 'styled-components';
 
 const NotificationCounter = props => {
   const Counter = styled.div`
-  position: relative;
-  left: -25%;
-  top: 5px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 20%;
+  top: 40%;
   width: 14px;
   height: 14px;
   border-radius: 50%;

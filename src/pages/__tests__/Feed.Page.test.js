@@ -16,4 +16,8 @@ describe('Should render a component', () => {
         expect(FeedComponent).toBeTruthy();
         expect(FeedComponent).toMatchSnapshot();
     });
+    test('renders the search input', () => {
+        const { getByPlaceholderText } = render(<BrowserRouter><Feeds {...props}/></BrowserRouter>);
+        expect(getByPlaceholderText('Find the stories you love')).toBeTruthy();
+      });
 });
