@@ -13,7 +13,8 @@ import { connectedFeed } from './Feeds';
 import CreateArticle from './CreateArticle';
 import ViewArticle from './ViewArticle';
 import ResetPassword from './ResetPassword';
-import { PrivateRoute } from '../lib/AuthenticateRoute';
+import { PrivateRoute } from '../lib/authenticateRoute';
+
 
 const App = () => (
   <Router>
