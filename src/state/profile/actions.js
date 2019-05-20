@@ -10,10 +10,11 @@ export const getUserProfileFailure = error => ({
   payload: error,
 });
 
-export const getProfile = (route = 'profile') => async dispatch => {
+export const getProfile = (id = null, route = 'profile') => async dispatch => {
+  const profileURL = !id || id === undefined ? `/${route}` : `/${route}/${id}`;
   try {
-    const { data: { data: { user } } } = await axios.get(`/${route}`);
-    dispatch(getUserProfileSuccess(user));
+    const { data: { data: { user } } } = await axios.get(profileURL);
+    return dispatch(getUserProfileSuccess(user));
   } catch (error) {
     dispatch(getUserProfileFailure(error.response.data));
   }

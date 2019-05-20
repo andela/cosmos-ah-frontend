@@ -6,6 +6,8 @@ import {
   GET_ARTICLE_FAILURE,
   CREATE_ARTICLE_FAILURE,
   IS_ARTICLE_REQUEST,
+  GET_ARTICLE_BY_ID_SUCCESS,
+  GET_ARTICLE_BY_ID_ERROR,
 } from './actionTypes';
 
 export const createArticleSuccess = article => ({
@@ -32,23 +34,42 @@ export const isArticleRequest = () => ({
 });
 
 
+export const getArticleByIDSuccess = article => ({
+  type: GET_ARTICLE_BY_ID_SUCCESS,
+  payload: article,
+});
+
+export const getArticleByIDError = error => ({
+  type: GET_ARTICLE_BY_ID_ERROR,
+  payload: error,
+});
+
 export const getArticleAction = () => async dispatch => {
   try {
     const allArticles = await getAllArticles();
-    dispatch(getArticles(allArticles));
+    return dispatch(getArticles(allArticles));
   } catch (error) {
     dispatch(getArticlesFailure());
   }
 };
 
-
-export const createNewArticle = (article, history = null) => async dispatch => {
+export const createNewArticle = article => async dispatch => {
   dispatch(isArticleRequest());
   try {
     const { data } = await axios.post('/articles', article);
     await dispatch(createArticleSuccess(data));
-    return history.push(`/article/${data.data.id}`);
+    return data;
   } catch (error) {
     dispatch(createArticleFailure(error));
+  }
+};
+
+export const getArticleByID = (articles, id) => async dispatch => {
+  dispatch(isArticleRequest());
+  try {
+    const { data } = await axios.get(`/articles/${id}`);
+    return dispatch(getArticleByIDSuccess(data));
+  } catch (error) {
+    dispatch(getArticleByIDError(error.response.data));
   }
 };
