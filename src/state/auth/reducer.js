@@ -1,7 +1,8 @@
 import { initialState } from './state';
 import {
   REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE,
-  SIGN_IN_SUCCESS, LOADING, SIGN_IN_ERROR, SOCIAL_AUTH
+  SIGN_IN_SUCCESS, LOADING, SIGN_IN_ERROR, SOCIAL_AUTH,
+  SIGN_OUT
 } from './actionTypes';
 
 export default (state = initialState, action) => {
@@ -43,6 +44,8 @@ export default (state = initialState, action) => {
         signin: action.payload,
         login: action.payload
       };
+    case SIGN_OUT:
+      return { };
     default:
       return state;
   }

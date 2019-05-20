@@ -5,7 +5,7 @@ import configureMockStore from 'redux-mock-store';
 import { render } from 'react-testing-library';
 
 const mockStore = configureMockStore();
-const store = mockStore({});
+const store = mockStore({ imgUrl: 'imgUrul' });
 
 export const renderWithRedux = ui => ({
   ...render(<Provider store={store}>{ui}</Provider>),

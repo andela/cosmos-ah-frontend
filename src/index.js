@@ -6,7 +6,8 @@ import { Provider } from 'react-redux';
 import store from './state/store';
 import 'semantic-ui-css/semantic.min.css';
 import 'semantic-ui-css/semantic.min';
-
+import auth from './utils/auth';
+  auth();
 ReactDOM.render(
     <Provider store={store}>
       <App />

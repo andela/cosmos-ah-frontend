@@ -1,18 +1,12 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
-import DefaultAvatar from '../../../../../assets/images/avatars/default.jpg';
-
-const Avatar = styled.img`
-	height: 50px !important;
-	width: 45px !important;
-  border-radius: 50px;
-`;
+import Dropdown from '../../../Option/index';
 
 const ProfileAvatar = props => (
   <Fragment>
 		<div className="item">
-			<Avatar src={props.imageSrc || DefaultAvatar} />
+			<Dropdown imageSrc={props.imageSrc} />
 		</div>
 	</Fragment>
 );
