@@ -80,6 +80,7 @@ module.exports = function() {
       alias: {
         Components: path.resolve(__dirname, 'src/components'),
         Utils: path.resolve(__dirname, 'src/utils'),
+        Assets: path.resolve(__dirname, 'src/assets'),
       }
     },
     devtool: 'source-map',

@@ -27,6 +27,7 @@ const Logo = styled.div`
     text-align: center;
     img {
       width: 100px;
+      display: none;
     }
   }
 `;
@@ -60,7 +61,7 @@ const StyledLink = styled.p`
 `;
 
 const Center = styled.div`
-  margin: 0 auto;
+  margin: 50px auto 0;
   text-align: center;
 `;
 
@@ -117,7 +118,7 @@ export const Login = props => {
     </Logo>
     <Center>
       <Wrap>
-        <Grid.Column>
+        <Grid.Column style={{ padding: '0 20px' }}>
           <Center>
             <Header as='h1' color='blue' size='huge'>Login</Header>
           </Center>
@@ -144,7 +145,7 @@ export const Login = props => {
             <Grid centered>
             <Center>
               <Header>
-                <h3>Don't have an account yet? <Link to='/signup'>Create One</Link></h3>
+                <h3>Don't have an account yet? <Link to='/signup'><br/>Create One</Link></h3>
             </Header>
             </Center>
             </Grid>

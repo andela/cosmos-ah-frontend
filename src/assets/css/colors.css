@@ -1,495 +1,557 @@
-  .aliceblue {
+  .color-aliceblue {
     background: #f0f8ff !important;
   }
-  .antiquewhite {
+  .color-antiquewhite {
     background: #faebd7 !important;
   }
-  .aqua {
+  .color-aqua {
     background: #00ffff !important;
     color: darkgrey !important;
   }
-  .aquamarine {
+  .color-aquamarine {
     background: #7fffd4 !important;
   }
-  .azure {
+  .color-azure {
     background: #f0ffff !important;
   }
-  .beige {
+  .color-beige {
     background: #f5f5dc !important;
   }
-  .bisque {
+  .color-bisque {
     background: #ffe4c4 !important;
   }
-  .black {
+  .color-black {
     background: #000000 !important;
   }
-  .blanchedalmond {
+  .color-blanchedalmond {
     background: #ffebcd !important;
   }
-  .blue {
+  .color-blue {
     background: #0000ff !important;
     color: whitesmoke !important;
   }
-  .blueviolet {
+  .color-blueviolet {
     background: #8a2be2 !important;
     color: whitesmoke !important;
   }
-  .brown {
+  .color-brown {
     background: #a52a2a !important;
+    background: #f0f8ff !important;
   }
-  .burlywood {
+  .color-burlywood {
     background: #deb887 !important;
+    background: #f0f8ff !important;
   }
-  .cadetblue {
+  .color-cadetblue {
     background: #5f9ea0 !important;
     color: whitesmoke !important;
   }
-  .chartreuse {
+  .color-chartreuse {
     background: #7fff00 !important;
   }
-  .chocolate {
+  .color-chocolate {
     background: #d2691e !important;
+    background: #f0f8ff !important;
   }
-  .coral {
+  .color-coral {
     background: #ff7f50 !important;
+    background: #f0f8ff !important;
   }
-  .cornflowerblue {
+  .color-cornflowerblue {
     background: #6495ed !important;
     color: whitesmoke !important;
   }
-  .cornsilk {
+  .color-cornsilk {
     background: #fff8dc !important;
   }
-  .crimson {
+  .color-crimson {
     background: #dc143c !important;
+    background: #f0f8ff !important;
   }
-  .cyan {
+  .color-cyan {
     background: #00ffff !important;
     color: whitesmoke !important;
   }
-  .darkblue {
+  .color-darkblue {
     background: #00008b !important;
   }
-  .darkcyan {
+  .color-darkcyan {
     background: #008b8b !important;
     color: whitesmoke !important;
   }
-  .darkgoldenrod {
+  .color-darkgoldenrod {
     background: #b8860b !important;
+    background: #f0f8ff !important;
   }
-  .darkgray {
+  .color-darkgray {
     background: #a9a9a9 !important;
+    background: #f0f8ff !important;
   }
-  .darkgreen {
+  .color-darkgreen {
     background: #006400 !important;
     color: whitesmoke !important;
   }
-  .darkgrey {
+  .color-darkgrey {
     background: #a9a9a9 !important;
+    background: #f0f8ff !important;
   }
-  .darkkhaki {
+  .color-darkkhaki {
     background: #bdb76b !important;
+    background: #f0f8ff !important;
   }
-  .darkmagenta {
+  .color-darkmagenta {
     background: #8b008b !important;
     color: whitesmoke !important;
   }
-  .darkolivegreen {
+  .color-darkolivegreen {
     background: #556b2f !important;
     color: whitesmoke !important;
   }
-  .darkorange {
+  .color-darkorange {
     background: #ff8c00 !important;
+    background: #f0f8ff !important;
   }
-  .darkorchid {
+  .color-darkorchid {
     background: #9932cc !important;
+    background: #f0f8ff !important;
   }
-  .darkred {
+  .color-darkred {
     background: #8b0000 !important;
     color: whitesmoke !important;
   }
-  .darksalmon {
+  .color-darksalmon {
     background: #e9967a !important;
+    background: #f0f8ff !important;
   }
-  .darkseagreen {
+  .color-darkseagreen {
     background: #8fbc8f !important;
+    background: #f0f8ff !important;
   }
-  .darkslateblue {
+  .color-darkslateblue {
     background: #483d8b !important;
     color: whitesmoke !important;
   }
-  .darkslategray {
+  .color-darkslategray {
     background: #2f4f4f !important;
     color: whitesmoke !important;
   }
-  .darkslategrey {
+  .color-darkslategrey {
     background: #2f4f4f !important;
     color: whitesmoke !important;
   }
-  .darkturquoise {
+  .color-darkturquoise {
     background: #00ced1 !important;
     color: whitesmoke !important;
   }
-  .darkviolet {
+  .color-darkviolet {
     background: #9400d3 !important;
     color: whitesmoke !important;
   }
-  .deeppink {
+  .color-deeppink {
     background: #ff1493 !important;
+    background: #f0f8ff !important;
   }
-  .deepskyblue {
+  .color-deepskyblue {
     background: #00bfff !important;
     color: whitesmoke !important;
   }
-  .dimgray {
+  .color-dimgray {
     background: #696969 !important;
     color: whitesmoke !important;
   }
-  .dimgrey {
+  .color-dimgrey {
     background: #696969 !important;
   }
-  .dodgerblue {
+  .color-dodgerblue {
     background: #1e90ff !important;
     color: whitesmoke !important;
   }
-  .firebrick {
+  .color-firebrick {
     background: #b22222 !important;
     color: whitesmoke !important;
   }
-  .floralwhite {
+  .color-floralwhite {
     background: #fffaf0 !important;
   }
-  .forestgreen {
+  .color-forestgreen {
     background: #228b22 !important;
     color: whitesmoke !important;
   }
-  .fuchsia {
+  .color-fuchsia {
     background: #ff00ff !important;
+    color: whitesmoke !important;
   }
-  .gainsboro {
+  .color-gainsboro {
     background: #dcdcdc !important;
   }
-  .ghostwhite {
+  .color-ghostwhite {
     background: #f8f8ff !important;
   }
-  .goldenrod {
+  .color-goldenrod {
     background: #daa520 !important;
+    color: whitesmoke !important;
   }
-  .gold {
+  .color-gold {
     background: #ffd700 !important;
+    color: whitesmoke !important;
   }
-  .gray {
+  .color-gray {
     background: #808080 !important;
+    color: whitesmoke !important;
   }
-  .green {
+  .color-green {
     background: #008000 !important;
     color: whitesmoke !important;
   }
-  .greenyellow {
+  .color-greenyellow {
     background: #adff2f !important;
   }
-  .grey {
+  .color-grey {
     background: #808080 !important;
+    color: whitesmoke !important;
   }
-  .honeydew {
+  .color-honeydew {
     background: #f0fff0 !important;
   }
-  .hotpink {
+  .color-hotpink {
     background: #ff69b4 !important;
+    color: whitesmoke !important;
   }
-  .indianred {
+  .color-indianred {
     background: #cd5c5c !important;
     color: whitesmoke !important;
   }
-  .indigo {
+  .color-indigo {
     background: #4b0082 !important;
     color: whitesmoke !important;
   }
-  .ivory {
+  .color-ivory {
     background: #fffff0 !important;
   }
-  .khaki {
+  .color-khaki {
     background: #f0e68c !important;
   }
-  .lavenderblush {
+  .color-lavenderblush {
     background: #fff0f5 !important;
   }
-  .lavender {
+  .color-lavender {
     background: #e6e6fa !important;
   }
-  .lawngreen {
+  .color-lawngreen {
     background: #7cfc00 !important;
+    color: whitesmoke !important;
   }
-  .lemonchiffon {
+  .color-lemonchiffon {
     background: #fffacd !important;
   }
-  .lightblue {
+  .color-lightblue {
     background: #add8e6 !important;
+    color: whitesmoke !important;
   }
-  .lightcoral {
+  .color-lightcoral {
     background: #f08080 !important;
+    color: whitesmoke !important;
   }
-  .lightcyan {
+  .color-lightcyan {
     background: #e0ffff !important;
+    color: whitesmoke !important;
   }
-  .lightgoldenrodyellow {
+  .color-lightgoldenrodyellow {
     background: #fafad2 !important;
+    color: whitesmoke !important;
   }
-  .lightgray {
+  .color-lightgray {
     background: #d3d3d3 !important;
+    color: whitesmoke !important;
   }
-  .lightgreen {
+  .color-lightgreen {
     background: #90ee90 !important;
+    color: whitesmoke !important;
   }
-  .lightgrey {
+  .color-lightgrey {
     background: #d3d3d3 !important;
   }
-  .lightpink {
+  .color-lightpink {
     background: #ffb6c1 !important;
+    color: whitesmoke !important;
   }
-  .lightsalmon {
+  .color-lightsalmon {
     background: #ffa07a !important;
+    color: whitesmoke !important;
   }
-  .lightseagreen {
+  .color-lightseagreen {
     background: #20b2aa !important;
     color: whitesmoke !important;
   }
-  .lightskyblue {
+  .color-lightskyblue {
     background: #87cefa !important;
+    color: whitesmoke !important;
   }
-  .lightslategray {
+  .color-lightslategray {
     background: #778899 !important;
     color: whitesmoke !important;
   }
-  .lightslategrey {
+  .color-lightslategrey {
     background: #778899 !important;
     color: whitesmoke !important;
   }
-  .lightsteelblue {
+  .color-lightsteelblue {
     background: #b0c4de !important;
+    color: whitesmoke !important;
   }
-  .lightyellow {
+  .color-lightyellow {
     background: #ffffe0 !important;
+    color: whitesmoke !important;
   }
-  .lime {
+  .color-lime {
     background: #00ff00 !important;
     color: whitesmoke !important;
   }
-  .limegreen {
+  .color-limegreen {
     background: #32cd32 !important;
     color: whitesmoke !important;
   }
-  .linen {
+  .color-linen {
     background: #faf0e6 !important;
+    color: whitesmoke !important;
   }
-  .magenta {
+  .color-magenta {
     background: #ff00ff !important;
+    color: whitesmoke !important;
   }
-  .maroon {
+  .color-maroon {
     background: #800000 !important;
     color: whitesmoke !important;
   }
-  .mediumaquamarine {
+  .color-mediumaquamarine {
     background: #66cdaa !important;
     color: whitesmoke !important;
   }
-  .mediumblue {
+  .color-mediumblue {
     background: #0000cd !important;
     color: whitesmoke !important;
   }
-  .mediumorchid {
+  .color-mediumorchid {
     background: #ba55d3 !important;
+    color: whitesmoke !important;
   }
-  .mediumpurple {
+  .color-mediumpurple {
     background: #9370db !important;
+    color: whitesmoke !important;
   }
-  .mediumseagreen {
+  .color-mediumseagreen {
     background: #3cb371 !important;
     color: whitesmoke !important;
   }
-  .mediumslateblue {
+  .color-mediumslateblue {
     background: #7b68ee !important;
     color: whitesmoke !important;
   }
-  .mediumspringgreen {
+  .color-mediumspringgreen {
     background: #00fa9a !important;
     color: whitesmoke !important;
   }
-  .mediumturquoise {
+  .color-mediumturquoise {
     background: #48d1cc !important;
     color: whitesmoke !important;
   }
-  .mediumvioletred {
+  .color-mediumvioletred {
     background: #c71585 !important;
+    color: whitesmoke !important;
   }
-  .midnightblue {
+  .color-midnightblue {
     background: #191970 !important;
     color: whitesmoke !important;
   }
-  .mintcream {
+  .color-mintcream {
     background: #f5fffa !important;
   }
-  .mistyrose {
+  .color-mistyrose {
     background: #ffe4e1 !important;
+    color: whitesmoke !important;
   }
-  .moccasin {
+  .color-moccasin {
     background: #ffe4b5 !important;
+    color: whitesmoke !important;
   }
-  .navajowhite {
+  .color-navajowhite {
     background: #ffdead !important;
+    color: whitesmoke !important;
   }
-  .navy {
+  .color-navy {
     background: #000080 !important;
     color: whitesmoke !important;
   }
-  .oldlace {
+  .color-oldlace {
     background: #fdf5e6 !important;
+    color: whitesmoke !important;
   }
-  .olive {
+  .color-olive {
     background: #808000 !important;
+    color: whitesmoke !important;
   }
-  .olivedrab {
+  .color-olivedrab {
     background: #6b8e23 !important;
     color: whitesmoke !important;
   }
-  .orange {
+  .color-orange {
     background: #ffa500 !important;
+    color: whitesmoke !important;
   }
-  .orangered {
+  .color-orangered {
     background: #ff4500 !important;
+    color: whitesmoke !important;
   }
-  .orchid {
+  .color-orchid {
     background: #da70d6 !important;
+    color: whitesmoke !important;
   }
-  .palegoldenrod {
+  .color-palegoldenrod {
     background: #eee8aa !important;
+    color: whitesmoke !important;
   }
-  .palegreen {
+  .color-palegreen {
     background: #98fb98 !important;
+    color: whitesmoke !important;
   }
-  .paleturquoise {
+  .color-paleturquoise {
     background: #afeeee !important;
+    color: whitesmoke !important;
   }
-  .palevioletred {
+  .color-palevioletred {
     background: #db7093 !important;
+    color: whitesmoke !important;
   }
-  .papayawhip {
+  .color-papayawhip {
     background: #ffefd5 !important;
   }
-  .peachpuff {
+  .color-peachpuff {
     background: #ffdab9 !important;
   }
-  .peru {
+  .color-peru {
     background: #cd853f !important;
+    color: whitesmoke !important;
   }
-  .pink {
+  .color-pink {
     background: #ffc0cb !important;
+    color: whitesmoke !important;
   }
-  .plum {
+  .color-plum {
     background: #dda0dd !important;
+    color: whitesmoke !important;
   }
-  .powderblue {
+  .color-powderblue {
     background: #b0e0e6 !important;
+    color: whitesmoke !important;
   }
-  .purple {
+  .color-purple {
     background: #800080 !important;
     color: whitesmoke !important;
   }
-  .rebeccapurple {
+  .color-rebeccapurple {
     background: #663399 !important;
     color: whitesmoke !important;
   }
-  .red {
+  .color-red {
     background: #ff0000 !important;
+    color: whitesmoke !important;
   }
-  .rosybrown {
+  .color-rosybrown {
     background: #bc8f8f !important;
+    color: whitesmoke !important;
   }
-  .royalblue {
+  .color-royalblue {
     background: #4169e1 !important;
     color: whitesmoke !important;
   }
-  .saddlebrown {
+  .color-saddlebrown {
     background: #8b4513 !important;
     color: whitesmoke !important;
   }
-  .salmon {
+  .color-salmon {
     background: #fa8072 !important;
+    color: whitesmoke !important;
   }
-  .sandybrown {
+  .color-sandybrown {
     background: #f4a460 !important;
+    color: whitesmoke !important;
   }
-  .seagreen {
+  .color-seagreen {
     background: #2e8b57 !important;
     color: whitesmoke !important;
   }
-  .seashell {
+  .color-seashell {
     background: #fff5ee !important;
   }
-  .sienna {
+  .color-sienna {
     background: #a0522d !important;
+    color: whitesmoke !important;
   }
-  .silver {
+  .color-silver {
     background: #c0c0c0 !important;
+    color: whitesmoke !important;
   }
-  .skyblue {
+  .color-skyblue {
     background: #87ceeb !important;
   }
-  .slateblue {
+  .color-slateblue {
     background: #6a5acd !important;
     color: whitesmoke !important;
   }
-  .slategray {
+  .color-slategray {
     background: #708090 !important;
     color: whitesmoke !important;
   }
-  .slategrey {
+  .color-slategrey {
     background: #708090 !important;
     color: whitesmoke !important;
   }
-  .snow {
+  .color-snow {
     background: #fffafa !important;
   }
-  .springgreen {
+  .color-springgreen {
     background: #00ff7f !important;
     color: whitesmoke !important;
   }
-  .steelblue {
+  .color-steelblue {
     background: #4682b4 !important;
     color: whitesmoke !important;
   }
-  .tan {
+  .color-tan {
     background: #d2b48c !important;
+    color: whitesmoke !important;
   }
-  .teal {
+  .color-teal {
     background: #008080 !important;
     color: whitesmoke !important;
   }
-  .thistle {
+  .color-thistle {
     background: #d8bfd8 !important;
   }
-  .tomato {
+  .color-tomato {
     background: #ff6347 !important;
+    color: whitesmoke !important;
   }
-  .turquoise {
+  .color-turquoise {
     background: #40e0d0 !important;
     color: whitesmoke !important;
   }
-  .violet {
+  .color-violet {
     background: #ee82ee !important;
+    color: whitesmoke !important;
   }
-  .wheat {
+  .color-wheat {
     background: #f5deb3 !important;
   }
-  .white {
+  .color-white {
     background: #ffffff !important;
   }
-  .whitesmoke {
+  .color-whitesmoke {
     background: #f5f5f5 !important;
   }
-  .yellow {
+  .color-yellow {
     background: #ffff00 !important;
   }
-  .yellowgreen {
+  .color-yellowgreen {
     background: #9acd32 !important;
   }

@@ -40,7 +40,7 @@ const ArticleSecondaryCard = ({
       </StyledColumn>
 
       <Grid.Column width={7}>
-        <ArticleTitleLink to={`/articles/${id}`}>
+        <ArticleTitleLink to={`/article/${id}`}>
           <h3>{title}</h3>
         </ArticleTitleLink>
         <ArticleAuthor>{author.fullName} in {tags[0]}</ArticleAuthor>
