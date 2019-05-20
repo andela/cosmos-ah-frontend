@@ -78,7 +78,7 @@ export const loginAction = (formData, redirect) => async dispatch => {
 
 export const socialAuth = (token, redirect) => dispatch => {
   try {
-    setLocalStorage(token, 'loggedinUser');
+    setLocalStorage('ah-token', token);
     const decodedToken = decodeToken(token);
     dispatch(getSocialAuth(decodedToken));
     redirect.push('/feeds');

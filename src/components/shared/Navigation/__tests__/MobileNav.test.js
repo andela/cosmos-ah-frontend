@@ -14,3 +14,11 @@ test('Renders <MobileNav />', () => {
   expect(mobileNav).toBeTruthy();
 });
 
+test('Renders <MobileNav />', () => {
+  const mobileNav = render(
+    <Router>
+      <MobileNav />
+    </Router>
+  );
+  expect(mobileNav).toBeTruthy();
+});

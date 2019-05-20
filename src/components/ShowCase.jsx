@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Grid, Icon } from 'semantic-ui-react';
-import moment from 'moment';
+import { Grid, Icon, Container } from 'semantic-ui-react';
+import DetailsDotSeparator from './shared/Widgets/ArticleDetailsSeparator';
 import articleUtil from '../utils/articles';
 
 const ImageContainer = styled.div`
-  width: 170px;
+  width: 70%;
   height: 150px;
   margin-bottom: 30px;
 `;
@@ -16,14 +16,13 @@ const ShowCaseIntroTextHeading = styled.h3`
   margin-bottom: 0;
   font-family: 'Circular-Bold';
 `;
+
 const ShowCaseIntroTextTagLine = styled.p`
   font-size: 16px;
   width: 70%;
   letter-spacing: 1px;
-  @media(max-width: 768px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
-    text-align: center;
-    padding: 10px 50px;
   }
 `;
 
@@ -40,6 +39,9 @@ const ShowCaseAppTitle = styled.p`
   padding-top: 0;
   padding-bottom: 0;
   margin-top: -50px;
+  @media screen and (max-width: 768px) {
+    font-size: 45px;
+  }
 `;
 
 const StyledCategory = styled.span`
@@ -55,6 +57,10 @@ const DynamicSection = styled('section')`
 const TextContainer = styled('section')`
   margin-top: 50px;
   font-family: 'Circular-Bold';
+  @media screen and (max-width: 768px) {
+    margin-top: -40px;
+    padding: 80px 30px 100px;
+  }
 `;
 
 const DynamicGrid = styled.section`
@@ -62,55 +68,67 @@ const DynamicGrid = styled.section`
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
   padding-bottom: 20px;
-  @media(max-width: 768px) {
+  @media screen and (max-width: 768px) {
     display: block;
-    text-align: center;
   }
 `;
 
-const AuthorName = styled.p`
-  text-align: center;
+const ArticleDetailsContainer = styled.div`
+  width: 100%;
 `;
 
-const ShowCase = ({ article }) => (
-    <DynamicGrid>
-      <Grid.Column>
-        <TextContainer>
-          <ShowCaseIntroTextHeading>
-            Welcome to
+const ArticleDetails = styled.span`
+  margin-right: 5px;
+`;
+
+const ArticleMainDetailsContainer = styled.section`
+  width: 70%;
+  margin: 5px 0 10px;
+`;
+
+const ShowCase = ({ article: { imageUrl, title, body,
+  author, totalReadTime, createdAt } }) => (
+  <DynamicGrid>
+    <Grid.Column>
+      <TextContainer>
+        <ShowCaseIntroTextHeading>
+          Welcome to
         <ShowCaseAppTitle>Author's Haven</ShowCaseAppTitle>
-          </ShowCaseIntroTextHeading>
-          <ShowCaseIntroTextTagLine>
-            Creating a community of like-minded authors
-            who foster inspiration and innovation by
-            leveraging the modern web.
+        </ShowCaseIntroTextHeading>
+        <ShowCaseIntroTextTagLine>
+          Creating a community of like-minded authors
+          who foster inspiration and innovation by
+          leveraging the modern web.
         </ShowCaseIntroTextTagLine>
-        </TextContainer>
-      </Grid.Column>
-      <Grid.Column>
-        <DynamicSection>
-          <h3>Trending Story</h3>
-          <ImageContainer>
-            <ShowCaseArticleImage src={article.imageUrl[0]} alt="" />
-          </ImageContainer>
-          <ShowCaseIntroTextTagLine>
-            <h3 data-testid="my-article">{article.title}</h3>
-            <p>{articleUtil.extractSubsetOfArticleBody(article.body, 30)}....</p>
-          </ShowCaseIntroTextTagLine>
-          <section>
-          <AuthorName>{article.author.fullName} in {' '}
+      </TextContainer>
+    </Grid.Column>
+    <Grid.Column>
+      <DynamicSection>
+        <h3>Trending Story</h3>
+        <ImageContainer>
+          <ShowCaseArticleImage src={imageUrl[0]} alt="" />
+        </ImageContainer>
+        <ArticleMainDetailsContainer>
+          <h3 data-testid="ah-article-title">{title}</h3>
+          <p>{articleUtil.extractSubsetOfArticleBody(body, 30)}....</p>
+        </ArticleMainDetailsContainer>
+        <section>
+          <p>{author.fullName} in {' '}
             <StyledCategory>Politics</StyledCategory>
-          </AuthorName>
-            <p>{articleUtil.parseArticleCreationDate(article.createdAt)}
-              <span>&nbsp;&middot;&nbsp;
-              {article.totalReadTime} {article.totalReadTime > 1 ? 'mins' : 'min'} read &nbsp;
-              <Icon name="star" size="small" />
-              </span>
-            </p>
-          </section>
-        </DynamicSection>
-      </Grid.Column>
-    </DynamicGrid>
+          </p>
+          <ArticleDetailsContainer>
+            <ArticleDetails>
+              {articleUtil.parseArticleCreationDate(createdAt)}</ArticleDetails>
+            <ArticleDetails>
+              <DetailsDotSeparator />
+            </ArticleDetails>
+            <ArticleDetails>{totalReadTime} {totalReadTime > 1 ? 'mins ' : 'min '}read</ArticleDetails>
+            <Icon name="star" size="small" />
+          </ArticleDetailsContainer>
+        </section>
+      </DynamicSection>
+    </Grid.Column>
+  </DynamicGrid>
 );
 
 ShowCase.propTypes = {

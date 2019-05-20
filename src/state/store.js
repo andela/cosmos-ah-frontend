@@ -14,7 +14,7 @@ import { alert } from './alert';
 import { createArticle } from './create-article';
 import { userPassword } from './password';
 
-const middleware = [logger, thunk];
+const middleware = process.env.NODE_ENV !== 'production' ? [logger, thunk] : [thunk];
 const rootReducer = combineReducers({
   [article.stateKey]: article.reducer,
   [profile.stateKey]: profile.reducer,

@@ -65,6 +65,10 @@ const Center = styled.div`
   text-align: center;
 `;
 
+const AccountContainer = styled.div`
+margin-top: 30px;
+`;
+
 export const Login = props => {
   const { loginState } = props;
 
@@ -112,48 +116,46 @@ export const Login = props => {
     setFormData(() => ({ ...formData, [event.target.name]: event.target.value }));
   };
   return (
-  <Body>
-    <Logo>
-      <AltLogo logo={logo} />
-    </Logo>
-    <Center>
-      <Wrap>
-        <Grid.Column style={{ padding: '0 20px' }}>
-          <Center>
-            <Header as='h1' color='blue' size='huge'>Login</Header>
-          </Center>
-          <SocialButton />
-          <Header color='blue'>
-            <h4>or login using your email address</h4>
-          </Header>
-          <Form onSubmit={handleSubmit} loading={loginState.loadingState}>
-            {error.email && <InlineError text={error.email} />}
-            <Form.Input size='big' error={!!error.email} icon={{ name: 'envelope outline', color: 'blue' }} iconPosition='left' placeholder='Email Address' name='email' onChange={handleChange} value={email} required={true}/>
-            {error.password && <InlineError text={error.password} />}
-            <Form.Input size='big' error={!!error.password} icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password' name='password' onChange={handleChange} value={password} required={true}/>
-            {(validatorErrors !== undefined) && (
-            <Message negative>
-              <p>{validatorErrors}</p>
-            </Message>
-            )}
-            <StyledLink><Link to='/forgot-password'>Forgot password?</Link></StyledLink>
-            <ButtonComponent color='blue' size='big'>
-              Continue
-            </ButtonComponent>
-          </Form>
-          <Space>
-            <Grid centered>
+    <Body>
+      <Logo>
+        <AltLogo logo={logo} />
+      </Logo>
+      <Center>
+        <Wrap>
+          <Grid.Column style={{ padding: '0 20px' }}>
             <Center>
-              <Header>
-                <h3>Don't have an account yet? <Link to='/signup'><br/>Create One</Link></h3>
-            </Header>
+              <Header as='h1' color='blue' size='huge'>Log In</Header>
             </Center>
+            <SocialButton />
+            <Header color='blue'>
+              <h4>or login using your email address</h4>
+            </Header>
+            <Form onSubmit={handleSubmit} loading={loginState.loadingState}>
+              {error.email && <InlineError text={error.email} />}
+              <Form.Input size='big' error={!!error.email} icon={{ name: 'envelope outline', color: 'blue' }} iconPosition='left' placeholder='Email Address' name='email' onChange={handleChange} value={email} required={true} />
+              {error.password && <InlineError text={error.password} />}
+              <Form.Input size='big' error={!!error.password} icon={{ name: 'lock', color: 'blue' }} iconPosition='left' placeholder='Password' type='password' name='password' onChange={handleChange} value={password} required={true} />
+              {(validatorErrors !== undefined) && (
+                <Message negative>
+                  <p>{validatorErrors}</p>
+                </Message>
+              )}
+              <StyledLink><Link to='/forgot-password'>Forgot password?</Link></StyledLink>
+              <ButtonComponent color='blue' width='35%'>
+                Continue
+            </ButtonComponent>
+            </Form>
+            <Grid centered>
+              <AccountContainer>
+                <Header>
+                  <h3>Don't have an account yet? <Link to='/signup'><br />Create One</Link></h3>
+                </Header>
+              </AccountContainer>
             </Grid>
-          </Space>
-        </Grid.Column>
-      </Wrap>
-    </Center>
-  </Body>
+          </Grid.Column>
+        </Wrap>
+      </Center>
+    </Body>
   );
 };
 

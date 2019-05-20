@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import AppLogo from '../../AppLogo';
 import logo from '../../../assets/images/inverted-logo.png';
-import searchIcon from '../../../assets/images/svgs/search.svg';
 import MobileSideNav from './MobileSideNav';
 
 const links = [
@@ -25,48 +24,57 @@ const LogoContainer = styled.div`
 `;
 
 const MenuContainer = styled.div`
-   flex: 1 0 10%;
-   display: grid;
-   grid-template-columns: repeat(2, 1fr);
-`;
-
-const ImageContainer = styled.div`
-  flex: 1 0 4%;
-  padding: 2px;
+   flex: 1 0 5%;
 `;
 
 const HamburgerContainer = styled.div`
   flex: 1 0 4%;
   margin-top: -7px;
-  background: #276BA9;
-  padding: 6px;
-  textAlign: center;
   border-radius: 3px;
   cursor: pointer;
 `;
 
-const Image = styled.img`
-   width: 15px;
-   height: 15px;
-   cursor: pointer;
-`;
-
 const Bar = styled.div`
-  width: 20px;
+  width: ${props => props.width || '20px'};
   height: 3px;
   background-color: #FFF;
-  margin: 4px auto;
+  margin: 4px 0;
   transition: 0.4s;
-  text-align: center;
   cursor: pointer;
 `;
 
+const addClickEvent = event => (sideNavIsOpen, mobileSideNav, toggleSideNav) => {
+  if (sideNavIsOpen && (mobileSideNav && !mobileSideNav.contains(event.target))) {
+    toggleSideNav(false);
+  }
+};
+
+const addKeyDownEvent = (event, sideNavIsOpen, toggleSideNav) => {
+  if ((event.key === 'Escape' || event.keyCode === 27) && sideNavIsOpen) {
+    toggleSideNav(false);
+  }
+};
+
 const MobileNav = () => {
-  const [sideNavOpen, toggleSideNav] = useState(false);
+  const [sideNavIsOpen, toggleSideNav] = useState(false);
+  let mobileNavHeaderRef;
+  useEffect(() => {
+    window.addEventListener('click', event => {
+      addClickEvent(event)(sideNavIsOpen, mobileNavHeaderRef, toggleSideNav);
+    });
+
+    window.addEventListener('keydown', event => {
+      addKeyDownEvent(event, sideNavIsOpen, toggleSideNav);
+    });
+    return () => {
+      window.removeEventListener('click', addClickEvent);
+      window.removeEventListener('keydown', addKeyDownEvent);
+    };
+  });
   return (
-    <MobileNavHeader>
+    <MobileNavHeader id="mainSideNav" ref={node => { mobileNavHeaderRef = node; }}>
       <MobileSideNav
-        open={sideNavOpen}
+        isOpen={sideNavIsOpen}
         closeSideNav={() => toggleSideNav(false)}
         links={links}
         />
@@ -74,17 +82,14 @@ const MobileNav = () => {
         <AppLogo logo={logo} />
       </LogoContainer>
       <MenuContainer>
-        <ImageContainer>
-          <Image src={searchIcon} alt="A magnifying glass" />
-        </ImageContainer>
         <HamburgerContainer
           onClick={() => {
-            toggleSideNav(!sideNavOpen);
+            toggleSideNav(!sideNavIsOpen);
           }}
           >
             <Bar />
             <Bar />
-            <Bar />
+            <Bar width="14px" />
         </HamburgerContainer>
       </MenuContainer>
     </MobileNavHeader>

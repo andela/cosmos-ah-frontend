@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
         ...state,
         registering: false,
         registered: true,
-        current_user: action.user,
+        signin: action.user,
       };
     case REGISTER_FAILURE:
       return {
@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
     case SOCIAL_AUTH:
       return {
         ...state,
-        login: action.payload
+        signin: action.payload
       };
     case SIGN_IN_ERROR:
       return {

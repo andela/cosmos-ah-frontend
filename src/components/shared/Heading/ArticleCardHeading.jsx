@@ -8,6 +8,9 @@ const StyledHeadingWithBorder = styled.h3`
   width: 95%;
   font-family: 'Circular-Bold';
   font-size: 1.7em;
+  @media(max-width: 768px) {
+    font-size: 1.5em;
+  }
 `;
 
 const ArticleCardHeading = ({ text }) => (
