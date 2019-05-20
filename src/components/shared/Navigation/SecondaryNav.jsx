@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import {
-  Form, Input, Grid, Dropdown
-} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import searchIcon from '../../../assets/images/svgs/search.svg';
+import MobileNav from './MobileNav';
+import AppUtils from '../../../utils';
+import DropdownSelect from '../Widgets/Dropdown';
 
 const StyledInput = styled.input`
   background-color: #276BA9;
@@ -15,14 +15,16 @@ const StyledInput = styled.input`
   border-radius: 4px;
   color: #FFFFFF;
   width: 80%;
+  :input-placeholder {
+    color: #FFFFFF;
+  }
+  ::-webkit-input-placeholder {
+    color: #e4e4e4;
+  }
 `;
 
 const NavItemContainer = styled('div')`
   display: inline-block;
-`;
-
-const SearchFieldContainer = styled(NavItemContainer)`
-  margin-right: 10px;
 `;
 
 const NavContainer = styled.div`
@@ -32,20 +34,40 @@ const NavContainer = styled.div`
 const SearchBarFormFieldContainer = styled.div`
   position: absolute;
   width: 100%;
+  @media(max-width: 768px) {
+    display: none;
+  }
 `;
 
 const SearchBarActionSection = styled.section`
-  flex: 1 0 70%;
+  flex: 1 1 70%;
   display: flex;
   justify-content: space-between;
+  @media(max-width: 768px) {
+    flex: 1 1 10%;
+  }
+`;
+
+const SearchBarLogoContainer = styled.div`
+  flex: 1 0 20%;
+  @media(max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 const SearchBarLogo = styled.div`
-  flex: 1 0 20%;
+  display: none;
+  padding: 0;
+  @media(max-width: 768px) {
+    display: block;
+  }
 `;
 
 const SearchBarHeader = styled.div`
   display: flex;
+  @media(max-width: 768px) {
+    display: none;
+  }
 `;
 
 const SearchBarActionForm = styled.form`
@@ -90,12 +112,6 @@ const DropdownContainer = styled.div`
   padding: 1.5px 0;
 `;
 
-const ActionButtonsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const StyledLink = styled(Link)`
   color: #FFF;
   :hover {
@@ -103,64 +119,49 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const dropDownItems = [
-  {
-    key: 'Trending',
-    text: 'Trending',
-    value: 'Trending'
-  },
-
-  {
-    key: 'Tech',
-    text: 'Tech',
-    value: 'Tech'
-  },
-
-  {
-    key: 'Culture',
-    text: 'Culture',
-    value: 'Culture'
-  },
-
-  {
-    key: 'People',
-    text: 'People',
-    value: 'People'
+const ButtonContainer = styled.div`
+  @media(max-width: 992px) {
+    display: none;
   }
-];
+`;
+
+const SearchIcon = styled.div`
+  display: none;
+`;
 
 const SecondaryNav = ({ brandLogo }) => (
   <NavContainer>
+    <MobileNav />
     <SearchBarHeader>
-      <SearchBarLogo>
-        {brandLogo}
-      </SearchBarLogo>
+      <SearchBarLogoContainer>
+        <SearchBarLogo>{brandLogo}</SearchBarLogo>
+      </SearchBarLogoContainer>
       <SearchBarActionSection>
         <DropdownContainer>
-          <Dropdown
+          <DropdownSelect
             placeholder='SEARCH'
-            options={dropDownItems}
-            button
-            compact
-            lazyLoad
+            dropDownItems={AppUtils.dropDownItems}
           />
         </DropdownContainer>
         <SearchBarActionForm>
+          <SearchIcon>
+            <SearchIconImage src={searchIcon} alt="A magnifying glass lens" />
+          </SearchIcon>
           <SearchBarFormFieldContainer>
-            <SearchIconImage src={searchIcon} alt="" />
+            <SearchIconImage src={searchIcon} alt="A magnifying glass lens" />
             <StyledInput
               placeholder="Find the stories you love"
             />
           </SearchBarFormFieldContainer>
         </SearchBarActionForm>
-        <div>
+        <ButtonContainer>
           <LoginButton>
             <StyledLink to="/login" role="button">login</StyledLink>
           </LoginButton>
           <SignUpButton>
             <StyledLink to="/signup" role="button">Get started</StyledLink>
           </SignUpButton>
-        </div>
+        </ButtonContainer>
       </SearchBarActionSection>
     </SearchBarHeader>
   </NavContainer>

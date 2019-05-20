@@ -4,6 +4,7 @@ import { Form } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { ButtonComponent } from '../components/Button';
 import AltLogo from '../components/AppLogo';
+import appLogo from '../assets/images/logo.png';
 
 
 const Center = styled.div`
@@ -62,7 +63,7 @@ const AlignRight = styled.p`
 const ForgotPassword = () => (
   <ContainerStyle>
     <Center>
-      <AltLogo />
+      <AltLogo logo={appLogo} />
     </Center>
     <HeaderStyle>
       <h1>Forgot Password</h1>

@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link, BrowserRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const NavList = styled.ul`
@@ -33,7 +33,11 @@ const Banner = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
   margin-top: -50px;
+  @media(max-width: 768px) {
+    display: none;
+  }
 `;
 
 const LogoContainer = styled.div`
@@ -41,27 +45,25 @@ const LogoContainer = styled.div`
   font-size: 2em;
 `;
 
-const NavBox = styled.div`
+const NavBox = styled.nav`
   flex: 1 0 70%;
 `;
 
 const PrimaryNav = ({ brandLogo, links }) => (
-  <Banner>
-    <LogoContainer>
-      {brandLogo}
-    </LogoContainer>
-    <NavBox>
-      <NavList>
-        <Router>
+    <Banner>
+      <LogoContainer>
+        {brandLogo}
+      </LogoContainer>
+      <NavBox>
+        <NavList>
           {links.map((page, i) => (
             <NavListItem key={i}>
               <StyledLink to={page.url}>{page.title}</StyledLink>
             </NavListItem>
           ))}
-        </Router>
-      </NavList>
-    </NavBox>
-  </Banner>
+        </NavList>
+      </NavBox>
+    </Banner>
 );
 
 PrimaryNav.propTypes = {

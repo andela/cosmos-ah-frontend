@@ -20,7 +20,8 @@ const Search = ({
   inputTextColor,
   inputWidth,
   position,
-  inputBorder
+  inputBorderThickness,
+  inputBorderColor
 }) => (
     <Fragment>
       <SearchBarFormFieldContainer>
@@ -34,7 +35,8 @@ const Search = ({
           backgroundColor={inputBackgroundColor}
           color={inputTextColor}
           width={inputWidth}
-          border={inputBorder}
+          borderThickness={inputBorderThickness}
+          borderColor={inputBorderColor}
         />
       </SearchBarFormFieldContainer>
     </Fragment>
@@ -48,10 +50,11 @@ Search.propTypes = {
   inputTextColor: PropTypes.string,
   inputWidth: PropTypes.string,
   position: PropTypes.shape({
-    left: PropTypes.string,
-    top: PropTypes.string
+    left: PropTypes.number,
+    top: PropTypes.number
   }),
-  inputBorder: PropTypes
+  inputBorderColor: PropTypes.string,
+  inputBorderThickness: PropTypes.number
 };
 
 export default Search;

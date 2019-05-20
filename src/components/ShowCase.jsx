@@ -3,19 +3,28 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Grid, Icon } from 'semantic-ui-react';
 import moment from 'moment';
+import articleUtil from '../utils/articles';
 
 const ImageContainer = styled.div`
-  width: 180px;
-  height: 180px;
-  display: block !important;
+  width: 170px;
+  height: 150px;
+  margin-bottom: 30px;
 `;
 
 const ShowCaseIntroTextHeading = styled.h3`
-  font-size: 2.5em;
+  font-size: 40px;
   margin-bottom: 0;
+  font-family: 'Circular-Bold';
 `;
-const ShowCaseIntroTextTagLine = styled.div`
-  width: 50%;
+const ShowCaseIntroTextTagLine = styled.p`
+  font-size: 16px;
+  width: 70%;
+  letter-spacing: 1px;
+  @media(max-width: 768px) {
+    width: 100%;
+    text-align: center;
+    padding: 10px 50px;
+  }
 `;
 
 const ShowCaseArticleImage = styled.img`
@@ -24,58 +33,92 @@ const ShowCaseArticleImage = styled.img`
   border-radius: 6px;
 `;
 
-const ShowCaseAppTitle = styled.span`
+const ShowCaseAppTitle = styled.p`
   display: block;
+  font-family: 'Circular-Bold';
+  font-size: 55px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: -50px;
 `;
 
 const StyledCategory = styled.span`
   color: orange;  
 `;
 
+const DynamicSection = styled('section')`
+  @media(max-width: 768px) {
+    display: none;
+  }
+`;
+
+const TextContainer = styled('section')`
+  margin-top: 50px;
+  font-family: 'Circular-Bold';
+`;
+
+const DynamicGrid = styled.section`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  padding-bottom: 20px;
+  @media(max-width: 768px) {
+    display: block;
+    text-align: center;
+  }
+`;
+
+const AuthorName = styled.p`
+  text-align: center;
+`;
+
 const ShowCase = ({ article }) => (
-  <Grid as="section" columns="2">
-    <Grid.Row>
+    <DynamicGrid>
       <Grid.Column>
-        <ShowCaseIntroTextHeading>
-          Welcome to&nbsp;
+        <TextContainer>
+          <ShowCaseIntroTextHeading>
+            Welcome to
         <ShowCaseAppTitle>Author's Haven</ShowCaseAppTitle>
-        </ShowCaseIntroTextHeading>
-        <ShowCaseIntroTextTagLine>
-          Creating a community of like-minded authors
-          who foster inspiration and innovation by
-          leveraging the modern web.
+          </ShowCaseIntroTextHeading>
+          <ShowCaseIntroTextTagLine>
+            Creating a community of like-minded authors
+            who foster inspiration and innovation by
+            leveraging the modern web.
         </ShowCaseIntroTextTagLine>
+        </TextContainer>
       </Grid.Column>
       <Grid.Column>
-        <section>
+        <DynamicSection>
+          <h3>Trending Story</h3>
           <ImageContainer>
-            <ShowCaseArticleImage src={article.imageUrl} alt="" />
+            <ShowCaseArticleImage src={article.imageUrl[0]} alt="" />
           </ImageContainer>
           <ShowCaseIntroTextTagLine>
             <h3 data-testid="my-article">{article.title}</h3>
-            <p>{article.body.substring(0, 150)}....</p>
+            <p>{articleUtil.extractSubsetOfArticleBody(article.body, 30)}....</p>
           </ShowCaseIntroTextTagLine>
-          <div>
-            <p>{article.author.fullName} in <StyledCategory>Politics</StyledCategory></p>
-            <p>{moment(article.createdAt).format('DDD Mo')}
+          <section>
+          <AuthorName>{article.author.fullName} in {' '}
+            <StyledCategory>Politics</StyledCategory>
+          </AuthorName>
+            <p>{articleUtil.parseArticleCreationDate(article.createdAt)}
               <span>&nbsp;&middot;&nbsp;
-              {article.totalReadTime} {article.totalReadTime > 1 ? 'Mins' : 'Min'} read &nbsp;
+              {article.totalReadTime} {article.totalReadTime > 1 ? 'mins' : 'min'} read &nbsp;
               <Icon name="star" size="small" />
-            </span>
+              </span>
             </p>
-          </div>
-        </section>
+          </section>
+        </DynamicSection>
       </Grid.Column>
-    </Grid.Row>
-  </Grid>
+    </DynamicGrid>
 );
 
 ShowCase.propTypes = {
   article: PropTypes.shape({
     id: PropTypes.string,
-    tags: PropTypes.array,
+    tags: PropTypes.arrayOf(PropTypes.string),
     title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
+    imageUrl: PropTypes.array.isRequired,
     author: PropTypes.object.isRequired,
     totalReadTime: PropTypes.number.isRequired,
     body: PropTypes.string.isRequired

@@ -5,7 +5,7 @@ import NavContainer from '../../components/NavContainer';
 
 afterEach(cleanup);
 
-test('it renders', () => {
+test('it renders <NavContainer />', () => {
   const navContainer = render(
     <Router>
       <NavContainer />

@@ -41,7 +41,7 @@ export const Feeds = props => {
 };
 
 const mapStateToProps = state => ({
-  articles: state.article.articles,
+  articles: state.articles.allArticles,
 });
 
 export const connectedFeed = connect(mapStateToProps, { getArticles: getArticleAction })(Feeds);

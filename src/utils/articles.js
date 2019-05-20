@@ -105,6 +105,15 @@ export default {
     return moment(articleDate).format(format).slice(0, -2);
   },
 
+  /**
+   * @function extractSubsetOfArticleBody
+   * @param {String} articleBody
+   * @param {Number} words
+   * @returns {String} Returns a subset (words) of an article's body
+   */
+  extractSubsetOfArticleBody(articleBody, words = 100) {
+    return articleBody.split(' ', words).join(' ');
+  }
 };
 
 export const Validator = async (data, rules, customRules = null) => {

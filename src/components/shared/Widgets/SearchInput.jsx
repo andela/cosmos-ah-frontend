@@ -17,14 +17,16 @@ const StyledInput = styled(Input)`
 `;
 
 const SearchInput = ({
-  handleInputChange, placeholder, border, width, color, backgroundColor
+  handleInputChange, placeholder, borderThickness, borderColor, width,
+  color, backgroundColor
 }) => (
     <Fragment>
       <StyledInput
         onChange={handleInputChange}
         placeholder={placeholder}
         width={width}
-        border={border}
+        borderThickness={borderThickness}
+        borderColor={borderColor}
         color={color}
         backgroundColor={backgroundColor}
       />
