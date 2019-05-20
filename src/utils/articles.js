@@ -1,4 +1,5 @@
 import moment from 'moment';
+import Validate from 'validatorjs';
 
 export default {
   articleCategories: [
@@ -102,5 +103,11 @@ export default {
    */
   parseArticleCreationDate(articleDate, format = 'MMM Do') {
     return moment(articleDate).format(format).slice(0, -2);
-  }
+  },
+
+};
+
+export const Validator = async (data, rules, customRules = null) => {
+  const result = await new Validate(data, rules, customRules);
+  return result;
 };
