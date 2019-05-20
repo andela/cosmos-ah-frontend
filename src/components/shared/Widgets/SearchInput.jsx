@@ -19,7 +19,7 @@ const StyledInput = styled(Input)`
 const SearchInput = ({
   handleInputChange,
   placeholder,
-  border, 
+  border,
   width,
   backgroundColor,
   textInputColor,

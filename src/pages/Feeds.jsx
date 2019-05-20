@@ -32,7 +32,6 @@ const width = '400px';
 const border = '2';
 const placeholder = 'Find the stories you love';
 
-// Dropdown constants
 const dropDownItems = [
   {
     key: 'Trending',
@@ -62,7 +61,6 @@ const dropDownItems = [
 const MainNavbarContainer = styled.div`
   display: flex;
   justify-content: flex-start;
-  // box-shadow: 0px 4px 10px rgba(138,137,137,0.1);
   padding:20px 40px;
 `;
 
@@ -91,7 +89,6 @@ const Container = styled.div`
 const DropdownSearchbar = styled.div`
   display: flex;
   justify-content: space-between;
-  // flex:1 1 auto !important;
   flex-grow:1;
   height:40px;
 `;
@@ -101,13 +98,11 @@ const SecondNavbarContainer = styled.div`
   justify-content: space-between;
   flex-grow:1;
   margin-left: 250px;
-  // background-color: pink;
 `;
 
 const Gap = styled.div`
   display: flex;
   justify-content: space-between;
-  // flex:1 1 auto !important;
 `;
 
 export const Feeds = props => {
