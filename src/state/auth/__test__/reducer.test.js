@@ -29,7 +29,7 @@ describe('Auth Reducer', () => {
     expect(reducer({}, success(user))).toEqual({
       registering: false,
       registered: true,
-      current_user: user,
+      signin: user,
     });
   });
   it('Should make failure', () => {
@@ -41,7 +41,7 @@ describe('Auth Reducer', () => {
   });
   it('social authentication success', () => {
     expect(reducer({}, getSocialAuth(user))).toEqual({
-      login: user
+      signin: user
     });
   });
   it('social authentication failure', () => {

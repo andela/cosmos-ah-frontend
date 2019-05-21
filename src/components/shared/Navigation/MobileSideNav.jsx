@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -18,7 +18,10 @@ const SideNavContainer = styled.div`
   background-color: #FFF;
 `;
 
-const CloseButton = styled.a`
+const CloseButton = styled.button`
+  background: transparent;
+  outline: none;
+  border: none;
   position: absolute;
   top: 100px;
   right: 40px;
@@ -53,13 +56,13 @@ const SideNavSearchContainer = styled.div`
   margin: 0 auto;
 `;
 
-const SideNav = ({ open, closeSideNav, links }) => (
-  <Fragment>
-    {
-      open
-        ? (<SideNavContainer>
-          <div id="mySidenav">
-            <CloseButton href="#!" onClick={closeSideNav} role="button">&times;</CloseButton>
+const MobileSideNav = ({ isOpen, closeSideNav, links }) => (
+    <Fragment>
+      {
+        isOpen
+        && (<SideNavContainer>
+          <div>
+            <CloseButton onClick={closeSideNav}>&times;</CloseButton>
             <SideNavLinkContainer>
               <SideNavSearchContainer>
                 <NavigationSearch
@@ -67,23 +70,23 @@ const SideNav = ({ open, closeSideNav, links }) => (
                   color="#333333"
                 />
                 {links.map((link, i) => (
-                    <SideNavLink to={link.url} key={i}>
-                      {link.title}
-                    </SideNavLink>
+                  <SideNavLink to={link.url} key={i}>
+                    {link.title}
+                  </SideNavLink>
                 ))}
               </SideNavSearchContainer>
             </SideNavLinkContainer>
           </div>
-        </SideNavContainer>)
-        : null
-    }
-  </Fragment>
+        </SideNavContainer>
+        )
+      }
+    </Fragment>
 );
 
-SideNav.propTypes = {
-  open: PropTypes.bool.isRequired,
+MobileSideNav.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
   closeSideNav: PropTypes.func.isRequired,
   links: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-export default SideNav;
+export default MobileSideNav;

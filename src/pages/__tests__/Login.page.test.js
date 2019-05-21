@@ -27,6 +27,6 @@ test('Renders <Login /> form', () => {
 test('render <Login />  Login Header', () => {
   const LoginHeader = render(
   <BrowserRouter><Login { ...props } /></BrowserRouter>);
-  const HeaderText = LoginHeader.getByText('Login');
-  expect(HeaderText.textContent).toBe('Login');
+  const HeaderText = LoginHeader.getByText('Log In');
+  expect(HeaderText.textContent).toBe('Log In');
 });

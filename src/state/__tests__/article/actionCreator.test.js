@@ -11,7 +11,8 @@ describe('GETTING AN ARTICLE TO STATE ACTIONS', () => {
       payload,
     };
     expect(getArticleByIDSuccess(payload)).toEqual(result)
-  })
+  });
+
   it('Should create an action for error in retrieval of Single Article', () => {
     const payload = {
       error: true

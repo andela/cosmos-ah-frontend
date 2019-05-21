@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Grid, Image } from 'semantic-ui-react';
+import DetailsDotSeparator from '../Widgets/ArticleDetailsSeparator';
 import ArticleUtil from '../../../utils/articles';
 
 const { parseArticleCreationDate } = ArticleUtil;
@@ -44,7 +45,10 @@ const ArticleSecondaryCard = ({
           <h3>{title}</h3>
         </ArticleTitleLink>
         <ArticleAuthor>{author.fullName} in {tags[0]}</ArticleAuthor>
-        <span>{parseArticleCreationDate(createdAt)} &middot; {totalReadTime} {totalReadTime > 1 ? 'mins' : 'min'} read</span>
+        <span>{parseArticleCreationDate(createdAt)}{' '}
+         <DetailsDotSeparator />{' '}
+         {totalReadTime} {totalReadTime > 1 ? 'mins' : 'min'} read
+         </span>
       </Grid.Column>
 
       <Grid.Column width={5}>

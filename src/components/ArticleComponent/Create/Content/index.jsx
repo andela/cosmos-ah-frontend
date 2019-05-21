@@ -16,6 +16,8 @@ import { articleSelector } from '../../../../state/article/selectors';
 
 import { Validator } from '../../../../utils/articles';
 
+import '../../../../assets/css/colors.css';
+
 const validateArticle = async data => {
   const rules = {
     title: ['required', 'min:5', 'max:255', 'regex:/[a-zA-Z]/i'],

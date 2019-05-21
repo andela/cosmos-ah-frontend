@@ -5,6 +5,7 @@ import AltLogo from '../components/AppLogo';
 import { resetPasswordAction } from '../state/password/actions';
 import { FormStyle, InputField } from '../components/PasswordReset/Form';
 import { Center, ContainerStyle, HeaderStyle } from '../components/PasswordReset/PasswordResetPageStyle';
+import logo from '../assets/images/logo.png';
 
 const ResetPassword = props => {
   const { resetPasswordState } = props;
@@ -60,7 +61,7 @@ const ResetPassword = props => {
   return (
     <ContainerStyle>
       <Center>
-        <AltLogo />
+        <AltLogo logo={logo}/>
       </Center>
       <HeaderStyle>
         <h1>Reset Password</h1>
@@ -98,7 +99,8 @@ const ResetPassword = props => {
             <div className={messageClass.join(' ')}>
               {error.password && <p>{error.password}</p>}
               {error.password_confirmation && <p>{error.password_confirmation}</p>}
-              {props.resetPasswordState.error && <p>{props.resetPasswordState.error.message}</p>}
+              {props.resetPasswordState.error.data
+                && <p>{props.resetPasswordState.error.data.message}</p>}
             </div>
         )}
         <ButtonComponent type='submit' size='big' color='blue'>CONTINUE</ButtonComponent>

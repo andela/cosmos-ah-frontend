@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Fragment } from 'react';
 import { Image, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
@@ -116,10 +115,10 @@ const ArticlePrimaryCard = ({
         {/* Space left intentionally */}
       </div>
       <div>
-        <StyledImage src={imageUrl} alt="" width={100} height={100} rounded />
+        <StyledImage src={imageUrl[0]} alt="" width={100} height={100} rounded />
       </div>
     </Article>
-  );
+);
 
 ArticlePrimaryCard.propTypes = {
   article: PropTypes.object.isRequired,

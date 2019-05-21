@@ -50,12 +50,12 @@ export default {
   ],
   navLinks: [
     { title: 'Home', url: '/' },
-    { title: 'Culture', url: '/culture' },
-    { title: 'Tech', url: '/tech' },
-    { title: 'Fiction', url: '/fiction' },
-    { title: 'Politics', url: '/politics' },
-    { title: 'Health', url: '/health' },
-    { title: 'Self', url: '/self' },
-    { title: 'Romance', url: '/romance' }
+    { title: 'Culture', url: '/' },
+    { title: 'Tech', url: '/' },
+    { title: 'Fiction', url: '/' },
+    { title: 'Politics', url: '/' },
+    { title: 'Health', url: '/' },
+    { title: 'Self', url: '/' },
+    { title: 'Romance', url: '/' }
   ]
 };

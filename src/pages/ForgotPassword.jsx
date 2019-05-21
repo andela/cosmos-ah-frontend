@@ -9,6 +9,7 @@ import { FormStyle, InputField } from '../components/PasswordReset/Form';
 import {
   Center, ContainerStyle, HeaderStyle, AlignRight
 } from '../components/PasswordReset/PasswordResetPageStyle';
+import logo from '../assets/images/logo.png';
 
 
 const ForgotPassword = props => {
@@ -52,7 +53,7 @@ const ForgotPassword = props => {
   return (
     <ContainerStyle>
       <Center>
-        <AltLogo />
+        <AltLogo logo={logo}/>
       </Center>
       <HeaderStyle>
         <h1>Reset Password</h1>
