@@ -26,7 +26,7 @@ const App = () => (
       <Route path='/handlesocialauth' component={ConnectedHandleSocialAuth} />
       <Route path="/feeds" component={connectedFeed} />
       <PrivateRoute path="/article/create" exact component={CreateArticle} />
-      <PrivateRoute path="/article/:id?" exact component={ViewArticle} />
+      <PrivateRoute path="/articles/:id?" exact component={ViewArticle} />
       <Route path="/password-reset/:resetToken" component={ResetPassword} />
     </Switch>
   </Router>

@@ -89,7 +89,7 @@ const ArticlePrimaryCard = ({
 }) => (
     <Article>
       <CardContentContainer>
-        <ArticleTitleLink to={`/article/${id}`}>
+        <ArticleTitleLink to={`/articles/${id}`}>
           <h3>{title}</h3>
         </ArticleTitleLink>
         <p>{description}</p>

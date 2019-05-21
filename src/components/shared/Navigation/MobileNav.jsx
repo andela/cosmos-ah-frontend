@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import AppLogo from '../../AppLogo';
 import logo from '../../../assets/images/inverted-logo.png';
@@ -43,14 +43,16 @@ const Bar = styled.div`
   cursor: pointer;
 `;
 
-const addClickEvent = event => (sideNavIsOpen, mobileSideNav, toggleSideNav) => {
+const addClickEvent = (event, opts) => {
+  const { sideNavIsOpen, mobileSideNav, toggleSideNav } = opts;
   if (sideNavIsOpen && (mobileSideNav && !mobileSideNav.contains(event.target))) {
     toggleSideNav(false);
   }
 };
 
 const addKeyDownEvent = (event, sideNavIsOpen, toggleSideNav) => {
-  if ((event.key === 'Escape' || event.keyCode === 27) && sideNavIsOpen) {
+  const escapeKeyCode = 27;
+  if ((event.key === 'Escape' || event.keyCode === escapeKeyCode) && sideNavIsOpen) {
     toggleSideNav(false);
   }
 };
@@ -60,7 +62,10 @@ const MobileNav = () => {
   let mobileNavHeaderRef;
   useEffect(() => {
     window.addEventListener('click', event => {
-      addClickEvent(event)(sideNavIsOpen, mobileNavHeaderRef, toggleSideNav);
+      addClickEvent(event, { sideNavIsOpen,
+        mobileSideNav: mobileNavHeaderRef,
+        toggleSideNav
+      });
     });
 
     window.addEventListener('keydown', event => {
@@ -70,12 +75,16 @@ const MobileNav = () => {
       window.removeEventListener('click', addClickEvent);
       window.removeEventListener('keydown', addKeyDownEvent);
     };
-  });
+  }, [sideNavIsOpen, mobileNavHeaderRef]);
   return (
-    <MobileNavHeader id="mainSideNav" ref={node => { mobileNavHeaderRef = node; }}>
+    <MobileNavHeader ref={node => { mobileNavHeaderRef = node; }}>
       <MobileSideNav
         isOpen={sideNavIsOpen}
-        closeSideNav={() => toggleSideNav(false)}
+        closeSideNav={
+          useCallback(() => {
+            toggleSideNav(false);
+          }, [sideNavIsOpen])
+        }
         links={links}
         />
       <LogoContainer>
@@ -83,9 +92,11 @@ const MobileNav = () => {
       </LogoContainer>
       <MenuContainer>
         <HamburgerContainer
-          onClick={() => {
-            toggleSideNav(!sideNavIsOpen);
-          }}
+          onClick={
+            useCallback(() => {
+              toggleSideNav(!sideNavIsOpen);
+            }, [sideNavIsOpen])
+            }
           >
             <Bar />
             <Bar />

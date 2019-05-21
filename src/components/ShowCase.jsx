@@ -106,7 +106,7 @@ const ShowCase = ({ article: { imageUrl, title, body,
       <DynamicSection>
         <h3>Trending Story</h3>
         <ImageContainer>
-          <ShowCaseArticleImage src={imageUrl[0]} alt="" />
+          <ShowCaseArticleImage src={imageUrl[0]} alt="A rectangular-shaped article image" />
         </ImageContainer>
         <ArticleMainDetailsContainer>
           <h3 data-testid="ah-article-title">{title}</h3>

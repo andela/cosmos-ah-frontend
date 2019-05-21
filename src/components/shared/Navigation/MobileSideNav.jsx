@@ -61,7 +61,7 @@ const MobileSideNav = ({ isOpen, closeSideNav, links }) => (
       {
         isOpen
         && (<SideNavContainer>
-          <div id="appSideNav">
+          <div>
             <CloseButton onClick={closeSideNav}>&times;</CloseButton>
             <SideNavLinkContainer>
               <SideNavSearchContainer>

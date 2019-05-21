@@ -18,7 +18,7 @@ const ArticleCard = ({ article }) => (
         <p>
           {article.body}
         </p>
-        <Link to={`/article/${article.id}`}>Read More</Link>
+        <Link to={`/articles/${article.id}`}>Read More</Link>
       </CardContentContainer>
     </Grid.Column>
   </Grid>
