@@ -495,3 +495,7 @@ input.taggle_input {
     opacity: 1;
   }
 }
+
+#stripped-modal i.icon {
+  margin: 0 .25rem 0 0 !important;
+}

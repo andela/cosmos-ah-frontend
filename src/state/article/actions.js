@@ -10,6 +10,8 @@ import {
   GET_ARTICLE_BY_ID_ERROR,
   UPDATE_ARTICLE_SUCCESS,
   UPDATE_ARTICLE_FAILURE,
+  DELETE_ARTICLE_SUCCESS,
+  DELETE_ARTICLE_FAILURE
 } from './actionTypes';
 
 export const createArticleSuccess = article => ({
@@ -29,6 +31,16 @@ export const updateArticleSuccess = article => ({
 
 export const updateArticleFailure = error => ({
   type: UPDATE_ARTICLE_FAILURE,
+  payload: error,
+});
+
+export const deleteArticleSuccess = id => ({
+  type: DELETE_ARTICLE_SUCCESS,
+  payload: id,
+});
+
+export const deleteArticleFailure = error => ({
+  type: DELETE_ARTICLE_FAILURE,
   payload: error,
 });
 
@@ -94,5 +106,16 @@ export const getArticleByID = (articles, id) => async dispatch => {
     return dispatch(getArticleByIDSuccess(data));
   } catch (error) {
     dispatch(getArticleByIDError(error.response.data));
+  }
+};
+
+
+export const deleteSelectedArticle = id => async dispatch => {
+  dispatch(isArticleRequest());
+  try {
+    // const { data } = await axios.delete(`/articles/${id}`);
+    return dispatch(deleteArticleSuccess(id));
+  } catch (error) {
+    dispatch(deleteArticleFailure(error));
   }
 };

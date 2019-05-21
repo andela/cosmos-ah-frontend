@@ -8,9 +8,11 @@ import { colors } from '../../../../../lib/colors';
 import { PrimaryTitle, Paragraph, } from '../../../../shared/Text/Text';
 import LoadingImage from '../../../../../assets/images/svgs/wait.svg';
 import DefaultLink from '../../../../shared/Links/DefaultLink';
+import Modal from '../../../../shared/Modals';
 
-import { getArticleByID } from '../../../../../state/article/actions';
+import { getArticleByID, deleteSelectedArticle } from '../../../../../state/article/actions';
 import { articleSelector, vieweArticleSelector } from '../../../../../state/article/selectors';
+import { getProfileSelector } from '../../../../../state/profile/selectors';
 
 import { setArticleOnUpdate, } from '../../../../../state/create-article/actions';
 
@@ -34,8 +36,11 @@ const PreloadImage = styled.img`
 `;
 
 const ArticleContent = props => {
-  const { articles, match: { params: { id }, },
-    getByID, articleIsViewed, history, setArticleUpdate,
+  const {
+    articles, match: { params: { id }, },
+    getByID, articleIsViewed, history,
+    setArticleUpdate, userProfile,
+    deleteArticleDispatch,
   } = props;
   const { allArticles } = articles;
   useEffect(() => {
@@ -61,8 +66,21 @@ const ArticleContent = props => {
     return (<li className={classes} key={i}><Link to={`/tags/${tag}`}>{tag}</Link></li>);
   });
 
+  // eslint-disable-next-line no-undef
+  const triggerDelete = () => $('#stripped-modal').modal('show');
+
+  const deleteArticleProps = {
+    modalTitle: 'Delete Article',
+    modalText: `Are you sure you want to delete this article: ${title}`,
+  };
+
+  const deleteArticle = () => {
+    deleteArticleDispatch(id);
+    return history.push('/feeds');
+  };
+
   return (
-    <Fragment>
+    <div>
       <PrimaryTitle classList="text-focus-in">{title}</PrimaryTitle>
       <ArticleContent.Meta className="text-focus-in align-c">
         <Link to={`/profile/${author.id}`}><Avatar className='avatar' src={author.imageUrl}/></Link>
@@ -71,10 +89,10 @@ const ArticleContent = props => {
             <Paragraph>
               <Link style={{ fontFamily: 'Circular-Book', fontSize: '17px', color: 'inherit' }} to={`/profile/${author.id}`}>{author.fullName}</Link>
             </Paragraph>
-            <ArticleContent.Option className='article-handle-links'>
+            {(userProfile.id && userProfile.id === author.id) && <ArticleContent.Option className='article-handle-links'>
               <DefaultLink classList='normal-bk' handleClick={() => history.push(`/article/edit/${id}`)} children='Edit' />
-              <DefaultLink classList='red-bk' handleClick={() => true} children='Delete' isDanger={true} />
-            </ArticleContent.Option>
+              {(userProfile.role === 'admin' || (userProfile.id && userProfile.id === author.id)) && <DefaultLink classList='red-bk' handleClick={triggerDelete} children='Delete' isDanger={true} />}
+            </ArticleContent.Option>}
           </ArticleContent.Header>
           <ArticleContent.Span>
             <Paragraph paragraphStyle={{ fontFamily: 'Circular-Light' }}>
@@ -91,7 +109,12 @@ const ArticleContent = props => {
       <TagSection className="tags">
         {tagLists}
       </TagSection>
-    </Fragment>
+      <Modal
+        {...deleteArticleProps}
+        handleClickReject={() => null}
+        handleClickApprove={() => deleteArticle()}
+      />
+    </div>
   );
 };
 
@@ -135,6 +158,9 @@ ArticleContent.Option = styled.div`
       color: white !important;
       opacity: 0.8;
     }
+    @media screen and (max-width: 645px){
+      font-size: 10px !important;
+    }
   }
 `;
 
@@ -146,6 +172,7 @@ ArticleContent.Header = styled.div`
 const mapStateToProps = state => ({
   articles: articleSelector(state),
   articleIsViewed: vieweArticleSelector(state),
+  userProfile: getProfileSelector(state).loadedData,
 });
 
 export default connect(
@@ -153,5 +180,6 @@ export default connect(
   {
     getByID: getArticleByID,
     setArticleUpdate: setArticleOnUpdate,
+    deleteArticleDispatch: deleteSelectedArticle,
   },
 )(withRouter(ArticleContent));

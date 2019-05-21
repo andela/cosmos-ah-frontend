@@ -6,9 +6,13 @@ import {
   GET_ARTICLE_BY_ID_ERROR,
   UPDATE_ARTICLE_SUCCESS,
   UPDATE_ARTICLE_FAILURE,
+  DELETE_ARTICLE_SUCCESS,
+  DELETE_ARTICLE_FAILURE,
 } from './actionTypes';
 
 import { initialState } from './state';
+
+let allArticles = null;
 
 export default (state = initialState, action) => {
   if (action === undefined || !action) { return state; }
@@ -47,12 +51,26 @@ export default (state = initialState, action) => {
     case UPDATE_ARTICLE_FAILURE:
       return {
         ...state,
-        articleIsViewed: { data: action.payload.data, error: null },
+        isArticleRequest: false,
+      };
+    case DELETE_ARTICLE_SUCCESS:
+      allArticles = state.allArticles.length > 0
+        ? state.allArticles.filter(value => value.id !== action.payload) : state.allArticles;
+      return {
+        ...state,
+        allArticles,
+        isArticleRequest: false,
+        articleIsViewed: { data: null, error: null, }
+      };
+    case DELETE_ARTICLE_FAILURE:
+      return {
+        ...state,
         isArticleRequest: false,
       };
     case GET_ARTICLE_BY_ID_ERROR:
       return {
         ...state,
+        isArticleRequest: false,
         articleIsViewed: { data: null, error: action.payload }
       };
     default:

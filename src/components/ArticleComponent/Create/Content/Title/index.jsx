@@ -36,7 +36,7 @@ const Title = ({ setTitle, setErrors, articleTitle, }) => {
   return (
     <Fragment>
       <Title.Wrapper>
-        <Title.Input onBlur={() => setErrors({ showError: false }) } onChange={getArticleTitle} className='autoExpand' rows='1' data-min-rows='0' placeholder="Title" value={articleTitle} />
+        <Title.Input onBlur={() => setErrors({ showError: false }) } onChange={getArticleTitle} className='autoExpand' rows='2' data-min-rows='0' placeholder="Title" value={articleTitle} />
       </Title.Wrapper>
     </Fragment>
   );
