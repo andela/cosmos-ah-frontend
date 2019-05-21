@@ -5,6 +5,7 @@ import {
   SET_ARTICLE_IMAGES,
   SET_ARTICLE_PUBLISH,
   SET_ARTICLE_ERROR,
+  SET_ARTICLE_ON_UPDATE,
 } from './actionTypes';
 
 import { initialState } from './state';
@@ -35,6 +36,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         article: { ...state.article, published: action.payload },
+      };
+    case SET_ARTICLE_ON_UPDATE:
+      return {
+        ...state,
+        article: action.payload,
       };
     case SET_ARTICLE_ERROR:
       return {

@@ -8,8 +8,9 @@ import { colors } from '../../../../../lib/colors';
 import { setArticleTags, setArticleError } from '../../../../../state/create-article/actions';
 import { createArticleSelector } from '../../../../../state/create-article/selectors';
 
-const initializeTagsEditor = (setTagsInState, setErrors) => {
+const initializeTagsEditor = (setTagsInState, setErrors, tags) => {
   const taggle = new Taggle('tags', {
+    tags,
     duplicateTagClass: 'bounce',
     additionalTagClasses: '',
     hiddenInputName: 'tags[]',
@@ -46,9 +47,10 @@ const initializeTagsEditor = (setTagsInState, setErrors) => {
   return taggle;
 };
 
-const Tags = ({ setTags, setErrors }) => {
+const Tags = ({ setTags, setErrors, articleTags }) => {
   useEffect(() => {
-    initializeTagsEditor(setTags, setErrors);
+    console.log(articleTags);
+    initializeTagsEditor(setTags, setErrors, articleTags);
   }, []);
   return (
     <Fragment>

@@ -8,6 +8,8 @@ import {
   IS_ARTICLE_REQUEST,
   GET_ARTICLE_BY_ID_SUCCESS,
   GET_ARTICLE_BY_ID_ERROR,
+  UPDATE_ARTICLE_SUCCESS,
+  UPDATE_ARTICLE_FAILURE,
 } from './actionTypes';
 
 export const createArticleSuccess = article => ({
@@ -17,6 +19,16 @@ export const createArticleSuccess = article => ({
 
 export const createArticleFailure = error => ({
   type: CREATE_ARTICLE_FAILURE,
+  payload: error,
+});
+
+export const updateArticleSuccess = article => ({
+  type: UPDATE_ARTICLE_SUCCESS,
+  payload: article,
+});
+
+export const updateArticleFailure = error => ({
+  type: UPDATE_ARTICLE_FAILURE,
   payload: error,
 });
 
@@ -61,6 +73,17 @@ export const createNewArticle = article => async dispatch => {
     return data;
   } catch (error) {
     dispatch(createArticleFailure(error));
+  }
+};
+
+export const updateSelectedArticle = (article, id) => async dispatch => {
+  dispatch(isArticleRequest());
+  try {
+    const { data } = await axios.put(`/articles/${id}`, article);
+    await dispatch(updateArticleSuccess(data));
+    return data;
+  } catch (error) {
+    dispatch(updateArticleFailure(error));
   }
 };
 

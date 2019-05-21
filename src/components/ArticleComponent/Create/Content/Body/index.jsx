@@ -19,6 +19,9 @@ const editorHandler = (setBodyInState, setImagesInState) => {
     placeholder: {
       text: 'Tell your story'
     },
+    embeds: {
+      oembedProxy: 'https://medium.iframe.ly/api/oembed?iframe=1',
+    },
     toolbar: {
       allowMultiParagraphSelection: true,
       buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
@@ -61,14 +64,14 @@ const editorHandler = (setBodyInState, setImagesInState) => {
   return editor;
 };
 
-const Body = ({ setBody, setImages }) => {
+const Body = ({ setBody, setImages, createArticle, articleBody }) => {
   useEffect(() => {
     editorHandler(setBody, setImages);
-  }, [setBody, setImages]);
+  }, [setBody, setImages, createArticle]);
   return (
     <Fragment>
       <Body.Wrapper>
-        <Body.Input className='editor'/>
+        <Body.Textarea value={articleBody} onChange={() => true} className='editor'/>
       </Body.Wrapper>
     </Fragment>
   );
@@ -81,7 +84,7 @@ Body.Wrapper = styled.div`
 `;
 
 
-Body.Input = styled.textarea`
+Body.Textarea = styled.textarea`
   padding: 2rem .5rem;
   margin: 1rem;
   width: 100%;

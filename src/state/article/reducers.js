@@ -4,6 +4,8 @@ import {
   IS_ARTICLE_REQUEST,
   GET_ARTICLE_BY_ID_SUCCESS,
   GET_ARTICLE_BY_ID_ERROR,
+  UPDATE_ARTICLE_SUCCESS,
+  UPDATE_ARTICLE_FAILURE,
 } from './actionTypes';
 
 import { initialState } from './state';
@@ -33,7 +35,20 @@ export default (state = initialState, action) => {
     case GET_ARTICLE_BY_ID_SUCCESS:
       return {
         ...state,
-        articleIsViewed: { data: action.payload.data, error: null }
+        articleIsViewed: { data: action.payload.data, error: null },
+        isArticleRequest: false,
+      };
+    case UPDATE_ARTICLE_SUCCESS:
+      return {
+        ...state,
+        articleIsViewed: { data: action.payload.data, error: null },
+        isArticleRequest: false,
+      };
+    case UPDATE_ARTICLE_FAILURE:
+      return {
+        ...state,
+        articleIsViewed: { data: action.payload.data, error: null },
+        isArticleRequest: false,
       };
     case GET_ARTICLE_BY_ID_ERROR:
       return {
