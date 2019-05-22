@@ -81,7 +81,7 @@ const ForgotPassword = props => {
         )}
         <ButtonComponent type='submit' size='big' color='blue'>RESET PASSWORD</ButtonComponent>
       </FormStyle>
-      <AlignRight><Link to='/login'>Back to Login</Link></AlignRight>
+      <AlignRight><Link to='/login'>Back to Sign In</Link></AlignRight>
     </ContainerStyle>
   );
 };

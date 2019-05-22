@@ -23,6 +23,7 @@ const articleMock = {
       tags: ['tech'],
       body: 'lorem ipsum',
       createdAt: new Date(),
+      averageRating: 4
     },
 
     {
@@ -35,6 +36,7 @@ const articleMock = {
       tags: ['fiction'],
       body: 'lorem ipsum',
       createdAt: new Date(),
+      averageRating: 5
     }
   ],
 

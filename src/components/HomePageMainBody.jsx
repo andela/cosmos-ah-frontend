@@ -7,6 +7,9 @@ import { getArticleAction } from '../state/article/actions';
 import ArticleUtil from '../utils/articles';
 import { ArticlePrimaryCard, ArticleSecondaryCard } from './shared/Article';
 import ArticleCardHeading from './shared/Heading/ArticleCardHeading';
+import Collections from './Collections';
+import Collection from './Collection';
+import AppUtil from '../utils/index';
 
 const {
   articleCategories, getAccumulator, filterArticleByCategory, filterByContent
@@ -18,6 +21,21 @@ const PageAside = styled.aside`
 
 const MainBody = styled(Container)`
   margin-top: 3em;
+`;
+
+const ContainerSection = styled.div`
+  display: flex;
+  width: 60%;
+  padding-bottom: 20px;
+  * {
+    margin-right: 10px;
+  }
+`;
+
+const FeaturedCollectionTitle = styled.h3`
+  font-family: 'Circular-Light';
+  letter-spacing: 2px;
+  text-transform: uppercase;
 `;
 
 const HomePageMainBody = ({ articles, getArticles }) => {
@@ -47,11 +65,11 @@ const HomePageMainBody = ({ articles, getArticles }) => {
                   .map((category, i) => (
                     <Fragment key={i}>
                       <ArticleCardHeading text={category} />
-                        {
-                          articleCategoryToArticle[category.toLowerCase()].map(article => (
-                            <ArticlePrimaryCard article={article} key={article.id} />
-                          ))
-                        }
+                      {
+                        articleCategoryToArticle[category.toLowerCase()].map(article => (
+                          <ArticlePrimaryCard article={article} key={article.id} />
+                        ))
+                      }
                     </Fragment>
                   ))
               }
@@ -68,10 +86,33 @@ const HomePageMainBody = ({ articles, getArticles }) => {
                       ))
                   }
                 </Grid>
+                <ArticleCardHeading text="Preferences" />
+                <Grid columns="equal">
+                  {
+                    ArticleUtil.getBestRatedArticles(ArticleUtil.mockArticles)
+                      .map((article, i) => (
+                        <ArticleSecondaryCard article={article} count={i} key={article.id} />
+                      ))
+                  }
+                </Grid>
               </PageAside>
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        {/* Collection Section */}
+        <section>
+          <FeaturedCollectionTitle>FEATURED COLLECTIONS</FeaturedCollectionTitle>
+          <ContainerSection>
+            {
+              Object.keys(AppUtil.collections).map(collectionTitle => {
+                const collection = AppUtil.collections[collectionTitle];
+                return (
+                  <Collection collection={collection} key={collection.id} />
+                );
+              })
+            }
+          </ContainerSection>
+        </section>
       </Container>
     </MainBody>
   );

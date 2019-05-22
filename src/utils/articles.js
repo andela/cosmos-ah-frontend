@@ -113,7 +113,100 @@ export default {
    */
   extractSubsetOfArticleBody(articleBody, words = 100) {
     return articleBody.split(' ', words).join(' ');
-  }
+  },
+
+  /**
+   * @function getMostRatedArticles
+   * @returns {Array} Returns an array of
+   * the best rated articles
+   */
+  getBestRatedArticles(articles, bestMinimumRating = 4) {
+    return articles.filter(
+      article => article.averageRating >= bestMinimumRating
+    );
+  },
+
+  /**
+   * @function sortArticlesByAvgRating
+   * @param {Array} articles
+   * @param {String} desc
+   * @returns {Array} Sorts an articles by the
+   * average rating and returns the sorted array
+   */
+  sortArticlesByAvgRating(articles, desc = 'asc') {
+    return articles.sort((a, b) => (desc === 'asc' ? a.averageRating - b.averageRating : b.averageRating - a.averageRating));
+  },
+
+  /**
+   * @function prepareArticleCollections
+   * @param {Array} articles
+   * @returns {Object} Returns a collection object
+   */
+  prepareArticleCollections(articles) {
+    const articleCategoryToArticle = this.getAccumulator(this.articleCategories);
+
+    this.articleCategories.forEach(category => {
+      articleCategoryToArticle[category] = this.filterArticleByCategory(articles, category);
+    });
+
+    const articleCategoryWithContent = this.filterByContent(this.articleCategories,
+      articleCategoryToArticle);
+
+    const collections = {};
+    articleCategoryWithContent.forEach((category, i) => {
+      collections[category] = {};
+      collections[category].id = i;
+      collections[category].title = category;
+      collections[category].storyCount = articleCategoryToArticle[category].length;
+      collections[category].image = articleCategoryToArticle[category][0].imageUrl;
+    });
+
+    return collections;
+  },
+
+  /**
+   * This is needed to test out mock articles feature
+   * since the branch with the changes hasn't been
+   * integrated with the codebase base branch
+   */
+  mockArticles: [
+    {
+      id: '979eaa2e-5b8f-4103-8192-4639afae2ba7',
+      title: 'Hamlet',
+      author: { fullName: 'William Shakespeare' },
+      description: '',
+      body: '',
+      createdAt: new Date(),
+      totalReadTime: 1,
+      averageRating: 4,
+      imageUrl: ['https://picsum.photos/200/300'],
+      tags: ['fiction', 'drama']
+    },
+    {
+      id: '979eaa2e-5b8f-4103-8192-4639afae2ba8',
+      title: 'Macbeth',
+      author: { fullName: 'William Shakespeare' },
+      description: '',
+      body: '',
+      createdAt: new Date(),
+      totalReadTime: 1,
+      averageRating: 2,
+      imageUrl: ['https://picsum.photos/200/300'],
+      tags: ['fiction']
+    },
+    {
+      id: '979eaa2e-5b8f-4103-8192-4639afae2ba9',
+      title: 'The Merchant of Venice',
+      author: { fullName: 'William Shakespeare' },
+      description: '',
+      body: '',
+      createdAt: new Date(),
+      totalReadTime: 1,
+      averageRating: 5,
+      imageUrl: ['https://picsum.photos/200/300'],
+      tags: ['tech']
+    }
+  ]
 };
 
 export const Validator = async (data, rules, customRules = null) => {

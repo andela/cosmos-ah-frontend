@@ -48,4 +48,35 @@ describe('Article Util test', () => {
     const articleBody = articleUtil.extractSubsetOfArticleBody(articleMock.article.body, 50);
     expect(articleBody.length).toBeGreaterThan(0);
   });
+
+  it('prepares article collections', () => {
+    const collections = articleUtil.prepareArticleCollections(articleMock.articles);
+    expect(Object.keys(collections).length).toEqual(2);
+  });
+
+  it('sorts articles by ascending order', () => {
+    const collections = articleUtil.sortArticlesByAvgRating(articleMock.articles)
+    expect(collections[0].id).toEqual('10ba038e-48da-487b-96e8-8d3b99b6d18a');
+  });
+
+  it('sorts articles by descending order', () => {
+    const collections = articleUtil.sortArticlesByAvgRating(articleMock.articles, 'desc')
+    expect(collections[0].id).toEqual('10ba038e-48da-487b-96e8-8d3b99b6d18b');
+  });
+
+  it('should return most rated articles', () => {
+    const articles = articleUtil.getBestRatedArticles(articleMock.articles, 5)
+    expect(articles[0].id).toEqual('10ba038e-48da-487b-96e8-8d3b99b6d18b');
+  });
+
+  it('should return most rated articles', () => {
+    const articles = articleUtil.getBestRatedArticles(articleMock.articles)
+    expect(articles.length).toEqual(2);
+  });
+
+  it('should parse article creation date', () => {
+    const articleDate = articleUtil.parseArticleCreationDate(articleMock.article.createdAt);
+    const todayDate = new Date().getDate().toString();
+    expect(articleDate.slice(-2)).toEqual(todayDate);
+  })
 });

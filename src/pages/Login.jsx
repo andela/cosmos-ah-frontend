@@ -124,11 +124,11 @@ export const Login = props => {
         <Wrap>
           <Grid.Column style={{ padding: '0 20px' }}>
             <Center>
-              <Header as='h1' color='blue' size='huge'>Log In</Header>
+              <Header as='h1' color='blue' size='huge'>Sign In</Header>
             </Center>
             <SocialButton />
             <Header color='blue'>
-              <h4>or login using your email address</h4>
+              <h4>or sign in using your email address</h4>
             </Header>
             <Form onSubmit={handleSubmit} loading={loginState.loadingState}>
               {error.email && <InlineError text={error.email} />}

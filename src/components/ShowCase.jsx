@@ -86,6 +86,10 @@ const ArticleMainDetailsContainer = styled.section`
   margin: 5px 0 10px;
 `;
 
+const FavoriteArticleIcon = styled(Icon)`
+  cursor: pointer;
+`;
+
 const ShowCase = ({ article: { imageUrl, title, body,
   author, totalReadTime, createdAt } }) => (
   <DynamicGrid>
@@ -123,7 +127,7 @@ const ShowCase = ({ article: { imageUrl, title, body,
               <DetailsDotSeparator />
             </ArticleDetails>
             <ArticleDetails>{totalReadTime} {totalReadTime > 1 ? 'mins ' : 'min '}read</ArticleDetails>
-            <Icon name="star" size="small" />
+            <FavoriteArticleIcon name="star" size="small" title={`Favorite ${title}`} />
           </ArticleDetailsContainer>
         </section>
       </DynamicSection>
