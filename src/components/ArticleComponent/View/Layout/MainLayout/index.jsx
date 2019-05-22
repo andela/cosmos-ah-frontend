@@ -6,6 +6,13 @@ const MainLayout = () => (
     <div className="ten wide column">
       <Article />
     </div>
+    <div>
+      <form>
+        <textarea
+          placeholder="Write a comment...">
+        </textarea>
+      </form>
+    </div>
   </div>
 );
 

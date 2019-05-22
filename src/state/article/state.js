@@ -4,5 +4,6 @@ export const initialState = {
   articleIsViewed: {
     data: null,
     error: null,
-  }
+  },
+  articleComments: [],
 };
