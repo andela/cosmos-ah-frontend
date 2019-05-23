@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 import { getArticleCommentsAction } from '../../../../state/comments/actions';
 import articleUtil from '../../../../utils/articles';
 
-const CommentsBox = styled.div`
+const CommentsBox = styled.ul`
   width: 100%;
-  background-color: #e2e2e2;
   border: none;
-  padding: 15px;
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  li {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #e2e2e2;
   }
 `;
 
@@ -25,11 +25,9 @@ const ArticleComments = ({ articleComments, getComments, match }) => {
     <div>
       <h3>Comments</h3>
       <CommentsBox>
-        <ul>
-          {articleComments.map(comment => (
-            <li key={comment.id}>{comment.body}</li>
-          ))}
-        </ul>
+        {articleComments.map(comment => (
+          <li key={comment.id}>{comment.body}</li>
+        ))}
       </CommentsBox>
     </div>
   );

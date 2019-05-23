@@ -1,32 +1,54 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { Form } from 'semantic-ui-react';
-import { getArticleCommentsAction } from '../../../../state/comments/actions';
-import articleUtil from '../../../../utils/articles';
-import { InputField } from '../../../PasswordReset/Form';
+import { createArticleCommentAction } from '../../../../state/comments/actions';
 
-const FormFeild = styled(Form)`
-&&& {
+const FormField = styled.form`
     input {
     width: 100%;
-    background-color: #e2e2e2 !important;
-    border: none !important;
-    padding: 8px 15px !important;
-    border-radius: 20px !important;
-    outline: none !important;
-  }
+    background-color: #e2e2e2;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 15px;
+    outline: none;
 }`;
 
-const AddComment = props => (
-  <FormFeild>
-    <Form.Input placeholder='Add a comment...' />
-  </FormFeild>
-);
+const AddComment = ({ createNewComment, match }) => {
+  const { id } = match.params;
+  const [formInput, setFormInput] = useState({
+    body: '',
+  });
 
-// const mapStateToProps = ({ comments }) => ({
-//   articleComments: articleUtil.flatten(comments.allComments)
-// });
+  const { body } = formInput;
 
-// export default connect(mapStateToProps, { getComments: getArticleCommentsAction })(AddComment);
-export default AddComment;
+  const handleSubmit = event => {
+    event.preventDefault();
+    if (!body.trim()) return;
+    createNewComment(body, id);
+    setFormInput({ body: '' });
+  };
+
+  const handleChange = event => {
+    event.persist();
+    const { name, value } = event.target;
+    setFormInput(() => ({ ...formInput, [name]: value }));
+  };
+  return (
+    <FormField onSubmit={handleSubmit}>
+      <input
+        name='body'
+        value={body}
+        type='text'
+        onChange={handleChange}
+        placeholder='Add a comment...' />
+    </FormField>
+  );
+};
+
+const mapStateToProps = ({ comments }) => ({
+  addNewComment: comments.allComments
+});
+
+export default connect(mapStateToProps, {
+  createNewComment: createArticleCommentAction
+})(AddComment);

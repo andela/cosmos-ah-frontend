@@ -13,17 +13,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         allComments: [
-          ...state.articleComments,
-          action.payload.data,
+          ...state.allComments,
+          action.payload,
         ],
       };
     case CREATE_ARTICLE_COMMENT_FAILURE:
       return {
         ...state,
-        allComments: [
-          ...state.articleComments,
-          action.payload.data,
-        ],
+        error: action.payload,
       };
     case GET_ARTICLE_COMMENT_SUCCESS:
       return {

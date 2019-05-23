@@ -18,9 +18,9 @@ export const getArticleCommentsFailure = error => ({
   payload: error
 });
 
-export const createArticleCommentSuccess = payload => ({
+export const createArticleCommentSuccess = body => ({
   type: CREATE_ARTICLE_COMMENT_SUCCESS,
-  payload,
+  payload: body
 });
 
 export const createArticleCommentFailure = error => ({
@@ -35,5 +35,14 @@ export const getArticleCommentsAction = articleId => async dispatch => {
     dispatch(getArticleCommentsSuccess(allComments));
   } catch (error) {
     dispatch(getArticleCommentsFailure(error));
+  }
+};
+
+export const createArticleCommentAction = (body, articleId) => async dispatch => {
+  try {
+    const { data: { data } } = await axios.post(`/articles/${articleId}/comments`, { body, articleId });
+    dispatch(createArticleCommentSuccess(data));
+  } catch (error) {
+    dispatch(createArticleCommentFailure(error));
   }
 };

@@ -117,7 +117,7 @@ export const ArticleContent = props => {
       <br />
       <ArticleComments match={props.match} />
       <br />
-      <AddComment />
+      <AddComment match={props.match}/>
       <br />
       <TagSection className="tags">
         {tagLists}
