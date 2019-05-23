@@ -14,6 +14,7 @@ import CreateArticle from './CreateArticle';
 import ViewArticle from './ViewArticle';
 import ResetPassword from './ResetPassword';
 import { PrivateRoute } from '../lib/authenticateRoute';
+import { FourOhFour } from './FourOhFour';
 
 const App = () => (
   <Router>
@@ -28,6 +29,7 @@ const App = () => (
       <PrivateRoute path="/article/create" exact component={CreateArticle} />
       <PrivateRoute path="/articles/:id?" exact component={ViewArticle} />
       <Route path="/password-reset/:resetToken" component={ResetPassword} />
+      <Route path="/*" component={FourOhFour}/>
     </Switch>
   </Router>
 );

@@ -10,6 +10,8 @@ const store = mockStore({});
 
 const mockProfile = {
   fullName: 'Chike Ozulumba',
+  id: "979eaa2e-5b8f-4103-8192-4639afae2ba9",
+  role: "admin",
   email: 'chike@gmail.com',
   username: 'chikeozulumba',
   bio: "Hold on now, aren't there already specs for this kind of thing? - Well... no. While there are a few handy specifications for dealing with JSON data, most notably Douglas Crockford's JSONRequest proposal, there's nothing to address the problems of general application-level messaging. More on this later.",
