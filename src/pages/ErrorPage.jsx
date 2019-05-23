@@ -8,7 +8,7 @@ const CardContentContainer = styled.div`
     font-size: 70px;
 `;
 
-export const FourOhFour = () => (
+export const ErrorPage = () => (
     <CardContentContainer>
         <h1>404</h1>
         <h2>NOT FOUND</h2>
