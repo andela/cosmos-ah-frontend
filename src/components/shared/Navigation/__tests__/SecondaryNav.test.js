@@ -17,7 +17,7 @@ test('Adds a logo to the nav bar', () => {
 
 test('Adds a login and sign up button to the nav bar', () => {
   const secondaryNav = render(<Router><SecondaryNav brandLogo={<h3>{'AppLogo'}</h3>}/></Router>);
-  expect(secondaryNav.getByText('log in').tagName).toBe('A');
+  expect(secondaryNav.getByText('sign in').tagName).toBe('A');
   expect(secondaryNav.getByText('Get started').tagName).toBe('A');
 });
 

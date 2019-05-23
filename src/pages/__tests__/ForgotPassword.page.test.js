@@ -22,7 +22,7 @@ test('<ForgotPassword /> component', () => {
   const forgotPasswordPage = render(<Provider store={store}><BrowserRouter><ForgotPassword /></BrowserRouter></Provider>);
   expect(forgotPasswordPage).toBeTruthy();
   expect(forgotPasswordPage.getByText('RESET PASSWORD').tagName).toBe('BUTTON');
-  expect(forgotPasswordPage.getByText('Back to Login').tagName).toBe('A');
+  expect(forgotPasswordPage.getByText('Back to Sign In').tagName).toBe('A');
 });
 
 test('renders the Form', () => {
