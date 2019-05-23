@@ -37,7 +37,7 @@ test('should return error for invalid data', () => {
     isValid: false,
   });
   expect(validateSignupInput({ ...data, username: 'testUser123' })).toEqual({
-    errors: { username: 'Invalid Username Format' },
+    errors: { username: 'Username can only be a lower case character(a-z), special characters and numbers are not allowed' },
     isValid: false,
   });
   expect(validateSignupInput({ ...data, email: 'test' })).toEqual({
@@ -46,9 +46,9 @@ test('should return error for invalid data', () => {
   });
   expect(validateSignupInput({ ...data, password: 'password' })).toEqual({
     errors: {
+      confirmPassword : 'Password must match',
       password:
-        'Password should be At least a lowercase character, uppercase character, numeric character, special character and eight characters long.',
-      confirmPassword: 'Password must match',
+      'Password should contain at least 8 characters, a lower case character(a-z), an uppercase character(A-Z) and special characters/symbols',
     },
     isValid: false,
   });

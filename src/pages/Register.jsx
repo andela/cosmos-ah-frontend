@@ -46,9 +46,12 @@ const MyButton = styled(Button)`
 `;
 
 const Aside = styled(Center)`
-  margin-bottom: auto;
+  margin-bottom: 65%;
   color: #ffffff;
-  padding: 35px;
+  padding: 15px;
+  @media (min-width: 769px) and (max-width: 907px) {
+    margin-bottom: auto;
+  }
 `;
 
 const ContainerCenter = styled(Center)`
