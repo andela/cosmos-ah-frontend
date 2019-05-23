@@ -28,7 +28,7 @@ export const validateSignupInput = data => {
 
   if (!validator.isEmpty(username)) {
     if (!/^[a-z]+$/.test(username)) {
-      errors.username = 'Invalid Username Format';
+      errors.username = 'Username can only be a lower case character(a-z), special characters and numbers are not allowed';
     }
   } else {
     errors.username = 'Username cannot be blank';
@@ -36,7 +36,7 @@ export const validateSignupInput = data => {
 
   if (!validator.isEmpty(password)) {
     if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})/.test(password)) {
-      errors.password = 'Password should be At least a lowercase character, uppercase character, numeric character, special character and eight characters long.';
+      errors.password = 'Password should contain at least 8 characters, a lower case character(a-z), an uppercase character(A-Z) and special characters/symbols';
     }
   } else {
     errors.password = 'Password cannot be blank';
@@ -79,7 +79,7 @@ export const validateProperty = ({ name, value }) => {
       return 'Username cannot be blank';
     }
     if (!/^[a-z]+$/.test(value)) {
-      return 'invalid Username Format';
+      return 'Username can only be a lower case character(a-z), special characters and numbers are not allowed';
     }
   }
 
@@ -88,7 +88,7 @@ export const validateProperty = ({ name, value }) => {
       return 'Password cannot be blank';
     }
     if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})/.test(value)) {
-      return 'Password should be At least a lowercase character, uppercase character, numeric character, special character and eight characters long.';
+      return 'Password should contain at least 8 characters, a lower case character(a-z), an uppercase character(A-Z) and special characters/symbols';
     }
   }
 
