@@ -27,7 +27,7 @@ export const articleIsViewed = {
     },
     comments:[]
   },
-  error: null
+  error: null,
 };
 
 export const mockStoreData = {
@@ -40,6 +40,9 @@ export const mockStoreData = {
     article: {
       title: 'Testing',
       body: 'Testing',
+      tags: ['test', 'testing'],
+      published: true,
+      imageUrl: ['https://res.cloudinary.com/dmq014llt/image/upload/v1557326099/people/beautiful-brunette-cute.jpg']
     }
   },
   article: {

@@ -12,10 +12,7 @@ import {
 
 import { initialState } from './state';
 
-let allArticles = null;
-
 export default (state = initialState, action) => {
-  if (action === undefined || !action) { return state; }
   const { type } = action;
   switch (type) {
     case CREATE_ARTICLE_SUCCESS:
@@ -34,13 +31,20 @@ export default (state = initialState, action) => {
     case GET_ARTICLE_SUCCESS:
       return {
         ...state,
-        allArticles: action.payload
+        allArticles: action.payload,
+        isArticleRequest: false,
       };
     case GET_ARTICLE_BY_ID_SUCCESS:
       return {
         ...state,
         articleIsViewed: { data: action.payload.data, error: null },
         isArticleRequest: false,
+      };
+    case GET_ARTICLE_BY_ID_ERROR:
+      return {
+        ...state,
+        isArticleRequest: false,
+        articleIsViewed: { data: null, error: action.payload }
       };
     case UPDATE_ARTICLE_SUCCESS:
       return {
@@ -54,11 +58,14 @@ export default (state = initialState, action) => {
         isArticleRequest: false,
       };
     case DELETE_ARTICLE_SUCCESS:
-      allArticles = state.allArticles.length > 0
-        ? state.allArticles.filter(value => value.id !== action.payload) : state.allArticles;
+      state.allArticles.map((value, index) => {
+        if (value.id === action.payload) {
+          state.allArticles.splice(index, 1);
+        }
+        return value;
+      });
       return {
         ...state,
-        allArticles,
         isArticleRequest: false,
         articleIsViewed: { data: null, error: null, }
       };
@@ -66,12 +73,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isArticleRequest: false,
-      };
-    case GET_ARTICLE_BY_ID_ERROR:
-      return {
-        ...state,
-        isArticleRequest: false,
-        articleIsViewed: { data: null, error: action.payload }
       };
     default:
       return state;

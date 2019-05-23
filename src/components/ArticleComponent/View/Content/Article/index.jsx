@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter, Link, BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -35,7 +35,8 @@ const PreloadImage = styled.img`
   margin: 2rem 0 0;
 `;
 
-const ArticleContent = props => {
+export const ArticleContent = props => {
+  const [editorError, setEditorState] = useState({ status: false, message: null });
   const {
     articles, match: { params: { id }, },
     getByID, articleIsViewed, history,
@@ -74,9 +75,12 @@ const ArticleContent = props => {
     modalText: `Are you sure you want to delete this article: ${title}`,
   };
 
-  const deleteArticle = () => {
-    deleteArticleDispatch(id);
-    return history.push('/feeds');
+  const deleteArticle = async () => {
+    const deleteSelected = await deleteArticleDispatch(id);
+    if (deleteSelected.status === 'success') {
+      return history.push('/feeds');
+    }
+    return useState({ status: true, message: `${deleteSelected.data.message}` });
   };
 
   return (
@@ -111,7 +115,6 @@ const ArticleContent = props => {
       </TagSection>
       <Modal
         {...deleteArticleProps}
-        handleClickReject={() => null}
         handleClickApprove={() => deleteArticle()}
       />
     </div>

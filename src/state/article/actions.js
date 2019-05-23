@@ -1,4 +1,3 @@
-import { getAllArticles } from '../../lib/article';
 import axios from '../../lib/axios';
 import {
   CREATE_ARTICLE_SUCCESS,
@@ -68,9 +67,9 @@ export const getArticleByIDError = error => ({
   payload: error,
 });
 
-export const getArticleAction = () => async dispatch => {
+export const getArticleAction = (route = '/articles') => async dispatch => {
   try {
-    const allArticles = await getAllArticles();
+    const allArticles = await axios.get(route);
     return dispatch(getArticles(allArticles));
   } catch (error) {
     dispatch(getArticlesFailure());
@@ -109,13 +108,14 @@ export const getArticleByID = (articles, id) => async dispatch => {
   }
 };
 
-
 export const deleteSelectedArticle = id => async dispatch => {
   dispatch(isArticleRequest());
   try {
-    // const { data } = await axios.delete(`/articles/${id}`);
-    return dispatch(deleteArticleSuccess(id));
+    const { data } = await axios.delete(`/articles/${id}`);
+    dispatch(deleteArticleSuccess(id));
+    return data;
   } catch (error) {
     dispatch(deleteArticleFailure(error));
+    return error;
   }
 };

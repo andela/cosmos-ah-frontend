@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import ArticleContent from '../../Content/Article';
+import Article from '../../Content/Article';
 
 const MainLayout = () => (
   <div className="ui one centered grid stackable">
     <div className="ten wide column">
-      <ArticleContent />
+      <Article />
     </div>
   </div>
 );

@@ -13,11 +13,11 @@ const StrippedModal = props => (
       </p>
     </div>
     <div className="actions">
-      <div onClick={props.handleClickReject} className="ui red basic cancel inverted button">
+      <div id="rejectModal" onClick={props.handleClickReject} className="ui red basic cancel inverted button">
         <i className="remove icon"></i>
         {props.rejectText}
       </div>
-      <div onClick={props.handleClickApprove} className="ui green ok inverted button">
+      <div id="approveModal" onClick={props.handleClickApprove} className="ui green ok inverted button">
         <i className="checkmark icon"></i>
         {props.approveText}
       </div>

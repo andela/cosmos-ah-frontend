@@ -35,13 +35,13 @@ const validateArticle = async data => {
   return validate;
 };
 
-const Content = ({
+export const Content = ({
   createArticle: { error, article, },
   createArticleDispatch, updateArticleDispatch,
   setErrors, articles, history, match, setArticleUpdate,
 }) => {
   const { params, path } = match;
-  const state = path === '/article/edit/:id' ? 'edit' : 'create';
+  const editorState = path === '/article/edit/:id' ? 'edit' : 'create';
   useEffect(() => {
     const updateArticleField = () => {
       if (match.path === '/article/edit/:id') {
@@ -52,7 +52,8 @@ const Content = ({
       }
     };
     updateArticleField();
-  }, [match]);
+  }, []);
+
   const handleSubmitOfArticles = async () => {
     const checkValidate = await validateArticle({ title: article.title, body: article.body });
     if (!checkValidate.passes()) {
@@ -65,7 +66,7 @@ const Content = ({
       showError: false, status: false, message: [], type: null
     });
     try {
-      if (state === 'edit') {
+      if (editorState === 'edit') {
         const { data } = await updateArticleDispatch(article, params.id);
         return history.push(`/article/${data.id}`);
       }
@@ -83,13 +84,13 @@ const Content = ({
   return (
     <div className="text-focus-in">
       {(type === 'title' && showError) && <Content.Error addStyles={{ color: 'red' }}>{message[0]}</Content.Error>}
-      <Title articleTitle={article.title} />
-      <Body articleBody={article.body} />
+      {editorState === 'edit' ? <Title articleTitle={article.title} /> : <Title />}
+      {editorState === 'edit' ? <Body articleBody={article.body} /> : <Body />}
       {type === 'tag' && <Content.Error addStyles={{ color: 'red' }}>{message[0]}</Content.Error>}
-      <Tags articleTags={article.tags} />
-      {(state !== 'edit' && article.published === true) && <Checkbox isDisabled={disabledCondition} text="Publish this article?" />}
+      {editorState === 'edit' ? <Tags articleTags={article.tags} /> : <Tags />}
+      {((editorState === 'edit' && article.published === false) || editorState === 'create') && <Checkbox isDisabled={disabledCondition} text="Publish this article?" />}
       <Content.Wrapper>
-        <Button onClicked={handleSubmitOfArticles} isDisabled={(disabledCondition || articles.isArticleRequest)} classList={btnClass.join(' ')}>{state === 'edit' ? 'UPDATE ARTICLE' : article.published ? 'PUBLISH ARTICLE' : 'SAVE ARTICLE'}</Button>
+        <Button onClicked={handleSubmitOfArticles} isDisabled={(disabledCondition || articles.isArticleRequest)} classList={btnClass.join(' ')}>{editorState === 'edit' ? 'UPDATE ARTICLE' : article.published ? 'PUBLISH ARTICLE' : 'SAVE ARTICLE'}</Button>
       </Content.Wrapper>
     </div>
   );

@@ -51,5 +51,5 @@ export const setArticlePublish = check => async dispatch => dispatch(setPublish(
 export const setArticleError = error => async dispatch => dispatch(setError(error));
 export const setArticleOnUpdate = article => async dispatch => {
   const { title, body, tags, published, imageUrl } = article;
-  dispatch(setArticleUpdate({ title, body, tags, published, imageUrl, }));
+  await dispatch(setArticleUpdate({ title, body, tags, published, imageUrl, }));
 };

@@ -5,9 +5,9 @@ import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 
 import { mount } from 'enzyme';
-import { render, cleanup, } from 'react-testing-library';
+import { render, cleanup } from 'react-testing-library';
 
-import Title from '../../ArticleComponent/Create/Content/Title';
+import Checkbox from '../../ArticleComponent/Create/Content/Checkbox';
 
 import { mockStoreData, articleIsViewed } from '../../../__mocks__/store';
 
@@ -17,13 +17,13 @@ const store = mockStore(mockStoreData);
 afterEach(cleanup);
 
 describe('Should render the component ', () => {
-  test('<Title /> component', () => {
-    const articleTitle = render(<Provider store={store}><Router><Title /></Router></Provider>);
-    expect(articleTitle).toBeTruthy();
-    expect(articleTitle).toMatchSnapshot();
+  test('<Checkbox /> component', () => {
+    const checkbox = render(<Provider store={store}><Router><Checkbox /></Router></Provider>);
+    expect(checkbox).toBeTruthy();
+    expect(checkbox).toMatchSnapshot();
   });
 
-  test("Should register onchange events for the title field", async () => {
+  test("Should register onchange events for the checkbox field", async () => {
     const storeWithArticle = mockStore(mockStoreData);
     const props = {
       articles: { articleIsViewed, },
@@ -34,12 +34,10 @@ describe('Should render the component ', () => {
       setArticle: jest.fn(),
       articleTitle: articleIsViewed.data.title,
     }
-    const wrapper = mount(<Provider store={storeWithArticle}><Router><Title {...props} /></Router></Provider>);
+    const wrapper = mount(<Provider store={storeWithArticle}><Router><Checkbox {...props} /></Router></Provider>);
     expect(wrapper).toBeTruthy();
-    expect(wrapper.find('.autoExpand')).toBeTruthy();
-    wrapper.find('.autoExpand').first().simulate('blur');
 
-    const event = { target: {name: "pollName", value: articleIsViewed.data.title }};
-    wrapper.find('.autoExpand').first().simulate('change', event);
+    const event = { persist: jest.fn(), target: {name: "pollName", value: articleIsViewed.data.title }};
+    wrapper.find('.ui>input').first().simulate('change', event);
   });
 });

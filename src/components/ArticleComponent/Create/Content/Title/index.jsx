@@ -7,25 +7,7 @@ import styled from 'styled-components';
 import { setArticleTitle, setArticleError } from '../../../../../state/create-article/actions';
 import { createArticleSelector } from '../../../../../state/create-article/selectors';
 
-const autoResize = () => {
-  $(document)
-    .one('focus.autoExpand', 'textarea.autoExpand', function () {
-        let savedValue = this.value;
-        this.value = '';
-        this.baseScrollHeight = this.scrollHeight;
-        this.value = savedValue;
-    })
-    .on('input.autoExpand', 'textarea.autoExpand', function () {
-        let minRows = this.getAttribute('data-min-rows') | 0;
-        let rows;
-        this.rows = minRows;
-        rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
-        this.rows = ((minRows + rows) / 2);
-    });
-};
-
 const Title = ({ setTitle, setErrors, articleTitle, }) => {
-  autoResize();
   const getArticleTitle = (evt) => {
     evt.persist();
     const value = evt.target.value;
@@ -36,7 +18,7 @@ const Title = ({ setTitle, setErrors, articleTitle, }) => {
   return (
     <Fragment>
       <Title.Wrapper>
-        <Title.Input onBlur={() => setErrors({ showError: false }) } onChange={getArticleTitle} className='autoExpand' rows='2' data-min-rows='0' placeholder="Title" value={articleTitle} />
+        <Title.Input onBlur={() => setErrors({ showError: false }) } onChange={getArticleTitle} className='autoExpand' rows='2' data-min-rows='0' placeholder="Title" defaultValue={articleTitle} />
       </Title.Wrapper>
     </Fragment>
   );
