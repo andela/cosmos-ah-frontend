@@ -5,8 +5,10 @@ import Collection from './Collection';
 
 const CollectionsContainer = styled.div`
   display: flex;
+  width: 50%;
   @media screen and (max-width: 768px) {
-    
+    flex-direction: column;
+    width: 100%;
   }
 `;
 

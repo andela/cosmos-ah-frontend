@@ -5,7 +5,10 @@ import styled from 'styled-components';
 
 const CollectionContainer = styled.div`
   flex: 1 1 calc(100% / 3);
-  margin-left: 5px;
+  @media screen and (max-width: 768px) {
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+  }
 `;
 
 const StoryCount = styled.span`
@@ -18,8 +21,10 @@ const CollectionImageContainer = styled.div`
   height: 250px;
   background-color: lightgrey;
   border-radius: 10px;
-  cursor: pointer;
-  background: url(${props => props.imageUrl})
+  background: url(${props => props.imageUrl});
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const Collection = ({ collection }) => (

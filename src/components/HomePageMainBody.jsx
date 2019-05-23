@@ -24,18 +24,16 @@ const MainBody = styled(Container)`
 `;
 
 const ContainerSection = styled.div`
-  display: flex;
-  width: 60%;
   padding-bottom: 20px;
-  * {
-    margin-right: 10px;
-  }
 `;
 
 const FeaturedCollectionTitle = styled.h3`
   font-family: 'Circular-Light';
   letter-spacing: 2px;
   text-transform: uppercase;
+  @media screen and (max-width: 768px) {
+    margin-top: 50px;
+  }
 `;
 
 const AllCollectionsLink = styled(Link)`
@@ -111,7 +109,9 @@ const HomePageMainBody = ({ articles, getArticles }) => {
           </Grid.Row>
         </Grid>
         {/* Collection Section */}
-        <section>
+        <section style={{
+          marginTop: '40px'
+        }}>
           <FeaturedCollectionTitle>FEATURED COLLECTIONS</FeaturedCollectionTitle>
           <ContainerSection>
             {
