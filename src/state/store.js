@@ -13,6 +13,7 @@ import { auth } from './auth';
 import { alert } from './alert';
 import { createArticle } from './create-article';
 import { userPassword } from './password';
+import { comment } from './comments';
 
 const middleware = process.env.NODE_ENV !== 'production' ? [logger, thunk] : [thunk];
 const rootReducer = combineReducers({
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   [alert.stateKey]: alert.alertReducer,
   [createArticle.stateKey]: createArticle.reducer,
   [userPassword.stateKey]: userPassword.reducer,
+  [comment.stateKey]: comment.reducer,
 });
 
 const reduxDevTools = process.env.NODE_ENV === 'production' ? p => p : window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
