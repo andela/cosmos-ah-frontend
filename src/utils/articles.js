@@ -2,7 +2,7 @@ import moment from 'moment';
 import Validate from 'validatorjs';
 
 export default {
-  articleCategories: [
+  articleTags: [
     'tech', 'people', 'culture', 'romance',
     'self', 'health', 'fiction'
   ],
@@ -17,15 +17,15 @@ export default {
 
   /**
    * @function getAccumulator
-   * @param {Array} categories
-   * @returns {Object} Returns an object that maps to each category in `categories`
+   * @param {Array} tags
+   * @returns {Object} Returns an object that maps to each tag in `tags`
    */
-  getAccumulator(categories) {
-    const accumulator = {};
-    categories.forEach(category => {
-      accumulator[category] = [];
+  mapTagsToEmptyArrays(tags) {
+    const articleTags = {};
+    tags.forEach(tag => {
+      articleTags[tag] = [];
     });
-    return accumulator;
+    return articleTags;
   },
 
   /**
@@ -39,24 +39,25 @@ export default {
   },
 
   /**
-   * @function filterArticleByCategory
+   * @function filterArticleByTags
    * @param {Array} articles
-   * @param {String} category
+   * @param {String} tag
    * @returns {Array} Returns a list of array
-   * filtered by `category`
+   * filtered by `tag`
    */
-  filterArticleByCategory(articles, category) {
-    return articles.filter(article => article.tags.indexOf(category) !== -1);
+  filterArticlesByTags(articles, tag) {
+    return articles.filter(article => article.tags.indexOf(tag) !== -1);
   },
 
-  filterByContent(categories, categoryMap) {
-    const categoriesWithContent = [];
-    categories.forEach(category => {
-      if (categoryMap[category].length > 0) {
-        categoriesWithContent.push(category);
-      }
-    });
-    return categoriesWithContent;
+  /**
+   * @function getTagsThatHaveArticles
+   * @param {Array<String>} tags
+   * @param {Object} tagMap
+   * @returns {Array<String>} Returns a list of
+   * tags that have articles
+   */
+  getTagsThatHaveArticles(tags, tagMap) {
+    return tags.filter(tag => tagMap[tag].length > 0);
   },
 
   /**
@@ -143,22 +144,22 @@ export default {
    * @returns {Object} Returns a collection object
    */
   prepareArticleCollections(articles) {
-    const articleCategoryToArticle = this.getAccumulator(this.articleCategories);
+    const articleTagsToEmptyArrays = this.mapTagsToEmptyArrays(this.articleTags);
 
-    this.articleCategories.forEach(category => {
-      articleCategoryToArticle[category] = this.filterArticleByCategory(articles, category);
+    this.articleTags.forEach(tag => {
+      articleTagsToEmptyArrays[tag] = this.filterArticlesByTags(articles, tag);
     });
 
-    const articleCategoryWithContent = this.filterByContent(this.articleCategories,
-      articleCategoryToArticle);
+    const articleTagWithContent = this.getTagsThatHaveArticles(this.articleTags,
+      articleTagsToEmptyArrays);
 
     const collections = {};
-    articleCategoryWithContent.forEach((category, i) => {
-      collections[category] = {};
-      collections[category].id = i;
-      collections[category].title = category;
-      collections[category].storyCount = articleCategoryToArticle[category].length;
-      collections[category].image = articleCategoryToArticle[category][0].imageUrl;
+    articleTagWithContent.forEach((tag, i) => {
+      collections[tag] = {};
+      collections[tag].id = i;
+      collections[tag].title = tag;
+      collections[tag].storyCount = articleTagsToEmptyArrays[tag].length;
+      collections[tag].image = articleTagsToEmptyArrays[tag][0].imageUrl;
     });
 
     return collections;
@@ -169,7 +170,7 @@ export default {
    * since the branch with the changes hasn't been
    * integrated with the codebase base branch
    */
-  mockArticles: [
+  articles: [
     {
       id: '979eaa2e-5b8f-4103-8192-4639afae2ba7',
       title: 'Hamlet',

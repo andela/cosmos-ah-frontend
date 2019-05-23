@@ -2,6 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+
+const CollectionContainer = styled.div`
+  flex: 1 1 calc(100% / 3);
+  margin-left: 5px;
+`;
+
+const StoryCount = styled.span`
+  display: block;
+  margin-top: 10px;
+`;
+
 const CollectionImageContainer = styled.div`
   width: 180px;
   height: 250px;
@@ -12,15 +23,12 @@ const CollectionImageContainer = styled.div`
 `;
 
 const Collection = ({ collection }) => (
-    <div>
+    <CollectionContainer>
       <h3>{collection.title}</h3>
       <CollectionImageContainer imageUrl={collection.image}>
       </CollectionImageContainer>
-      <span style={{
-        display: 'block',
-        marginTop: '10px'
-      }}>{collection.storyCount} stories</span>
-    </div>
+      <StoryCount>{collection.storyCount} stories</StoryCount>
+    </CollectionContainer>
 );
 
 Collection.propTypes = {

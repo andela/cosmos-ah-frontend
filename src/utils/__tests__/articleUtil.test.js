@@ -8,7 +8,7 @@ describe('Article Util test', () => {
   });
 
   it('accumulates an object based on category with empty array', () => {
-    const accumulator = articleUtil.getAccumulator(articleMock.categories);
+    const accumulator = articleUtil.mapTagsToEmptyArrays(articleMock.categories);
     expect(Array.isArray(accumulator.tech)).toBeTruthy();
     expect(accumulator.tech.length).toEqual(0);
   });
@@ -20,12 +20,12 @@ describe('Article Util test', () => {
   });
 
   it('filters article by category', () => {
-    const flatArray = articleUtil.filterArticleByCategory(articleMock.articles, 'fiction');
+    const flatArray = articleUtil.filterArticlesByTags(articleMock.articles, 'fiction');
     expect(flatArray.length).toEqual(1);
   });
 
   it('filters category by content', () => {
-    const flatArray = articleUtil.filterByContent(articleMock.categories, articleMock.categoriesMap)
+    const flatArray = articleUtil.getTagsThatHaveArticles(articleMock.categories, articleMock.categoriesMap)
     expect(flatArray.length).toEqual(3);
   });
 

@@ -3,16 +3,16 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Grid, Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getArticleAction } from '../state/article/actions';
 import ArticleUtil from '../utils/articles';
 import { ArticlePrimaryCard, ArticleSecondaryCard } from './shared/Article';
 import ArticleCardHeading from './shared/Heading/ArticleCardHeading';
 import Collections from './Collections';
-import Collection from './Collection';
-import AppUtil from '../utils/index';
+import AppUtil from '../utils';
 
 const {
-  articleCategories, getAccumulator, filterArticleByCategory, filterByContent
+  articleTags, mapTagsToEmptyArrays, filterArticlesByTags, getTagsThatHaveArticles
 } = ArticleUtil;
 
 const PageAside = styled.aside`
@@ -38,17 +38,28 @@ const FeaturedCollectionTitle = styled.h3`
   text-transform: uppercase;
 `;
 
+const AllCollectionsLink = styled(Link)`
+  display: block;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  color: #3A8FDD;
+  :hover {
+    color: #2d8be2;
+  }
+`;
+
 const HomePageMainBody = ({ articles, getArticles }) => {
   useEffect(() => {
     getArticles();
   }, []);
 
-  const articleCategoryToArticle = getAccumulator(articleCategories);
-  articleCategories.forEach(category => {
-    articleCategoryToArticle[category] = filterArticleByCategory(articles, category);
+  const articleTagsToArray = mapTagsToEmptyArrays(articleTags);
+  articleTags.forEach(tag => {
+    articleTagsToArray[tag] = filterArticlesByTags(articles, tag);
   });
   // we only want to display article categories that have articles
-  const articleCategoryWithContent = filterByContent(articleCategories, articleCategoryToArticle);
+  const articleTagsWithArticles = getTagsThatHaveArticles(articleTags, articleTagsToArray);
 
   return (
     <MainBody>
@@ -61,12 +72,12 @@ const HomePageMainBody = ({ articles, getArticles }) => {
                 <ArticlePrimaryCard article={article} key={article.id} />
               ))}
               {
-                articleCategoryWithContent
-                  .map((category, i) => (
+                articleTagsWithArticles
+                  .map((tag, i) => (
                     <Fragment key={i}>
-                      <ArticleCardHeading text={category} />
+                      <ArticleCardHeading text={tag} />
                       {
-                        articleCategoryToArticle[category.toLowerCase()].map(article => (
+                        articleTagsToArray[tag.toLowerCase()].map(article => (
                           <ArticlePrimaryCard article={article} key={article.id} />
                         ))
                       }
@@ -89,7 +100,7 @@ const HomePageMainBody = ({ articles, getArticles }) => {
                 <ArticleCardHeading text="Preferences" />
                 <Grid columns="equal">
                   {
-                    ArticleUtil.getBestRatedArticles(ArticleUtil.mockArticles)
+                    ArticleUtil.getBestRatedArticles(ArticleUtil.articles)
                       .map((article, i) => (
                         <ArticleSecondaryCard article={article} count={i} key={article.id} />
                       ))
@@ -104,14 +115,10 @@ const HomePageMainBody = ({ articles, getArticles }) => {
           <FeaturedCollectionTitle>FEATURED COLLECTIONS</FeaturedCollectionTitle>
           <ContainerSection>
             {
-              Object.keys(AppUtil.collections).map(collectionTitle => {
-                const collection = AppUtil.collections[collectionTitle];
-                return (
-                  <Collection collection={collection} key={collection.id} />
-                );
-              })
+              <Collections collections={AppUtil.collections} />
             }
           </ContainerSection>
+          <AllCollectionsLink to="/feeds">SEE ALL COLLECTIONS</AllCollectionsLink>
         </section>
       </Container>
     </MainBody>
