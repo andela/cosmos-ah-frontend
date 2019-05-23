@@ -21,7 +21,6 @@ const App = () => (
   <Router>
     <Switch>
       <Route path="/" exact component={Index} />
-      <Route path="/login" exact component={connectedLogin} />
       <Route path="/signup" component={ConnectedRegister} />
       <PrivateRoute path="/profile/:id?" exact component={Profile} />
       <Route path="/forgot-password" component={ForgotPassword} />
