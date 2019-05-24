@@ -5,6 +5,6 @@ import DropdownSelect from '../Dropdown';
 afterEach(cleanup);
 
 test('Renders <DropdownSelect />', () => {
-  const dropDownSelect = render(<DropdownSelect />);
+  const dropDownSelect = render(<DropdownSelect placeholder="Search for articles" dropDownItems={[]} />);
   expect(dropDownSelect).toBeTruthy();
 });
