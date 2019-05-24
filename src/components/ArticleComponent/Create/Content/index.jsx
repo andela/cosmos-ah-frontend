@@ -48,7 +48,7 @@ const Content = ({
     });
     try {
       const { data } = await createArticleDispatch(article);
-      return history.push(`/article/${data.id}`);
+      return history.push(`/articles/${data.id}`);
     } catch (err) {
       throw Error(err);
     }
@@ -57,7 +57,7 @@ const Content = ({
     message, type, showError,
   } = error;
   const disabledCondition = article.title.length < 3 || article.body.length < 1;
-  const btnClass = [article.published ? 'button-publish' : 'button-save', articles.isArticleRequest ? 'loading' : '', ...'fluid ui button'.split(' ')];
+  const btnClass = [article.published ? 'button-publish' : 'button-save', articles.isArticleRequest ? 'loading' : '', ...'ui button'.split(' ')];
   return (
     <Fragment>
       {(type === 'title' && showError) && <Content.Error addStyles={{ color: 'red' }}>{message[0]}</Content.Error>}
