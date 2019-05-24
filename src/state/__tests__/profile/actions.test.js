@@ -12,15 +12,12 @@ const mockProfile = {
   id: '979eaa2e-5b8f-4103-8192-4639afae2ba9',
   fullName: 'Chike Ozulumba',
   id: "979eaa2e-5b8f-4103-8192-4639afae2ba9",
-  role: "admin",
   email: 'chike@gmail.com',
   username: 'chikeozulumba',
-  role : "admin",
   bio: "Hold on now, aren't there already specs for this kind of thing? - Well... no. While there are a few handy specifications for dealing with JSON data, most notably Douglas Crockford's JSONRequest proposal, there's nothing to address the problems of general application-level messaging. More on this later.",
   imageUrl: 'https://res.cloudinary.com/dmq014llt/image/upload/v1557326099/people/beautiful-brunette-cute.jpg',
   verified: true,
   verificationToken: null,
-  role: "admin",
   passwordResetToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNoaWtlQGdtYWlsLmNvbSIsImlhdCI6MTU1Nzc2Njg1NywiZXhwIjoxNTU3ODUzMjU3fQ.H7iNEJAUGH2yxrbTrAz7XI_MR3I4oyGRoBTknMIp8RQ',
   resetTokenExpires: '2019-05-14T17:00:57.554Z'
 };

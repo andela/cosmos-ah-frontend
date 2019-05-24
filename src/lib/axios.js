@@ -9,6 +9,6 @@ const Axios = axios.create({
   }
 });
 
-export const setAxiosHeader = token => { axios.defaults.headers.common.Authorization = token; };
+export const setAxiosHeader = token => { Axios.defaults.headers.common.Authorization = token; };
 
 export default Axios;
