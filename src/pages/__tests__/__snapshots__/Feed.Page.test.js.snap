@@ -6,10 +6,10 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="sc-iwsKbI cOBXpt"
+        class="sc-VigVT dDInGm"
       >
         <div
-          class="sc-gqjmRU bRgVBE"
+          class="sc-fjdhpX hvkNNE"
         >
           <div>
             <a
@@ -23,10 +23,10 @@ Object {
             </a>
           </div>
           <div
-            class="sc-kAzzGY dlLOPc"
+            class="sc-kGXeez fKzTdd"
           >
             <div
-              class="sc-cSHVUG dsRAme"
+              class="sc-kgoBCf inbaFC"
             >
               <div
                 aria-expanded="false"
@@ -50,10 +50,10 @@ Object {
                 />
               </div>
               <div
-                class="sc-VigVT dvnCjH"
+                class="sc-jzJRlG fLEWoX"
               >
                 <img
-                  class="sc-jTzLTM lbPJRr"
+                  class="sc-cSHVUG gFtSKe"
                   src="test-file-stub"
                 />
                 <input
@@ -64,14 +64,20 @@ Object {
               </div>
             </div>
             <div
-              class="sc-chPdSV dniBXr"
+              class="sc-kpOJdX blbJjL"
             >
               <div
                 class="right menu"
               >
                 <div
-                  class="sc-gzVnrw jLEMcl"
+                  class="sc-iwsKbI dhNnzW"
                 >
+                  <a
+                    href="/article/create"
+                    style="margin: auto; font-weight: bolder;"
+                  >
+                     Create Article
+                  </a>
                   <div
                     class="item sc-EHOje LOWJG"
                   >
@@ -80,7 +86,7 @@ Object {
                       src="test-file-stub"
                     />
                     <div
-                      class="sc-kgoBCf kqjQpZ"
+                      class="sc-dxgOiQ cksFHw"
                     >
                       0
                     </div>
@@ -88,10 +94,50 @@ Object {
                   <div
                     class="item"
                   >
-                    <img
-                      class="sc-bZQynM gXiVFT"
-                      src="test-file-stub"
-                    />
+                    <div
+                      class="ui dropdown btn-dropdown-color"
+                    >
+                      <img
+                        class="sc-bZQynM gXiVFT"
+                        src="img_ur;"
+                      />
+                      <div
+                        class="left secondary menu sc-gzVnrw bISRYH"
+                      >
+                        <div
+                          class="item sc-htoDjs kbXggf"
+                        >
+                          chikeozulumba
+                        </div>
+                        <div
+                          class="item sc-htoDjs kbXggf"
+                        >
+                          <a
+                            href="/feeds"
+                          >
+                            Feeds
+                          </a>
+                        </div>
+                        <div
+                          class="item sc-htoDjs kbXggf"
+                        >
+                          <a
+                            href="/profile/979eaa2e-5b8f-4103-8192-4639afae2ba9"
+                          >
+                            Profile
+                          </a>
+                        </div>
+                        <div
+                          class="item sc-htoDjs kbXggf"
+                        >
+                          <a
+                            href="/"
+                          >
+                            Logout
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -99,18 +145,18 @@ Object {
           </div>
         </div>
         <div
-          class="sc-gZMcBi kXwBat"
+          class="sc-jTzLTM cHjXqZ"
         >
           <div
-            class="sc-fjdhpX fdxDzp"
+            class="sc-kAzzGY bOfWLD"
           >
             <div
-              class="sc-jzJRlG jZtfAi"
+              class="sc-chPdSV fzFJVl"
             >
               <div />
             </div>
             <div
-              class="sc-jzJRlG jZtfAi"
+              class="sc-chPdSV fzFJVl"
             >
               <div />
             </div>
@@ -121,10 +167,10 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="sc-iwsKbI cOBXpt"
+      class="sc-VigVT dDInGm"
     >
       <div
-        class="sc-gqjmRU bRgVBE"
+        class="sc-fjdhpX hvkNNE"
       >
         <div>
           <a
@@ -138,10 +184,10 @@ Object {
           </a>
         </div>
         <div
-          class="sc-kAzzGY dlLOPc"
+          class="sc-kGXeez fKzTdd"
         >
           <div
-            class="sc-cSHVUG dsRAme"
+            class="sc-kgoBCf inbaFC"
           >
             <div
               aria-expanded="false"
@@ -165,10 +211,10 @@ Object {
               />
             </div>
             <div
-              class="sc-VigVT dvnCjH"
+              class="sc-jzJRlG fLEWoX"
             >
               <img
-                class="sc-jTzLTM lbPJRr"
+                class="sc-cSHVUG gFtSKe"
                 src="test-file-stub"
               />
               <input
@@ -179,14 +225,20 @@ Object {
             </div>
           </div>
           <div
-            class="sc-chPdSV dniBXr"
+            class="sc-kpOJdX blbJjL"
           >
             <div
               class="right menu"
             >
               <div
-                class="sc-gzVnrw jLEMcl"
+                class="sc-iwsKbI dhNnzW"
               >
+                <a
+                  href="/article/create"
+                  style="margin: auto; font-weight: bolder;"
+                >
+                   Create Article
+                </a>
                 <div
                   class="item sc-EHOje LOWJG"
                 >
@@ -195,7 +247,7 @@ Object {
                     src="test-file-stub"
                   />
                   <div
-                    class="sc-kgoBCf kqjQpZ"
+                    class="sc-dxgOiQ cksFHw"
                   >
                     0
                   </div>
@@ -203,10 +255,50 @@ Object {
                 <div
                   class="item"
                 >
-                  <img
-                    class="sc-bZQynM gXiVFT"
-                    src="test-file-stub"
-                  />
+                  <div
+                    class="ui dropdown btn-dropdown-color"
+                  >
+                    <img
+                      class="sc-bZQynM gXiVFT"
+                      src="img_ur;"
+                    />
+                    <div
+                      class="left secondary menu sc-gzVnrw bISRYH"
+                    >
+                      <div
+                        class="item sc-htoDjs kbXggf"
+                      >
+                        chikeozulumba
+                      </div>
+                      <div
+                        class="item sc-htoDjs kbXggf"
+                      >
+                        <a
+                          href="/feeds"
+                        >
+                          Feeds
+                        </a>
+                      </div>
+                      <div
+                        class="item sc-htoDjs kbXggf"
+                      >
+                        <a
+                          href="/profile/979eaa2e-5b8f-4103-8192-4639afae2ba9"
+                        >
+                          Profile
+                        </a>
+                      </div>
+                      <div
+                        class="item sc-htoDjs kbXggf"
+                      >
+                        <a
+                          href="/"
+                        >
+                          Logout
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -214,18 +306,18 @@ Object {
         </div>
       </div>
       <div
-        class="sc-gZMcBi kXwBat"
+        class="sc-jTzLTM cHjXqZ"
       >
         <div
-          class="sc-fjdhpX fdxDzp"
+          class="sc-kAzzGY bOfWLD"
         >
           <div
-            class="sc-jzJRlG jZtfAi"
+            class="sc-chPdSV fzFJVl"
           >
             <div />
           </div>
           <div
-            class="sc-jzJRlG jZtfAi"
+            class="sc-chPdSV fzFJVl"
           >
             <div />
           </div>

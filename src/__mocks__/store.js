@@ -65,6 +65,14 @@ export const mockStoreData = {
     },
     error: null,
     isLoading: true,
+  },
+  auth: {
+    signin: {
+      id: '979eaa2e-5b8f-4103-8192-4639afae2ba9',
+      fullName: 'Chike Ozulumba',
+      username: 'chikeozulumba',
+      imgUrl: 'img_ur;'
+    }
   }
 };
 

@@ -3,9 +3,10 @@ import jwtDecode from 'jwt-decode';
 import {
   REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE,
   SIGN_IN_SUCCESS, SIGN_IN_ERROR, LOADING, SOCIAL_AUTH,
+  SIGN_OUT
 } from './actionTypes';
 
-import axios from '../../lib/axios';
+import axios, { setAxiosHeader } from '../../lib/axios';
 import { decodeToken, setLocalStorage } from '../../lib/auth';
 import { error } from '../alert/actions';
 
@@ -23,6 +24,10 @@ export const failure = errorMessage => ({
   error: errorMessage,
 });
 
+export const signOut = () => ({
+  type: SIGN_OUT
+});
+
 export const register = newUser => async dispatch => {
   try {
     dispatch(request());
@@ -31,6 +36,7 @@ export const register = newUser => async dispatch => {
     const decodedToken = decodeToken(token);
     dispatch(success(decodedToken));
     setLocalStorage('ah-token', token);
+    setAxiosHeader(token);
   } catch (err) {
     dispatch(failure(err));
     let { message } = err.response.data;
@@ -70,6 +76,7 @@ export const loginAction = (formData, redirect) => async dispatch => {
     const decoded = decodeToken(login.data.data.token);
     setLocalStorage('ah-token', login.data.data.token);
     dispatch(signInSuccess(decoded));
+    setAxiosHeader(login.data.data.token);
     redirect.push('/feeds');
   } catch (err) {
     dispatch(signInError(err.response.data));
@@ -80,10 +87,17 @@ export const socialAuth = (token, redirect) => dispatch => {
   try {
     setLocalStorage('ah-token', token);
     const decodedToken = decodeToken(token);
-    dispatch(getSocialAuth(decodedToken));
+    (getSocialAuth(decodedToken));
+    setAxiosHeader(token);
     redirect.push('/feeds');
   } catch (err) {
     dispatch(signInError(err));
     redirect.push('/login');
   }
+};
+
+export const signOutUser = redirect => async dispatch => {
+  localStorage.removeItem('ah-token');
+  redirect.push('/');
+  await dispatch(signOut());
 };

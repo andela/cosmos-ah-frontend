@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const authToken = localStorage.getItem('ah-token');
-
 const Axios = axios.create({
   baseURL: 'https://author-haven-stage.herokuapp.com/api/v1/',
   headers: {
@@ -9,6 +7,6 @@ const Axios = axios.create({
   }
 });
 
-Axios.defaults.headers.common.Authorization = authToken;
+export const setAxiosHeader = token => { axios.defaults.headers.common.Authorization = token; };
 
 export default Axios;

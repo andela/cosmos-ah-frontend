@@ -1,6 +1,16 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import OptionIcon from '../../../assets/images/svgs/option.svg';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { signOutUser } from '../../../state/auth/action';
+import DefaultAvatar from '../../../assets/images/avatars/default.jpg';
+
+const Avatar = styled.img`
+	height: 50px !important;
+	width: 45px !important;
+  border-radius: 50px;
+`;
 
 const toggleOptionsVisibility = () => {
   // eslint-disable-next-line no-undef
@@ -10,16 +20,17 @@ const toggleOptionsVisibility = () => {
   });
 };
 
-const Option = ({ displayStyle, handleOnClick }) => {
+const Option = props => {
   toggleOptionsVisibility();
   return (
     <Fragment>
-      <div className="ui dropdown">
-        <Option.Icon styles={displayStyle} src={OptionIcon} />
+      <div className="ui dropdown btn-dropdown-color">
+        <Avatar src= { props.user.imgUrl || DefaultAvatar} />
         <Option.Menu className="left secondary menu">
-          <Option.Text className="item">New</Option.Text>
-          <Option.Text className="item">Test</Option.Text>
-          <Option.Text className="item">Game</Option.Text>
+          <Option.Text className="item">{props.user.username}</Option.Text>
+          <Option.Text className="item"><Link to='/feeds'>Feeds</Link></Option.Text>
+          <Option.Text className="item"><Link to= {`/profile/${props.user.id}`} >Profile</Link></Option.Text>
+          <Option.Text className="item"><Link to='#' onClick = {() => props.signOutUser(props.history)}>Logout</Link></Option.Text>
         </Option.Menu>
       </div>
     </Fragment>
@@ -30,7 +41,7 @@ Option.Menu = styled.div`
   padding: 0.5rem 0.4rem;
   `;
 
-Option.Text = styled.p`
+Option.Text = styled.div`
   font-family: 'Circular-Light';
   font-size: 14px;
   line-height: 14px;
@@ -43,4 +54,8 @@ Option.Icon = styled.img`
   ${props => props.styles}
 `;
 
-export default Option;
+const mapStateToProps = state => ({
+  user: state.auth.signin
+});
+
+export default connect(mapStateToProps, { signOutUser })(withRouter(Option));
