@@ -127,7 +127,6 @@ const ShowCase = ({ article: { imageUrl, title, body,
               <DetailsDotSeparator />
             </ArticleDetails>
             <ArticleDetails>{totalReadTime} {totalReadTime > 1 ? 'mins ' : 'min '}read</ArticleDetails>
-            <FavoriteArticleIcon name="star" size="small" title={`Favorite ${title}`} />
           </ArticleDetailsContainer>
         </section>
       </DynamicSection>
