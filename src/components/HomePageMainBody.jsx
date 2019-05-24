@@ -47,6 +47,10 @@ const AllCollectionsLink = styled(Link)`
   }
 `;
 
+const CollectionSection = styled.section`
+  margin-top: 40px;
+`;
+
 const HomePageMainBody = ({ articles, getArticles }) => {
   useEffect(() => {
     getArticles();
@@ -109,9 +113,7 @@ const HomePageMainBody = ({ articles, getArticles }) => {
           </Grid.Row>
         </Grid>
         {/* Collection Section */}
-        <section style={{
-          marginTop: '40px'
-        }}>
+        <CollectionSection>
           <FeaturedCollectionTitle>FEATURED COLLECTIONS</FeaturedCollectionTitle>
           <ContainerSection>
             {
@@ -119,7 +121,7 @@ const HomePageMainBody = ({ articles, getArticles }) => {
             }
           </ContainerSection>
           <AllCollectionsLink to="/feeds">SEE ALL COLLECTIONS</AllCollectionsLink>
-        </section>
+        </CollectionSection>
       </Container>
     </MainBody>
   );

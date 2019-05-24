@@ -34,15 +34,6 @@ test('card has a description', () => {
   expect(getByText('lorem desc').tagName).toBe('P');
 });
 
-test('card has an icon', () => {
-  const { getByTestId } = render(
-    <Router>
-      <ArticlePrimaryCard article={article} />
-    </Router>
-  );
-  expect(getByTestId(`card-icon-${article.id}`).tagName).toBe('I');
-});
-
 test('card displays reading time', () => {
   const { getByTestId } = render(
     <Router>
