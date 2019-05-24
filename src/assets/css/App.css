@@ -462,6 +462,7 @@ input.taggle_input {
     opacity: 1;
   }
 }
+
 .btn-dropdown-color {
   color: #686868
 }
@@ -498,4 +499,27 @@ input.taggle_input {
 
 #stripped-modal i.icon {
   margin: 0 .25rem 0 0 !important;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
 }

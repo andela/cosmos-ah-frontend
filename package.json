@@ -84,6 +84,7 @@
     "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.3.0",
     "@yaireo/tagify": "^2.18.3",
     "axios": "^0.18.0",
     "css-loader": "^2.1.1",
@@ -113,10 +114,12 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.86.0",
     "sinon": "^7.3.2",
+    "slick-carousel": "^1.8.1",
     "stringz": "^1.0.0",
     "styled-components": "^4.2.0",
     "svg-inline-loader": "^0.8.0",
     "sweetalert": "^2.1.2",
+    "swiper": "^4.5.0",
     "taggle": "^1.14.4",
     "truncatise": "0.0.7",
     "url-loader": "^1.1.2",
