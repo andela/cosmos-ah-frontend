@@ -3,13 +3,16 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Grid, Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getArticleAction } from '../state/article/actions';
 import ArticleUtil from '../utils/articles';
 import { ArticlePrimaryCard, ArticleSecondaryCard } from './shared/Article';
 import ArticleCardHeading from './shared/Heading/ArticleCardHeading';
+import Collections from './Collections';
+import AppUtil from '../utils';
 
 const {
-  articleCategories, getAccumulator, filterArticleByCategory, filterByContent
+  articleTags, mapTagsToEmptyArrays, filterArticlesByTags, getTagsThatHaveArticles
 } = ArticleUtil;
 
 const PageAside = styled.aside`
@@ -20,17 +23,41 @@ const MainBody = styled(Container)`
   margin-top: 3em;
 `;
 
+const ContainerSection = styled.div`
+  padding-bottom: 20px;
+`;
+
+const FeaturedCollectionTitle = styled.h3`
+  font-family: 'Circular-Light';
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  @media screen and (max-width: 768px) {
+    margin-top: 50px;
+  }
+`;
+
+const AllCollectionsLink = styled(Link)`
+  display: block;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  color: #3A8FDD;
+  :hover {
+    color: #2d8be2;
+  }
+`;
+
 const HomePageMainBody = ({ articles, getArticles }) => {
   useEffect(() => {
     getArticles();
   }, []);
 
-  const articleCategoryToArticle = getAccumulator(articleCategories);
-  articleCategories.forEach(category => {
-    articleCategoryToArticle[category] = filterArticleByCategory(articles, category);
+  const articleTagsToArray = mapTagsToEmptyArrays(articleTags);
+  articleTags.forEach(tag => {
+    articleTagsToArray[tag] = filterArticlesByTags(articles, tag);
   });
   // we only want to display article categories that have articles
-  const articleCategoryWithContent = filterByContent(articleCategories, articleCategoryToArticle);
+  const articleTagsWithArticles = getTagsThatHaveArticles(articleTags, articleTagsToArray);
 
   return (
     <MainBody>
@@ -43,15 +70,15 @@ const HomePageMainBody = ({ articles, getArticles }) => {
                 <ArticlePrimaryCard article={article} key={article.id} />
               ))}
               {
-                articleCategoryWithContent
-                  .map((category, i) => (
+                articleTagsWithArticles
+                  .map((tag, i) => (
                     <Fragment key={i}>
-                      <ArticleCardHeading text={category} />
-                        {
-                          articleCategoryToArticle[category.toLowerCase()].map(article => (
-                            <ArticlePrimaryCard article={article} key={article.id} />
-                          ))
-                        }
+                      <ArticleCardHeading text={tag} />
+                      {
+                        articleTagsToArray[tag.toLowerCase()].map(article => (
+                          <ArticlePrimaryCard article={article} key={article.id} />
+                        ))
+                      }
                     </Fragment>
                   ))
               }
@@ -68,10 +95,31 @@ const HomePageMainBody = ({ articles, getArticles }) => {
                       ))
                   }
                 </Grid>
+                <ArticleCardHeading text="Preferences" />
+                <Grid columns="equal">
+                  {
+                    ArticleUtil.getBestRatedArticles(ArticleUtil.articles)
+                      .map((article, i) => (
+                        <ArticleSecondaryCard article={article} count={i} key={article.id} />
+                      ))
+                  }
+                </Grid>
               </PageAside>
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        {/* Collection Section */}
+        <section style={{
+          marginTop: '40px'
+        }}>
+          <FeaturedCollectionTitle>FEATURED COLLECTIONS</FeaturedCollectionTitle>
+          <ContainerSection>
+            {
+              <Collections collections={AppUtil.collections} />
+            }
+          </ContainerSection>
+          <AllCollectionsLink to="/feeds">SEE ALL COLLECTIONS</AllCollectionsLink>
+        </section>
       </Container>
     </MainBody>
   );

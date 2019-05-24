@@ -110,9 +110,10 @@ const SearchIconImage = styled.img`
 const DropdownContainer = styled.div`
   flex: 1 0 7%;
   padding: 0;
-  margin-top: 1.15px;
+  margin-left: 40px;
   div {
     background: #276BA9 !important;
+    font-size: 13px !important;
     i {
       color: #E4E4E4;
     }
@@ -166,7 +167,7 @@ const SecondaryNav = ({ brandLogo }) => (
         </SearchBarActionForm>
         <ButtonContainer>
           <LoginButton>
-            <StyledLink to="/login" role="button">log in</StyledLink>
+            <StyledLink to="/login" role="button">sign in</StyledLink>
           </LoginButton>
           <SignUpButton>
             <StyledLink to="/signup" role="button">Get started</StyledLink>

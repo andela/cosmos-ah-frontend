@@ -11,7 +11,7 @@ afterEach(cleanup);
 test('Renders <MobileSideNav /> and displays it', () => {
   const mobileSideNav = render(
     <Router>
-      <MobileSideNav open closeSideNav={jest.fn} links={links}
+      <MobileSideNav isOpen closeSideNav={jest.fn} links={links}
       />
     </Router>);
   expect(mobileSideNav).toBeTruthy();
@@ -20,7 +20,7 @@ test('Renders <MobileSideNav /> and displays it', () => {
 test('Renders <MobileSideNav /> and does not display it', () => {
   const mobileSideNav = render(
     <Router>
-      <MobileSideNav open={false} closeSideNav={jest.fn} links={links}
+      <MobileSideNav isOpen={false} closeSideNav={jest.fn} links={links}
       />
     </Router>);
   expect(mobileSideNav).toBeTruthy();
