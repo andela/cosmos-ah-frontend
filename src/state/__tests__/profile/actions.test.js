@@ -20,7 +20,8 @@ const mockProfile = {
   verified: true,
   verificationToken: null,
   passwordResetToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNoaWtlQGdtYWlsLmNvbSIsImlhdCI6MTU1Nzc2Njg1NywiZXhwIjoxNTU3ODUzMjU3fQ.H7iNEJAUGH2yxrbTrAz7XI_MR3I4oyGRoBTknMIp8RQ',
-  resetTokenExpires: '2019-05-14T17:00:57.554Z'
+  resetTokenExpires: '2019-05-14T17:00:57.554Z',
+  "role": "admin",
 };
 
 describe('GET PROFILE DATA', () => {

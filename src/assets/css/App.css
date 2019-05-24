@@ -465,3 +465,37 @@ input.taggle_input {
 .btn-dropdown-color {
   color: #686868
 }
+
+.normal-bk:hover {
+  background: #4183c4 !important;
+}
+
+.red-bk:hover {
+  background: red !important;
+}
+
+.at-enter-anim {
+  animation-name: key-enter-custom;
+  animation-duration: 2s; /* or: Xms */
+  animation-iteration-count: 10;
+  animation-direction: alternate; /* or: normal */
+  animation-timing-function: ease-out; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+  animation-fill-mode: forwards; /* or: backwards, both, none */
+  animation-delay: 2s;
+}
+
+@keyframes key-enter-custom {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#stripped-modal i.icon {
+  margin: 0 .25rem 0 0 !important;
+}

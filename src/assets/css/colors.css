@@ -22,6 +22,7 @@
   }
   .color-black {
     background: #000000 !important;
+    color: #f0f8ff !important;
   }
   .color-blanchedalmond {
     background: #ffebcd !important;
@@ -239,7 +240,7 @@
   }
   .color-lawngreen {
     background: #7cfc00 !important;
-    color: whitesmoke !important;
+    color: darkgreen !important;
   }
   .color-lemonchiffon {
     background: #fffacd !important;
@@ -305,10 +306,11 @@
   }
   .color-lime {
     background: #00ff00 !important;
-    color: whitesmoke !important;
+    color: darkgreen !important;
   }
   .color-limegreen {
     background: #32cd32 !important;
+    color: darkgreen !important;
     color: whitesmoke !important;
   }
   .color-linen {
@@ -368,7 +370,7 @@
   }
   .color-mistyrose {
     background: #ffe4e1 !important;
-    color: whitesmoke !important;
+    color: darkgrey !important;
   }
   .color-moccasin {
     background: #ffe4b5 !important;
@@ -384,7 +386,7 @@
   }
   .color-oldlace {
     background: #fdf5e6 !important;
-    color: whitesmoke !important;
+    color: darkorange !important;
   }
   .color-olive {
     background: #808000 !important;
@@ -412,7 +414,7 @@
   }
   .color-palegreen {
     background: #98fb98 !important;
-    color: whitesmoke !important;
+    color: darkolivegreen !important;
   }
   .color-paleturquoise {
     background: #afeeee !important;

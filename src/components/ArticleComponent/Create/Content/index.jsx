@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+/* eslint-disable no-nested-ternary */
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -9,8 +10,10 @@ import Tags from './Tags';
 import Checkbox from './Checkbox';
 import Button from '../../../shared/Buttons/Button';
 
-import { setArticleTitle, setArticleError, } from '../../../../state/create-article/actions';
-import { createNewArticle, } from '../../../../state/article/actions';
+import '../../../../assets/css/App.css';
+
+import { setArticleTitle, setArticleError, setArticleOnUpdate, } from '../../../../state/create-article/actions';
+import { createNewArticle, updateSelectedArticle, } from '../../../../state/article/actions';
 import { createArticleSelector } from '../../../../state/create-article/selectors';
 import { articleSelector } from '../../../../state/article/selectors';
 
@@ -32,9 +35,25 @@ const validateArticle = async data => {
   return validate;
 };
 
-const Content = ({
-  createArticle: { error, article, }, createArticleDispatch, setErrors, articles, history,
+export const Content = ({
+  createArticle: { error, article, },
+  createArticleDispatch, updateArticleDispatch,
+  setErrors, articles, history, match, setArticleUpdate,
 }) => {
+  const { params, path } = match;
+  const editorState = path === '/article/edit/:id' ? 'edit' : 'create';
+  useEffect(() => {
+    const updateArticleField = () => {
+      if (match.path === '/article/edit/:id') {
+        if (articles.articleIsViewed && articles.articleIsViewed.data) {
+          return setArticleUpdate(articles.articleIsViewed.data);
+        }
+        return history.push(match.url.replace('/edit', ''));
+      }
+    };
+    updateArticleField();
+  }, []);
+
   const handleSubmitOfArticles = async () => {
     const checkValidate = await validateArticle({ title: article.title, body: article.body });
     if (!checkValidate.passes()) {
@@ -47,6 +66,10 @@ const Content = ({
       showError: false, status: false, message: [], type: null
     });
     try {
+      if (editorState === 'edit') {
+        const { data } = await updateArticleDispatch(article, params.id);
+        return history.push(`/article/${data.id}`);
+      }
       const { data } = await createArticleDispatch(article);
       return history.push(`/articles/${data.id}`);
     } catch (err) {
@@ -59,17 +82,17 @@ const Content = ({
   const disabledCondition = article.title.length < 3 || article.body.length < 1;
   const btnClass = [article.published ? 'button-publish' : 'button-save', articles.isArticleRequest ? 'loading' : '', ...'ui button'.split(' ')];
   return (
-    <Fragment>
+    <div className="text-focus-in">
       {(type === 'title' && showError) && <Content.Error addStyles={{ color: 'red' }}>{message[0]}</Content.Error>}
-      <Title />
-      <Body />
+      {editorState === 'edit' ? <Title articleTitle={article.title} /> : <Title />}
+      {editorState === 'edit' ? <Body articleBody={article.body} /> : <Body />}
       {type === 'tag' && <Content.Error addStyles={{ color: 'red' }}>{message[0]}</Content.Error>}
-      <Tags />
-      <Checkbox isDisabled={disabledCondition} text="Publish this article?" />
+      {editorState === 'edit' ? <Tags articleTags={article.tags} /> : <Tags />}
+      {((editorState === 'edit' && article.published === false) || editorState === 'create') && <Checkbox isDisabled={disabledCondition} text="Publish this article?" />}
       <Content.Wrapper>
-        <Button onClicked={handleSubmitOfArticles} isDisabled={(disabledCondition || articles.isArticleRequest)} classList={btnClass.join(' ')}>{article.published ? 'PUBLISH ARTICLE' : 'SAVE ARTICLE'}</Button>
+        <Button onClicked={handleSubmitOfArticles} isDisabled={(disabledCondition || articles.isArticleRequest)} classList={btnClass.join(' ')}>{editorState === 'edit' ? 'UPDATE ARTICLE' : article.published ? 'PUBLISH ARTICLE' : 'SAVE ARTICLE'}</Button>
       </Content.Wrapper>
-    </Fragment>
+    </div>
   );
 };
 
@@ -93,5 +116,7 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   setTitle: setArticleTitle,
   createArticleDispatch: createNewArticle,
+  updateArticleDispatch: updateSelectedArticle,
+  setArticleUpdate: setArticleOnUpdate,
   setErrors: setArticleError,
 })(withRouter(Content));

@@ -14,6 +14,7 @@ import CreateArticle from './CreateArticle';
 import ViewArticle from './ViewArticle';
 import ResetPassword from './ResetPassword';
 import { PrivateRoute } from '../lib/authenticateRoute';
+import EditArticle from './EditArticle';
 import { ErrorPage } from './ErrorPage';
 
 const App = () => (
@@ -27,7 +28,8 @@ const App = () => (
       <Route path='/handlesocialauth' component={ConnectedHandleSocialAuth} />
       <PrivateRoute path="/feeds" component={connectedFeed} />
       <PrivateRoute path="/article/create" exact component={CreateArticle} />
-      <Route path="/articles/:id?" exact component={ViewArticle} />
+      <PrivateRoute path="/articles/:id?" exact component={ViewArticle} />
+      <PrivateRoute path="/articles/edit/:id" exact mode="edit" component={EditArticle} />
       <Route path="/password-reset/:resetToken" component={ResetPassword} />
       <Route path="/*" component={ErrorPage}/>
     </Switch>

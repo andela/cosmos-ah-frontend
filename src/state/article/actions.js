@@ -1,4 +1,3 @@
-import { getAllArticles } from '../../lib/article';
 import axios from '../../lib/axios';
 import {
   CREATE_ARTICLE_SUCCESS,
@@ -8,6 +7,10 @@ import {
   IS_ARTICLE_REQUEST,
   GET_ARTICLE_BY_ID_SUCCESS,
   GET_ARTICLE_BY_ID_ERROR,
+  UPDATE_ARTICLE_SUCCESS,
+  UPDATE_ARTICLE_FAILURE,
+  DELETE_ARTICLE_SUCCESS,
+  DELETE_ARTICLE_FAILURE
 } from './actionTypes';
 
 export const createArticleSuccess = article => ({
@@ -17,6 +20,26 @@ export const createArticleSuccess = article => ({
 
 export const createArticleFailure = error => ({
   type: CREATE_ARTICLE_FAILURE,
+  payload: error,
+});
+
+export const updateArticleSuccess = article => ({
+  type: UPDATE_ARTICLE_SUCCESS,
+  payload: article,
+});
+
+export const updateArticleFailure = error => ({
+  type: UPDATE_ARTICLE_FAILURE,
+  payload: error,
+});
+
+export const deleteArticleSuccess = id => ({
+  type: DELETE_ARTICLE_SUCCESS,
+  payload: id,
+});
+
+export const deleteArticleFailure = error => ({
+  type: DELETE_ARTICLE_FAILURE,
   payload: error,
 });
 
@@ -44,9 +67,9 @@ export const getArticleByIDError = error => ({
   payload: error,
 });
 
-export const getArticleAction = () => async dispatch => {
+export const getArticleAction = (route = '/articles') => async dispatch => {
   try {
-    const allArticles = await getAllArticles();
+    const allArticles = await axios.get(route);
     return dispatch(getArticles(allArticles));
   } catch (error) {
     dispatch(getArticlesFailure());
@@ -64,6 +87,17 @@ export const createNewArticle = article => async dispatch => {
   }
 };
 
+export const updateSelectedArticle = (article, id) => async dispatch => {
+  dispatch(isArticleRequest());
+  try {
+    const { data } = await axios.put(`/articles/${id}`, article);
+    await dispatch(updateArticleSuccess(data));
+    return data;
+  } catch (error) {
+    dispatch(updateArticleFailure(error));
+  }
+};
+
 export const getArticleByID = (articles, id) => async dispatch => {
   dispatch(isArticleRequest());
   try {
@@ -71,5 +105,17 @@ export const getArticleByID = (articles, id) => async dispatch => {
     return dispatch(getArticleByIDSuccess(data));
   } catch (error) {
     dispatch(getArticleByIDError(error.response.data));
+  }
+};
+
+export const deleteSelectedArticle = id => async dispatch => {
+  dispatch(isArticleRequest());
+  try {
+    const { data } = await axios.delete(`/articles/${id}`);
+    dispatch(deleteArticleSuccess(id));
+    return data;
+  } catch (error) {
+    dispatch(deleteArticleFailure(error));
+    return error;
   }
 };
