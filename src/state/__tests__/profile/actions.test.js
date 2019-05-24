@@ -10,6 +10,7 @@ const store = mockStore({});
 
 const mockProfile = {
   id: '979eaa2e-5b8f-4103-8192-4639afae2ba9',
+  role: "admin",
   fullName: 'Chike Ozulumba',
   id: "979eaa2e-5b8f-4103-8192-4639afae2ba9",
   email: 'chike@gmail.com',
