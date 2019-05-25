@@ -273,10 +273,6 @@ export const Register = props => {
         <TermsStyle>
           <div>
             <p>
-              By signing up, you agree to Authors Haven
-              <br />
-              Terms and Conditions and Privacy Policy
-              <br />
               &copy;2019 All Right Reserved.
             </p>
           </div>
