@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import searchIcon from '../../../assets/images/svgs/search.svg';
 import MobileNav from './MobileNav';
-import AppUtils from '../../../utils';
-import DropdownSelect from '../Widgets/Dropdown';
 
 const StyledInput = styled.input`
   background-color: #276BA9;
@@ -23,55 +21,27 @@ const StyledInput = styled.input`
   }
 `;
 
-const NavItemContainer = styled('div')`
-  display: inline-block;
-`;
-
-const NavContainer = styled.div`
-  padding: 20px;
-`;
-
 const SearchBarFormFieldContainer = styled.div`
   position: absolute;
   width: 100%;
+  margin-top: 40px;
   @media(max-width: 768px) {
     display: none;
   }
 `;
 
-const SearchBarActionSection = styled.section`
-  flex: 1 1 70%;
-  display: flex;
-  justify-content: space-between;
-  @media(max-width: 768px) {
-    flex: 1 1 10%;
-  }
-`;
-
-const SearchBarLogoContainer = styled.div`
-  flex: 1 0 20%;
-  @media(max-width: 768px) {
-    width: 80%;
-  }
-`;
-
 const SearchBarLogo = styled.div`
-  display: none;
+  flex: 1 0 50%;
   padding: 0;
-  @media(max-width: 768px) {
-    display: block;
-  }
-`;
-
-const SearchBarHeader = styled.div`
-  display: flex;
-  @media(max-width: 768px) {
+  margin: 0;
+  margin-top: -10px;
+  @media screen and (max-width: 768px) {
     display: none;
   }
 `;
 
 const SearchBarActionForm = styled.form`
-  flex: 1 0 60%;
+  flex: 1 0 30%;
   position: relative;
 `;
 
@@ -107,22 +77,6 @@ const SearchIconImage = styled.img`
    height: 15px,
 `;
 
-const DropdownContainer = styled.div`
-  flex: 1 0 7%;
-  padding: 0;
-  margin-left: 40px;
-  div {
-    background: #276BA9 !important;
-    font-size: 13px !important;
-    i {
-      color: #E4E4E4;
-    }
-    & > div {
-      color: #E4E4E4 !important;
-    }
-  }
-`;
-
 const StyledLink = styled(Link)`
   color: #FFF;
   :hover {
@@ -130,56 +84,69 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const ButtonContainer = styled.div`
-  @media(max-width: 992px) {
+const NavButtonContainer = styled.div`
+  flex: 1 1 20%;
+  margin-top: 40px;
+  @media screen and (max-width: 768px) {
     display: none;
   }
 `;
 
-const SearchIcon = styled.div`
+const MobileSearchIcon = styled.div`
   display: none;
 `;
 
-const SecondaryNav = ({ brandLogo }) => (
-  <NavContainer>
+const SecondaryNavBlock = styled.div`
+  position: ${props => (props.authNavBarIsVisible ? 'fixed' : 'static')};
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #3A8FDD;
+  z-index: 9999;
+  display: ${props => (props.authNavBarIsVisible ? 'block' : 'none')}
+`;
+
+const Nav = styled.div`
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+`;
+
+const SecondaryNav = ({ brandLogo, authNavBarIsVisible }) => (
+  <Fragment>
     <MobileNav />
-    <SearchBarHeader>
-      <SearchBarLogoContainer>
-        <SearchBarLogo>{brandLogo}</SearchBarLogo>
-      </SearchBarLogoContainer>
-      <SearchBarActionSection>
-        <DropdownContainer>
-          <DropdownSelect
-            placeholder='SEARCH'
-            dropDownItems={AppUtils.dropDownItems}
-          />
-        </DropdownContainer>
-        <SearchBarActionForm>
-          <SearchIcon>
-            <SearchIconImage src={searchIcon} alt="A magnifying glass lens" />
-          </SearchIcon>
-          <SearchBarFormFieldContainer>
-            <SearchIconImage src={searchIcon} alt="A magnifying glass lens" />
-            <StyledInput
-              placeholder="Find the stories you love"
-            />
-          </SearchBarFormFieldContainer>
-        </SearchBarActionForm>
-        <ButtonContainer>
-          <LoginButton>
-            <StyledLink to="/login" role="button">sign in</StyledLink>
-          </LoginButton>
-          <SignUpButton>
-            <StyledLink to="/signup" role="button">Get started</StyledLink>
-          </SignUpButton>
-        </ButtonContainer>
-      </SearchBarActionSection>
-    </SearchBarHeader>
-  </NavContainer>
+      <SecondaryNavBlock
+        authNavBarIsVisible={authNavBarIsVisible}
+        data-testid="secondary-nav-bar">
+          <Nav>
+          <SearchBarLogo>{brandLogo}</SearchBarLogo>
+          <SearchBarActionForm>
+            <MobileSearchIcon>
+              <SearchIconImage src={searchIcon} alt="A magnifying glass lens" />
+            </MobileSearchIcon>
+            <SearchBarFormFieldContainer>
+              <SearchIconImage src={searchIcon} alt="A magnifying glass lens" />
+              <StyledInput
+                placeholder="Find the stories you love"
+              />
+            </SearchBarFormFieldContainer>
+          </SearchBarActionForm>
+          <NavButtonContainer>
+            <LoginButton>
+              <StyledLink to="/login" role="button">sign in</StyledLink>
+            </LoginButton>
+            <SignUpButton>
+              <StyledLink to="/signup" role="button">Get started</StyledLink>
+            </SignUpButton>
+          </NavButtonContainer>
+          </Nav>
+      </SecondaryNavBlock>
+  </Fragment>
 );
 
 SecondaryNav.propTypes = {
-  brandLogo: PropTypes.node
+  brandLogo: PropTypes.node,
+  authNavBarIsVisible: PropTypes.bool.isRequired
 };
 
 export default SecondaryNav;

@@ -57,7 +57,7 @@ const DynamicSection = styled('section')`
 const TextContainer = styled('section')`
   margin-top: 50px;
   font-family: 'Circular-Bold';
-  @media screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) {
     margin-top: -40px;
     padding: 80px 30px 100px;
   }
