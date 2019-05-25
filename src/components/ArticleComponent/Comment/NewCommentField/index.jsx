@@ -5,12 +5,12 @@ import { createArticleCommentAction } from '../../../../state/comments/actions';
 
 const FormField = styled.form`
     input {
-    width: 100%;
-    background-color: #e2e2e2;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 15px;
-    outline: none;
+      width: 100%;
+      background-color: #efefef;
+      border: 2px solid #dfe1e5;
+      padding: 10px 15px;
+      border-radius: 10px;
+      outline: none;
 }`;
 
 const AddComment = ({ createNewComment, match }) => {

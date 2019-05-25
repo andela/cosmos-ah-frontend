@@ -12,14 +12,11 @@ import Modal from '../../../../shared/Modals';
 
 import { getArticleByID, deleteSelectedArticle } from '../../../../../state/article/actions';
 import { articleSelector, vieweArticleSelector } from '../../../../../state/article/selectors';
-<<<<<<< HEAD
 import { getProfileSelector } from '../../../../../state/profile/selectors';
 
 import { setArticleOnUpdate, } from '../../../../../state/create-article/actions';
-=======
 import ArticleComments from '../../../Comment/CommentCard/index';
 import AddComment from '../../../Comment/NewCommentField/index';
->>>>>>> 164796855-feature(articleComment): fetch comments on an article
 
 const Avatar = styled.img`
   width: 50px!important;
@@ -115,13 +112,13 @@ export const ArticleContent = props => {
       </ArticleContent.Meta>
       <ArticleContent.Main className="text-focus-in main-article-content" dangerouslySetInnerHTML={{ __html: body }} />
       <br />
-      <ArticleComments match={props.match} />
-      <br />
-      <AddComment match={props.match}/>
-      <br />
       <TagSection className="tags">
         {tagLists}
       </TagSection>
+      <br />
+      <ArticleComments match={props.match} />
+      <br />
+      <AddComment match={props.match}/>
       <Modal
         {...deleteArticleProps}
         handleClickApprove={() => deleteArticle()}

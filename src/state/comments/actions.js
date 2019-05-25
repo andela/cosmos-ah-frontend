@@ -1,4 +1,3 @@
-import { getAllArticles } from '../../lib/article';
 import axios from '../../lib/axios';
 import {
   GET_ARTICLE_COMMENT_SUCCESS,

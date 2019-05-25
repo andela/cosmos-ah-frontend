@@ -26,13 +26,8 @@ const App = () => (
       <PrivateRoute path="/profile/:id?" exact component={Profile} />
       <Route path="/forgot-password" component={ForgotPassword} />
       <Route path='/handlesocialauth' component={ConnectedHandleSocialAuth} />
-<<<<<<< HEAD
       <PrivateRoute path="/feeds" component={connectedFeed} />
       <PrivateRoute path="/article/create" exact component={CreateArticle} />
-=======
-      <Route path="/feeds" component={connectedFeed} />
-      <PrivateRoute path="/articles/create" exact component={CreateArticle} />
->>>>>>> 164796855-feature(articleComment): fetch comments on an article
       <PrivateRoute path="/articles/:id?" exact component={ViewArticle} />
       <PrivateRoute path="/articles/edit/:id" exact mode="edit" component={EditArticle} />
       <Route path="/password-reset/:resetToken" component={ResetPassword} />
