@@ -31,7 +31,17 @@ export default (state = initialState, action) => {
     case GET_FOLLOWINGS_FAILURE:
       return {
         ...state,
-        // error: action.payload
+        error: action.payload
+      };
+    case FOLLOW_UNFOLLOW_SUCCESS:
+      return {
+        ...state,
+        error: action.payload
+      };
+    case FOLLOW_UNFOLLOW_FAILURE:
+      return {
+        ...state,
+        error: action.payload
       };
     default:
       return state;
