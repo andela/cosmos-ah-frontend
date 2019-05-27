@@ -9,7 +9,6 @@ const glide = new Glide('.glide', {
   // type: 'carousel',
   startAt: 0,
   perView: 3,
-  perTouch: true,
   Swipe,
   Breakpoints,
 });
