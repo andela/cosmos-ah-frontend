@@ -3,8 +3,8 @@ import { Image, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Bookmark from '../Bookmark';
 import ArticleUtil from '../../../utils/articles';
-import bookmarkIcon from '../../../assets/images/svgs/bookmark.svg';
 
 const { parseArticleCreationDate } = ArticleUtil;
 
@@ -33,11 +33,7 @@ const StyledImage = styled(Image)`
   }
 `;
 
-const BookmarkIcon = styled.img`
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-`;
+const MobileBookmarkIcon = styled(Bookmark)``;
 
 
 const BookmarkIconContainer = styled.div`
@@ -48,9 +44,8 @@ const BookmarkIconContainer = styled.div`
   }
 `;
 
-const MainBookmarkIcon = styled.img`
-  width: 20px;
-  height: 20px;
+const MainBookmarkIcon = styled(Bookmark)`
+  vertical-align: bottom;
   @media(max-width: 768px) {
     display: none;
   }
@@ -81,11 +76,20 @@ const ArticleTitleLink = styled(Link)`
   }
 `;
 
+const MainBookmarkIconContainer = styled.div`
+  align-self: end;
+  padding: 20px;
+  @media(max-width: 768px) {
+    display: none;
+  }
+`;
+
 const ArticlePrimaryCard = ({
   article: {
     id, title, description, author, createdAt, imageUrl, totalReadTime
   },
-  handleBookmarkClick
+  handleBookmarkClick,
+  favoriteIcon
 }) => (
     <Article>
       <CardContentContainer>
@@ -103,17 +107,27 @@ const ArticlePrimaryCard = ({
             <ArticleReadTime data-testid={`article-read-time-${id}`}>
               {totalReadTime} {totalReadTime > 1 ? 'mins' : 'min'} read
             </ArticleReadTime>{' '}
-            <Icon name="star" size="small" color="grey" data-testid={`card-icon-${id}`} />
           </NormDetails>
-          {/*  */}
           <BookmarkIconContainer>
-            <BookmarkIcon src={bookmarkIcon} alt="" onClick={handleBookmarkClick} />
+            <MobileBookmarkIcon
+              displayStyle={{
+                cursor: 'pointer'
+              }}
+              data-testid={`card-icon-${id}`}
+              handleOnClick={handleBookmarkClick}
+            />
           </BookmarkIconContainer>
         </FlexContainer>
       </CardContentContainer>
-      <div>
-        {/* Space left intentionally */}
-      </div>
+      <MainBookmarkIconContainer>
+        <MainBookmarkIcon
+          displayStyle={{
+            cursor: 'pointer'
+          }}
+          data-testid={`card-icon-${id}`}
+          handleOnClick={handleBookmarkClick}
+        />
+      </MainBookmarkIconContainer>
       <div>
         <StyledImage src={imageUrl[0]} alt="" width={100} height={100} rounded />
       </div>
@@ -122,7 +136,8 @@ const ArticlePrimaryCard = ({
 
 ArticlePrimaryCard.propTypes = {
   article: PropTypes.object.isRequired,
-  handleBookmarkClick: PropTypes.func
+  handleBookmarkClick: PropTypes.func,
+  favoriteIcon: PropTypes.element
 };
 
 export default ArticlePrimaryCard;

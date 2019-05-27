@@ -55,8 +55,8 @@ describe('Should render the component ', () => {
     }
     const wrapper = mount(<Provider store={storeWithArticle}><Router><CreateArticle {...props} /></Router></Provider>);
     expect(wrapper).toBeTruthy();
-    expect(wrapper.find('.fluid.ui.button')).toBeTruthy();
-    wrapper.find('.fluid.ui.button').last().simulate('click');
+    expect(wrapper.find('.ui.button')).toBeTruthy();
+    wrapper.find('.ui.button').last().simulate('click');
   });
 });
 
@@ -98,7 +98,7 @@ describe("Should register events for the create article functionality on edit st
     }
     const wrapper = mount(<Provider store={storeWithArticle}><Router match={props.match}><Content {...props} /></Router></Provider>);
     expect(wrapper).toBeTruthy();
-    expect(wrapper.find('.fluid.ui.button')).toBeTruthy();
-    wrapper.find('.fluid.ui.button').first().simulate('click');
+    expect(wrapper.find('.ui.button')).toBeTruthy();
+    wrapper.find('.ui.button').first().simulate('click');
   });
 });
