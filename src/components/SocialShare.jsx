@@ -1,41 +1,39 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { TwitterShareButton, FacebookShareButton, LinkedinShareButton } from 'react-share';
-import styled, { img } from 'styled-components';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import styled from 'styled-components';
 
-import BookmarkIcon from '../assets/images/svgs/bookmark.svg';
 import FacebookIcon from '../assets/images/svgs/facebook.svg';
 import TwitterIcon from '../assets/images/svgs/twitter.svg';
 import LinkedinIcon from '../assets/images/svgs/linkedin.svg';
 
-const Bookmark = props => (
+const Social = props => (
   <Fragment>
-    <Bookmark.Icon
+    <Social.Icon
       src={props.iconUrl}
     />
   </Fragment>
 );
 
-const SocialShare = props => (
+const SocialShare = () => (
    <Fragment >
     <FacebookShareButton url={'https://ah-frontend-stage.herokuapp.com/articles/979eaa2e-5b8f-4103-8192-4639afae2ba7'}>
-      <Bookmark iconUrl={FacebookIcon} />
+      <Social iconUrl={FacebookIcon} />
     </FacebookShareButton>
     <TwitterShareButton url={'https://ah-frontend-stage.herokuapp.com/articles/979eaa2e-5b8f-4103-8192-4639afae2ba7'}>
-      <Bookmark iconUrl={TwitterIcon} />
+      <Social iconUrl={TwitterIcon} />
     </TwitterShareButton>
     <LinkedinShareButton url={'https://ah-frontend-stage.herokuapp.com/articles/979eaa2e-5b8f-4103-8192-4639afae2ba7'}>
-      <Bookmark iconUrl={LinkedinIcon} />
+      <Social iconUrl={LinkedinIcon} />
     </LinkedinShareButton>
   </Fragment>
 );
 
-Bookmark.Icon = styled.img`
-	width: 25px;
-    height: 40px;
-    align: center;
+Social.Icon = styled.img`
+	width: 20px;
+  height: 40px;
+  cursor: pointer;
+  outline: none;
 `;
 
 
-export default withRouter(SocialShare);
+export default SocialShare;

@@ -27,7 +27,6 @@ const Option = props => {
       <div className="ui dropdown btn-dropdown-color">
         <Avatar src= { props.user.imgUrl || DefaultAvatar} />
         <Option.Menu className="left secondary menu">
-          <Option.Text className="item"><Link to= {`/profile/${props.user.id}`}>{props.user.fullName}</Link></Option.Text>
           <Option.Text className="item"><Link to='/feeds'>Feeds</Link></Option.Text>
           <Option.Text className="item"><Link to= {`/profile/${props.user.id}`} >Profile</Link></Option.Text>
           <Option.Text className="item"><Link to='#' onClick = {() => props.signOutUser(props.history)}>Logout</Link></Option.Text>
