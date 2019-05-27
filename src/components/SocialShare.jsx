@@ -16,13 +16,13 @@ const Social = props => (
 
 const SocialShare = () => (
    <Fragment >
-    <FacebookShareButton url={'https://ah-frontend-stage.herokuapp.com/articles/979eaa2e-5b8f-4103-8192-4639afae2ba7'}>
+    <FacebookShareButton url={window.location}>
       <Social iconUrl={FacebookIcon} />
     </FacebookShareButton>
-    <TwitterShareButton url={'https://ah-frontend-stage.herokuapp.com/articles/979eaa2e-5b8f-4103-8192-4639afae2ba7'}>
+    <TwitterShareButton url={window.location}>
       <Social iconUrl={TwitterIcon} />
     </TwitterShareButton>
-    <LinkedinShareButton url={'https://ah-frontend-stage.herokuapp.com/articles/979eaa2e-5b8f-4103-8192-4639afae2ba7'}>
+    <LinkedinShareButton url={window.location}>
       <Social iconUrl={LinkedinIcon} />
     </LinkedinShareButton>
   </Fragment>
