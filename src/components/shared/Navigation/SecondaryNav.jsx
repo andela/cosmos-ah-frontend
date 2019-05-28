@@ -119,26 +119,26 @@ const SecondaryNav = ({ brandLogo, authNavBarIsVisible }) => (
         authNavBarIsVisible={authNavBarIsVisible}
         data-testid="secondary-nav-bar">
           <Nav>
-          <SearchBarLogo>{brandLogo}</SearchBarLogo>
-          <SearchBarActionForm>
-            <MobileSearchIcon>
-              <SearchIconImage src={searchIcon} alt="A magnifying glass lens" />
-            </MobileSearchIcon>
-            <SearchBarFormFieldContainer>
-              <SearchIconImage src={searchIcon} alt="A magnifying glass lens" />
-              <StyledInput
-                placeholder="Find the stories you love"
-              />
-            </SearchBarFormFieldContainer>
-          </SearchBarActionForm>
-          <NavButtonContainer>
-            <LoginButton>
-              <StyledLink to="/login" role="button">sign in</StyledLink>
-            </LoginButton>
-            <SignUpButton>
-              <StyledLink to="/signup" role="button">Get started</StyledLink>
-            </SignUpButton>
-          </NavButtonContainer>
+            <SearchBarLogo>{brandLogo}</SearchBarLogo>
+            <SearchBarActionForm>
+              <MobileSearchIcon>
+                <SearchIconImage src={searchIcon} alt="A magnifying glass lens" />
+              </MobileSearchIcon>
+              <SearchBarFormFieldContainer>
+                <SearchIconImage src={searchIcon} alt="A magnifying glass lens" />
+                <StyledInput
+                  placeholder="Find the stories you love"
+                />
+              </SearchBarFormFieldContainer>
+            </SearchBarActionForm>
+            <NavButtonContainer>
+              <LoginButton>
+                <StyledLink to="/login" role="button">sign in</StyledLink>
+              </LoginButton>
+              <SignUpButton>
+                <StyledLink to="/signup" role="button">Get started</StyledLink>
+              </SignUpButton>
+            </NavButtonContainer>
           </Nav>
       </SecondaryNavBlock>
   </Fragment>
