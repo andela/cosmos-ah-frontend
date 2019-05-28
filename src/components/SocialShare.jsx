@@ -10,6 +10,7 @@ const Social = props => (
   <Fragment>
     <Social.Icon
       src={props.iconUrl}
+      alt ={props.alt}
     />
   </Fragment>
 );
