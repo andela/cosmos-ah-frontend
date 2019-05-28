@@ -6,4 +6,5 @@ it('Render <Social /> component when the article has been rendered on <ViewArtic
     const socialShare = render(<SocialShare/>);
     expect(socialShare).toBeTruthy();
     expect(socialShare).toMatchSnapshot();
-  });
+  }
+);
