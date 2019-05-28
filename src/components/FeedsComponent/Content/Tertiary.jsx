@@ -21,7 +21,7 @@ const Avatar = styled.img`
 `;
 
 const slider = () => {
-  new Glider(document.querySelector('.secondary-glider'), {
+  new Glider(document.querySelector('.tertiary-glider'), {
     slidesToScroll: 1,
     slidesToShow: 50,
     draggable: true,
@@ -51,20 +51,15 @@ const slider = () => {
   });
 };
 
-//  onClick={() => props.history.push(`/articles/${article.articleId}`)}
-
 const Secondary = props => {
   useEffect(() => {
-    // eslint-disable-next-line no-undef
-    $(document).ready(() => {
-      slider();
-    });
-  });
+    slider();
+  }, []);
   return (
     <Secondary.GlideWrapper>
       <Secondary.Glide>
-        <h3>Followers Articles</h3>
-        <Secondary.ArticleCardsWrapper className="secondary-glider">
+        <h3>Top Rated Articles</h3>
+        <Secondary.ArticleCardsWrapper className="tertiary-glider">
           {props.followersFeeds.map((article, index) => (<Secondary.ArticleCards key={index + 1}>
             <div className="header">
               <Link to={`/profile/${article.primaryId}`}>

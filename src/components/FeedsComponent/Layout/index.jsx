@@ -1,21 +1,38 @@
+/* eslint-disable no-new */
+/* eslint-disable no-undef */
 import React, { Fragment, useEffect } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import Primary from '../Content/Primary';
 import Secondary from '../Content/Secondary';
+import Tertiary from '../Content/Tertiary';
+
+import { getFeeds } from '../../../state/feeds/actions';
+import {
+  mostReadArticleFeedsSelector,
+  isFeedsLoadingSelector,
+  followersFeedsSelector,
+  newArticleFeedsSelector
+} from '../../../state/feeds/selectors';
 
 import '@glidejs/glide/src/assets/sass/glide.core.scss';
 import ImageSVG from '../../../assets/images/svgs/footer-vector.svg';
 
-export const Layout = props => {
+const Layout = props => {
   useEffect(() => {
+    props.fetchAllFeeds();
   }, []);
 
   return (
     <Fragment>
-      <Layout.Main className="">
-        <Layout.Primary style={{ background: 'red !important', height: '100px' }}>
+      <Layout.Main>
+        <Layout.Primary>
+          <h3>Fresh Articles</h3>
+          <Primary newArticles={props.newArticleFeeds} />
         </Layout.Primary>
         <Layout.Secondary >
-          <Secondary />
+          <Secondary followersFeeds={props.followersFeeds} />
+          <Tertiary followersFeeds={props.followersFeeds} />
         </Layout.Secondary>
       </Layout.Main>
       <Layout.FooterImage src={ImageSVG}/>
@@ -25,26 +42,29 @@ export const Layout = props => {
 
 Layout.Main = styled.div`
   margin: 5rem auto 0;
-  padding: 0 2rem;
+  padding: 0 1rem;
   display: grid;
   grid-template-columns: 30% 70%;
-  /* grid-gap: 50px; */
   min-height: 80vh;
-  @media screen and (max-width: 500px) {
+  grid-gap: 10px;
+  @media screen and (max-width: 620px) {
     overflow: hidden;
     grid-template-columns: 0 1fr;
-    PADDING: 0 1REM;
+    padding: 0 1rem;
   }
 `;
 
 Layout.Primary = styled.div`
-  background: red;
+  padding: 0 2rem;
+  @media screen and (max-width: 620px) {
+    display: none;
+  }
 `;
 
 Layout.Secondary = styled.div`
   height: inherit;
   display: grid;
-  align-items: center;
+  /* align-items: center; */
 `;
 
 Layout.FooterImage = styled.img`
@@ -54,3 +74,18 @@ Layout.FooterImage = styled.img`
   left: 0;
   z-index: -9999999;
 `;
+
+
+const mapStateToProps = ({ feeds }) => ({
+  mostReadArticleFeeds: mostReadArticleFeedsSelector(feeds),
+  isFeedsLoading: isFeedsLoadingSelector(feeds),
+  followersFeeds: followersFeedsSelector(feeds),
+  newArticleFeeds: newArticleFeedsSelector(feeds),
+});
+
+export default connect(
+  mapStateToProps,
+  {
+    fetchAllFeeds: getFeeds,
+  }
+)(Layout);

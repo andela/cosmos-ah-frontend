@@ -1,5 +1,6 @@
 import moment from 'moment';
 import Validate from 'validatorjs';
+import Truncatise from 'truncatise';
 
 export default {
   articleTags: [
@@ -214,3 +215,8 @@ export const Validator = async (data, rules, customRules = null) => {
   const result = await new Validate(data, rules, customRules);
   return result;
 };
+
+export const truncate = (content, options = {}) => Truncatise(
+  content,
+  { ...options }
+);
