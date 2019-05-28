@@ -8,14 +8,15 @@ const Button = ({
   isStyled,
   onClicked,
   children,
-  isDisabled,
+  isDisabled
 }) => (
    <Button.Container
 	hover={onHover}
 	stylesList={isStyled || null}
 	onClick={onClicked}
   disabled={isDisabled}
-	className={classList}>
+	className={classList}
+  data-testid='app-ui-button'>
 	{children}</Button.Container>
 );
 

@@ -56,7 +56,10 @@ export default {
     { title: 'Politics', url: '/' },
     { title: 'Health', url: '/' },
     { title: 'Self', url: '/' },
-    { title: 'Romance', url: '/' }
+    { title: 'Romance', url: '/' },
+    { title: 'Arts', url: '/' },
+    { title: 'Music', url: '/' },
+    { title: 'Math', url: '/' }
   ],
   collections: {
     tech: {
