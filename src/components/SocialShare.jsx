@@ -17,13 +17,13 @@ const Social = props => (
 const SocialShare = () => (
    <Fragment >
     <FacebookShareButton url={window.location}>
-      <Social iconUrl={FacebookIcon} />
+      <Social iconUrl={FacebookIcon} alt='FacebookShareButton'/>
     </FacebookShareButton>
     <TwitterShareButton url={window.location}>
-      <Social iconUrl={TwitterIcon} />
+      <Social iconUrl={TwitterIcon} alt='TwitterShareButton'/>
     </TwitterShareButton>
     <LinkedinShareButton url={window.location}>
-      <Social iconUrl={LinkedinIcon} />
+      <Social iconUrl={LinkedinIcon} alt='LinkedinShareButton'/>
     </LinkedinShareButton>
   </Fragment>
 );
