@@ -29,7 +29,7 @@ const SocialShare = () => (
 );
 
 Social.Icon = styled.img`
-	width: 20px;
+  width: 20px;
   height: 40px;
   cursor: pointer;
   outline: none;
