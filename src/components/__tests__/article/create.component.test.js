@@ -3,8 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
-import { render, cleanup } from 'react-testing-library';
-import { mount } from 'enzyme';
+import { render, cleanup, fireEvent } from 'react-testing-library';
 
 import CreateArticle from '../../ArticleComponent/Create';
 import { Content } from '../../ArticleComponent/Create/Content';
@@ -53,10 +52,11 @@ describe('Should render the component ', () => {
       setArticleUpdate: jest.fn(() => Promise.resolve({ data: { yes: true } })),
       setErrors: jest.fn(() => Promise.resolve({ data: { yes: true } })),
     }
-    const wrapper = mount(<Provider store={storeWithArticle}><Router><CreateArticle {...props} /></Router></Provider>);
+    const wrapper = render(<Provider store={storeWithArticle}><Router><CreateArticle {...props} /></Router></Provider>);
     expect(wrapper).toBeTruthy();
-    expect(wrapper.find('.ui.button')).toBeTruthy();
-    wrapper.find('.ui.button').last().simulate('click');
+    const button =  wrapper.getByTestId('article-create-button');
+    expect(button.tagName).toEqual('BUTTON');
+    fireEvent.click(button);
   });
 });
 
@@ -96,9 +96,10 @@ describe("Should register events for the create article functionality on edit st
       setArticleUpdate: jest.fn(() => Promise.resolve({ data: { yes: true } })),
       setErrors: jest.fn(() => Promise.resolve({ data: { yes: true } })),
     }
-    const wrapper = mount(<Provider store={storeWithArticle}><Router match={props.match}><Content {...props} /></Router></Provider>);
+    const wrapper = render(<Provider store={storeWithArticle}><Router match={props.match}><Content {...props} /></Router></Provider>);
     expect(wrapper).toBeTruthy();
-    expect(wrapper.find('.ui.button')).toBeTruthy();
-    wrapper.find('.ui.button').first().simulate('click');
+    const button = wrapper.getByTestId('article-create-button');
+    expect(button.tagName).toEqual('BUTTON');
+    fireEvent.click(button);
   });
 });
