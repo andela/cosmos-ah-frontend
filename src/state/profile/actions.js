@@ -11,9 +11,9 @@ export const getFollowingsSuccess = following => ({
   payload: following,
 });
 
-export const getFollowingsFailure = following => ({
+export const getFollowingsFailure = error => ({
   type: GET_FOLLOWINGS_FAILURE,
-  payload: following,
+  payload: error,
 });
 
 export const getUserProfileFailure = error => ({
@@ -43,8 +43,8 @@ export const getFollowings = () => async dispatch => {
 export const followOrUnfollow = userId => async dispatch => {
   try {
     const { status, data } = await axios.post(`/followers/${userId}/follow`);
-    return getFollowings();
+    return true;
   } catch (error) {
-    dispatch(getFollowingsFailure(error.response.data));
+    dispatch(getFollowingsFailure(error));
   }
 };
