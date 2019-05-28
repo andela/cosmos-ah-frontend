@@ -116,9 +116,9 @@ export const ArticleContent = props => {
         {tagLists}
       </TagSection>
       <br />
-      <ArticleComments match={props.match} />
+      <ArticleComments />
       <br />
-      <AddComment match={props.match}/>
+      <AddComment />
       <Modal
         {...deleteArticleProps}
         handleClickApprove={() => deleteArticle()}
