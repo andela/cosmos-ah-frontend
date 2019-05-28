@@ -54,7 +54,7 @@ describe('Should render the component ', () => {
     }
     const wrapper = render(<Provider store={storeWithArticle}><Router><CreateArticle {...props} /></Router></Provider>);
     expect(wrapper).toBeTruthy();
-    const button =  wrapper.getByTestId('article-create-button');
+    const button =  wrapper.getByTestId('app-ui-button');
     expect(button.tagName).toEqual('BUTTON');
     fireEvent.click(button);
   });
@@ -98,7 +98,7 @@ describe("Should register events for the create article functionality on edit st
     }
     const wrapper = render(<Provider store={storeWithArticle}><Router match={props.match}><Content {...props} /></Router></Provider>);
     expect(wrapper).toBeTruthy();
-    const button = wrapper.getByTestId('article-create-button');
+    const button = wrapper.getByTestId('app-ui-button');
     expect(button.tagName).toEqual('BUTTON');
     fireEvent.click(button);
   });

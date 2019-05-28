@@ -8,8 +8,7 @@ const Button = ({
   isStyled,
   onClicked,
   children,
-  isDisabled,
-  dataTestId // added to ease testing of this component
+  isDisabled
 }) => (
    <Button.Container
 	hover={onHover}
@@ -17,7 +16,7 @@ const Button = ({
 	onClick={onClicked}
   disabled={isDisabled}
 	className={classList}
-  data-testid={dataTestId}>
+  data-testid='app-ui-button'>
 	{children}</Button.Container>
 );
 

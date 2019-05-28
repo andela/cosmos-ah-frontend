@@ -90,7 +90,7 @@ export const Content = ({
       {editorState === 'edit' ? <Tags articleTags={article.tags} /> : <Tags />}
       {((editorState === 'edit' && article.published === false) || editorState === 'create') && <Checkbox isDisabled={disabledCondition} text="Publish this article?" />}
       <Content.Wrapper>
-        <Button onClicked={handleSubmitOfArticles} isDisabled={(disabledCondition || articles.isArticleRequest)} classList={btnClass.join(' ')} dataTestId='article-create-button' id="hello-world">{editorState === 'edit' ? 'UPDATE ARTICLE' : article.published ? 'PUBLISH ARTICLE' : 'SAVE ARTICLE'}</Button>
+        <Button onClicked={handleSubmitOfArticles} isDisabled={(disabledCondition || articles.isArticleRequest)} classList={btnClass.join(' ')}>{editorState === 'edit' ? 'UPDATE ARTICLE' : article.published ? 'PUBLISH ARTICLE' : 'SAVE ARTICLE'}</Button>
       </Content.Wrapper>
     </div>
   );
