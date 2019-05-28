@@ -40,7 +40,7 @@ const MainArticleCard = ({ article }) => (
         </p>
         <Link to={`/articles/${article.id}`}>Read More</Link>
         <CardFooter>
-            <Header disabled header>
+            <Header>
                 <h3>Popular on Authors Haven</h3>
             </Header>
         </CardFooter>

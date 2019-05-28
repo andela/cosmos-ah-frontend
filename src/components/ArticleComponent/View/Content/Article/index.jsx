@@ -15,6 +15,8 @@ import { articleSelector, vieweArticleSelector } from '../../../../../state/arti
 import { getProfileSelector } from '../../../../../state/profile/selectors';
 
 import { setArticleOnUpdate, } from '../../../../../state/create-article/actions';
+import ArticleComments from '../../../Comment/CommentCard/index';
+import AddComment from '../../../Comment/NewCommentField/index';
 
 const Avatar = styled.img`
   width: 50px!important;
@@ -113,6 +115,10 @@ export const ArticleContent = props => {
       <TagSection className="tags">
         {tagLists}
       </TagSection>
+      <br />
+      <ArticleComments />
+      <br />
+      <AddComment />
       <Modal
         {...deleteArticleProps}
         handleClickApprove={() => deleteArticle()}

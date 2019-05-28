@@ -8,6 +8,8 @@ import { mount } from 'enzyme';
 import { render, cleanup } from 'react-testing-library';
 
 import ViewArticle from '../../ArticleComponent/View';
+import ArticleComments from '../../ArticleComponent/Comment/CommentCard';
+import CreateNewComment from '../../ArticleComponent/Comment/NewCommentField';
 import { ArticleContent } from '../../ArticleComponent/View/Content/Article';
 
 import { mockStoreData, articleIsViewed } from '../../../__mocks__/store';
@@ -22,6 +24,34 @@ describe('Handles the rendering of the <ViewArticle />', () => {
     const viewArticle = render(<Provider store={store}><Router><ViewArticle /></Router></Provider>);
     expect(viewArticle).toBeTruthy();
     expect(viewArticle).toMatchSnapshot();
+  });
+
+  it('Render <ArticleComments /> component with the default state', () => {
+    const store = mockStore(mockStoreData);
+    const props = {
+      match: {
+        params: {
+          id: 'id-string'
+        }
+      }
+    };
+    const articleComments = render(<Provider store={store}><Router><ArticleComments {...props}/></Router></Provider>);
+    expect(articleComments).toBeTruthy();
+    expect(articleComments).toMatchSnapshot();
+  });
+
+  it('Render <NewArticleComments /> component with the default state', () => {
+    const store = mockStore(mockStoreData);
+    const props = {
+      match: {
+        params: {
+          id: 'id-string'
+        }
+      }
+    };
+    const newArticleComments = render(<Provider store={store}><Router><CreateNewComment {...props}/></Router></Provider>);
+    expect(newArticleComments.getByPlaceholderText('Add a comment...')).toBeTruthy();
+    expect(newArticleComments).toMatchSnapshot();
   });
 
   it('Render <ViewArticle /> component with the article loaded', () => {
@@ -55,7 +85,7 @@ describe('Handles the rendering of the <ViewArticle />', () => {
       },
       deleteArticleDispatch: jest.fn(),
     }
-    const wrapper = mount(<Router><ArticleContent {...props} /></Router>);
+    const wrapper = mount(<Provider store={storeWithArticle}><Router><ArticleContent {...props} /></Router></Provider>);
     expect(wrapper).toBeTruthy();
     expect(wrapper.find('#approveModal')).toHaveLength(1);
     expect(wrapper.find('.normal-bk')).toHaveLength(1);
