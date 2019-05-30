@@ -11,6 +11,9 @@ import DefaultLink from '../../../../shared/Links/DefaultLink';
 import Modal from '../../../../shared/Modals';
 
 import { getArticleByID, deleteSelectedArticle } from '../../../../../state/article/actions';
+import { ButtonComponent } from '../../../../Button';
+
+import { getFollowings, followOrUnfollow } from '../../../../../state/profile/actions';
 import { articleSelector, vieweArticleSelector } from '../../../../../state/article/selectors';
 import { getProfileSelector } from '../../../../../state/profile/selectors';
 
@@ -35,6 +38,7 @@ const PreloadImage = styled.img`
   margin: 2rem 0 0;
 `;
 
+
 export const ArticleContent = props => {
   const [editorError, setEditorState] = useState({ status: false, message: null });
   const {
@@ -42,10 +46,12 @@ export const ArticleContent = props => {
     getByID, articleIsViewed, history,
     setArticleUpdate, userProfile,
     deleteArticleDispatch,
+    profile
   } = props;
   const { allArticles } = articles;
   useEffect(() => {
     getByID(allArticles, id);
+    props.getFollowings();
   }, [allArticles, id]);
 
   if (!articleIsViewed || !articleIsViewed.data) {
@@ -67,14 +73,13 @@ export const ArticleContent = props => {
     return (<li className={classes} key={i}><Link to={`/tags/${tag}`}>{tag}</Link></li>);
   });
 
+
   // eslint-disable-next-line no-undef
   const triggerDelete = () => $('#stripped-modal').modal('show');
-
   const deleteArticleProps = {
     modalTitle: 'Delete Article',
     modalText: `Are you sure you want to delete this article: ${title}`,
   };
-
   const deleteArticle = async () => {
     const deleteSelected = await deleteArticleDispatch(id);
     if (deleteSelected.status === 'success') {
@@ -83,9 +88,19 @@ export const ArticleContent = props => {
     return useState({ status: true, message: `${deleteSelected.data.message}` });
   };
 
+  const isFollowingUser = profile.followings.find(follow => follow.id === author.id);
+
   return (
     <div>
       <PrimaryTitle classList="text-focus-in">{title}</PrimaryTitle>
+      <ButtonComponent onClick={async () => {
+        try {
+          await props.followOrUnfollow(author.id);
+          props.getFollowings();
+        } catch (error) {
+          throw Error(error);
+        }
+      }} color="blue" width="35%">{isFollowingUser ? 'Unfollow' : 'Follow'}</ButtonComponent>
       <ArticleContent.Meta className="text-focus-in align-c">
         <Link to={`/profile/${author.id}`}><Avatar className='avatar' src={author.imageUrl}/></Link>
         <div className="u-paddingLeft15" style={{ width: '100%' }}>
@@ -176,13 +191,17 @@ const mapStateToProps = state => ({
   articles: articleSelector(state),
   articleIsViewed: vieweArticleSelector(state),
   userProfile: getProfileSelector(state).loadedData,
+  profile: state.profile
 });
 
 export default connect(
   mapStateToProps,
+
   {
     getByID: getArticleByID,
     setArticleUpdate: setArticleOnUpdate,
     deleteArticleDispatch: deleteSelectedArticle,
+    getFollowings,
+    followOrUnfollow
   },
 )(withRouter(ArticleContent));

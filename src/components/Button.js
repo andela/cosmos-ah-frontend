@@ -7,11 +7,12 @@ const StyledButton = styled(Button)`
 `;
 
 export const ButtonComponent = ({
-  type, color, size, children, fluid, width
+  type, color, size, children, fluid, width, onClick
 }) => (
-  <div>
-    <StyledButton type={type} color={color} size={size} fluid={fluid} width={width}>
-      {children}
-    </StyledButton>
-  </div>
+    <div>
+      <StyledButton
+        type={type} color={color} size={size} onClick={onClick} fluid={fluid} width={width}>
+        {children}
+      </StyledButton>
+    </div>
 );
