@@ -90,7 +90,7 @@
     "express": "^4.16.4",
     "jquery": "^3.4.1",
     "jwt-decode": "^2.2.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "medium-editor": "^5.23.3",
     "medium-editor-insert-plugin": "^2.5.1",
     "moment": "^2.24.0",
